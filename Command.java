@@ -49,5 +49,9 @@ public class Command
     {
         return (secondWord != null);
     }
+    
+    public void printBlargh() {
+        System.out.println("Blargh");
+    }
 }
 
