@@ -1,5 +1,6 @@
 package worldofzuul;
 
+
 public class Game 
 {
     int key=0;
@@ -48,7 +49,6 @@ public class Game
     public void play() 
     {            
         printWelcome();
-
                 
         boolean finished = false;
         while (! finished) {
@@ -151,4 +151,6 @@ public class Game
             return true;
         }
     }
+    
+    // just a comment to test something
 }
