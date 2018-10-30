@@ -2,9 +2,15 @@ package worldofzuul;
 
 public class Game 
 {
+    int key=0;
     private Parser parser;
     private Room currentRoom;
-        
+    private Room nextRoom;
+    
+    public static void main(String[] args) {
+    Game game = new Game();
+    game.play();
+    }
 
     public Game() 
     {
@@ -22,7 +28,7 @@ public class Game
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
-        
+    
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
@@ -33,7 +39,7 @@ public class Game
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
-
+        
         office.setExit("west", lab);
 
         currentRoom = outside;
@@ -57,6 +63,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("If you want to enter the computing admins office, you have to pick up the key at the campus pub");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -92,8 +99,9 @@ public class Game
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
+        System.out.println();
     }
-
+    
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
@@ -104,16 +112,35 @@ public class Game
         String direction = command.getSecondWord();
 
         Room nextRoom = currentRoom.getExit(direction);
-
+    
+        if (currentRoom.getShortDescription()=="in a computing lab" && nextRoom.getShortDescription()=="in the computing admin office"){
+            if (key==1){
+            currentRoom=nextRoom;
+            System.out.println(currentRoom.getLongDescription());
+        } else {
+            System.out.println("You need a key to enter this door .\n");
+                System.out.println(currentRoom.getSlowDescription());
+        }
+        } else {
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+        System.out.println("There is no door!");
         }
         else {
+            //System.out.println(currentRoom.getShortDescription()+nextRoom.getShortDescription());
+            System.out.println(nextRoom.getShortDescription());
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
+            
+        if (currentRoom.getShortDescription()=="in the campus pub"){
+            if (key==0){    
+            System.out.println("You have picked up the key for the computing admin office!");
+            }
+            key=1;    
+        }
     }
-
+    }
+  
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {

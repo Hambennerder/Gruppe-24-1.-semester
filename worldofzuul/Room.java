@@ -9,7 +9,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
-
+    
     public Room(String description) 
     {
         this.description = description;
@@ -30,6 +30,11 @@ public class Room
     {
         return "You are " + description + ".\n" + getExitString();
     }
+    
+    public String getSlowDescription()
+    {
+        return "You are still " + description + ".\n" + getExitString();
+    }        
 
     private String getExitString()
     {
