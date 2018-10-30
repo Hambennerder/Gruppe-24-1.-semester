@@ -1,5 +1,6 @@
 package worldofzuul;
 
+
 public class Game 
 {
     private Parser parser;
@@ -42,7 +43,6 @@ public class Game
     public void play() 
     {            
         printWelcome();
-
                 
         boolean finished = false;
         while (! finished) {
