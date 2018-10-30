@@ -7,11 +7,6 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Room nextRoom;
-    
-    public static void main(String[] args) {
-    Game game = new Game();
-    game.play();
-    }
 
     public Game() 
     {
