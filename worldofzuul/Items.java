@@ -3,7 +3,7 @@ package sduul;
     public class Items{
          
         private String name;
-        private String info;
+        private String iteminfo;
         private int value;
         private int weight;
          
