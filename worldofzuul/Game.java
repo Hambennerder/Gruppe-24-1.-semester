@@ -1,6 +1,5 @@
 package worldofzuul;
 
-
 public class Game 
 {
     int key=0;
@@ -42,7 +41,19 @@ public class Game
     }
 
     public void play() 
-    {            
+    {    
+        
+        NPC John = new NPC();
+        Quest q = new Quest();
+        q.addQuestString("Go find the duck!");
+        q.addQuestString("Now that you found the duck, roast it");
+        
+        John.addQuest(q);
+        John.getQuest(0).printQuestString(0);
+        John.getQuest(0).printQuestString(1);
+        
+        
+        
         printWelcome();
                 
         boolean finished = false;

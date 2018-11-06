@@ -1,26 +1,25 @@
 
 package worldofzuul;
 
-//This class creates the NPCs
-
 import java.util.ArrayList;
 
 public class NPC extends Entity {
-    // Entity which is the type that inventory stores, is to be changed to item
-    // Shortly after the item class has been introduced
-    private ArrayList<Entity> inventory = new ArrayList<>();
+    
+    private ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Quest> quests = new ArrayList<>();
     private int level;
     private int experience;
     private int health;
+    private int questCount;
     private String welcome;
     private String goodbye;
     private Boolean friendly;
-    private String quest;
     
     public NPC() {
         this.level = 1;
         this.experience = 1;
         this.health = 100;
+        this.questCount = 0;
         this.welcome = "Hello traveler!";
         this.goodbye = "Farewell traveler!";
         this.friendly = true;
@@ -57,14 +56,14 @@ public class NPC extends Entity {
         return health;
     }
     
-    public void addToInventory(Entity entity) {
-        inventory.add(entity);
+    public void addToInventory(Item item) {
+        inventory.add(item);
     }
     
     public void removeFromInventory(int ID) {
-        for (Entity entity : inventory) {
-            if (ID == entity.getEntityID()) {
-                inventory.remove(entity);
+        for (Item item : inventory) {
+            if (ID == item.getEntityID()) {
+                inventory.remove(item);
             }
         }
     }
@@ -85,6 +84,24 @@ public class NPC extends Entity {
         return this.goodbye;
     }
     
+    public void setFriendly(boolean friendly) {
+        this.friendly = friendly;
+    }
     
+    public boolean getFriendly() {
+        return this.friendly;
+    }
+    
+    public void addQuest(Quest q) {
+        if (q != null) {
+            quests.add(q);
+        }
+    }
+    
+    public Quest getQuest(int n) {
+        return quests.get(n);
+    }
+    
+    // Abilities to be implemented soon
     
 }
