@@ -1,9 +1,9 @@
-package sduul;
+package worldofzuul;
 
     public class Items{
          
         private String name;
-        private String iteminfo;
+        private String info;
         private int value;
         private int weight;
          
