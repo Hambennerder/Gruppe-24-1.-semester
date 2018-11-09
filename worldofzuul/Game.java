@@ -1,15 +1,19 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game 
 {
     int key=0;
     private Parser parser;
     private Room currentRoom;
     private Room nextRoom;
+    private List<Room> rooms;
 
     public Game() 
     {
-        createRooms();
+        rooms = new ArrayList<>();
         parser = new Parser();
     }
 
@@ -21,7 +25,11 @@ public class Game
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
         outside = new Room("outside the main entrance of the university");
+        
         u180 = new Room("u180");
+        u180.setDescription("This is just a showcase description of the room u180, in the room you see a \'figure\'");
+        rooms.add(u180);
+        
         canteen = new Room("canteen");
         library = new Room("library");
         studyhall = new Room("study hall");
@@ -187,22 +195,38 @@ public class Game
         u180.setExit("west", g1);
         u180.setExit("south",g2);
 
-        currentRoom = outside;
+        // this is the regular start room codecurrentRoom = outside;'
+        // currentRoom below is for test purposes ONLY.
+        currentRoom = u180;
+    }
+    
+    public Room getRoom(int index) {
+        return rooms.get(index);
     }
 
     public void play() 
     {    
         
-        NPC John = new NPC();
-        Quest q = new Quest();
-        q.addQuestString("Go find the duck!");
-        q.addQuestString("Now that you found the duck, roast it");
+        // First NPC and its respective quests
+        createRooms();
         
-        John.addQuest(q);
-        John.getQuest(0).printQuestString(0);
-        John.getQuest(0).printQuestString(1);
+        NPC andars = new NPC();
         
+        andars.setDescription("Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
+                + "His face expression seems serious.");
+        andars.setDialogOptions(
+                "< 1: talk"
+                + "\n< 2: trade"
+                + "\n< 3: leave");
+        Quests quests = new Quests();
         
+        quests.createQuests();
+        
+        andars.addQuest(quests.getQuest(0)); 
+        
+        andars.getQuest(0).printQuestString(0);
+        
+        getRoom(0).addNPC(andars);
         
         printWelcome();
                 
@@ -245,6 +269,25 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
+        else if (commandWord == CommandWord.INSPECT) {
+            System.out.println(currentRoom.getDescription());
+        }
+        else if (commandWord == CommandWord.TAKE) {
+            // code along the lines off, putting an item into player inventory
+        }
+        else if (commandWord == CommandWord.APPROACH) {
+            approachNPC(command);
+        }
+        else if (commandWord == CommandWord.ACCEPT) {
+            
+        }
+        else if (commandWord == CommandWord.DROP) {
+            // code along the lines off, dropping an item from player inventory
+        }
+        else if (commandWord == CommandWord.LEAVE) {
+            // code along the lines off, dropping an item from player inventory
+        }
+            
         return wantToQuit;
     }
 
@@ -256,6 +299,17 @@ public class Game
         System.out.println("Your command words are:");
         parser.showCommands();
         System.out.println();
+    }
+    
+    private void approachNPC(Command command) {
+       if(!command.hasSecondWord()) {
+            System.out.println("Approach what?");
+            return;    
+        } 
+            System.out.println(rooms.get(0).getNPC(0).getDialogOptions());
+            if (command.getSecondWord() == "1") {
+                rooms.get(0).getNPC(0).getQuest(0).printQuestString(0);
+            }
     }
     
     private void goRoom(Command command) 
@@ -307,6 +361,8 @@ public class Game
             return true;
         }
     }
+    
+    
     
     // just a comment to test something
 }

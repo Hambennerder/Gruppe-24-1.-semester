@@ -26,6 +26,7 @@ package worldofzuul;
     public int getWeight(){ 
         return weight;
     }
+   
     
   }
 

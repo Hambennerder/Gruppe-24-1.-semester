@@ -38,10 +38,12 @@ public class Quest extends Entity {
         }
     }
     
-    public void printQuestString(int n) {
+    public String printQuestString(int n) {
+        String temp = null;
         if (n >= 0 && questStrings.get(n) != null) {  
-            System.out.println(questStrings.get(n));
+            temp = questStrings.get(n);
         }
+        return temp;
     }
     
     public void completeQuest() {
