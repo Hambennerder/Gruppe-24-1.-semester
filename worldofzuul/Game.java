@@ -20,7 +20,11 @@ public class Game
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
-        outside = new Room("outside the main entrance of the university");
+        outside = new Room("a new student in software engineering and \n"
+                         + "you have just arrived outside the main entrance \n"
+                         + "of the university. You look around and see cou- \n"
+                         + "ntless of other university students, heading to \n"
+                         + "their next class or lecture");
         u180 = new Room("u180");
         canteen = new Room("canteen");
         library = new Room("library");
@@ -224,18 +228,19 @@ public class Game
             + "quest and obstacles instore for the player as \n"
             + "well as various rewards and achievements. \n");
         
-        System.out.println("If you want to enter the computing admins office, you have to pick up the key at the campus pub");
         
+                
         System.out.println("Tutorials: ");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional infomation.");
+        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
         System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
-        System.out.println("Type '" + CommandWord.GO + "' if you want your player to move.");
-        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pickup an item near you.");
+        System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
+        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
         System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
-        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop one the item you don't longer want.");
-        
+        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");  
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
+        
+        System.out.println("If you want to enter the computing admins office, you have to pick up the key at the campus pub");
     }
 
     private boolean processCommand(Command command) 
