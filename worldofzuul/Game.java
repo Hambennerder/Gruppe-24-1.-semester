@@ -217,10 +217,23 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to the world of SDUUL.\n");
+        System.out.println("An adventurous NCP game that tackles the life of a new \n"
+            + "university student and their everchanging day to day \n"
+            + "life in a comedic way.The game consists of various \n"
+            + "quest and obstacles instore for the player as \n"
+            + "well as various rewards and achievements. \n");
+        
         System.out.println("If you want to enter the computing admins office, you have to pick up the key at the campus pub");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        
+        System.out.println("Tutorials: ");
+        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional infomation.");
+        System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
+        System.out.println("Type '" + CommandWord.GO + "' if you want your player to move.");
+        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pickup an item near you.");
+        System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
+        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop one the item you don't longer want.");
+        
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
