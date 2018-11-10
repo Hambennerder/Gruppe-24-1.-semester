@@ -31,7 +31,7 @@ public class Room extends Entity
 
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "Location: " + getName() + ".\n" + getExitString();
     }
     
     public String getSlowDescription()
