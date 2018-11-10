@@ -26,7 +26,7 @@ public class Game
         
         outside = new Room("outside the main entrance of the university");
         
-        u180 = new Room("u180");
+        u180 = new Room("in u180, a rather modern room. A figure appears in the corner, the light from a computer screen lights up his face");
         u180.setDescription("This is just a showcase description of the room u180, in the room you see a \'figure\'");
         rooms.add(u180);
         
@@ -212,8 +212,8 @@ public class Game
         
         NPC andars = new NPC();
         
-        andars.setDescription("Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
-                + "His face expression seems serious.");
+        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
+                + "His face expression seems serious.*");
         andars.setDialogOptions(
                 "< 1: talk"
                 + "\n< 2: trade"
@@ -306,10 +306,13 @@ public class Game
             System.out.println("Approach what?");
             return;    
         } 
+             System.out.println(currentRoom.getNPC(0).getDescription());
+             System.out.println(currentRoom.getNPC(0).getWelcome());
+             if ()
+            //System.out.println(rooms.get(0).getNPC(0).getDescription());
+            //System.out.println(rooms.get(0).getNPC(0).getWelcome());
             System.out.println(rooms.get(0).getNPC(0).getDialogOptions());
-            if (command.getSecondWord() == "1") {
-                rooms.get(0).getNPC(0).getQuest(0).printQuestString(0);
-            }
+                //rooms.get(0).getNPC(0).getQuest(0).printQuestString(0);
     }
     
     private void goRoom(Command command) 
