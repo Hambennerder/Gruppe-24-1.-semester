@@ -25,22 +25,41 @@ public class Game
                          + "of the university. You look around and see cou- \n"
                          + "ntless of other university students, heading to \n"
                          + "their next class or lecture");
-        u180 = new Room("u180");
-        canteen = new Room("canteen");
+        u180 = new Room("in u180."
+                + "A big bright room with many rows of chairs and tables."
+                + "You can feel the struggle and anxiety of the many students"
+                + " who have sat in this room before you.");
+        canteen = new Room("in the canteen."
+                + "A place where Chaos reigns."
+                + "A place where only the fittest will survive"
+                + " but atleast there is food.");
         library = new Room("library");
         studyhall = new Room("study hall");
         u55 = new Room("u55");
         u45 = new Room("u45");
-        bookshop = new Room("bookshop");
+        bookshop = new Room("in the book store."
+                + "Your first thought is that there are way too"
+                + " many books in such a small area."
+                + "How will you ever find the book you need in here.");
         t8 = new Room("t8");
-        g1 = new Room("g1");
-        g2 = new Room("g2");
+        g1 = new Room("in hallway g1."
+                + "It feels like you wander alone in this vast labrinth"
+                + " of hallways and dead ends even though people"
+                + " are all around you. Will you be able to"
+                + " find the place you need to be?");
+        g2 = new Room("in hallway g2."
+                + "It's dark, a little smelly, and a weird draft"
+                + "keeps running down your neck. There are doors everywhere.");
         g3 = new Room("g3");
         g4 = new Room("g4");
         g5 = new Room("g5");
         g6 = new Room("g6");
-        g7 = new Room("g7");
-        g8 = new Room("g8");
+        g7 = new Room("in hallway g7."
+                + "You must have been walking for miles by now."
+                + "It's very dark in here, you are looking for a light switch"
+                + " but there does not seem to be any.");
+        g8 = new Room("in hallway g8. As you enter the door slams behind you."
+                + "Must be the draft again... Where does it originate?");
         g9 = new Room("g9");
         g10 = new Room("g10");
         g11 = new Room("g11");
