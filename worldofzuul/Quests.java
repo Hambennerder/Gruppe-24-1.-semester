@@ -27,6 +27,8 @@ public class Quests extends Quest {
         id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
         
         Quest tutorial = new Quest();
+        tutorial.setName("Enter SDU");
+        tutorial.setDescription("Find your " +id_card.getName()+ " in u1-u3");
         tutorial.setObjective("Find mentor");
         tutorial.addQuestString("< Hello there!"
                 + "\n< Welcome to SDU. My name is Morten. I'll be your mentor for today."
@@ -34,6 +36,8 @@ public class Quests extends Quest {
                 + "\n< to find your " + id_card.getName() + ". To do that you have to"
                 + "\n< inspect room u1-u3. These rooms are outside the SDU building."
                 + "\n< To find the first room you have to head north. GOOD LUCK :^)");
+        
+        quests.add(tutorial);
         
         Quest firstQuest = new Quest();
         firstQuest.setName("git gud at java");

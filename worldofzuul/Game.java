@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Game 
+public class Game extends Player
 {
-    int key=0;
     private Parser parser;
     private Room currentRoom;
     private Room nextRoom;
@@ -36,12 +35,12 @@ public class Game
         rooms.add(u180);
         
         entrance = new Room("");
-        entrance.setDescription("a new student in software engineering and \n"
+        entrance.setDescription("You are a new student in software engineering and \n"
                          + "you have just arrived outside the main entrance \n"
                          + "of the university. You look around and see cou- \n"
                          + "ntless of other university students, heading to \n"
                          + "their next class or lecture");
-        entrance.setName("entrance");
+        entrance.setName("Entrance");
         rooms.add(entrance);
 
         u1 = new Room("u1");
@@ -261,6 +260,7 @@ public class Game
         u180.setExit("south",g2);
 
         currentRoom = entrance;
+
     }
     
     public Room getRoom(int index) {
@@ -279,7 +279,17 @@ public class Game
         mentor.setName("Mentor");
         mentor.setDialogOptions("< 1: talk"
                                 + "\n< 2: leave");
+        Quests tutorial = new Quests();
+        tutorial.createQuests();
+        mentor.addQuest(tutorial.getQuest(0));
+        mentor.getQuest(0).printQuestString(0);
+        getRoom(1).addNPC(mentor);
         
+        Item id_card = new Item();
+        id_card.setName("SDU id-card");
+        id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
+        
+        getRoom(4).addItem(id_card);
         
         NPC andars = new NPC();    
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
@@ -321,16 +331,21 @@ public class Game
             + "well as various rewards and achievements. \n");
 
 
-            System.out.println("These are some helpful commands: ");
-            System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
-            System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
-            System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
-            System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
-            System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
-            System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");  
-            System.out.println();
-            System.out.println(currentRoom.getLongDescription());
-       
+        System.out.println("These are some helpful commands: ");
+        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
+        System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
+        System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
+        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
+        System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
+        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");
+        System.out.println("Type '" + CommandWord.INSPECT + "' if you want to inspect a room.");
+        System.out.println("Type '" + CommandWord.APPROACH + "' if you want to approach someone.");
+        System.out.println("Type '" + CommandWord.CHOOSE + "' if you want to choose an option.");  
+        System.out.println("Type '" + CommandWord.JOURNAL + "' if you want to known the objective of the quest.");
+        System.out.println();
+        System.out.println(currentRoom.getLongDescription());
+            
+        
     }
 
     private boolean processCommand(Command command) 
@@ -357,20 +372,16 @@ public class Game
             System.out.println(currentRoom.getDescription());
         }
         else if (commandWord == CommandWord.TAKE) {
-            // code along the lines off, putting an item into player inventory
+            
         }
         else if (commandWord == CommandWord.APPROACH) {
             approachNPC(command);
-        }
-        else if (commandWord == CommandWord.ACCEPT) {
-            
-        }
+        }      
+        
         else if (commandWord == CommandWord.DROP) {
             // code along the lines off, dropping an item from player inventory
         }
-        else if (commandWord == CommandWord.LEAVE) {
-            // code along the lines off, dropping an item from player inventory
-        }
+        
         else if (commandWord == CommandWord.CHOOSE) {
             processOption(command);
         }
@@ -394,7 +405,7 @@ public class Game
             
         } else if (command.getSecondWord().equals("1")) {
             for (int i = 0; i<10; i++) {System.out.println();}
-            System.out.println(currentRoom.getNPC(0).getQuest(key).printQuestString(0));
+            System.out.println(currentRoom.getNPC(0).getQuest(0).printQuestString(0));
             String option = getSimpleUserInput();
             
             if (option.equals("yes")) {
