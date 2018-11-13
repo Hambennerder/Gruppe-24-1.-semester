@@ -1,3 +1,4 @@
+
 package worldofzuul;
 
     public class Item extends Entity{
@@ -9,7 +10,8 @@ package worldofzuul;
     public Item() {
         
     }    
-        
+
+     
     public Item(int value, int weight, String information){
         this.value = value;
         this.weight = weight;
@@ -28,7 +30,7 @@ package worldofzuul;
     public int getWeight(){ 
         return weight;
     }
-        
+        /*
         // Consumable:
     public static boolean isConsumable(int playerLevel, int itemLevel){
         if(playerLevel >= itemLevel){
@@ -58,10 +60,19 @@ package worldofzuul;
        // Still not yet finished with the if statements for isTakeable, isDropable and isInspectable.
       // We need to decide the conditions.
      //Takeable
+
     /* public static boolean isTakeable(){
         if(1 == 1)
         return true;
             return false;
+
+    
+    
+    public static boolean isTakeable(){
+        if(){
+            return true;
+        }
+
     }
 
     //Dropable
@@ -79,5 +90,4 @@ package worldofzuul;
     }
 */
 }
-
 
