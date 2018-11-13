@@ -44,6 +44,7 @@ public class Game extends Player
         rooms.add(entrance);
 
         u1 = new Room("u1");
+        u1.setName("u1");
         rooms.add(u1);
         u1.setName("u1");
         u2 = new Room("u2");
