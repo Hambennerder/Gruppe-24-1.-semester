@@ -24,13 +24,16 @@ public class Quests extends Quest {
         
         
         Quest firstQuest = new Quest();
+        firstQuest.setName("git gud at java");
+        firstQuest.setDescription("Find the book at the bookstore, and use it to solve the assignments");
         firstQuest.setObjective("Find Andars");
         firstQuest.addQuestString("< Hello student!"
             + "\n< Welcome to SDU. I am Andars, a very skilled programmer and I am going to teach you how to program."
             + "\n< You know, a thing between you and me. The book \"" + bestJavaBook.getName() + "\" is the best book to prepare you"
             + "\n< I used this book back in my ole' days. It saved me tons of trouble! Find it at the bookstore."
             + "\n< I want you to solve these assignments \"" + firstAssignments.getName() + "\", solve these with the book and you will be prepared "
-            + "\n< Are you ready to face this challenge?");
+            + "\n< Are you ready to face this challenge? (yes/no) ");
+        
         //The quest string from the NPC at the bookstore
         firstQuest.addQuestString("< Hello dear, what a fine piece you are. Do you work out? What can I help you with honey cheek?");
         firstQuest.addQuestString("< You look like you work out. You remind me of my dead husband, you know I'm off work in an hour. ");

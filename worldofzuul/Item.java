@@ -6,6 +6,10 @@ package worldofzuul;
         private int weight;
         private String information;
         
+    public Item() {
+        
+    }    
+        
     public Item(int value, int weight, String information){
         this.value = value;
         this.weight = weight;
@@ -54,26 +58,26 @@ package worldofzuul;
        // Still not yet finished with the if statements for isTakeable, isDropable and isInspectable.
       // We need to decide the conditions.
      //Takeable
-    public static boolean isTakeable(){
-        if(){
-            return true;
-        }
+    /* public static boolean isTakeable(){
+        if(1 == 1)
+        return true;
+            return false;
     }
 
     //Dropable
     public static boolean isDropable(){
-        if(){
+        if(1 == 1){
              return true;
         } 
    }
 
     //Inspectable
     public static boolean isInspectable(){
-        if(){
+        if(1 == 1){
             return true;
         }
     }
-
+*/
 }
 
 

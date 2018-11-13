@@ -12,6 +12,7 @@ public class Room extends Entity
     private HashMap<String, Room> exits;
     private ArrayList<NPC> npcs;
     
+    
     public Room(String description) 
     {
         this.description = description;
@@ -67,5 +68,6 @@ public class Room extends Entity
     public NPC getNPC(int index) {
         return npcs.get(index);
     }
+   
 }
 
