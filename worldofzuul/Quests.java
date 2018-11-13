@@ -22,6 +22,18 @@ public class Quests extends Quest {
         firstAssignments.setName("Inheritence and polymorphism");
         firstAssignments.setDescription("A set of assignments regarding inheritence and polymorphism");
         
+        Item id_card = new Item();
+        id_card.setName("SDU id-card");
+        id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
+        
+        Quest tutorial = new Quest();
+        tutorial.setObjective("Find mentor");
+        tutorial.addQuestString("< Hello there!"
+                + "\n< Welcome to SDU. My name is Morten. I'll be your mentor for today."
+                + "\n< Before you can enter the entrance of the SDU building, you have "
+                + "\n< to find your " + id_card.getName() + ". To do that you have to"
+                + "\n< inspect room u1-u3. These rooms are outside the SDU building."
+                + "\n< To find the first room you have to head north. GOOD LUCK :^)");
         
         Quest firstQuest = new Quest();
         firstQuest.setObjective("Find Andars");

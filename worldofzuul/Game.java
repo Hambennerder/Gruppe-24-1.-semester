@@ -21,7 +21,7 @@ public class Game
 
     private void createRooms()
     {
-        Room outside, u180, canteen, library, studyhall, u55, u45, bookshop, t8,
+        Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookshop, t8,
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
@@ -32,12 +32,23 @@ public class Game
         rooms.add(u180);
         
 
-        outside = new Room("a new student in software engineering and \n"
+        entrance = new Room("a new student in software engineering and \n"
                          + "you have just arrived outside the main entrance \n"
                          + "of the university. You look around and see cou- \n"
                          + "ntless of other university students, heading to \n"
                          + "their next class or lecture");
-<<<<<<< HEAD
+        rooms.add(entrance);
+        entrance.setName("entrance");
+        u1 = new Room("u1");
+        rooms.add(u1);
+        u1.setName("u1");
+        u2 = new Room("u2");
+        rooms.add(u2);
+        u2.setName("u2");
+        u3 = new Room("u3");
+        rooms.add(u3);
+        u3.setName("u3");
+        
         u180 = new Room("in u180."
                 + "A big bright room with many rows of chairs and tables."
                 + "You can feel the struggle and anxiety of the many students"
@@ -46,10 +57,8 @@ public class Game
                 + "A place where Chaos reigns."
                 + "A place where only the fittest will survive"
                 + " but atleast there is food.");
-=======
  
         canteen = new Room("canteen");
->>>>>>> 3305f3d3606dd80c5bebcdfafb0ce4ff6e6eefa1
         library = new Room("library");
         studyhall = new Room("study hall");
         u55 = new Room("u55");
@@ -64,6 +73,8 @@ public class Game
                 + " of hallways and dead ends even though people"
                 + " are all around you. Will you be able to"
                 + " find the place you need to be?");
+        rooms.add(g1);
+        g1.setName("g1");
         g2 = new Room("in hallway g2."
                 + "It's dark, a little smelly, and a weird draft"
                 + "keeps running down your neck. There are doors everywhere.");
@@ -102,10 +113,19 @@ public class Game
         k7 = new Room("k7");
         k8 = new Room("k8");
     
-        outside.setExit("east", g1);
+        entrance.setExit("east", g1);
+        entrance.setExit("north",u1);
+        
+        u1.setExit("south", entrance);
+        u1.setExit("west", u2);
+        
+        u2.setExit("south", u3);
+        u2.setExit("east", u1);
+        
+        u3.setExit("north", u2);
         
         g1.setExit("east",u180);
-        g1.setExit("west",outside);
+        g1.setExit("west",entrance);
         
         g2.setExit("east",canteen);
         g2.setExit("west",g3);
@@ -227,7 +247,7 @@ public class Game
         u180.setExit("west", g1);
         u180.setExit("south",g2);
 
-        currentRoom = outside;
+        currentRoom = entrance;
     }
     
     public Room getRoom(int index) {
@@ -237,6 +257,13 @@ public class Game
     public void play() 
     {    
         createRooms();
+        
+        NPC mentor = new NPC();
+        mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses, short clean cut redheaded");
+        mentor.setName("Mentor");
+        mentor.setDialogOptions("< 1: talk"
+                                + "\n< 2: leave");
+        
         
         NPC andars = new NPC();    
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
@@ -269,7 +296,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the world of SDUUL.\n");
         System.out.println("An adventurous NCP game that tackles the life being a \n"
-            + "new university student and their everchanging day to day \n"
+            + "new university student and the everchanging day to day \n"
             + "life in a comedic way.The game consists of various \n"
             + "quest and obstacles instore for the player as \n"
             + "well as various rewards and achievements. \n");
@@ -281,7 +308,8 @@ public class Game
         System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
         System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
         System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
-        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");  
+        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");
+        System.out.println("Type '" + Com);
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -392,7 +420,7 @@ public class Game
 
         Room nextRoom = currentRoom.getExit(direction);
     
-        if (currentRoom.getShortDescription()=="" && nextRoom.getShortDescription()==""){
+        if (currentRoom.getName()=="entrance" && nextRoom.getName()=="g1"){
             if (key==1){
             currentRoom=nextRoom;
             System.out.println(currentRoom.getLongDescription());
@@ -405,7 +433,6 @@ public class Game
         System.out.println("There is no door!");
         }
         else {
-            //System.out.println(currentRoom.getShortDescription()+nextRoom.getShortDescription());
             System.out.println(nextRoom.getShortDescription());
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());

@@ -1,12 +1,3 @@
-
-package worldofzuul;
-
-
-public class Player {
-    
-}
-
-
 package worldofzuul;
 
 import java.util.ArrayList;
