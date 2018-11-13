@@ -22,7 +22,7 @@ public class Game extends Player
     private void createRooms()
     {
 
-        Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookshop, t8,
+        Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookstore, t8,
                        g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                        g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
@@ -66,10 +66,13 @@ public class Game extends Player
         u55 = new Room("u55");
         u45 = new Room("u45");
       
-        bookshop = new Room("in the book store."
+        bookstore = new Room("");
+        bookstore.setDescription("in the book store."
                 + "Your first thought is that there are way too"
-                + " many books in such a small area."
-                + "How will you ever find the book you need in here.");
+                + " many books in such a small area.\n"
+                + "How will you ever find the book you need in here. Maybe that 'lady' over there can help?");
+        bookstore.setName("Student Bookstore");
+        rooms.add(bookstore);
       
         t8 = new Room("t8");
 
@@ -102,8 +105,11 @@ public class Game extends Player
         g7.setName("g7");
         rooms.add(g7);
         
-        g8 = new Room("in hallway g8. As you enter the door slams behind you."
+        g8 = new Room("");
+        g8.setDescription("You are in hallway g8. As you enter the door slams behind you."
                 + "Must be the draft again... Where does it originate?");
+        g8.setName("g8");
+        rooms.add(g8);
         
         g9 = new Room("g9");
         g10 = new Room("g10");
@@ -161,7 +167,7 @@ public class Game extends Player
         g7.setExit("north",g2);
         g7.setExit("south",g8);
         
-        g8.setExit("south",bookshop);
+        g8.setExit("south",bookstore);
         g8.setExit("north",g7);
         
         g9.setExit("east",g7);
@@ -241,7 +247,7 @@ public class Game extends Player
         
         k8.setExit("east",k6);
         
-        bookshop.setExit("north",g8);
+        bookstore.setExit("north",g8);
         
         library.setExit("south",g6);
         
@@ -273,6 +279,17 @@ public class Game extends Player
         player.setName("John Doe");
         
         createRooms();
+        
+        NPC bookstoreLady = new NPC();
+        bookstoreLady.setName("lady");
+        bookstoreLady.setWelcome("What can I do you for?");
+        bookstoreLady.setDescription("Just a description");
+        bookstoreLady.setDialogOptions("< 1: Talk"
+                                       + "\n< 2: Trade"
+                                       + "\n< 3: Leave");
+        bookstoreLady.setAcceptString("I'm so glad to hear that! I'll hurry if you hurry.");
+        bookstoreLady.setDeclineString("Well, you can have the book when I get my coffee then.");
+        
         
         NPC mentor = new NPC();
         mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses, short clean cut redheaded");
@@ -308,7 +325,12 @@ public class Game extends Player
         quests.createQuests();   
         andars.addQuest(quests.getQuest(0)); 
         andars.getQuest(0).printQuestString(0); 
-        getRoom(0).addNPC(andars);   
+        getRoom(0).addNPC(andars); 
+        
+        bookstoreLady.addQuest(quests.getQuest(0));
+        bookstoreLady.getQuest(0).printQuestString(1);
+        getRoom(6).addNPC(bookstoreLady);
+        
 
         printWelcome();
                 
@@ -400,18 +422,23 @@ public class Game extends Player
     }
     
     private void processOption(Command command) {
+              
         if (!command.hasSecondWord()) {
-            System.out.println("Choose what?");
-            
+            System.out.println("Choose what?");       
+        
         } else if (command.getSecondWord().equals("1")) {
             for (int i = 0; i<10; i++) {System.out.println();}
-            System.out.println(currentRoom.getNPC(0).getQuest(0).printQuestString(0));
+
+            // Nedenstående kode er en lappeløsning som skal adresseres, se issue på github
+            System.out.println(currentRoom.getNPC(0).getQuest(0).printQuestString(currentRoom.getNPC(0).getQuest(0).getQuestStringCounter()));
+
             String option = getSimpleUserInput();
             
             if (option.equals("yes")) {
                 System.out.println("You accepted a quest!");
                 System.out.println(currentRoom.getNPC(0).getAcceptString());
                 player.addQuest(currentRoom.getNPC(0).getQuest(0));
+                currentRoom.getNPC(0).getQuest(0).incrementQuestStringCounter();
                 System.out.println("Type continue... to continue");
                 String toContinue = getSimpleUserInput();
                 
@@ -430,7 +457,7 @@ public class Game extends Player
             printNPCsGoodbye();
             printPrimitiveUI();
         } else { System.out.println("That is not an option"); }
-        printPrimitiveUI();
+        printPrimitiveUI();  
     }
 
     private void printHelp() 
@@ -470,6 +497,7 @@ public class Game extends Player
         System.out.println("There is no door!");
         }
         else {
+            for (int i=0;i<10;i++) {System.out.println();}
             System.out.println(nextRoom.getShortDescription());
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
@@ -498,20 +526,21 @@ public class Game extends Player
     }
     
     private void printNPCsName() {
-        System.out.println(rooms.get(0).getNPC(0).getName() + ": ");
+        System.out.println(currentRoom.getNPC(0).getName() + ": ");
     }
     
     private void printNPCsWelcome() {
-        System.out.println(rooms.get(0).getNPC(0).getWelcome());
+        System.out.println(currentRoom.getNPC(0).getWelcome());
     }
     
     private void printNPCsGoodbye() {
-        System.out.println(rooms.get(0).getNPC(0).getGoodbye());
+        System.out.println(currentRoom.getNPC(0).getGoodbye());
     }
     
     private void printPrimitiveUI() {
         for (int i=0; i<10; i++) {System.out.println();}
         System.out.println("Your location: " + currentRoom.getName());
+        System.out.println(currentRoom.getExitString());
         System.out.println(currentRoom.getDescription());
     }
     
