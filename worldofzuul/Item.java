@@ -6,6 +6,9 @@ package worldofzuul;
         private int weight;
         private String information;
         
+        public Item(){
+        }
+        
     public Item(int value, int weight, String information){
         this.value = value;
         this.weight = weight;
