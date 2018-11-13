@@ -196,18 +196,6 @@ public class Game
 
     public void play() 
     {    
-        
-        NPC John = new NPC();
-        Quest q = new Quest();
-        q.addQuestString("Go find the duck!");
-        q.addQuestString("Now that you found the duck, roast it");
-        
-        John.addQuest(q);
-        John.getQuest(0).printQuestString(0);
-        John.getQuest(0).printQuestString(1);
-        
-        
-        
         printWelcome();
                 
         boolean finished = false;
@@ -228,7 +216,6 @@ public class Game
             + "quest and obstacles instore for the player as \n"
             + "well as various rewards and achievements. \n");
         
-        
                 
         System.out.println("Tutorials: ");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
@@ -239,8 +226,6 @@ public class Game
         System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");  
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
-        
-        System.out.println("If you want to enter the computing admins office, you have to pick up the key at the campus pub");
     }
 
     private boolean processCommand(Command command) 
@@ -287,7 +272,7 @@ public class Game
 
         Room nextRoom = currentRoom.getExit(direction);
     
-        if (currentRoom.getShortDescription()=="in a computing lab" && nextRoom.getShortDescription()=="in the computing admin office"){
+        if (currentRoom.getShortDescription()=="" && nextRoom.getShortDescription()==""){
             if (key==1){
             currentRoom=nextRoom;
             System.out.println(currentRoom.getLongDescription());
@@ -306,9 +291,9 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
             
-        if (currentRoom.getShortDescription()=="in the campus pub"){
+        if (currentRoom.getShortDescription()==""){
             if (key==0){    
-            System.out.println("You have picked up the key for the computing admin office!");
+            System.out.println("");
             }
             key=1;    
         }
@@ -325,6 +310,4 @@ public class Game
             return true;
         }
     }
-    
-    // just a comment to test something
 }
