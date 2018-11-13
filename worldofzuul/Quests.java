@@ -35,7 +35,7 @@ public class Quests extends Quest {
                 + "\n< Before you can enter the entrance of the SDU building, you have "
                 + "\n< to find your " + id_card.getName() + ". To do that you have to"
                 + "\n< inspect room u1-u3. These rooms are outside the SDU building."
-                + "\n< To find the first room you have to head north. GOOD LUCK :^)");
+                + "\n< To find the first room you have to head north. Are you ready for this? (yes/no)");
         
         quests.add(tutorial);
         

@@ -39,7 +39,7 @@ public class Game extends Player
                          + "you have just arrived outside the main entrance \n"
                          + "of the university. You look around and see cou- \n"
                          + "ntless of other university students, heading to \n"
-                         + "their next class or lecture");
+                         + "their next class or lecture, you see a man wearing a red shirt saying \'mentor\'");
         entrance.setName("Entrance");
         rooms.add(entrance);
 
@@ -293,15 +293,12 @@ public class Game extends Player
         
         NPC mentor = new NPC();
         mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses, short clean cut redheaded");
-        mentor.setName("Mentor");
+        mentor.setName("mentor");
         mentor.setDialogOptions("< 1: talk"
                                 + "\n< 2: leave");
-        Quests tutorial = new Quests();
-        tutorial.createQuests();
-        mentor.addQuest(tutorial.getQuest(0));
-        mentor.getQuest(0).printQuestString(0);
-        getRoom(1).addNPC(mentor);
-        
+        mentor.setAcceptString("Good luck student!");
+        mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
+  
         Item id_card = new Item();
         id_card.setName("SDU id-card");
         id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
@@ -328,8 +325,11 @@ public class Game extends Player
         getRoom(0).addNPC(andars); 
         
         bookstoreLady.addQuest(quests.getQuest(0));
-        bookstoreLady.getQuest(0).printQuestString(1);
         getRoom(6).addNPC(bookstoreLady);
+        
+        mentor.addQuest(quests.getQuest(0));
+        mentor.getQuest(0).printQuestString(0);
+        getRoom(1).addNPC(mentor);
         
 
         printWelcome();
