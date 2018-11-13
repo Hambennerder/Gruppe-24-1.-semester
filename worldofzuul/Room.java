@@ -1,19 +1,22 @@
 package worldofzuul;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
-import java.util.Iterator;
 
 
-public class Room 
+
+public class Room extends Entity
 {
     private String description;
     private HashMap<String, Room> exits;
+    private ArrayList<NPC> npcs;
     
     public Room(String description) 
     {
         this.description = description;
-        exits = new HashMap<String, Room>();
+        exits = new HashMap<>();
+        npcs = new ArrayList<>();
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -28,7 +31,7 @@ public class Room
 
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "Location: " + getName() + ".\n" + getExitString();
     }
     
     public String getSlowDescription()
@@ -49,6 +52,20 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    public void addNPC(NPC npc) {
+        if (npc != null) { 
+            npcs.add(npc);
+        }
+    }
+    
+    public void printString(int NPCIndex, int questNum, int stringNum) {
+        System.out.println(npcs.get(NPCIndex).getQuest(questNum).printQuestString(stringNum));     
+    }
+    
+    public NPC getNPC(int index) {
+        return npcs.get(index);
     }
 }
 

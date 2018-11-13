@@ -13,6 +13,7 @@ public class NPC extends Entity {
     private int questCount;
     private String welcome;
     private String goodbye;
+    private String dialogOptions;
     private Boolean friendly;
     
     public NPC() {
@@ -100,6 +101,14 @@ public class NPC extends Entity {
     
     public Quest getQuest(int n) {
         return quests.get(n);
+    }
+    
+    public void setDialogOptions(String string) {
+        this.dialogOptions = string;
+    }
+    
+    public String getDialogOptions() {
+        return this.dialogOptions;
     }
     
     // Abilities to be implemented soon

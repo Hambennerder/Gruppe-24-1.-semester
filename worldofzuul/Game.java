@@ -1,15 +1,20 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Game 
 {
     int key=0;
     private Parser parser;
     private Room currentRoom;
     private Room nextRoom;
+    private List<Room> rooms;
 
     public Game() 
     {
-        createRooms();
+        rooms = new ArrayList<>();
         parser = new Parser();
     }
 
@@ -20,12 +25,19 @@ public class Game
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
+
+        u180 = new Room("in u180. A big bright room with many rows of chairs and tables. You can feel the struggle and anxiety of the many students who have sat in this room before you."
+                       + "In the room you see a figure, it looks like \'Andars\'");
+        u180.setName("U180");
+        rooms.add(u180);
+        
+
         outside = new Room("a new student in software engineering and \n"
                          + "you have just arrived outside the main entrance \n"
                          + "of the university. You look around and see cou- \n"
                          + "ntless of other university students, heading to \n"
                          + "their next class or lecture");
-        u180 = new Room("u180");
+ 
         canteen = new Room("canteen");
         library = new Room("library");
         studyhall = new Room("study hall");
@@ -193,9 +205,31 @@ public class Game
 
         currentRoom = outside;
     }
+    
+    public Room getRoom(int index) {
+        return rooms.get(index);
+    }
 
     public void play() 
     {    
+        createRooms();
+        
+        NPC andars = new NPC();    
+        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
+                + "His face expression seems serious.*");
+        andars.setName("Andars");
+        andars.setDescription("Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
+                + "His face expression seems serious.");
+        andars.setDialogOptions(
+                  "< 1: talk"
+                + "\n< 2: trade"
+                + "\n< 3: leave");
+        Quests quests = new Quests();  
+        quests.createQuests();   
+        andars.addQuest(quests.getQuest(0)); 
+        andars.getQuest(0).printQuestString(0); 
+        getRoom(0).addNPC(andars);   
+
         printWelcome();
                 
         boolean finished = false;
@@ -248,7 +282,57 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
+        else if (commandWord == CommandWord.INSPECT) {
+            System.out.println(currentRoom.getDescription());
+        }
+        else if (commandWord == CommandWord.TAKE) {
+            // code along the lines off, putting an item into player inventory
+        }
+        else if (commandWord == CommandWord.APPROACH) {
+            approachNPC(command);
+        }
+        else if (commandWord == CommandWord.ACCEPT) {
+            
+        }
+        else if (commandWord == CommandWord.DROP) {
+            // code along the lines off, dropping an item from player inventory
+        }
+        else if (commandWord == CommandWord.LEAVE) {
+            // code along the lines off, dropping an item from player inventory
+        }
+        else if (commandWord == CommandWord.CHOOSE) {
+            processOption(command);
+        }
+        
+            
         return wantToQuit;
+    }
+    
+    
+    private void loadTradeMenu() {
+        // Soon to be implemented
+        System.out.println("I'm sorry, I'm not selling at the moment, come back later");
+    }
+    
+    private void processOption(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("Choose what?");
+        } else if (command.getSecondWord().equals("1")) {
+            for (int i = 0; i<10; i++) {System.out.println();}
+            System.out.println(currentRoom.getNPC(0).getQuest(key).printQuestString(0));
+            String option = getSimpleUserInput();
+            if (option.equals("yes")) {
+                System.out.println("You accepted a quest!");
+            } else {
+                System.out.println("You declined a quest!");
+            }
+        } else if (command.getSecondWord().equals("2")) {
+            loadTradeMenu();
+        } else if (command.getSecondWord().equals("3")) {
+            printNPCsGoodbye();
+            printPrimitiveUI();
+        } else { System.out.println("That is not an option"); }
+        printPrimitiveUI();
     }
 
     private void printHelp() 
@@ -259,6 +343,18 @@ public class Game
         System.out.println("Your command words are:");
         parser.showCommands();
         System.out.println();
+    }
+  
+    private void approachNPC(Command command) { 
+        if(!command.hasSecondWord()) {
+            System.out.println("Approach what?");   
+        } else if (command.getSecondWord().equals("figure")) {
+            for (int i = 0; i<10; i++) {System.out.println();}
+            printLocation();
+            printNPCsName();
+            printNPCsWelcome();
+            printDialogOptions();
+        }                
     }
     
     private void goRoom(Command command) 
@@ -310,4 +406,36 @@ public class Game
             return true;
         }
     }
+    
+    private void printLocation() {
+        System.out.println("Your location: " + currentRoom.getName());
+    }
+    
+    private void printDialogOptions() {
+        System.out.println(currentRoom.getNPC(0).getDialogOptions());
+    }
+    
+    private void printNPCsName() {
+        System.out.println(rooms.get(0).getNPC(0).getName() + ": ");
+    }
+    
+    private void printNPCsWelcome() {
+        System.out.println(rooms.get(0).getNPC(0).getWelcome());
+    }
+    
+    private void printNPCsGoodbye() {
+        System.out.println(rooms.get(0).getNPC(0).getGoodbye());
+    }
+    
+    private void printPrimitiveUI() {
+        System.out.println("Your location: " + currentRoom.getName());
+        System.out.println(currentRoom.getDescription());
+    }
+    
+    private String getSimpleUserInput() {
+        Scanner input = new Scanner(System.in);
+        String tempInput = input.nextLine();
+        return tempInput;
+    }
+    
 }
