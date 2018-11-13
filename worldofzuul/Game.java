@@ -25,13 +25,19 @@ public class Game
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
-        outside = new Room("outside the main entrance of the university");
-        
-        u180 = new Room("in u180, a rather modern room. A figure appears in the corner, the light from a computer screen lights up his face");
-        u180.setDescription("This is just a showcase description of the room u180, in the room you see a \'figure\'");
+
+        u180 = new Room("in u180. A big bright room with many rows of chairs and tables. You can feel the struggle and anxiety of the many students who have sat in this room before you."
+                       + "In the room you see a figure, it looks like \'Andars\'");
         u180.setName("U180");
         rooms.add(u180);
         
+
+        outside = new Room("a new student in software engineering and \n"
+                         + "you have just arrived outside the main entrance \n"
+                         + "of the university. You look around and see cou- \n"
+                         + "ntless of other university students, heading to \n"
+                         + "their next class or lecture");
+ 
         canteen = new Room("canteen");
         library = new Room("library");
         studyhall = new Room("study hall");
@@ -197,9 +203,7 @@ public class Game
         u180.setExit("west", g1);
         u180.setExit("south",g2);
 
-        // this is the regular start room code currentRoom = outside;'
-        // currentRoom below is for test purposes ONLY.
-        currentRoom = u180;
+        currentRoom = outside;
     }
     
     public Room getRoom(int index) {
@@ -208,34 +212,24 @@ public class Game
 
     public void play() 
     {    
-        
-        // First NPC and its respective quests
         createRooms();
         
-        NPC andars = new NPC();
-
-        
+        NPC andars = new NPC();    
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
                 + "His face expression seems serious.*");
-
         andars.setName("Andars");
         andars.setDescription("Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
                 + "His face expression seems serious.");
-
         andars.setDialogOptions(
                   "< 1: talk"
                 + "\n< 2: trade"
                 + "\n< 3: leave");
-        Quests quests = new Quests();
-        
-        quests.createQuests();
-        
+        Quests quests = new Quests();  
+        quests.createQuests();   
         andars.addQuest(quests.getQuest(0)); 
-        
-        andars.getQuest(0).printQuestString(0);
-        
-        getRoom(0).addNPC(andars);
-        
+        andars.getQuest(0).printQuestString(0); 
+        getRoom(0).addNPC(andars);   
+
         printWelcome();
                 
         boolean finished = false;
@@ -249,10 +243,21 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("If you want to enter the computing admins office, you have to pick up the key at the campus pub");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Welcome to the world of SDUUL.\n");
+        System.out.println("An adventurous NCP game that tackles the life being a \n"
+            + "new university student and their everchanging day to day \n"
+            + "life in a comedic way.The game consists of various \n"
+            + "quest and obstacles instore for the player as \n"
+            + "well as various rewards and achievements. \n");
+        
+                
+        System.out.println("Tutorials: ");
+        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
+        System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
+        System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
+        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
+        System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
+        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");  
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -363,7 +368,7 @@ public class Game
 
         Room nextRoom = currentRoom.getExit(direction);
     
-        if (currentRoom.getShortDescription()=="in a computing lab" && nextRoom.getShortDescription()=="in the computing admin office"){
+        if (currentRoom.getShortDescription()=="" && nextRoom.getShortDescription()==""){
             if (key==1){
             currentRoom=nextRoom;
             System.out.println(currentRoom.getLongDescription());
@@ -382,9 +387,9 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
             
-        if (currentRoom.getShortDescription()=="in the campus pub"){
+        if (currentRoom.getShortDescription()==""){
             if (key==0){    
-            System.out.println("You have picked up the key for the computing admin office!");
+            System.out.println("");
             }
             key=1;    
         }
@@ -433,7 +438,4 @@ public class Game
         return tempInput;
     }
     
-    
-    
-    // just a comment to test something
 }
