@@ -1,6 +1,14 @@
 
 package worldofzuul;
 
+
+public class Player {
+    
+}
+
+
+package worldofzuul;
+
 import java.util.ArrayList;
 
 public class Player extends Entity {
@@ -92,6 +100,3 @@ public class Player extends Entity {
     }
     
 }
-
-
-        
