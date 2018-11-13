@@ -2,6 +2,7 @@ package worldofzuul;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game 
 {
@@ -196,7 +197,7 @@ public class Game
         u180.setExit("west", g1);
         u180.setExit("south",g2);
 
-        // this is the regular start room codecurrentRoom = outside;'
+        // this is the regular start room code currentRoom = outside;'
         // currentRoom below is for test purposes ONLY.
         currentRoom = u180;
     }
@@ -212,15 +213,15 @@ public class Game
         createRooms();
         
         NPC andars = new NPC();
-<<<<<<< HEAD
+
         
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
                 + "His face expression seems serious.*");
-=======
+
         andars.setName("Andars");
         andars.setDescription("Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
                 + "His face expression seems serious.");
->>>>>>> ba541dfe7efd54a00eb7af94adb993066f06c563
+
         andars.setDialogOptions(
                   "< 1: talk"
                 + "\n< 2: trade"
@@ -294,8 +295,39 @@ public class Game
         else if (commandWord == CommandWord.LEAVE) {
             // code along the lines off, dropping an item from player inventory
         }
+        else if (commandWord == CommandWord.CHOOSE) {
+            processOption(command);
+        }
+        
             
         return wantToQuit;
+    }
+    
+    
+    private void loadTradeMenu() {
+        // Soon to be implemented
+        System.out.println("I'm sorry, I'm not selling at the moment, come back later");
+    }
+    
+    private void processOption(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("Choose what?");
+        } else if (command.getSecondWord().equals("1")) {
+            for (int i = 0; i<10; i++) {System.out.println();}
+            System.out.println(currentRoom.getNPC(0).getQuest(key).printQuestString(0));
+            String option = getSimpleUserInput();
+            if (option.equals("yes")) {
+                System.out.println("You accepted a quest!");
+            } else {
+                System.out.println("You declined a quest!");
+            }
+        } else if (command.getSecondWord().equals("2")) {
+            loadTradeMenu();
+        } else if (command.getSecondWord().equals("3")) {
+            printNPCsGoodbye();
+            printPrimitiveUI();
+        } else { System.out.println("That is not an option"); }
+        printPrimitiveUI();
     }
 
     private void printHelp() 
@@ -307,39 +339,17 @@ public class Game
         parser.showCommands();
         System.out.println();
     }
-    
-<<<<<<< HEAD
-    private void approachNPC(Command command) {
-       if(!command.hasSecondWord()) {
-            System.out.println("Approach what?");
-            return;    
-        } 
-             System.out.println(currentRoom.getNPC(0).getDescription());
-             System.out.println(currentRoom.getNPC(0).getWelcome());
-             if ()
-            //System.out.println(rooms.get(0).getNPC(0).getDescription());
-            //System.out.println(rooms.get(0).getNPC(0).getWelcome());
-            System.out.println(rooms.get(0).getNPC(0).getDialogOptions());
-                //rooms.get(0).getNPC(0).getQuest(0).printQuestString(0);
-=======
+  
     private void approachNPC(Command command) { 
         if(!command.hasSecondWord()) {
             System.out.println("Approach what?");   
         } else if (command.getSecondWord().equals("figure")) {
             for (int i = 0; i<10; i++) {System.out.println();}
             printLocation();
-            System.out.println(rooms.get(0).getNPC(0).getName() + ": ");
-            System.out.println(rooms.get(0).getNPC(0).getWelcome());
-            System.out.println(rooms.get(0).getNPC(0).getDialogOptions()); 
-            
-            Command dialogCommand = parser.getCommand();
-            if (dialogCommand.getSecondWord().equals("1")) {
-                System.out.println(currentRoom.getNPC(0).getQuest(0).printQuestString(0));
-            } else {
-                
-            }
+            printNPCsName();
+            printNPCsWelcome();
+            printDialogOptions();
         }                
->>>>>>> ba541dfe7efd54a00eb7af94adb993066f06c563
     }
     
     private void goRoom(Command command) 
@@ -394,6 +404,33 @@ public class Game
     
     private void printLocation() {
         System.out.println("Your location: " + currentRoom.getName());
+    }
+    
+    private void printDialogOptions() {
+        System.out.println(currentRoom.getNPC(0).getDialogOptions());
+    }
+    
+    private void printNPCsName() {
+        System.out.println(rooms.get(0).getNPC(0).getName() + ": ");
+    }
+    
+    private void printNPCsWelcome() {
+        System.out.println(rooms.get(0).getNPC(0).getWelcome());
+    }
+    
+    private void printNPCsGoodbye() {
+        System.out.println(rooms.get(0).getNPC(0).getGoodbye());
+    }
+    
+    private void printPrimitiveUI() {
+        System.out.println("Your location: " + currentRoom.getName());
+        System.out.println(currentRoom.getDescription());
+    }
+    
+    private String getSimpleUserInput() {
+        Scanner input = new Scanner(System.in);
+        String tempInput = input.nextLine();
+        return tempInput;
     }
     
     
