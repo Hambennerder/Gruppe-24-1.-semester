@@ -47,11 +47,11 @@ public class Quests extends Quest {
             + "\n< Are you ready to face this challenge? (yes/no) ");
         
         //The quest string from the NPC at the bookstore
-        firstQuest.addQuestString("< Hello dear, what a fine piece you are. Do you work out? What can I help you with honey cheek?");
-        firstQuest.addQuestString("< You look like you work out. You remind me of my dead husband, you know I'm off work in an hour. ");
-        firstQuest.addQuestString("< Oh I'm sorry my dear, it's just that an old woman like me gets so lonely at times. ");
-        firstQuest.addQuestString("< That book is not in store darling, I mean, it is but...");
-        firstQuest.addQuestString("< You could do me a little favor, if you can just... satisfy my thirst... with coffee. Goodbye.");
+        firstQuest.addQuestString("So you're looking for " + bestJavaBook.getName() + ", hmm?"
+                                  + "\n We might have one left out in the back.. but first..."
+                                  + "\n can you get me some coffee from the canteen? (yes/no)");
+        
+        
         firstQuest.addQuestString("< WHAT CAN I GET YOU.");
         firstQuest.addQuestString("< THAT WILL BE 8 DANISH CROWNS.");
         firstQuest.addQuestString("< Well, that is something YOU SHOULD HAVE THOUGHT ABOUT BEFORE, GET OUT! ");

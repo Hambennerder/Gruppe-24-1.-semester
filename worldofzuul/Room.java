@@ -40,7 +40,7 @@ public class Room extends Entity
         return "You are still " + description + ".\n" + getExitString();
     }        
 
-    private String getExitString()
+    public String getExitString()
     {
         String returnString = "Exits:";
         Set<String> keys = exits.keySet();
