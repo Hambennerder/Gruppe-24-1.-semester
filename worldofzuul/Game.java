@@ -222,8 +222,8 @@ public class Game
     {
         System.out.println();
         System.out.println("Welcome to the world of SDUUL.\n");
-        System.out.println("An adventurous NCP game that tackles the life of a new \n"
-            + "university student and their everchanging day to day \n"
+        System.out.println("An adventurous NCP game that tackles the life being of a \n"
+            + "new university student and their everchanging day to day \n"
             + "life in a comedic way.The game consists of various \n"
             + "quest and obstacles instore for the player as \n"
             + "well as various rewards and achievements. \n");
