@@ -1,8 +1,10 @@
+
 package worldofzuul;
 
 import java.util.ArrayList;
 
-public class Player extends Entity {
+
+    public class Player extends Entity {
     
     // The arraylist inventory stores the items that the player picks up.
     private ArrayList<Item> inventory = new ArrayList<>();
@@ -15,6 +17,12 @@ public class Player extends Entity {
     private int health;
     private int level;
     private int experience;
+    
+    public Player() {
+        this.level = 1;
+        this.health = 100;
+        this.experience = 0;
+    }
     
     // Player constructor
     public Player(int health,int level,int experience,String playerName) {
@@ -86,8 +94,11 @@ public class Player extends Entity {
     }
     
     // Returns the full inventory list
-    public ArrayList getJournal() {
-        return journal;
+    public void getJournal() {
+        int counter = 1;
+        for (Quest quest : this.journal) {     
+            System.out.println(counter + ": " + quest.getName() + ": " + quest.getDescription());
+            counter++;
+        }
     }
-    
 }
