@@ -3,8 +3,8 @@ package worldofzuul;
 
 public enum CommandWord
 {
-    GO("go"), QUIT("quit"), HELP("help"), TAKE("take"), EQUIP("equip"), LEAVE("leave"), CHOOSE("choose"), JOURNAL("journal"),
-    DROP("drop"), INSPECT("inspect"), TALK("talk"), ACCEPT("accept"), APPROACH("approach"), UNKNOWN("?");
+    GO("go"), QUIT("quit"), HELP("help"), TAKE("take"), EQUIP("equip"), CHOOSE("choose"), JOURNAL("journal"),
+    DROP("drop"), INSPECT("inspect"), APPROACH("approach"), UNKNOWN("?");
     
     private String commandString;
     
