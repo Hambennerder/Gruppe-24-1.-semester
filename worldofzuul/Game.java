@@ -30,13 +30,13 @@ public class Game
         u180 = new Room("");
         u180.setDescription("You are in u180. A big bright room with many rows of chairs and tables.\n"
                          + "You can feel the struggle and anxiety of the many students who have sat in this room before you."
-                         + "In the room you see a figure, it looks like \'Andars\'");
-        
+                         + "In the room you see a figure, it looks like \'Andars\'"); 
         u180.setName("U180");
         rooms.add(u180);
         
 
-        entrance = new Room("a new student in software engineering and \n"
+        entrance = new Room("");
+        entrance.setDescription("a new student in software engineering and \n"
                          + "you have just arrived outside the main entrance \n"
                          + "of the university. You look around and see cou- \n"
                          + "ntless of other university students, heading to \n"
@@ -44,21 +44,52 @@ public class Game
         entrance.setName("entrance");
         rooms.add(entrance);
  
-        canteen = new Room("canteen");
+        canteen = new Room("");
+        canteen.setDescription("in the canteen."
+                + "A place where Chaos reigns."
+                + "A place where only the fittest will survive"
+                + " but atleast there is food.");
+        canteen.setName("Canteen");
+        rooms.add(canteen);
+
         library = new Room("library");
         studyhall = new Room("study hall");
         u55 = new Room("u55");
         u45 = new Room("u45");
-        bookshop = new Room("bookshop");
+        bookshop = new Room("in the book store."
+                + "Your first thought is that there are way too"
+                + " many books in such a small area."
+                + "How will you ever find the book you need in here.");
         t8 = new Room("t8");
-        g1 = new Room("g1");
-        g2 = new Room("g2");
+        
+        g1 = new Room("in hallway g1."
+                + "It feels like you wander alone in this vast labrinth"
+                + " of hallways and dead ends even though people"
+                + " are all around you. Will you be able to"
+                + " find the place you need to be?");
+        
+        g2 = new Room("");
+        g2.setDescription("You are in a hallway."
+                + " It's dark, a little smelly, and a weird draft"
+                + " keeps running down your neck. There are doors everywhere.");
+        g2.setName("g2");
+        rooms.add(g2);
+        
         g3 = new Room("g3");
         g4 = new Room("g4");
         g5 = new Room("g5");
         g6 = new Room("g6");
-        g7 = new Room("g7");
-        g8 = new Room("g8");
+        
+        g7 = new Room("");
+        g7.setDescription("You are standing in a hallway, looks like all other hallways in this damn university."
+                + "\nYou must have been walking for miles by now."
+                + "It's very dark in here, you are looking for a light switch"
+                + " but there does not seem to be any.");
+        g7.setName("g7");
+        rooms.add(g7);
+        
+        g8 = new Room("in hallway g8. As you enter the door slams behind you."
+                + "Must be the draft again... Where does it originate?");
         g9 = new Room("g9");
         g10 = new Room("g10");
         g11 = new Room("g11");
@@ -83,7 +114,7 @@ public class Game
         k6 = new Room("k6");
         k7 = new Room("k7");
         k8 = new Room("k8");
-    
+
         entrance.setExit("east", g1);
         
         g1.setExit("east",u180);
@@ -396,15 +427,7 @@ public class Game
 
         Room nextRoom = currentRoom.getExit(direction);
     
-        if (currentRoom.getShortDescription()=="" && nextRoom.getShortDescription()==""){
-            if (key==1){
-            currentRoom=nextRoom;
-            System.out.println(currentRoom.getLongDescription());
-        } else {
-            System.out.println("You need a key to enter this door .\n");
-                System.out.println(currentRoom.getSlowDescription());
-        }
-        } else {
+        
         if (nextRoom == null) {
         System.out.println("There is no door!");
         }
@@ -415,13 +438,8 @@ public class Game
             System.out.println(currentRoom.getLongDescription());
         }
             
-        if (currentRoom.getShortDescription()==""){
-            if (key==0){    
-            System.out.println("");
-            }
-            key=1;    
-        }
-    }
+        
+    
     }
   
     private boolean quit(Command command) 
