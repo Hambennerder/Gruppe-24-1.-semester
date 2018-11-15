@@ -1,5 +1,7 @@
-package worldofzuul;
+package worldofzuul.gamefunctionality;
 
+import worldofzuul.gamefunctionality.CommandWords;
+import worldofzuul.gamefunctionality.Command;
 import java.util.Scanner;
 
 public class Parser 

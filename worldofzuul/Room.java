@@ -12,7 +12,16 @@ public class Room extends Entity
     private HashMap<String, Room> exits;
     private ArrayList<NPC> npcs;
     private ArrayList<Item> items;
+    private int requiredProgress;
+    private boolean hasQuest;
+    private boolean hasOngoingQuest = false;
+    private boolean hasFinishedQuest = false;
+    private String questItemName;
+    private int nextQuestProgress = 0;
     
+    public Room() {
+    
+    }
     
     public Room(String description) 
     {
@@ -20,6 +29,24 @@ public class Room extends Entity
         exits = new HashMap<>();
         npcs = new ArrayList<>();
         items = new ArrayList<>();
+        this.requiredProgress = 0;
+    }
+    
+    public void setNextQuestProgress(int input) {
+        this.nextQuestProgress = input;
+    }
+    
+    public int getNextQuestProgress() {
+    
+        return nextQuestProgress;
+    }
+    
+    public void setQuestItemName(String input) {
+        this.questItemName = input;
+    }
+    
+    public String getQuestItemName() {
+        return this.questItemName;
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -74,6 +101,46 @@ public class Room extends Entity
     public void addItem(Item item) {
         items.add(item);
     }
+    
+    public Item getItem(int n) {
+        return items.get(n);
+    }
+    
+    public int getRequiredProgress() {
+        return this.requiredProgress;
+    }
+    
+    public void setRequiredProgress(int input) {
+        this.requiredProgress = input;
+    }
+    
+    public void setHasQuest(boolean input) {
+        this.hasQuest = input;
+    }
+    
+    public boolean getHasQuest() {
+        return this.hasQuest;
+    }
+    
+    public void setHasOngoingQuest(boolean input) {
+        this.hasOngoingQuest = input;
+    }
+    
+    public boolean getHasOngoingQuest() {
+        return this.hasOngoingQuest;
+    }
+    public void setHasFinishedQuest(boolean input) {
+        this.hasFinishedQuest = input;
+    }
+    
+    public boolean getHasFinishedQuest() {
+        return this.hasFinishedQuest;
+    }
+    
+    public void removeItem(int index) {
+        items.remove(index);
+    }
+    
    
 }
 

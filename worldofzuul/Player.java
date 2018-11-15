@@ -17,6 +17,8 @@ import java.util.ArrayList;
     private int health;
     private int level;
     private int experience;
+    private int progress = 0;
+    private int indexOfLastAdded = 0;
     
     public Player() {
         this.level = 1;
@@ -76,16 +78,24 @@ import java.util.ArrayList;
     // Adds an item to the inventory
     public void addItem(Item item) {
         inventory.add(item);
+        this.indexOfLastAdded++;
     }
     
     // Returns the full inventory list
-    public ArrayList getInventory() {
-        return inventory;
+    public void getInventory() {
+        System.out.println("Inventory:");
+        for (Item item : inventory) {
+            System.out.println("-" + item.getName());
+        }
     }
     
     // Adds a quest to the journal
     public void addQuest(Quest quest) {
-        journal.add(quest);
+        if (journal.contains(quest)) {
+            System.out.println("You already have that quest!");
+        } else {
+            journal.add(quest);
+        }
     }
     
     // Removes a quest from the journal
@@ -97,8 +107,22 @@ import java.util.ArrayList;
     public void getJournal() {
         int counter = 1;
         for (Quest quest : this.journal) {     
+            if (quest != null) {
             System.out.println(counter + ": " + quest.getName() + ": " + quest.getDescription());
             counter++;
+            }
         }
+    }
+    
+    public void setProgress(int input) {
+        this.progress = input;
+    }
+    
+    public int getProgress() {
+        return this.progress;
+    }
+    
+    public void incrementProgress() {
+        this.progress++;
     }
 }

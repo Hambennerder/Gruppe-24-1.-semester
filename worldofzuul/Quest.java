@@ -20,6 +20,8 @@ public class Quest extends Entity {
     private ArrayList<String> questStrings;
     private boolean isCompleted = false;
     private int questStringCounter = 0;
+    private int questCounter = 0;
+    private boolean onGoing = false;
     
     public Quest() {
        questStrings =  new ArrayList<>();
@@ -43,6 +45,7 @@ public class Quest extends Entity {
         String temp = null;
         if (n >= 0 && questStrings.get(n) != null) {  
             temp = questStrings.get(n);
+            this.onGoing = true;
         }
         return temp;
     }
@@ -58,6 +61,18 @@ public class Quest extends Entity {
     
     public void incrementQuestStringCounter() {
         this.questStringCounter++;
+    }
+    
+    public boolean getQuestState() {
+        return this.onGoing;
+    }
+    
+    public int getQuestCounter() {
+        return this.questCounter;
+    }
+    
+    public void incrementQuestCounter() {
+        this.questCounter++;
     }
    // tilstandsmaskine, holder styr på hvor vi er i questen i quest klassen 
     // state machine på engelsk

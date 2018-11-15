@@ -1,5 +1,7 @@
 
-package worldofzuul;
+package worldofzuul.gamefunctionality;
+
+import worldofzuul.gamefunctionality.Game;
 
 public class Launcher {
     

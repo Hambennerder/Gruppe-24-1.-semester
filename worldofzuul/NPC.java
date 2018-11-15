@@ -7,16 +7,22 @@ public class NPC extends Entity {
     
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Quest> quests = new ArrayList<>();
+    private ArrayList<String> npcStrings = new ArrayList<>();
     private int level;
     private int experience;
     private int health;
     private int questCount;
+    private int stringCount = 0;
     private String welcome;
     private String goodbye;
     private String acceptString;
     private String declineString;
+    private String onQuestString;
     private String dialogOptions;
+    private String questCompletedString;
     private Boolean friendly;
+    private String completeQuestString;
+    private String questString;
     
     public NPC() {
         this.level = 1;
@@ -33,6 +39,14 @@ public class NPC extends Entity {
         this.experience = experience;
         this.health = health;
         this.friendly = friendly;
+    }
+    
+    public void setQuestString(String input) {
+        this.questString = input;
+    }
+    
+    public String getQuestString() {
+        return this.questString;
     }
     
     public void setLevel(int level) {
@@ -128,6 +142,31 @@ public class NPC extends Entity {
     public String getAcceptString() {
         return this.acceptString;
     }
+    
+    
+    public void setOnQuestString(String string) {
+        this.onQuestString = string;
+    }
+    
+    public String getOnQuestString() {
+        return this.onQuestString;
+    }
+    public void setQuestCompletedString(String string) {
+        this.questCompletedString = string;
+    }
+    
+    public String getQuestCompletedString() {
+        return this.questCompletedString;
+    }
+    
+    public void setCompleteQuestString(String string) {
+        this.completeQuestString = string;
+    }
+    
+    public String getCompleteQuestString() {
+        return this.completeQuestString;
+    }
+    
     
     
     // Abilities to be implemented soon

@@ -1,8 +1,10 @@
 
-package worldofzuul;
+package worldofzuul.content;
 
 import java.util.ArrayList;
 import java.util.List;
+import worldofzuul.Item;
+import worldofzuul.Quest;
 
 
 public class Quests extends Quest {
@@ -35,7 +37,9 @@ public class Quests extends Quest {
                 + "\n< Before you can enter the entrance of the SDU building, you have "
                 + "\n< to find your " + id_card.getName() + ". To do that you have to"
                 + "\n< inspect room u1-u3. These rooms are outside the SDU building."
-                + "\n< To find the first room you have to head north. Are you ready for this? (yes/no)");
+                + "\n< To find the first room you have to head north. Are you ready for this? (now choose whether or not you accept this mission by typing yes/no)");
+        tutorial.addQuestString("Good, you found the ID card, now you can enter SDU anytime you want."
+                               + "\nNow you must find Andars, he's in u180. Do you think you can find him? (yes/no)");
         
         quests.add(tutorial);
         
