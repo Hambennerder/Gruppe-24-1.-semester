@@ -35,7 +35,7 @@ public class Game extends Player
         
         Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
-        currentRoom = listOfRooms.getRoom(1);
+        currentRoom = listOfRooms.getRoom(0);
         
         NPCS npcs = new NPCS();
         npcs.createNPCS();
@@ -45,17 +45,20 @@ public class Game extends Player
         id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
         
         Item book = new Item();
-        book.setName("Best Java book for learning java,EVER");
-        listOfRooms.getRoom(0).addNPC(npcs.getNPC(2));
+        book.setName("book");
+        
+        // Adding mentor NPC to entrance, and adding ID-card to u3.
+        listOfRooms.getRoom(0).addNPC(npcs.getNPC(0));
+        listOfRooms.getRoom(3).addItem(id_card);
+        
+        // Adding Andars NPC to U180
+        listOfRooms.getRoom(5).addNPC(npcs.getNPC(1));
+        
+        
+        // Adding Bookstore lady to student bookstore, and adding book to student bookstore backroom
         listOfRooms.getRoom(10).addItem(book);
-        
-        listOfRooms.getRoom(1).addNPC(npcs.getNPC(1));
-        listOfRooms.getRoom(4).addItem(id_card);
-        listOfRooms.getRoom(4).addItem(id_card);
-        
-        
-        
-   
+        listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
+ 
         printWelcome();
                 
         boolean finished = false;
@@ -117,9 +120,9 @@ public class Game extends Player
         else if (commandWord == CommandWord.INSPECT) {
             System.out.println(currentRoom.getDescription());
             try { 
-            System.out.println("This room contains:" + currentRoom.getItem(0).getName());
+            System.out.println("This room contains: " + currentRoom.getItem(0).getName());
             } catch (IndexOutOfBoundsException ex) {
-                System.out.println("\n ***No items to be found***");
+                System.out.println("\n ***No item to be found***");
             }
         }
         else if (commandWord == CommandWord.TAKE) {
@@ -150,7 +153,8 @@ public class Game extends Player
             processOption(command);
         }
         else if (commandWord == CommandWord.JOURNAL) {
-            player.getJournal();
+            // Missing implementation.
+            System.out.println("Current quest: ");
         }
         else if (commandWord == CommandWord.INVENTORY) {
             player.getInventory();
@@ -181,16 +185,17 @@ public class Game extends Player
             if (answer.equals("yes")) {
                 System.out.println(currentRoom.getNPC(0).getAcceptString()); 
                 currentRoom.setHasOngoingQuest(true);
+                currentRoom.setHasFinishedQuest(false);
+                
             } else if (answer.equals("no")) {
                 System.out.println(currentRoom.getNPC(0).getDeclineString());
             } else {
                 System.out.println("you did not type yes or no, sadly you will have to try this again");
             
             }
-            // ----------------- DET HER STYKKE VIRKER IKKE --------------------
             } else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
                 if (player.getProgress() < currentRoom.getNextQuestProgress()) {
-                    System.out.println(currentRoom.getNPC(0).getName() + currentRoom.getNPC(0).getOnQuestString());
+                    System.out.println(currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString());
                 }
                 else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
                     System.out.println(currentRoom.getNPC(0).getCompleteQuestString());
@@ -199,8 +204,7 @@ public class Game extends Player
                     
                 }    
                 
-                
-            // ----------------- DET HER STYKKE VIRKER IKKE --------------------      
+                    
                 
             } else if (currentRoom.getHasFinishedQuest()) {
                 System.out.println(currentRoom.getNPC(0).getQuestCompletedString());

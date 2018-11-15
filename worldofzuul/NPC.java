@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class NPC extends Entity {
     
     private ArrayList<Item> inventory = new ArrayList<>();
-    private ArrayList<Quest> quests = new ArrayList<>();
     private ArrayList<String> npcStrings = new ArrayList<>();
     private int level;
     private int experience;
@@ -107,16 +106,6 @@ public class NPC extends Entity {
     
     public boolean getFriendly() {
         return this.friendly;
-    }
-    
-    public void addQuest(Quest q) {
-        if (q != null) {
-            quests.add(q);
-        }
-    }
-    
-    public Quest getQuest(int n) {
-        return quests.get(n);
     }
     
     public void setDialogOptions(String string) {

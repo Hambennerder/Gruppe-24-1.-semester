@@ -90,10 +90,6 @@ public class Room extends Entity
         }
     }
     
-    public void printString(int NPCIndex, int questNum, int stringNum) {
-        System.out.println(npcs.get(NPCIndex).getQuest(questNum).printQuestString(stringNum));     
-    }
-    
     public NPC getNPC(int index) {
         return npcs.get(index);
     }

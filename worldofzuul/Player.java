@@ -9,9 +9,6 @@ import java.util.ArrayList;
     // The arraylist inventory stores the items that the player picks up.
     private ArrayList<Item> inventory = new ArrayList<>();
     
-    // The arraylist journal stores the quests that the player accepts.
-    private ArrayList<Quest> journal = new ArrayList<>();
-    
     // Players attributes
     private String playerName;
     private int health;
@@ -86,31 +83,6 @@ import java.util.ArrayList;
         System.out.println("Inventory:");
         for (Item item : inventory) {
             System.out.println("-" + item.getName());
-        }
-    }
-    
-    // Adds a quest to the journal
-    public void addQuest(Quest quest) {
-        if (journal.contains(quest)) {
-            System.out.println("You already have that quest!");
-        } else {
-            journal.add(quest);
-        }
-    }
-    
-    // Removes a quest from the journal
-    public void removeQuest(Quest quest) {
-        journal.remove(quest);
-    }
-    
-    // Returns the full inventory list
-    public void getJournal() {
-        int counter = 1;
-        for (Quest quest : this.journal) {     
-            if (quest != null) {
-            System.out.println(counter + ": " + quest.getName() + ": " + quest.getDescription());
-            counter++;
-            }
         }
     }
     

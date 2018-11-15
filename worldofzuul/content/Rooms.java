@@ -17,23 +17,11 @@ public class Rooms extends Room {
     public void createRooms()
     {
 
-        Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookstore, t8,
+        Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookstore, storage, t8,
                        g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                        g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
-        // u180 index 0
-        u180 = new Room("");
-        u180.setDescription("You are in u180. A big bright room with many rows of chairs and tables.\n"
-                         + "You can feel the struggle and anxiety of the many students who have sat in this room before you."
-                         + "In the room you see a figure, it looks like \'Andars\'"); 
-        u180.setName("U180");
-        u180.setRequiredProgress(1);
-        u180.setHasQuest(true);
-        u180.setHasOngoingQuest(false);
-        
-        rooms.add(u180);
-        
-        // Entrance index 1
+        // Entrance index 0
         entrance = new Room("");
         entrance.setDescription("You are a new student in software engineering and \n"
                          + "you have just arrived outside the main entrance \n"
@@ -45,57 +33,26 @@ public class Rooms extends Room {
         entrance.setQuestItemName("ID-card");
         entrance.setNextQuestProgress(1);
         rooms.add(entrance);
-
-        // u1 index 2
+        
+        // u1 index 1
         u1 = new Room("u1");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
         rooms.add(u1);
         
-        // u2 index 3
+        // u2 index 2
         u2 = new Room("u2");
         u2.setDescription("No ID card here...");
         u2.setName("u2");
         rooms.add(u2);
 
-        // u3 at index 4
+        // u3 at index 3
         u3 = new Room("u3");
         u3.setDescription("Maybe the ID card is in here... try inspecting the room?");
         u3.setName("u3");
         rooms.add(u3);
- 
-        // canteen at index 5
-        canteen = new Room("");
-        canteen.setDescription("in the canteen."
-                + "A place where Chaos reigns."
-                + "A place where only the fittest will survive"
-                + " but atleast there is food.");
-        canteen.setName("Canteen");
-        rooms.add(canteen);
-
-        // library at index 6
-        library = new Room("library");
         
-        // studyhall at index 7
-        studyhall = new Room("study hall");
-        
-        // index 8
-        u55 = new Room("u55");
-        
-        // index 9
-        u45 = new Room("u45");
-      
-        // Student bookstore at index 10
-        bookstore = new Room("");
-        bookstore.setDescription("in the book store."
-                + "Your first thought is that there are way too"
-                + " many books in such a small area.\n"
-                + "How will you ever find the book you need in here. Maybe that 'lady' over there can help?");
-        bookstore.setName("Student Bookstore");
-        rooms.add(bookstore);
-      
-        t8 = new Room("t8");
-
+        // g1 at index 4
         g1 = new Room("in hallway g1."
                 + "It feels like you wander alone in this vast labrinth"
                 + " of hallways and dead ends even though people"
@@ -105,7 +62,19 @@ public class Rooms extends Room {
         g1.setRequiredProgress(2);   
         rooms.add(g1);
         
-
+        // u180 index 5
+        u180 = new Room("");
+        u180.setDescription("You are in u180. A big bright room with many rows of chairs and tables.\n"
+                         + "You can feel the struggle and anxiety of the many students who have sat in this room before you."
+                         + "In the room you see a figure, it looks like \'Andars\'"); 
+        u180.setName("U180");
+        u180.setRequiredProgress(2);
+        u180.setHasQuest(true);
+        u180.setNextQuestProgress(3);
+        u180.setQuestItemName("Java Book");
+        rooms.add(u180);
+        
+        // index 6
         g2 = new Room("");
         g2.setDescription("You are in a hallway."
                 + " It's dark, a little smelly, and a weird draft"
@@ -114,11 +83,7 @@ public class Rooms extends Room {
         g2.setRequiredProgress(2);
         rooms.add(g2);
 
-        g3 = new Room("g3");
-        g4 = new Room("g4");
-        g5 = new Room("g5");
-        g6 = new Room("g6");
-        
+        // g7 at index 7
         g7 = new Room("");
         g7.setDescription("You are standing in a hallway, looks like all other hallways in this damn university."
                 + "\nYou must have been walking for miles by now."
@@ -127,11 +92,70 @@ public class Rooms extends Room {
         g7.setName("g7");
         rooms.add(g7);
         
+        // g8 at index 8
         g8 = new Room("");
         g8.setDescription("You are in hallway g8. As you enter the door slams behind you."
                 + "Must be the draft again... Where does it originate?");
         g8.setName("g8");
         rooms.add(g8);
+        
+        // Student bookstore at index 9
+        bookstore = new Room("");
+        bookstore.setDescription("in the book store."
+                + "Your first thought is that there are way too"
+                + " many books in such a small area.\n"
+                + "How will you ever find the book you need in here. Maybe that 'lady' over there can help?");
+        bookstore.setName("Student Bookstore");
+        rooms.add(bookstore);
+        
+        // student bookstores storage at index 10
+        storage = new Room("");
+        storage.setDescription("You shouldnt be back here... unless");
+        rooms.add(storage);
+
+        // canteen at index 11
+        canteen = new Room("");
+        canteen.setDescription("in the canteen."
+                + "A place where Chaos reigns."
+                + "A place where only the fittest will survive"
+                + " but atleast there is food.");
+        canteen.setName("Canteen");
+        rooms.add(canteen);
+        
+        
+
+        library = new Room("library");
+        rooms.add(library);
+        
+
+        studyhall = new Room("study hall");
+        rooms.add(studyhall);
+        
+        // index 8
+        u55 = new Room("u55");
+        rooms.add(u55);
+        
+        // index 9
+        u45 = new Room("u45");
+        rooms.add(u45);
+      
+        
+      
+        t8 = new Room("t8");
+        rooms.add(t8);
+
+        
+        
+
+        
+
+        g3 = new Room("g3");
+        rooms.add(g3);
+        g4 = new Room("g4");
+        g5 = new Room("g5");
+        g6 = new Room("g6");
+        
+        
         
         g9 = new Room("g9");
         g10 = new Room("g10");
