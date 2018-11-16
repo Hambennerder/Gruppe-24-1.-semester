@@ -24,7 +24,9 @@ private List<NPC> npcs;
                                 + "\n< 2: leave");
         mentor.setAcceptString("Good luck student! \n"
                              + "\nUvuvwevwevwe: Now that you accepted a quest, you can type journal, and the quest's name \n"
-                             + "and a short description will pop up. Complete this quest to advance.");
+                             + "and a short description will pop up. Complete this quest to advance. To go to a room, you must \n "
+                             + "type \'go\' and then the direction you want to go, there are four directions:\n"
+                             + "\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
         mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
         mentor.setQuestString("< Hello there!"
                 + "\n< Welcome to SDU. My name is Morten. I'll be your mentor for today."

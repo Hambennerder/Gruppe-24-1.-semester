@@ -153,9 +153,10 @@ public class Game extends Player
             approachNPC(command);
         }      
         
-        else if (commandWord == CommandWord.DROP) {
+        /* else if (commandWord == CommandWord.DROP) {
             // code along the lines off, dropping an item from player inventory
         }
+        */
         
         else if (commandWord == CommandWord.CHOOSE) {
             processOption(command);
@@ -209,7 +210,8 @@ public class Game extends Player
                 else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
                     System.out.println(currentRoom.getNPC(0).getCompleteQuestString());
                     currentRoom.setHasFinishedQuest(true); 
-                    player.incrementProgress();  
+                    player.incrementProgress(); 
+                    player.setJournal("No active quests...");
                 }      
             } else if (currentRoom.getHasFinishedQuest()) {
                 System.out.println(currentRoom.getNPC(0).getQuestCompletedString());
@@ -323,7 +325,7 @@ public class Game extends Player
              System.out.println(currentRoom.getLongDescription());
              System.out.println(currentRoom.getRoomIntro());
             } else if (answer.equals("no")) {
-                System.out.println("Oh... Then restart the program before running it again.."); 
+                System.out.println("Oh.. well you will have to play without the initial help text then. Type help for help."); 
             } else { System.out.println("Writing yes or no can't be that hard.."); }
             
             

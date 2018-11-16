@@ -52,24 +52,23 @@ public class Rooms extends Room {
         rooms.add(entrance);
         
         // u1 index 1
-        u1 = new Room("you are in u1\n"
-                + "I don't think there is an ID card in here..");
+        u1 = new Room("A small room, rather empty and quiet. \n"
+                + "HINT: inspecting a room reveals interactable objects.");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
         
         rooms.add(u1);
         
         // u2 index 2
-        u2 = new Room("you are in u2\n"
-                + "Try to inspect the room to see if it's here.");
+        u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint");
         u2.setDescription("No ID card here...");
         u2.setName("u2");
         rooms.add(u2);
 
         // u3 at index 3
-        u3 = new Room("You are in u3\n"
-                + "Maybe the ID-card is in here... try inspecting the room?");
-        u3.setDescription("The ID-card is here. Type take ID-card to pick it up.\n"
+        u3 = new Room("Room full of people, they seem like new students as I.\n"
+                + "Maybe the ID-card is in here.. try inspecting the room?");
+        u3.setDescription("The ID-card is here!. Type \'take ID-card\' to pick it up.\n"
                 + "You can type inventory to make sure you picked it up.");
         u3.setName("u3");
         rooms.add(u3);
