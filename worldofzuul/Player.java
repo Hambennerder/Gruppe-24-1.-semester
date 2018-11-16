@@ -9,14 +9,14 @@ import java.util.ArrayList;
     // The arraylist inventory stores the items that the player picks up.
     private ArrayList<Item> inventory = new ArrayList<>();
     
-    // The arraylist journal stores the quests that the player accepts.
-    private ArrayList<Quest> journal = new ArrayList<>();
-    
     // Players attributes
     private String playerName;
     private int health;
     private int level;
     private int experience;
+    private int progress = 0;
+    private int indexOfLastAdded = 0;
+    private String journal;
     
     public Player() {
         this.level = 1;
@@ -76,29 +76,34 @@ import java.util.ArrayList;
     // Adds an item to the inventory
     public void addItem(Item item) {
         inventory.add(item);
+        this.indexOfLastAdded++;
     }
     
     // Returns the full inventory list
-    public ArrayList getInventory() {
-        return inventory;
-    }
-    
-    // Adds a quest to the journal
-    public void addQuest(Quest quest) {
-        journal.add(quest);
-    }
-    
-    // Removes a quest from the journal
-    public void removeQuest(Quest quest) {
-        journal.remove(quest);
-    }
-    
-    // Returns the full inventory list
-    public void getJournal() {
-        int counter = 1;
-        for (Quest quest : this.journal) {     
-            System.out.println(counter + ": " + quest.getName() + ": " + quest.getDescription());
-            counter++;
+    public void getInventory() {
+        System.out.println("Inventory:");
+        for (Item item : inventory) {
+            System.out.println("*" + item.getName());
         }
+    }
+    
+    public void setProgress(int input) {
+        this.progress = input;
+    }
+    
+    public int getProgress() {
+        return this.progress;
+    }
+    
+    public void incrementProgress() {
+        this.progress++;
+    }
+    
+    public String getJournal() {
+        return this.journal;
+    }
+    
+    public void setJournal(String input) {
+        this.journal = input;
     }
 }
