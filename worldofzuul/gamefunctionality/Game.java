@@ -284,6 +284,7 @@ public class Game extends Player
     }
 
     private void approachNPC(Command command) {
+        try {
         if(!command.hasSecondWord()) {
             System.out.println("Approach what?");
 
@@ -293,7 +294,10 @@ public class Game extends Player
             printNPCsName();
             printNPCsWelcome();
             printDialogOptions();
-
+        }
+    }
+        catch (IndexOutOfBoundsException ex){
+            System.out.println("Thers is no one here to talk to.");
     }
     }
     private void goRoom(Command command)
