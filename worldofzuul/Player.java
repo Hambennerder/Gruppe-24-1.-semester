@@ -2,9 +2,9 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-
-    public class Player extends Entity {
+public class Player extends Entity {
     
     // The arraylist inventory stores the items that the player picks up.
     private ArrayList<Item> inventory = new ArrayList<>();
@@ -12,27 +12,34 @@ import java.util.ArrayList;
     // The arraylist journal stores the quests that the player accepts.
     private ArrayList<Quest> journal = new ArrayList<>();
     
-    // Players attributes
+    // Attributes
     private String playerName;
     private int health;
     private int level;
     private int experience;
+    private int age;
+    private String gender;
     
-    public Player() {
-        this.level = 1;
-        this.health = 100;
-        this.experience = 0;
+    private Scanner input;
+    
+    
+    
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     
-    // Player constructor
-    public Player(int health,int level,int experience,String playerName) {
-        this.health = health;
-        this.level = level;
-        this.experience = experience;
-        this.playerName = playerName;       
-      
+    public String getGender() {
+        return gender;
     }
-
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
     // Set player name
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
@@ -69,7 +76,7 @@ import java.util.ArrayList;
     }
     
     // Return players experience points
-    public int getExperience(int experience) {
+    public int getExperience() {
         return experience;
     }
     
@@ -93,12 +100,33 @@ import java.util.ArrayList;
         journal.remove(quest);
     }
     
-    // Returns the full inventory list
-    public void getJournal() {
-        int counter = 1;
-        for (Quest quest : this.journal) {     
-            System.out.println(counter + ": " + quest.getName() + ": " + quest.getDescription());
-            counter++;
-        }
+    // Returns the full journal list
+    public ArrayList getJournal() {
+        return journal;
     }
+    
+    // Player name conversation
+    public String ConversationWord(String question) {
+        input = new Scanner(System.in);
+        
+        System.out.println(question);
+        System.out.print("> ");
+        String answer = input.nextLine();
+        return answer;
 }
+    
+    // Player age conversation
+    public int ConversationAge(String question) {
+        input = new Scanner(System.in);
+        System.out.println(question);
+        System.out.print("> ");
+        int answer = input.nextInt();
+        
+        return answer;
+    }
+    
+}
+    
+
+
+        
