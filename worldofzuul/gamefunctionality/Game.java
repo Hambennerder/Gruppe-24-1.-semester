@@ -16,6 +16,7 @@ public class Game extends Player
     public Game() 
     {
         parser = new Parser();
+        player = new Player();
     }
     
     public void setPlayerName() {
