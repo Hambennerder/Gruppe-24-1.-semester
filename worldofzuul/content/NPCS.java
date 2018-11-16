@@ -71,6 +71,7 @@ private List<NPC> npcs;
         bookstoreLady.setDialogOptions("< 1: Talk"
                                        + "\n< 2: Trade"
                                        + "\n< 3: Leave");
+        bookstoreLady.setQuestString("Hello, find me coffee and I give u book");
         bookstoreLady.setAcceptString("I'm so glad to hear that! I'll hurry if you hurry.");
         bookstoreLady.setDeclineString("Well, you can have the book when I get my coffee then.");
         npcs.add(bookstoreLady);

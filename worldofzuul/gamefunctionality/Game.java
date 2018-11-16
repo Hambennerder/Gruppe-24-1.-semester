@@ -58,6 +58,10 @@ public class Game extends Player
         // Adding Bookstore lady to student bookstore, and adding book to student bookstore backroom
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
+        
+        Item coffee = new Item();
+        coffee.setName("coffee");
+        listOfRooms.getRoom(8).addItem(coffee);
  
         printWelcome();
                 

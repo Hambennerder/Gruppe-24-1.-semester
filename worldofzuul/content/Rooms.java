@@ -70,7 +70,7 @@ public class Rooms extends Room {
         u180.setName("U180");
         u180.setRequiredProgress(2);
         u180.setHasQuest(true);
-        u180.setNextQuestProgress(3);
+        u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
         rooms.add(u180);
         
@@ -106,11 +106,15 @@ public class Rooms extends Room {
                 + " many books in such a small area.\n"
                 + "How will you ever find the book you need in here. Maybe that 'lady' over there can help?");
         bookstore.setName("Student Bookstore");
+        bookstore.setHasQuest(true);
+        bookstore.setRequiredProgress(2);
+        bookstore.setNextQuestProgress(3);
         rooms.add(bookstore);
         
         // student bookstores storage at index 10
         storage = new Room("");
         storage.setDescription("You shouldnt be back here... unless");
+        storage.setName("Student bookshop storage");
         rooms.add(storage);
 
         // canteen at index 11
@@ -294,6 +298,8 @@ public class Rooms extends Room {
         k8.setExit("east",k6);
         
         bookstore.setExit("north",g8);
+        bookstore.setExit("south",storage);
+        storage.setExit("north",bookstore);
         
         library.setExit("south",g6);
         
