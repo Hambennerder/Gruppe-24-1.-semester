@@ -59,7 +59,7 @@ private List<NPC> npcs;
                 + "\n< Sound like a pretty good plan, right? (yes/no)");
         
         andars.setAcceptString("Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
-        andars.setDeclineString("You gonna faiiil! Come back if you want the slightest chance of doing the assignemts.");
+        andars.setDeclineString("You gonna faiiil! Come back if you want the slightest chance of doing the assignments.");
         andars.setOnQuestString("Finding the book can't be harder than solving e-tiviteter... just find it already..");
         andars.setCompleteQuestString("Damn dude, what took you so long?!");
         andars.setQuestCompletedString("You finally found the book and handed in the assignments, bugger off");
