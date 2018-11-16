@@ -113,7 +113,8 @@ public class Rooms extends Room {
         
         // student bookstores storage at index 10
         storage = new Room("");
-        storage.setDescription("You shouldnt be back here... unless");
+        storage.setDescription("You shouldnt be back here... unless\n"
+                + "Is that a \'book\'?");
         storage.setName("Student bookshop storage");
         rooms.add(storage);
 
@@ -122,7 +123,8 @@ public class Rooms extends Room {
         canteen.setDescription("in the canteen."
                 + "A place where Chaos reigns."
                 + "A place where only the fittest will survive"
-                + " but atleast there is food.");
+                + " but atleast there is food.\n"
+                + "You see some \'coffee'");
         canteen.setName("Canteen");
         rooms.add(canteen);
         
