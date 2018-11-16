@@ -49,26 +49,7 @@ public class Game extends Player
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
         
-        // Adding NPC zzz to all rooms QUICK FIX!!!!!!!!
-        listOfRooms.getRoom(0).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(1).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(2).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(3).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(4).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(5).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(6).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(7).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(8).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(9).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(10).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
-        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
-        
-        
-        
+
         
         Item coffee = new Item();
         coffee.setName("coffee");
