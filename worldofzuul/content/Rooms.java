@@ -39,9 +39,9 @@ public class Rooms extends Room {
                             + "by \'single quotation marks\', are interactable. You can interact by typing in \n"
                             + "approach and the figures name, be aware, this system IS case sensitive. \n"
                             + "If you want to take an item in a room, the same applies but with the command take. \n"
-                            + "Start the game by typing inspect, and then approach the given figure.");
+                            + "Start the game by typing inspect, and then approach the given figure. type help if you need help");
         
-        entrance.setJournalString("A quest for the holy ID-card: Start by heading north, the card must be there somewhere");
+        entrance.setJournalString("A quest for the holy ID-card: Start by heading north, find the card and return to the mentor");
         
         entrance.setName("Entrance");
         entrance.setHasQuest(true);
@@ -88,6 +88,7 @@ public class Rooms extends Room {
         u180.setHasQuest(true);
         u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
+        u180.setJournalString("A programmers bible: Find the book, it should be at the bookstore, remember Andars' warning.");
         rooms.add(u180);
         
         // index 6
