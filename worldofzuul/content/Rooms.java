@@ -2,7 +2,9 @@
 package worldofzuul.content;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import worldofzuul.Room;
 
 
@@ -91,7 +93,8 @@ public class Rooms extends Room {
         u180.setHasQuest(true);
         u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
-        u180.setJournalString("A programmers bible: Find the book, it should be at the bookstore, remember Andars' warning.");
+        u180.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
+                + " which is somewhere south, remember Andars' warning.");
         rooms.add(u180);
         
         // index 6
@@ -134,6 +137,10 @@ public class Rooms extends Room {
         bookstore.setHasQuest(true);
         bookstore.setRequiredProgress(2);
         bookstore.setNextQuestProgress(3);
+        bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
+                + " which is somewhere south, remember Andars' warning."
+                + "The lady in the bookstore wants you to get her som coffee, head up to the canteen.");
+        
         rooms.add(bookstore);
         
         // student bookstores storage at index 10
