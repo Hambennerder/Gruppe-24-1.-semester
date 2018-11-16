@@ -2,6 +2,7 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
     public class Player extends Entity {
@@ -9,30 +10,36 @@ import java.util.ArrayList;
     // The arraylist inventory stores the items that the player picks up.
     private ArrayList<Item> inventory = new ArrayList<>();
     
+    
     // Players attributes
     private String playerName;
     private int health;
     private int level;
     private int experience;
+    private int age;
+    private String gender;    
+    private Scanner input;
     private int progress = 0;
     private int indexOfLastAdded = 0;
     private String journal;
     
-    public Player() {
-        this.level = 1;
-        this.health = 100;
-        this.experience = 0;
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     
-    // Player constructor
-    public Player(int health,int level,int experience,String playerName) {
-        this.health = health;
-        this.level = level;
-        this.experience = experience;
-        this.playerName = playerName;       
-      
+    public String getGender() {
+        return gender;
     }
-
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
     // Set player name
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
@@ -69,7 +76,7 @@ import java.util.ArrayList;
     }
     
     // Return players experience points
-    public int getExperience(int experience) {
+    public int getExperience() {
         return experience;
     }
     
@@ -105,5 +112,25 @@ import java.util.ArrayList;
     
     public void setJournal(String input) {
         this.journal = input;
+    }
+    
+        // Player name conversation
+    public String ConversationWord(String question) {
+        input = new Scanner(System.in);
+        
+        System.out.println(question);
+        System.out.print("> ");
+        String answer = input.nextLine();
+        return answer;
+}
+    
+    // Player age conversation
+    public int ConversationAge(String question) {
+        input = new Scanner(System.in);
+        System.out.println(question);
+        System.out.print("> ");
+        int answer = input.nextInt();
+        
+        return answer;
     }
 }

@@ -17,11 +17,33 @@ public class Game extends Player
     {
         parser = new Parser();
     }
+    
+    public void setPlayerName() {
+        player.setPlayerName(player.ConversationWord("What is your name?"));
+    }
+    
+    public void setGender() {
+        player.setGender(player.ConversationWord("Please enter your gender: "));
+    }
+    
+    public void setAge() {
+        player.setAge(player.ConversationAge("Please enter your age: "));
+    }
 
     public void play() 
     {    
-        player = new Player();
-        player.setName("John Doe");
+        System.out.println("#");
+        System.out.println("#  ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗      ██████╗ ███████╗    ███████╗██████╗ ██╗   ██╗██╗   ██╗██╗     ");
+        System.out.println("#  ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗    ██╔═══██╗██╔════╝    ██╔════╝██╔══██╗██║   ██║██║   ██║██║     ");
+        System.out.println("#  ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║    ██║   ██║█████╗      ███████╗██║  ██║██║   ██║██║   ██║██║     ");
+        System.out.println("#  ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║    ██║   ██║██╔══╝      ╚════██║██║  ██║██║   ██║██║   ██║██║     ");
+        System.out.println("#  ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝    ╚██████╔╝██║         ███████║██████╔╝╚██████╔╝╚██████╔╝███████╗");
+        System.out.println("#   ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝      ╚═════╝ ╚═╝         ╚══════╝╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝");
+        System.out.println("#");
+        
+        setPlayerName();
+        setGender();
+        setAge();
         
         Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
@@ -53,7 +75,7 @@ public class Game extends Player
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
  
-        printWelcome();
+        printWelcome(player.getPlayerName());
                 
         boolean finished = false;
         while (! finished) {
@@ -63,10 +85,10 @@ public class Game extends Player
         System.out.println("Thank you for playing. Good bye.");
     }
 
-    private void printWelcome()
+    private void printWelcome(String playername)
     {
         System.out.println();
-        System.out.println("Welcome to the world of SDUUL.\n");
+        System.out.println("Welcome " + playername + ", to the world of SDUUL.\n");
         System.out.println("An adventurous text-based rpg game that tackles the life being a new university student\n"
             + "in the most boring of fashion, we will show you the everchanging day to day life in a \n"
             + "comedic way. The game consists of various quests and obstacles, which you as a player  \n"
