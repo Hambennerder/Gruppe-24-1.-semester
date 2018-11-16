@@ -9,6 +9,7 @@ import java.util.HashMap;
 public class Room extends Entity
 {
     private String description;
+    private String roomIntro;
     private HashMap<String, Room> exits;
     private ArrayList<NPC> npcs;
     private ArrayList<Item> items;
@@ -18,6 +19,7 @@ public class Room extends Entity
     private boolean hasFinishedQuest = false;
     private String questItemName;
     private int nextQuestProgress = 0;
+    private String journalString;
     
     public Room() {
     
@@ -30,6 +32,23 @@ public class Room extends Entity
         npcs = new ArrayList<>();
         items = new ArrayList<>();
         this.requiredProgress = 0;
+        this.roomIntro = "A room description";
+    }
+    
+    public void setJournalString(String input) {
+        this.journalString = input;
+    }
+    
+    public String getJournalString() {
+        return this.journalString;
+    }
+    
+    public void setRoomIntro(String input) {
+        this.roomIntro = input;
+    }
+    
+    public String getRoomIntro() {
+        return this.roomIntro;
     }
     
     public void setNextQuestProgress(int input) {
@@ -63,6 +82,7 @@ public class Room extends Entity
     {
         return "Location: " + getName() + ".\n" + getExitString();
     }
+    
     
     public String getSlowDescription()
     {

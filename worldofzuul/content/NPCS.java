@@ -18,20 +18,25 @@ private List<NPC> npcs;
         NPC mentor = new NPC();
         mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses, short clean cut redheaded");
         mentor.setName("mentor");
+        mentor.setWelcome("You must be a new student, welcome! \n"
+                + "\nAs you can see below, you have two options, type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
         mentor.setDialogOptions("< 1: talk"
                                 + "\n< 2: leave");
-        mentor.setAcceptString("Good luck student!");
+        mentor.setAcceptString("Good luck student! \n"
+                             + "\nUvuvwevwevwe: Now that you accepted a quest, you can type journal, and the quest's name \n"
+                             + "and a short description will pop up. Complete this quest to advance.");
         mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
         mentor.setQuestString("< Hello there!"
                 + "\n< Welcome to SDU. My name is Morten. I'll be your mentor for today."
                 + "\n< Before you can enter the entrance of the SDU building, you have "
                 + "\n< to find your ID-card. To do that you have to"
-                + "\n< inspect room u1-u3. These rooms are outside the SDU building."
+                + "\n< inspect rooms u1-u3. These rooms are outside the SDU building."
                 + "\n< To find the first room you have to head north. Are you ready for this? (now choose whether or not you accept this mission by typing yes/no)");
         mentor.setOnQuestString("Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString("I'm sorry, I'm busy. Go find Andars.");
         mentor.setCompleteQuestString("Yes! you found the ID-card, now you can finally access this god awful place.\n"
-                + "now you must go find Andars, I've heard that he's in u180. Good luck!");
+                + "now you must go find Andars, I've heard that he's in u180. Good luck! \n"
+                + "Uvuvwevwevwe: Congratulations! You finished your very first quest. Sadly, you're on your own now. Bye.");
         
         npcs.add(mentor);
         // End of the first mentor NPC--------------------

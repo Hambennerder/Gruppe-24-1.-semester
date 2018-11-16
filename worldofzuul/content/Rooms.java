@@ -28,6 +28,21 @@ public class Rooms extends Room {
                          + "of the university. You look around and see cou- \n"
                          + "ntless of other university students, heading to \n"
                          + "their next class or lecture, you see a man wearing a red shirt saying \'mentor\'");
+        
+        entrance.setRoomIntro("Hello player, my name is Uvuvwevwevwe, and I will guide you \n"
+                            + "through the first steps of this tutorial. Above this message you \n"
+                            + "will see two things, location and exits. Location shows your current \n"
+                            + "location. If you haven't guessed it already, exits show our possible exits \n"
+                            + "Before we show you how to use the exits, let me first introduce you to \n"
+                            + "the command, inspect. Type in inspect and you will get a detailed description \n"
+                            + "of the current room, and also which elements it contains. Everything surrounded \n"
+                            + "by \'single quotation marks\', are interactable. You can interact by typing in \n"
+                            + "approach and the figures name, be aware, this system IS case sensitive. \n"
+                            + "If you want to take an item in a room, the same applies but with the command take. \n"
+                            + "Start the game by typing inspect, and then approach the given figure.");
+        
+        entrance.setJournalString("A quest for the holy ID-card: Start by heading north, the card must be there somewhere");
+        
         entrance.setName("Entrance");
         entrance.setHasQuest(true);
         entrance.setQuestItemName("ID-card");
@@ -38,6 +53,7 @@ public class Rooms extends Room {
         u1 = new Room("u1");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
+        
         rooms.add(u1);
         
         // u2 index 2

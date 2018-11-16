@@ -16,6 +16,7 @@ import java.util.ArrayList;
     private int experience;
     private int progress = 0;
     private int indexOfLastAdded = 0;
+    private String journal;
     
     public Player() {
         this.level = 1;
@@ -96,5 +97,13 @@ import java.util.ArrayList;
     
     public void incrementProgress() {
         this.progress++;
+    }
+    
+    public String getJournal() {
+        return this.journal;
+    }
+    
+    public void setJournal(String input) {
+        this.journal = input;
     }
 }
