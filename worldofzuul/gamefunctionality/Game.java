@@ -119,7 +119,7 @@ public class Game extends Player
         else if (commandWord == CommandWord.INSPECT) {
             print20Lines();
             System.out.println("Your location: " + currentRoom.getName());
-            System.out.println(currentRoom.getExitString());
+            System.out.println(currentRoom.getExitString() + "\n");
             System.out.println(currentRoom.getDescription());
             try {
                 System.out.println("This room contains: " + currentRoom.getItem(0).getName());
@@ -199,17 +199,18 @@ public class Game extends Player
             if (answer.equals("yes")) {
                 print20Lines();
                 System.out.println("Your location: " + currentRoom.getName());
-                System.out.println(currentRoom.getExitString());
+                System.out.println(currentRoom.getExitString()+ "\n");
                 System.out.println(currentRoom.getNPC(0).getAcceptString());
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
                 player.setJournal(currentRoom.getJournalString());
 
 
-
+            // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
+            // and player must choose 1 again to accept the quest.
             } else if (answer.equals("no")) {
                 System.out.println("Your location: " + currentRoom.getName());
-                System.out.println(currentRoom.getExitString());
+                System.out.println(currentRoom.getExitString() + "\n");
                 System.out.println(currentRoom.getNPC(0).getDeclineString());
 
             } else {
@@ -225,6 +226,8 @@ public class Game extends Player
                     System.out.println(currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString());
                 }
                 else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
+                    System.out.println("Your location: " + currentRoom.getName());
+                    System.out.println(currentRoom.getExitString() + "\n");
                     System.out.println(currentRoom.getNPC(0).getCompleteQuestString());
                     currentRoom.setHasFinishedQuest(true);
                     player.incrementProgress();
@@ -236,6 +239,8 @@ public class Game extends Player
             // if a quest has been completed, it will return the string that explains
             // to the player that the quest in that room has been finished
             else if (currentRoom.getHasFinishedQuest()) {
+                System.out.println("Your location: " + currentRoom.getName());
+                System.out.println(currentRoom.getExitString() + "\n");
                 System.out.println(currentRoom.getNPC(0).getQuestCompletedString());
             }
         }
