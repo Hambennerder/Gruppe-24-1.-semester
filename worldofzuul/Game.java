@@ -5,7 +5,6 @@ public class Game
     int key=0;
     private Parser parser;
     private Player player;
-    //private Player conversation;
     private Room currentRoom;
     private Room nextRoom;
     
@@ -14,9 +13,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
-        // player = new Player(Player.getHealth(), questionPlayer.getLevel(), Player.getExperience(), Player.getPlayerName());
         player = new Player();
-        //conversation = new Player();
     }
     
 
