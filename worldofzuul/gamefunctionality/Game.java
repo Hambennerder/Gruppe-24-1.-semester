@@ -125,7 +125,7 @@ public class Game extends Player
         }
         else if (commandWord == CommandWord.INSPECT) {
             print20Lines();
-            
+
             System.out.println(currentRoom.getDescription());
             try { 
             System.out.println("This room contains: " + currentRoom.getItem(0).getName());

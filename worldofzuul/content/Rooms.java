@@ -68,7 +68,7 @@ public class Rooms extends Room {
         u3 = new Room("You are in u3\n"
                 + "Maybe the ID-card is in here... try inspecting the room?");
         u3.setDescription("The ID-card is here. Type take ID-card to pick it up.\n"
-                + "You can type inventory to make sure you pick it up.");
+                + "You can type inventory to make sure you picked it up.");
         u3.setName("u3");
         rooms.add(u3);
         
