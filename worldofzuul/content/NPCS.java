@@ -76,7 +76,28 @@ private List<NPC> npcs;
         npcs.add(bookstoreLady);
         // End of the NPC at the student bookstore--------------------
         
-        
+        // Start of NPC at the canteen INDEX: 3-------------------
+       /* 
+        NPC canteenLady = new NPC();
+        canteenLady.setName("lunch-lady");
+        canteenLady.setWelcome("Hello there handsome!");
+        canteenLady.setDescription("She is quite hot!");
+        canteenLady.setDialogOptions("< 1: Talk"
+                                      +"\n< 2: Trade"
+                                      + "\n< 3: Leave");
+       
+        canteenLady.setQuestString("I could really use a hand with a food trolley in the hallway. \n"
+               + "I'm way too busy here, and my colleagues are all sick \n"
+               + "Will you help me (yes/no)");
+       
+        canteenLady.setAcceptString("That's great, come back when you got it");
+        canteenLady.setDeclineString("Then you can't have the coffee");
+        canteenLady.setOnQuestString("Can you help me... please");
+        canteenLady.setCompleteQuestString("Thank you so much on returning the trolley");
+        canteenLady.setQuestCompletedString("You did a good job, I'll owe you");
+      */ 
+      
+               
         
        
         
