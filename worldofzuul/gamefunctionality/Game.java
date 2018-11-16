@@ -12,20 +12,10 @@ public class Game extends Player
     private Room currentRoom;
     private Room nextRoom;
     private Player player;
-    private int questCounter = 0;
-    private int questStringCounter = 0;
 
     public Game() 
     {
         parser = new Parser();
-    }
-
-    private void incrementQuestCounter() {
-        this.questCounter++;
-    }
-    
-    private void incrementQuestStringCounter() {
-        this.questStringCounter++;
     }
 
     public void play() 
@@ -117,38 +107,42 @@ public class Game extends Player
         if (commandWord == CommandWord.HELP) {
             printHelp();
         }
+        
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
         }
+        
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
+        
         else if (commandWord == CommandWord.INSPECT) {
             print20Lines();
-
+            
             System.out.println(currentRoom.getDescription());
             try { 
-            System.out.println("This room contains: " + currentRoom.getItem(0).getName());
+                System.out.println("This room contains: " + currentRoom.getItem(0).getName());
             } catch (IndexOutOfBoundsException ex) {
                 System.out.println("\n ***No item to be found***");
             }
         }
         else if (commandWord == CommandWord.TAKE) {
+            
             if (!command.hasSecondWord()) {
                 System.out.println("Take what?");
             }
             
             if (currentRoom.getItem(0) == null) {
                 System.out.println("No item to take");
+            
             } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
                 player.addItem(currentRoom.getItem(0));
                 System.out.println("You picked up " + currentRoom.getItem(0).getName());
                 currentRoom.removeItem(0);
                 player.incrementProgress();
-                
-
             }
         }
+        
         else if (commandWord == CommandWord.APPROACH) {
             approachNPC(command);
         }      
@@ -167,43 +161,61 @@ public class Game extends Player
         else if (commandWord == CommandWord.INVENTORY) {
             player.getInventory();
         }
-        
             
         return wantToQuit;
     }
     
-    
-    private void loadTradeMenu() {
-        // Soon to be implemented
-        System.out.println("I'm sorry, I'm not selling at the moment, come back later");
-    }
-    
     private void processOption(Command command) {
-              
+        
+        // Check 1: checks if there is a second word, aka a choice between 1 or 2
         if (!command.hasSecondWord()) {
             System.out.println("Choose what?");  
-        } else if (!currentRoom.getHasQuest()) {
+        } 
+        
+        // Check 2: checks if a room does not have a quest, so you cant "choose" in that room
+        else if (!currentRoom.getHasQuest()) {
             System.out.println("What?");
-        } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("1")) {
+        } 
+        
+        // Check 3: Checks where you are in a quest by multiple stages (!primitive and basic state machine!)
+        // Check 3.1: Checks if room has a quest and that second word is the option talk
+        else if (currentRoom.getHasQuest() && command.getSecondWord().equals("1")) {
             print20Lines();
+            
+            // stage 3.2: 
+            // checks whether or not a room has an ongoing quest, if the room does not have
+            // an ongoing quest, then the player will be presented the quest, and have an option
+            // between yes and no
             if(!currentRoom.getHasOngoingQuest()) {
             System.out.println(currentRoom.getNPC(0).getQuestString());
             String answer = getSimpleUserInput();
             
+            // stage 3.3: checks if the answer is yes, if the player types in yes
+            // then the the NPC's string acceptString will be returned
+            // and that room will now have an ongoing quest, which makes it possible
+            // to return another string when they player comes back without completing it
+            // also the string that explains the quest will be added to the players journal
             if (answer.equals("yes")) {
                 print20Lines();
                 System.out.println(currentRoom.getNPC(0).getAcceptString()); 
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
-                player.setJournal(currentRoom.getJournalString());
-                
-                
-            } else if (answer.equals("no")) {
+                player.setJournal(currentRoom.getJournalString());  
+            } 
+            
+            // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
+            // and player must choose 1 again to accept the quest.
+            else if (answer.equals("no")) {
                 System.out.println(currentRoom.getNPC(0).getDeclineString());
             } else {
                 System.out.println("you did not type yes or no, sadly you will have to try this again");       
-            }
-            } else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
+              }
+            } 
+            
+            // check 3.5: Checks if the quest has been finished or not. if the quest has not been finished, then 
+            // the "on a quest string" will be returned, otherwise the next string introducing the player to
+            // where he should go next is returned
+            else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
                 if (player.getProgress() < currentRoom.getNextQuestProgress()) {
                     System.out.println(currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString());
                 }
@@ -213,10 +225,14 @@ public class Game extends Player
                     player.incrementProgress(); 
                     player.setJournal("No active quests...");
                 }      
-            } else if (currentRoom.getHasFinishedQuest()) {
+            } 
+            
+            // check 3.6: Checks whether or not a quest has been completed in that room
+            // if a quest has been completed, it will return the string that explains
+            // to the player that the quest in that room has been finished
+            else if (currentRoom.getHasFinishedQuest()) {
                 System.out.println(currentRoom.getNPC(0).getQuestCompletedString());
             }
-            // pseudokode: if (currentRoom.getQuestItem == player.getItem) then currentRoom.setHasFinishedQuest(true);
         }
     }
     
@@ -235,14 +251,13 @@ public class Game extends Player
     private void approachNPC(Command command) { 
         if(!command.hasSecondWord()) {
             System.out.println("Approach what?");   
-        } 
-        else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
+            
+        } else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
             for (int i = 0; i<10; i++) {System.out.println();}
             printLocation();
             printNPCsName();
             printNPCsWelcome();
-            printDialogOptions();
-            
+            printDialogOptions();  
         }                
     }
     
@@ -262,13 +277,12 @@ public class Game extends Player
         
         } else if (nextRoom.getRequiredProgress() > player.getProgress()) {
             System.out.println("You can't go there yet!");
-        }
         
-        else {
+        } else {
             for (int i=0;i<10;i++) {System.out.println();}
-            System.out.println(nextRoom.getShortDescription());
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+                System.out.println(nextRoom.getShortDescription());
+                currentRoom = nextRoom;
+                System.out.println(currentRoom.getLongDescription());
         }          
     
     }
@@ -305,6 +319,7 @@ public class Game extends Player
     }
     
     private void printPrimitiveUI() {
+        // will be used for next iteration, and also improved upon
         for (int i=0; i<10; i++) {System.out.println();}
         System.out.println("Your location: " + currentRoom.getName());
         System.out.println(currentRoom.getExitString());
@@ -320,20 +335,20 @@ public class Game extends Player
     private void startScreen() {
         System.out.println("Are you ready to dive into this?");
         String answer = getSimpleUserInput();
+        
         if (answer.equals("yes")) {
             for (int i=0;i<20;i++){System.out.println();}
              System.out.println(currentRoom.getLongDescription());
              System.out.println(currentRoom.getRoomIntro());
+             
             } else if (answer.equals("no")) {
-                System.out.println("Oh.. well you will have to play without the initial help text then. Type help for help."); 
-            } else { System.out.println("Writing yes or no can't be that hard.."); }
-            
-            
+                System.out.println("Oh.. well you will have to play without the initial help text then. Type help for help.");
+                
+            } else { System.out.println("Writing yes or no can't be that hard.."); }     
         }
+    
     private void print20Lines() {
         for (int i=0;i<20;i++){System.out.println();}
     }
     
-    }
-    
-//}
+}
