@@ -125,7 +125,8 @@ public class Game extends Player
         }
         else if (commandWord == CommandWord.INSPECT) {
             print20Lines();
-
+            System.out.println("Your location: " + currentRoom.getName());
+            System.out.println(currentRoom.getExitString());
             System.out.println(currentRoom.getDescription());
             try { 
             System.out.println("This room contains: " + currentRoom.getItem(0).getName());
@@ -192,14 +193,20 @@ public class Game extends Player
             
             if (answer.equals("yes")) {
                 print20Lines();
+                System.out.println("Your location: " + currentRoom.getName());
+                System.out.println(currentRoom.getExitString());
                 System.out.println(currentRoom.getNPC(0).getAcceptString()); 
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
                 player.setJournal(currentRoom.getJournalString());
                 
                 
+                
             } else if (answer.equals("no")) {
+                System.out.println("Your location: " + currentRoom.getName());
+                System.out.println(currentRoom.getExitString());
                 System.out.println(currentRoom.getNPC(0).getDeclineString());
+                
             } else {
                 System.out.println("you did not type yes or no, sadly you will have to try this again");       
             }
@@ -318,7 +325,7 @@ public class Game extends Player
     }
     
     private void startScreen() {
-        System.out.println("Are you ready to dive into this?");
+        System.out.println("Are you ready to dive into this? type (yes/no)");
         String answer = getSimpleUserInput();
         if (answer.equals("yes")) {
             for (int i=0;i<20;i++){System.out.println();}
