@@ -73,7 +73,7 @@ public class Game extends Player
             + "must overcome to continue. You might be rewarded, and ultimately be prepared for how  \n"
             + "boring studying can be. DISCLAIMER: 9/10 feminists want the creators behind this game in jail \n");
 
-
+        // Code below is a result of a possible outstanding conflict in the group, will be handled shortly
         /* System.out.println("These are some helpful commands: ");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
         System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
@@ -149,7 +149,7 @@ public class Game extends Player
         
         /* else if (commandWord == CommandWord.DROP) {
             // code along the lines off, dropping an item from player inventory
-        }
+        }   // will be implemented in next iteration
         */
         
         else if (commandWord == CommandWord.CHOOSE) {
