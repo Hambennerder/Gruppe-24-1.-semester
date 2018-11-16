@@ -48,7 +48,28 @@ public class Game extends Player
         // Adding Bookstore lady to student bookstore, and adding book to student bookstore backroom
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
-
+        
+        // Adding NPC zzz to all rooms QUICK FIX!!!!!!!!
+        listOfRooms.getRoom(0).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(1).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(2).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(3).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(4).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(5).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(6).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(7).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(8).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(9).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(10).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(11).addNPC(npcs.getNPC(3));
+        
+        
+        
+        
         Item coffee = new Item();
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
@@ -261,16 +282,16 @@ public class Game extends Player
     private void approachNPC(Command command) {
         if(!command.hasSecondWord()) {
             System.out.println("Approach what?");
-
+            
         } else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
             for (int i = 0; i<10; i++) {System.out.println();}
             printLocation();
             printNPCsName();
             printNPCsWelcome();
-            printDialogOptions();
-        }
-    }
+            printDialogOptions();       
 
+    }
+    }
     private void goRoom(Command command)
     {
         if(!command.hasSecondWord()) {
