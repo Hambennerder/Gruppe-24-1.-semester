@@ -19,7 +19,7 @@ private List<NPC> npcs;
         mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses, short clean cut redheaded");
         mentor.setName("mentor");
         mentor.setWelcome("You must be a new student, welcome! \n"
-                + "\nAs you can see below, you have two options, type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
+                + "\nUvuvwevwevwe: As you can see below, you have two options, type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
         mentor.setDialogOptions("< 1: talk"
                                 + "\n< 2: leave");
         mentor.setAcceptString("Good luck student! \n"
@@ -49,8 +49,7 @@ private List<NPC> npcs;
         
         andars.setDialogOptions(
                   "< 1: talk"
-                + "\n< 2: trade"
-                + "\n< 3: leave");
+                + "\n< 2: leave");
         
         andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
                 + "\n< You know, a thing between you and me. The book, called Best Java Book for learning Java EVER!. It is the best book to prepare you"

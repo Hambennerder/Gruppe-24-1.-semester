@@ -83,7 +83,7 @@ import java.util.ArrayList;
     public void getInventory() {
         System.out.println("Inventory:");
         for (Item item : inventory) {
-            System.out.println("-" + item.getName());
+            System.out.println("*" + item.getName());
         }
     }
     

@@ -2,7 +2,9 @@
 package worldofzuul.content;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import worldofzuul.Room;
 
 
@@ -39,9 +41,9 @@ public class Rooms extends Room {
                             + "by \'single quotation marks\', are interactable. You can interact by typing in \n"
                             + "approach and the figures name, be aware, this system IS case sensitive. \n"
                             + "If you want to take an item in a room, the same applies but with the command take. \n"
-                            + "Start the game by typing inspect, and then approach the given figure.");
+                            + "Start the game by typing inspect, and then approach the given figure. type help if you need help");
         
-        entrance.setJournalString("A quest for the holy ID-card: Start by heading north, the card must be there somewhere");
+        entrance.setJournalString("A quest for the holy ID-card: Start by heading north, find the card and return to the mentor");
         
         entrance.setName("Entrance");
         entrance.setHasQuest(true);
@@ -91,6 +93,8 @@ public class Rooms extends Room {
         u180.setHasQuest(true);
         u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
+        u180.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
+                + " which is somewhere south, remember Andars' warning.");
         rooms.add(u180);
         
         // index 6
@@ -133,6 +137,10 @@ public class Rooms extends Room {
         bookstore.setHasQuest(true);
         bookstore.setRequiredProgress(2);
         bookstore.setNextQuestProgress(3);
+        bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
+                + " which is somewhere south, remember Andars' warning."
+                + "The lady in the bookstore wants you to get her som coffee, head up to the canteen.");
+        
         rooms.add(bookstore);
         
         // student bookstores storage at index 10
