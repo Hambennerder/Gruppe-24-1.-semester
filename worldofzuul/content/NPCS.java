@@ -46,24 +46,23 @@ private List<NPC> npcs;
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
                 + "His face expression seems serious.*");
         andars.setName("Andars");
-        andars.setDescription("Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
-                + "His face expression seems serious.");
+        
         andars.setDialogOptions(
                   "< 1: talk"
                 + "\n< 2: trade"
                 + "\n< 3: leave");
         
-        andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I am going to teach you how to program"
+        andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
                 + "\n< You know, a thing between you and me. The book, called Best Java Book for learning Java EVER!. It is the best book to prepare you"
                 + "\n< I used this book back in my ole' days. It saved me tons of trouble! Find it at the bookstore."
                 + "\n< I want you to solve these assignments, solve these with the book and you will be prepared"
-                + "\n< Are you ready to face this challenge? (yes/no)");
+                + "\n< Sound like a pretty good plan, right? (yes/no)");
         
-        andars.setAcceptString("Very well student! Return to me when you're done.");
-        andars.setDeclineString("I'm sorry to hear that, return when you're ready.");
+        andars.setAcceptString("Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
+        andars.setDeclineString("You gonna faiiil! Come back if you want the slightest chance of doing the assignemts.");
         andars.setOnQuestString("Finding the book can't be harder than solving e-tiviteter... just find it already..");
-        andars.setCompleteQuestString("Good job on finding the book!");
-        andars.setQuestCompletedString("You already handed in the assignments, bugger off");
+        andars.setCompleteQuestString("Damn dude, what took you so long?!");
+        andars.setQuestCompletedString("You finally found the book and handed in the assignments, bugger off");
         
         npcs.add(andars);
         // End of the NPC Andars--------------------
@@ -71,14 +70,19 @@ private List<NPC> npcs;
         // Start of the NPC at the student bookstore INDEX: 2--------------------
         NPC bookstoreLady = new NPC();
         bookstoreLady.setName("lady");
-        bookstoreLady.setWelcome("What can I do you for?");
-        bookstoreLady.setDescription("Just a description");
+        bookstoreLady.setWelcome("Hello there handsome thing, What can I do you for?");
+        bookstoreLady.setDescription("Probably the ugliest and oldest person you've ever seen in a bookstore");
         bookstoreLady.setDialogOptions("< 1: Talk"
                                        + "\n< 2: Trade"
                                        + "\n< 3: Leave");
-        bookstoreLady.setQuestString("Hello, find me coffee and I give u book");
-        bookstoreLady.setAcceptString("I'm so glad to hear that! I'll hurry if you hurry.");
+        bookstoreLady.setQuestString("I would love to help you finding the book darling, but if I have to help you I have to get something in return.\n"
+                + "I would love to get a cup of coffee with you, can you go get it from the canteen, sweetheart? (yes/no)");
+        bookstoreLady.setAcceptString("I knew a strong man like you, wouldn't be afraid of a grown woman like myself.");
         bookstoreLady.setDeclineString("Well, you can have the book when I get my coffee then.");
+        bookstoreLady.setOnQuestString("The coffee should be found in the canteen, good looking");
+        bookstoreLady.setQuestCompletedString("It was a pleasure getting to know you honey");
+        bookstoreLady.setCompleteQuestString("Thx for the coffee. The book is back in the storage room, you can go get it.");
+        
         npcs.add(bookstoreLady);
         // End of the NPC at the student bookstore--------------------
         

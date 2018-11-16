@@ -61,7 +61,7 @@ public class Game extends Player
         
         Item coffee = new Item();
         coffee.setName("coffee");
-        listOfRooms.getRoom(8).addItem(coffee);
+        listOfRooms.getRoom(11).addItem(coffee);
  
         printWelcome();
                 
