@@ -108,10 +108,7 @@ private List<NPC> npcs;
         canteenLady.setQuestCompletedString("You did a good job, I'll owe you");
       */ 
       
-       // adding zzz NPC for quick fix INDEX: 3-----------------------
-       NPC zzz = new NPC();
-       zzz.setName("dude");
-       npcs.add(zzz);
+       
        
        
        
