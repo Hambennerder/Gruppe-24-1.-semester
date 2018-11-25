@@ -1,5 +1,6 @@
 package worldofzuul.gamefunctionality;
 import java.util.Scanner;
+import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
 import worldofzuul.Room;
@@ -72,7 +73,12 @@ public class Game extends Player
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
 
-
+        // test code
+        Encounter encounter = new Encounter();
+        encounter.addEncounterNPC(npcs.getNPC(3));
+        encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
+        listOfRooms.getRoom(4).addEncounter(encounter);
+        
 
         Item coffee = new Item();
         coffee.setName("coffee");
@@ -322,6 +328,33 @@ public class Game extends Player
                 System.out.println(nextRoom.getShortDescription());
                 currentRoom = nextRoom;
                 System.out.println(currentRoom.getLongDescription());
+        }
+        if (currentRoom.hasEncounter()) {
+            
+            if (currentRoom.getEncounter().encounterMet()) {
+                System.out.println(currentRoom.getEncounter().getEncounterMessage());
+                System.out.println(currentRoom.getEncounter().getEncounterNPC().getDialogOptions());
+                String answer = getSimpleUserInput();
+                
+                if (answer.equals("1")) {
+                    System.out.println("You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!");
+                    // Load combat system
+                } else if (answer.equals("2")) {
+                    
+                    if (currentRoom.getEncounter().tryFlee()) {
+                        System.out.println("You escaped!!");
+                        // print some sort of UI
+                    } else {
+                        System.out.println("You failed the flight!");
+                        System.out.println("*BAM* you won the fight!");
+                        // Load combat system
+                    }
+                }
+                
+            } else {
+                System.out.println("Something just moved in the shadows! Seems like it's gone now...");
+            }
+            
         }
 
     }

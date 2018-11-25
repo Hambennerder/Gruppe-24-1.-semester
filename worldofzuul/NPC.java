@@ -156,6 +156,12 @@ public class NPC extends Entity {
         return this.completeQuestString;
     }
     
+    @Override
+    public String toString() {
+        return " " + this.getName(); 
+    }
+        
+    
     
     
     // Abilities to be implemented soon

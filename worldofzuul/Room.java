@@ -13,10 +13,12 @@ public class Room extends Entity
     private HashMap<String, Room> exits;
     private ArrayList<NPC> npcs;
     private ArrayList<Item> items;
+    private ArrayList<Encounter> encounters;
     private int requiredProgress;
     private boolean hasQuest;
     private boolean hasOngoingQuest = false;
     private boolean hasFinishedQuest = false;
+    private boolean hasEncounter = false;
     private String questItemName;
     private int nextQuestProgress = 0;
     private String journalString;
@@ -31,6 +33,7 @@ public class Room extends Entity
         exits = new HashMap<>();
         npcs = new ArrayList<>();
         items = new ArrayList<>();
+        encounters = new ArrayList<>();
         this.requiredProgress = 0;
         this.roomIntro = "A room description";
     }
@@ -156,6 +159,24 @@ public class Room extends Entity
     public void removeItem(int index) {
         items.remove(index);
     }
+    
+    public void addEncounter(Encounter encounter) {
+        this.encounters.add(encounter);
+    }
+    
+    public Encounter getEncounter() {
+        return this.encounters.get(0);
+    }
+    
+    public boolean hasEncounter() {
+        return this.hasEncounter;
+    }
+    
+    public void setHasEncounter(boolean input) {
+        this.hasEncounter = input;
+    }
+   
+    
     
    
 }

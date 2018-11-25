@@ -14,6 +14,8 @@ private List<NPC> npcs;
     
     public void createNPCS() {
         
+        
+        
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
         mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses, short clean cut redheaded");
@@ -85,6 +87,15 @@ private List<NPC> npcs;
         bookstoreLady.setCompleteQuestString("Thx for the coffee. The book is back in the storage room, you can go get it.");
         
         npcs.add(bookstoreLady);
+        
+        // lawStudent at index 3
+        NPC lawStudent = new NPC();
+        lawStudent.setFriendly(false);
+        lawStudent.setName("Wild law student");
+        lawStudent.setDialogOptions("<1: Fight\n"
+                                  + "<2: Flee");
+        npcs.add(lawStudent);
+        
         // End of the NPC at the student bookstore--------------------
         
         // Start of NPC at the canteen INDEX: 3-------------------

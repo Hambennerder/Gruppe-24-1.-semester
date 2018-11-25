@@ -3,6 +3,7 @@ package worldofzuul.content;
 
 import java.util.ArrayList;
 import java.util.List;
+import worldofzuul.Encounter;
 import worldofzuul.Room;
 
 
@@ -22,7 +23,7 @@ public class Rooms extends Room {
                        g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
         
         // Entrance index 0
-        entrance = new Room("");
+        entrance = new Room("");     
         entrance.setDescription("You are a new student in software engineering and \n"
                          + "you have just arrived outside the main entrance \n"
                          + "of the university. You look around and see cou- \n"
@@ -78,8 +79,14 @@ public class Rooms extends Room {
                 + " of hallways and dead ends even though people"
                 + " are all around you. Will you be able to"
                 + " find the place you need to be?");
+        g1.setDescription("in hallway g1."
+                + "It feels like you wander alone in this vast labrinth"
+                + " of hallways and dead ends even though people"
+                + " are all around you. Will you be able to"
+                + " find the place you need to be?");
         g1.setName("g1"); 
         g1.setRequiredProgress(2);   
+        g1.setHasEncounter(true);
         rooms.add(g1);
         
         // u180 index 5
@@ -152,12 +159,14 @@ public class Rooms extends Room {
         rooms.add(canteen);
         
         
-
+        // library at index 12
         library = new Room("library");
         rooms.add(library);
         
-
+        // study hall at index 13
         studyhall = new Room("study hall");
+        studyhall.setHasEncounter(true);
+        
         rooms.add(studyhall);
         
         // index 8
