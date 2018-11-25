@@ -1,36 +1,34 @@
-
 package worldofzuul;
 
-    public class Item extends Entity{
-        
-        private int value;
-        private int weight;
-        private String information;
-        
-    public Item() {
-        
-    }    
+public class Item extends Entity {
 
-     
-    public Item(int value, int weight, String information){
+    private int value;
+    private int weight;
+    private String information;
+
+    public Item() {
+
+    }
+
+    public Item(int value, int weight, String information) {
         this.value = value;
         this.weight = weight;
         this.information = information;
 
     }
-        
-    public String getInformation(){      
-        return information; 
+
+    public String getInformation() {
+        return information;
     }
-    
-    public int getValue(){   
+
+    public int getValue() {
         return value;
     }
-    
-    public int getWeight(){ 
+
+    public int getWeight() {
         return weight;
     }
-        /*
+    /*
         // Consumable:
     public static boolean isConsumable(int playerLevel, int itemLevel){
         if(playerLevel >= itemLevel){
@@ -88,6 +86,5 @@ package worldofzuul;
             return true;
         }
     }
-*/
+     */
 }
-

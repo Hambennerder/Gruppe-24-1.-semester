@@ -1,10 +1,9 @@
-
 package worldofzuul;
 
 import java.util.ArrayList;
 
 public class NPC extends Entity {
-    
+
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<String> npcStrings = new ArrayList<>();
     private int level;
@@ -22,7 +21,7 @@ public class NPC extends Entity {
     private Boolean friendly;
     private String completeQuestString;
     private String questString;
-    
+
     public NPC() {
         this.level = 1;
         this.experience = 1;
@@ -32,50 +31,50 @@ public class NPC extends Entity {
         this.goodbye = "Farewell traveler!";
         this.friendly = true;
     }
-    
-    public NPC(int level,int experience,int health,Boolean friendly) {
+
+    public NPC(int level, int experience, int health, Boolean friendly) {
         this.level = level;
         this.experience = experience;
         this.health = health;
         this.friendly = friendly;
     }
-    
+
     public void setQuestString(String input) {
         this.questString = input;
     }
-    
+
     public String getQuestString() {
         return this.questString;
     }
-    
+
     public void setLevel(int level) {
         this.level = level;
     }
-    
+
     public int getLevel() {
         return this.level;
     }
-    
+
     public void setExperience(int experience) {
         this.experience = experience;
     }
-    
+
     public int getExperience() {
         return this.experience;
     }
-    
+
     public void setHealth(int health) {
         this.health = health;
     }
-    
+
     public int getHealth() {
         return health;
     }
-    
+
     public void addToInventory(Item item) {
         inventory.add(item);
     }
-    
+
     public void removeFromInventory(int ID) {
         for (Item item : inventory) {
             if (ID == item.getEntityID()) {
@@ -83,87 +82,83 @@ public class NPC extends Entity {
             }
         }
     }
-    
+
     public void setWelcome(String welcome) {
         this.welcome = welcome;
     }
-    
+
     public String getWelcome() {
         return welcome;
     }
-    
+
     public void setGoodbye(String goodbye) {
         this.goodbye = goodbye;
     }
-    
+
     public String getGoodbye() {
         return this.goodbye;
     }
-    
+
     public void setFriendly(boolean friendly) {
         this.friendly = friendly;
     }
-    
+
     public boolean getFriendly() {
         return this.friendly;
     }
-    
+
     public void setDialogOptions(String string) {
         this.dialogOptions = string;
     }
-    
+
     public String getDialogOptions() {
         return this.dialogOptions;
     }
-    
+
     public void setDeclineString(String string) {
         this.declineString = string;
     }
-    
+
     public String getDeclineString() {
         return this.declineString;
     }
-    
+
     public void setAcceptString(String string) {
         this.acceptString = string;
     }
-    
+
     public String getAcceptString() {
         return this.acceptString;
     }
-    
-    
+
     public void setOnQuestString(String string) {
         this.onQuestString = string;
     }
-    
+
     public String getOnQuestString() {
         return this.onQuestString;
     }
+
     public void setQuestCompletedString(String string) {
         this.questCompletedString = string;
     }
-    
+
     public String getQuestCompletedString() {
         return this.questCompletedString;
     }
-    
+
     public void setCompleteQuestString(String string) {
         this.completeQuestString = string;
     }
-    
+
     public String getCompleteQuestString() {
         return this.completeQuestString;
     }
-    
+
     @Override
     public String toString() {
-        return " " + this.getName(); 
+        return " " + this.getName();
     }
-        
-    
-    
-    
+
     // Abilities to be implemented soon
-    
 }
