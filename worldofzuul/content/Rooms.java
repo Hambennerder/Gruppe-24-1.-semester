@@ -138,7 +138,7 @@ public class Rooms extends Room {
         // student bookstores storage at index 10
         storage = new Room("You shouldnt be back here... unless");
         storage.setDescription("Is that a \'book\'?");
-        storage.setName("Student bookshop storage");
+        storage.setName("Student bookstore storage");
         rooms.add(storage);
 
         // canteen at index 11
@@ -152,24 +152,43 @@ public class Rooms extends Room {
         rooms.add(canteen);
         
         
-
+        
+                // Index 12
+        g3 = new Room("g3");
+        rooms.add(g3);
+        g3.setRequiredProgress(6);
+        
+        // Index 13
+        g4 = new Room("g4");
+        rooms.add(g4);
+        
+        
+        // Index 14
+        g5 = new Room("g5");
+        rooms.add(g5);
+        
+        // Index 15
+        g6 = new Room("g6");
+        rooms.add(g6);
+        
+        // library at index 16
         library = new Room("library");
         rooms.add(library);
         
-
+        // study hall at index 17
         studyhall = new Room("study hall");
         rooms.add(studyhall);
         
-        // index 8
+        // index at index 18
         u55 = new Room("u55");
         rooms.add(u55);
         
-        // index 9
+        // index at 19
         u45 = new Room("u45");
         rooms.add(u45);
       
         
-      
+        // Index at 20
         t8 = new Room("t8");
         rooms.add(t8);
 
@@ -178,38 +197,82 @@ public class Rooms extends Room {
 
         
 
-        g3 = new Room("g3");
-        rooms.add(g3);
-        g4 = new Room("g4");
-        g5 = new Room("g5");
-        g6 = new Room("g6");
+        
         
         
         
         g9 = new Room("g9");
+        rooms.add(g9);
+        
         g10 = new Room("g10");
+        rooms.add(g10);
+        
         g11 = new Room("g11");
+        rooms.add(g11);
+        
         g12 = new Room("g12");
+        rooms.add(g12);
+        
         g13 = new Room("g13");
+        rooms.add(g13);
+        
         g14 = new Room("g14");
+        rooms.add(g14);
+        
         g15 = new Room("g15");
+        rooms.add(g15);
+        
         g16 = new Room("g16");
+        rooms.add(g16);
+        
         g17 = new Room("17");
+        rooms.add(g17);
+        
         g18 = new Room("g18");
+        rooms.add(g18);
+        
         g19 = new Room("g19");
+        rooms.add(g19);
+        
         g20 = new Room("20");
+        rooms.add(g20);
+        
         g21 = new Room("21");
+        rooms.add(g21);
+        
         g22 = new Room("22");
+        rooms.add(g22);
+        
         g23 = new Room("23");
+        rooms.add(g23);
+        
         g24 = new Room("24");
+        rooms.add(g24);
+        
         k1 = new Room("k1");
+        rooms.add(k1);
+        
         k2 = new Room("k2");
+        rooms.add(k2);
+        
         k3 = new Room("k3");
+        rooms.add(k3);
+        
         k4 = new Room("k4");
+        rooms.add(k4);
+        
         k5 = new Room("k5");
+        rooms.add(k5);
+        
         k6 = new Room("k6");
+        rooms.add(k6);
+        
         k7 = new Room("k7");
+        rooms.add(k7);
+        
         k8 = new Room("k8");
+        rooms.add(k8);
+        
 
         entrance.setExit("east", g1);
         entrance.setExit("north",u1);

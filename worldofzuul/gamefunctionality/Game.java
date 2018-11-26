@@ -73,11 +73,24 @@ public class Game extends Player
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
 
 
-
+        // Adding coffee to the canteen
         Item coffee = new Item();
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
+        
+        // Adding the constitution to the library and stranger to hallway g3
+        Item holy_constitution = new Item ();
+        holy_constitution.setName("Holy Constitution");
+        listOfRooms.getRoom(16).addItem(holy_constitution);
+        listOfRooms.getRoom(12).addNPC(npcs.getNPC(3));
 
+        // Adding Lune to u55
+        listOfRooms.getRoom(18).addNPC(npcs.getNPC(4));
+        
+        
+        // Adding Eryk to u45
+        listOfRooms.getRoom(19).addNPC(npcs.getNPC(5));
+        
         printWelcome(player.getPlayerName());
 
         boolean finished = false;
