@@ -149,6 +149,8 @@ private List<NPC> npcs;
         eryk.setQuestCompletedString("You should tru helping the other students.");
         // End of Eryk -------------------------------------------------------------------
                                       
+        NPC moderator = new NPC ();
+        
         
         
     
