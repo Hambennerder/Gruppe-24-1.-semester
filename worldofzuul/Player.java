@@ -16,7 +16,7 @@ import java.util.Scanner;
     private int health;
     private int level;
     private int experience;
-    private int age;
+    private String age;
     private String gender;    
     private Scanner input;
     private int progress = 0;
@@ -32,11 +32,11 @@ import java.util.Scanner;
         return gender;
     }
     
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
     
-    public int getAge() {
+    public String getAge() {
         return age;
     }
     
@@ -125,11 +125,11 @@ import java.util.Scanner;
 }
     
     // Player age conversation
-    public int ConversationAge(String question) {
+    public String ConversationAge(String question) {
         input = new Scanner(System.in);
         System.out.println(question);
         System.out.print("> ");
-        int answer = input.nextInt();
+        String answer = input.next();
         
         return answer;
     }
