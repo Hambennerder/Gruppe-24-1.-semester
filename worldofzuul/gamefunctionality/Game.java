@@ -303,20 +303,29 @@ public class Game extends Player {
             if (currentRoom.getEncounter().encounterMet()) {
                 System.out.println(currentRoom.getEncounter().getEncounterMessage());
                 System.out.println(currentRoom.getEncounter().getEncounterNPC().getDialogOptions());
-                String answer = getSimpleUserInput();
 
-                if (answer.equals("1")) {
-                    System.out.println("You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!");
-                    // Load combat system
-                } else if (answer.equals("2")) {
+                Scanner input = new Scanner(System.in);
+                boolean acceptableAnswer = false;
+                while (!acceptableAnswer) {
+                    String answer = input.nextLine();
 
-                    if (currentRoom.getEncounter().tryFlee()) {
-                        System.out.println("You escaped!!");
-                        // print some sort of UI
-                    } else {
-                        System.out.println("You failed the flight!");
-                        System.out.println("*BAM* you won the fight!");
+                    if (answer.equals("1")) {
+                        System.out.println("You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!");
                         // Load combat system
+                        acceptableAnswer = true;
+
+                    } else if (answer.equals("2")) {
+                        if (currentRoom.getEncounter().tryFlee()) {
+                            System.out.println("You escaped!!");
+                            // print some sort of UI
+                            acceptableAnswer = true;
+                        } else {
+                            // load combat system
+                            System.out.println("BAM you won the fight.");
+                        }
+
+                    } else {
+                        System.out.println("Type in either 1 or 2");
                     }
                 }
 
