@@ -36,10 +36,6 @@ public class Player extends Entity {
           return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     // Set player name
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
