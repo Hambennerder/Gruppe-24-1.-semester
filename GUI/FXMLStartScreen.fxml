@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLStartScreenController">
+   <children>
+      <TextArea editable="false" focusTraversable="false" layoutX="14.0" layoutY="14.0" mouseTransparent="true" prefHeight="226.0" prefWidth="571.0" text="&#10;&#10;           Welcome to World of SDUul&#10;&#10; Please enter your name, age and gender.">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </TextArea>
+      <Text layoutX="14.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+      <Text layoutX="14.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
+      <Text layoutX="14.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
+      <TextField fx:id="nameSetter" layoutX="77.0" layoutY="250.0" />
+      <TextField fx:id="ageSetter" layoutX="77.0" layoutY="290.0" />
+      <TextField fx:id="genderSetter" layoutX="77.0" layoutY="332.0" />
+      <Button fx:id="playBtn" layoutX="504.0" layoutY="332.0" mnemonicParsing="false" onAction="#handlePlayBtn" text="Play!" />
+   </children>
+</AnchorPane>

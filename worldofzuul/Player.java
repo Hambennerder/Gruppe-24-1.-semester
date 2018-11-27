@@ -13,8 +13,8 @@ public class Player extends Entity {
     private int health;
     private int level;
     private int experience;
-    private int age;
-    private String gender;
+    private String age;
+    private String gender;    
     private Scanner input;
     private int progress = 0;
     private int indexOfLastAdded = 0;
@@ -27,13 +27,17 @@ public class Player extends Entity {
     public String getGender() {
         return gender;
     }
+  
+    public void setAge(String age) {
+        this.age = age;
+    }
+    
+    public String getAge() {
+          return age;
+    }
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     // Set player name
@@ -121,12 +125,11 @@ public class Player extends Entity {
     }
 
     // Player age conversation
-    public int ConversationAge(String question) {
+    public String ConversationAge(String question) {
         input = new Scanner(System.in);
         System.out.println(question);
         System.out.print("> ");
-        int answer = input.nextInt();
-
+        String answer = input.next();
         return answer;
     }
 }
