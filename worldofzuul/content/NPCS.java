@@ -159,7 +159,7 @@ private List<NPC> npcs;
         
         // End of Eryk -------------------------------------------------------------------
         
-        // Start of e-moderator in T8 ----------------------------------------------------
+        // Start of e-moderator in T8 index 6 ----------------------------------------------------
         NPC moderator = new NPC();
         moderator.setName("Malta");
         moderator.setWelcome("Thanks for helping me escape from the janitors");
@@ -180,7 +180,23 @@ private List<NPC> npcs;
         
         // End of moderator --------------------------------------------------------------
         
-        
+        // start of Joakim in u45
+        NPC joakim = new NPC();
+        joakim.setName("Joakim");
+        joakim.setWelcome("Hey there buddy! I need help with some exercises \n"
+                + "and Eryk doesn't seem to have time to help me.\n"
+                + "Will you help me? (yes/no)");
+        joakim.setDescription("A very handsome bloke");
+        joakim.setDialogOptions("< 1: Talk"
+                                      +"\n< 2: Trade"
+                                      + "\n< 3: Leave");
+        joakim.setQuestString("I need help finding something on the internet, but I don't know how to use it. \n"
+                + "Do you know how to use google? (yes/no)");
+        joakim.setAcceptString("Thank you so much, The internet is such a weird place");
+        joakim.setDeclineString("Please I really need using the internet");
+        joakim.setOnQuestString("Please help using that intenet-ting");
+        joakim.setCompleteQuestString("Thanks for the help, now I know how to use google");
+        joakim.setQuestCompletedString("I got this now");
         
         
     
