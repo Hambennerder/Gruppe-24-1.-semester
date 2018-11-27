@@ -91,6 +91,13 @@ public class Game extends Player
         // Adding Eryk to u45
         listOfRooms.getRoom(19).addNPC(npcs.getNPC(5));
         
+        // Adding Malta to T8 and his bag to k7
+        Item bag = new Item();
+        bag.setName("bag");
+        listOfRooms.getRoom(20).addNPC(npcs.getNPC(6));
+        listOfRooms.getRoom(42).addItem(bag);
+        
+        
         printWelcome(player.getPlayerName());
 
         boolean finished = false;

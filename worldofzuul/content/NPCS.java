@@ -92,9 +92,9 @@ private List<NPC> npcs;
 
         // Start of NPC for study hall + library quest INDEX: 3--------------
         NPC student = new NPC();
-        student.setName("stranger");
+        student.setName("student");
         student.setWelcome("Hey! Please I need your help!");
-        student.setDescription("A stranger in distress");
+        student.setDescription("A student in distress");
         student.setDialogOptions("< 1: Talk"
                                       +"\n< 2: Trade"
                                       + "\n< 3: Leave");
@@ -109,6 +109,9 @@ private List<NPC> npcs;
         student.setOnQuestString("We have to make room for us to study in the study hall");
         student.setCompleteQuestString("Thank you so much, now there is a slight chance I'll pass the exam.");
         student.setQuestCompletedString("You did a good job, I'll owe you");
+        
+        npcs.add(student);
+        
         // End of student -------------------------------------------------------
         
         // Start of NPC Lune at u55 INDEX: 4------------------------------------
@@ -127,8 +130,11 @@ private List<NPC> npcs;
         lune.setOnQuestString("Go find the e-moderator");
         lune.setCompleteQuestString("Great job finding the e-moderator \n"
                 + "It must have been quite difficult \n"
-                + "Now get going, I've heard Eryk needs some help in u45... oh and Remember you e-tivities");
+                + "Now get going, I've heard Eryk needs some help in u45... oh and Remember your e-tivities");
         lune.setQuestCompletedString("You should really get going now");
+        
+        npcs.add(lune);
+        
         // End of NPC Lune ----------------------------------------------------
         
         // Start of NPC Eryk at u45 INDEX: 5------------------------------------
@@ -146,17 +152,39 @@ private List<NPC> npcs;
         eryk.setDeclineString("I can't teach you if we don't get the technology fixed");
         eryk.setOnQuestString("Please fix the power");
         eryk.setCompleteQuestString("Great job on turning on the power, now we can get on with the teaching");
-        eryk.setQuestCompletedString("You should tru helping the other students.");
+        eryk.setQuestCompletedString("You should try helping the other students.");
+        
+        npcs.add(eryk);
+        
+        
         // End of Eryk -------------------------------------------------------------------
-                                      
-        NPC moderator = new NPC ();
+        
+        // Start of e-moderator in T8 ----------------------------------------------------
+        NPC moderator = new NPC();
+        moderator.setName("Malta");
+        moderator.setWelcome("Thanks for helping me escape from the janitors");
+        moderator.setDescription("Your e-moderator for journal-writing");
+        moderator.setDialogOptions("< 1: Talk"
+                                      +"\n< 2: Trade"
+                                      + "\n< 3: Leave");
+        moderator.setQuestString("I'm pretty sure I dropped my bag when I was running from the janitors \n"
+                + "will you help me get it back? (yes/no)");
+        moderator.setAcceptString("Thank you so much I really need it for administring the journals");
+        moderator.setDeclineString("You won't be able to do your journals if I don't get my computer");
+        moderator.setOnQuestString("Please find my bag");
+        moderator.setCompleteQuestString("Great job finding my bag. Get back to Lune");
+        moderator.setQuestCompletedString("Get back to Lune");
+        
+        npcs.add(moderator);
+        
+        
+        // End of moderator --------------------------------------------------------------
+        
         
         
         
     
       
-       
-       
        
        
        
