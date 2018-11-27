@@ -67,7 +67,7 @@ public class FXMLStartScreenController implements Initializable {
        } else {
         System.out.println(g.getPlayerName()+"    "+g.getAge()+"     "+g.getGender());
         
-        Stage stage = NewFXMain.stage;
+        Stage stage = GUI.stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMain.fxml"));
 
         Parent root = loader.load();

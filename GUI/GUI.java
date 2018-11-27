@@ -6,16 +6,20 @@
 package GUI;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author joakim
  */
-public class NewFXMain extends Application {
+public class GUI extends Application {
 
     public static Stage stage;
 
@@ -35,5 +39,5 @@ public class NewFXMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    
 }
