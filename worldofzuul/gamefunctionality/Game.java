@@ -1,5 +1,6 @@
 package worldofzuul.gamefunctionality;
 
+import GUI.FXMLMainController;
 import java.util.Scanner;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
@@ -14,6 +15,7 @@ public class Game extends Player {
     private Room currentRoom;
     private Room nextRoom;
     private Player player;
+    private FXMLMainController g;
 
     public Game() {
         parser = new Parser();
@@ -33,6 +35,7 @@ public class Game extends Player {
     }
 
     public void play() {
+        /*
         System.out.println("#");
         System.out.println("#  ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗      ██████╗ ███████╗    ███████╗██████╗ ██╗   ██╗██╗   ██╗██╗     ");
         System.out.println("#  ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗    ██╔═══██╗██╔════╝    ██╔════╝██╔══██╗██║   ██║██║   ██║██║     ");
@@ -41,11 +44,11 @@ public class Game extends Player {
         System.out.println("#  ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝    ╚██████╔╝██║         ███████║██████╔╝╚██████╔╝╚██████╔╝███████╗");
         System.out.println("#   ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝      ╚═════╝ ╚═╝         ╚══════╝╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝");
         System.out.println("#");
-
+        
         setPlayerName();
         setGender();
         setAge();
-
+        */
         Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
@@ -92,13 +95,15 @@ public class Game extends Player {
     }
 
     private void printWelcome(String playername) {
-        System.out.println();
-        System.out.println("Welcome " + playername + ", to the world of SDUUL.\n");
-        System.out.println("An adventurous text-based rpg game that tackles the life being a new university student\n"
-                + "in the most boring of fashion, we will show you the everchanging day to day life in a \n"
-                + "comedic way. The game consists of various quests and obstacles, which you as a player  \n"
-                + "must overcome to continue. You might be rewarded, and ultimately be prepared for how  \n"
-                + "boring studying can be. DISCLAIMER: 9/10 feminists want the creators behind this game in jail \n");
+        g.setOutput("Welcome " + playername + ", to the world of SDUUL.\n"
+                +"An adventurous text-based rpg game that tackles the life\n"
+                + "being a new university student in the most boring of \n"
+                + "fashion, we will show you the everchanging day to day\n"
+                + "life in a comedic way. This game consists of various\n"
+                + "quests and obstacles, which you as a player must over-\n"
+                + "come to continue. You might be rewarded, and ultimately\n"
+                + "be prepared for how boring studying can be. \n"
+                + "DISCLAIMER: 9/10 feminists want the creators behind this game in jail \n");
 
         // Code below is a result of a possible outstanding conflict in the group, will be handled shortly
         /* System.out.println("These are some helpful commands: ");
