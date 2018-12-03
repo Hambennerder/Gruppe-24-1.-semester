@@ -78,4 +78,4 @@ public class FXMLStartScreenController implements Initializable {
     } 
     }
         
-    }
+}
