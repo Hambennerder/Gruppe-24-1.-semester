@@ -152,7 +152,7 @@ private List<NPC> npcs;
         eryk.setDeclineString("I can't teach you if we don't get the technology fixed");
         eryk.setOnQuestString("Please fix the power");
         eryk.setCompleteQuestString("Great job on getting the screen working, now we can get on with the teaching");
-        eryk.setQuestCompletedString("You should try helping the other students.");
+        eryk.setQuestCompletedString("Remember your exam today. Head to Andars.");
         
         npcs.add(eryk);
         
