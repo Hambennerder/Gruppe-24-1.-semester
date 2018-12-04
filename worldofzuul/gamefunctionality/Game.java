@@ -78,7 +78,7 @@ public class Game extends Player
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
         
-        // Adding the constitution to the library and stranger to hallway g3
+        // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item ();
         holy_constitution.setName("Holy Constitution");
         listOfRooms.getRoom(16).addItem(holy_constitution);
@@ -88,8 +88,13 @@ public class Game extends Player
         listOfRooms.getRoom(18).addNPC(npcs.getNPC(4));
         
         
-        // Adding Eryk to u45
+        // Adding Eryk and cable to u45
+        Item cable = new Item();
+        cable.setName("cable");
+        listOfRooms.getRoom(19).addItem(cable);
         listOfRooms.getRoom(19).addNPC(npcs.getNPC(5));
+        
+        
         
         // Adding Malta to T8 and his bag to k7
         Item bag = new Item();

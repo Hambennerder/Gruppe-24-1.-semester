@@ -148,10 +148,10 @@ private List<NPC> npcs;
         eryk.setQuestString("The damn light won't work and I can't get the projector to work \n"
                 + "Will try and get the technology working in here? (yes/no)");
         eryk.setAcceptString("Thank you very much. \n "
-                + "There might be a switch or somthing that needs to be flicked");
+                + "There might be a cable or something missing");
         eryk.setDeclineString("I can't teach you if we don't get the technology fixed");
         eryk.setOnQuestString("Please fix the power");
-        eryk.setCompleteQuestString("Great job on turning on the power, now we can get on with the teaching");
+        eryk.setCompleteQuestString("Great job on getting the screen working, now we can get on with the teaching");
         eryk.setQuestCompletedString("You should try helping the other students.");
         
         npcs.add(eryk);
@@ -179,24 +179,6 @@ private List<NPC> npcs;
         
         
         // End of moderator --------------------------------------------------------------
-        
-        // start of Joakim in u45
-        NPC joakim = new NPC();
-        joakim.setName("Joakim");
-        joakim.setWelcome("Hey there buddy! I need help with some exercises \n"
-                + "and Eryk doesn't seem to have time to help me.\n"
-                + "Will you help me? (yes/no)");
-        joakim.setDescription("A very handsome bloke");
-        joakim.setDialogOptions("< 1: Talk"
-                                      +"\n< 2: Trade"
-                                      + "\n< 3: Leave");
-        joakim.setQuestString("I need help finding something on the internet, but I don't know how to use it. \n"
-                + "Do you know how to use google? (yes/no)");
-        joakim.setAcceptString("Thank you so much, The internet is such a weird place");
-        joakim.setDeclineString("Please I really need using the internet");
-        joakim.setOnQuestString("Please help using that intenet-ting");
-        joakim.setCompleteQuestString("Thanks for the help, now I know how to use google");
-        joakim.setQuestCompletedString("I got this now");
         
         
     

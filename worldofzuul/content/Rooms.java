@@ -159,16 +159,21 @@ public class Rooms extends Room {
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU");
         g3.setName("g3");
+        g3.setHasQuest(true);
+        g3.setJournalString("Clear the studyhall and library of students from other faculties");
+        
         
         // Index 13
         g4 = new Room("you are in hallway g4");
         rooms.add(g4);
+        g4.setRequiredProgress(6);
         g4.setDescription("wow... how long are these hallways");
         g4.setName("g4");
         
         // Index 14
         g5 = new Room("you are in hallway g5");
         rooms.add(g5);
+        g5.setRequiredProgress(6);
         g5.setDescription("You wonder how students have gotten lost at the university \n"
                 + "some of them must still be walking around here looking for an exit");
         g5.setName("g5");
@@ -176,6 +181,7 @@ public class Rooms extends Room {
         // Index 15
         g6 = new Room("you are in hallway g6");
         rooms.add(g6);
+        g6.setRequiredProgress(6);
         g6.setDescription("Finally a part of the hallway which is bright");
         g6.setName("g6");
         
@@ -185,13 +191,16 @@ public class Rooms extends Room {
         library.setDescription("You have arrived at the library... Those law students don't look nice \n"
                 + "but that \'Holy Constitution\' might be useful");
         library.setName("library");
+        library.setRequiredProgress(6);
         
         // study hall at index 17
         studyhall = new Room("study hall");
         rooms.add(studyhall);
+        studyhall.setRequiredProgress(6);
         studyhall.setDescription("The studyhall is full of people who study medicin \n"
                 + "You probably need to get them out of here, if you want a place to study");
         studyhall.setName("Studyhall");
+        
         
         // index at index 18
         u55 = new Room("u55");
@@ -199,14 +208,20 @@ public class Rooms extends Room {
         u55.setDescription("You are in a big auditorium desgined for teaching a large number os students\n"
                 + "You see your teacher \'Lune\' ");
         u55.setName("u55");
+        u55.setRequiredProgress(8);
+        u55.setHasQuest(true);
+        u55.setJournalString("Find your e-moderator. Maybe he's in t8. Return to Lune when you're done");
         
         // index at 19
         u45 = new Room("u45");
         rooms.add(u45);
         u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
-                + "you can see your teacher \'Eryk\'");
+                + "you can see your teacher \'Eryk\' and a \'cable\' ");
         u45.setName("u45");
-      
+        u45.setRequiredProgress(11);
+        u45.setHasQuest(true);
+        u45.setJournalString("Fix the technology in u45");
+        
         
         // Index at 20
         t8 = new Room("t8");
@@ -214,10 +229,17 @@ public class Rooms extends Room {
         t8.setDescription("The most feared room on campus. It's dark, smelly and almost impossible to find\n"
                 + "You see a figure that looks like \'Malta\'");
         t8.setName("T8");
+        t8.setRequiredProgress(8);
+        t8.setNextQuestProgress(10);
+        t8.setHasQuest(true);
+        t8.setJournalString("Find Malta's bag and bring it back to him");
+       
+                
         
         //index at 21   
         g9 = new Room("you are in hallway g9");
         rooms.add(g9);
+        g9.setRequiredProgress(8);
         g9.setDescription("You should have worn a pedometer...");
         g9.setName("g9");
         
