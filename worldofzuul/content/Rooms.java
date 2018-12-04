@@ -131,7 +131,7 @@ public class Rooms extends Room {
         bookstore.setNextQuestProgress(3);
         bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
                 + " which is somewhere south, remember Andars' warning."
-                + "The lady in the bookstore wants you to get her som coffee, head up to the canteen.");
+                + "The lady in the bookstore wants you to get her some coffee, head up to the canteen.");
         
         rooms.add(bookstore);
         
@@ -154,124 +154,188 @@ public class Rooms extends Room {
         
         
                 // Index 12
-        g3 = new Room("g3");
+        g3 = new Room("you are in hallway g3");
         rooms.add(g3);
         g3.setRequiredProgress(6);
+        g3.setDescription("another part of the maze that is SDU");
+        g3.setName("g3");
         
         // Index 13
-        g4 = new Room("g4");
+        g4 = new Room("you are in hallway g4");
         rooms.add(g4);
-        
+        g4.setDescription("wow... how long are these hallways");
+        g4.setName("g4");
         
         // Index 14
-        g5 = new Room("g5");
+        g5 = new Room("you are in hallway g5");
         rooms.add(g5);
+        g5.setDescription("You wonder how students have gotten lost at the university \n"
+                + "some of them must still be walking around here looking for an exit");
+        g5.setName("g5");
         
         // Index 15
-        g6 = new Room("g6");
+        g6 = new Room("you are in hallway g6");
         rooms.add(g6);
+        g6.setDescription("Finally a part of the hallway which is bright");
+        g6.setName("g6");
         
         // library at index 16
         library = new Room("library");
         rooms.add(library);
+        library.setDescription("You have arrived at the library... Those law students don't look nice \n"
+                + "but that \'Holy Constitution\' might be useful");
+        library.setName("library");
         
         // study hall at index 17
         studyhall = new Room("study hall");
         rooms.add(studyhall);
+        studyhall.setDescription("The studyhall is full of people who study medicin \n"
+                + "You probably need to get them out of here, if you want a place to study");
+        studyhall.setName("Studyhall");
         
         // index at index 18
         u55 = new Room("u55");
         rooms.add(u55);
+        u55.setDescription("You are in a big auditorium desgined for teaching a large number os students\n"
+                + "You see your teacher \'Lune\' ");
+        u55.setName("u55");
         
         // index at 19
         u45 = new Room("u45");
         rooms.add(u45);
+        u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
+                + "you can see your teacher \'Eryk\'");
+        u45.setName("u45");
       
         
         // Index at 20
         t8 = new Room("t8");
         rooms.add(t8);
-
+        t8.setDescription("The most feared room on campus. It's dark, smelly and almost impossible to find\n"
+                + "You see a figure that looks like \'Malta\'");
+        t8.setName("T8");
         
-        
-
-        
-
-        
-        
-        
-        
-        g9 = new Room("g9");
+        //index at 21   
+        g9 = new Room("you are in hallway g9");
         rooms.add(g9);
+        g9.setDescription("You should have worn a pedometer...");
+        g9.setName("g9");
         
-        g10 = new Room("g10");
+        g10 = new Room("you are in hallway g10");
         rooms.add(g10);
+        g10.setDescription("Luckily you don't have to go to the gym anymore\n"
+                + "with all the walking you have been doing here");
+        g10.setName("g10");
         
-        g11 = new Room("g11");
+        g11 = new Room("you are in hallway g11");
         rooms.add(g11);
+        g11.setDescription("You should be at the basement floor soon");
+        g11.setName("g11");
         
-        g12 = new Room("g12");
+        g12 = new Room("you are in hallway g12");
         rooms.add(g12);
+        g12.setDescription("You are almost at the basement. T8 Should be down there");
+        g12.setName("g12");
         
-        g13 = new Room("g13");
+        g13 = new Room("you are in hallway g13");
         rooms.add(g13);
+        g13.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g13.setName("g13");
         
-        g14 = new Room("g14");
+        g14 = new Room("you are in hallway g14");
         rooms.add(g14);
+        g14.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g14.setName("g14");
         
-        g15 = new Room("g15");
+        g15 = new Room("you are in hallway g15");
         rooms.add(g15);
+        g15.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g15.setName("g15");
         
-        g16 = new Room("g16");
+        g16 = new Room("you are in hallway g16");
         rooms.add(g16);
+        g16.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g16.setName("g16");
         
-        g17 = new Room("17");
+        g17 = new Room("you are in hallway 17");
         rooms.add(g17);
+        g17.setDescription("It's really dark down here... Watch out for the angry janitors");
         
-        g18 = new Room("g18");
+        g18 = new Room("you are in hallway g18");
         rooms.add(g18);
+        g18.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g18.setName("g18");
         
-        g19 = new Room("g19");
+        g19 = new Room("you are in hallway g19");
         rooms.add(g19);
+        g19.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g19.setName("g19");
         
-        g20 = new Room("20");
+        g20 = new Room("you are in hallway g20");
         rooms.add(g20);
+        g20.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g20.setName("g20");
         
-        g21 = new Room("21");
+        g21 = new Room("you are in hallway g21");
         rooms.add(g21);
+        g21.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g21.setName("g21");
         
-        g22 = new Room("22");
+        g22 = new Room("you are in hallway g22");
         rooms.add(g22);
+        g22.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g22.setName("g22");
         
-        g23 = new Room("23");
+        g23 = new Room("you are in hallway g23");
         rooms.add(g23);
+        g23.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g23.setName("g23");
         
-        g24 = new Room("24");
+        g24 = new Room("you are in hallway g24");
         rooms.add(g24);
+        g24.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g24.setName("g24");
         
-        k1 = new Room("k1");
+        k1 = new Room("you are in the basement in room k1");
         rooms.add(k1);
+        k1.setDescription("The basement is dark and scary\n"
+                + "You proably shouldn't linger for too long");
+        k1.setName("k1");
         
-        k2 = new Room("k2");
+        k2 = new Room("you are in the basement in room k2");
         rooms.add(k2);
+        k2.setDescription("This basement is impossible to navigate");
+        k2.setName("k2");
         
-        k3 = new Room("k3");
+        k3 = new Room("you are in the basement in room k3");
         rooms.add(k3);
+        k3.setDescription("Will you ever find T8?");
+        k3.setName("k3");
         
-        k4 = new Room("k4");
+        k4 = new Room("you are in the basement in room k4");
         rooms.add(k4);
+        k4.setDescription("How come you have to be down here... it's all smelly and old");
+        k4.setName("k4");
         
-        k5 = new Room("k5");
+        k5 = new Room("you are in the basement in room k5");
         rooms.add(k5);
+        k5.setDescription("This might be the right way... wait, where are you going?");
+        k5.setName("k5");
         
-        k6 = new Room("k6");
+        k6 = new Room("you are in the basement in room k6");
         rooms.add(k6);
+        k6.setDescription("This basement much be pretty huge");
+        k6.setName("k6");
         
-        k7 = new Room("k7");
+        k7 = new Room("you are in the basement in room k7");
         rooms.add(k7);
+        k7.setDescription("Is that Malta's \'bag\' over there?");
+        k7.setName("k7");
         
-        k8 = new Room("k8");
+        k8 = new Room("you are in the basement in room k8");
         rooms.add(k8);
+        k8.setDescription("What is that weird smell in here?");
+        k8.setName("k8");
         
 
         entrance.setExit("east", g1);
