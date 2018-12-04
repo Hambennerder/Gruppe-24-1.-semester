@@ -71,16 +71,45 @@ public class Game extends Player {
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
 
+
+        // Adding coffee to the canteen        
+        Item coffee = new Item();
+        coffee.setName("coffee");
+        listOfRooms.getRoom(11).addItem(coffee);
+
         // test code
         Encounter encounter = new Encounter();
         encounter.addEncounterNPC(npcs.getNPC(3));
         encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(4).addEncounter(encounter);
 
-        Item coffee = new Item();
-        coffee.setName("coffee");
-        listOfRooms.getRoom(11).addItem(coffee);
 
+        
+        // Adding the constitution to the library and student to hallway g3
+        Item holy_constitution = new Item ();
+        holy_constitution.setName("Holy Constitution");
+        listOfRooms.getRoom(16).addItem(holy_constitution);
+        listOfRooms.getRoom(12).addNPC(npcs.getNPC(3));
+
+        // Adding Lune to u55
+        listOfRooms.getRoom(18).addNPC(npcs.getNPC(4));
+        
+        
+        // Adding Eryk and cable to u45
+        Item cable = new Item();
+        cable.setName("cable");
+        listOfRooms.getRoom(19).addItem(cable);
+        listOfRooms.getRoom(19).addNPC(npcs.getNPC(5));
+        
+        
+        
+        // Adding Malta to T8 and his bag to k7
+        Item bag = new Item();
+        bag.setName("bag");
+        listOfRooms.getRoom(20).addNPC(npcs.getNPC(6));
+        listOfRooms.getRoom(42).addItem(bag);
+        
+        
         printWelcome(player.getPlayerName());
 
         boolean finished = false;
