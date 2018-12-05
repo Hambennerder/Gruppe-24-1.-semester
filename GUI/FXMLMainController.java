@@ -20,16 +20,18 @@ import javafx.scene.control.TextField;
  *
  * @author joakim
  */
-public class FXMLMainController extends FXMLStartScreenController implements Initializable {
-    
-    @FXML
-    private ListView<?> lv;
+public class FXMLMainController implements Initializable {
+    public String text;
     @FXML
     private TextArea output;
     @FXML
     private TextField console;
     @FXML
     private Button sendBtn;
+    @FXML
+    private ListView<?> lvInv;
+    @FXML
+    private ListView<?> lvEx;
 
     /**
      * Initializes the controller class.
@@ -37,7 +39,6 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
     }    
     
     public void setOutput(String text){
@@ -52,9 +53,14 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
         output.clear();
     }
     
+    public String getText(){
+        return text;
+    }
+    
     @FXML
     private void handleSendBtn(ActionEvent event) {
-        
+        text = console.getText();
+        console.clear();
     }
     
 }

@@ -14,27 +14,20 @@ public class Parser {
         reader = new Scanner(System.in);
     }
 
-    public Command getCommand() {
-        String inputLine;
+    public Command getCommand(String inputLine) {
+        
         String word1 = null;
-        String word2 = null;
-
-        System.out.print("> ");
-
-        inputLine = reader.nextLine();
-
-        Scanner tokenizer = new Scanner(inputLine);
-        if (tokenizer.hasNext()) {
-            word1 = tokenizer.next();
-            if (tokenizer.hasNext()) {
-                word2 = tokenizer.next();
-            }
-        }
+        String word2 = null;       
+        
+        String[] ar = inputLine.split(" ");
+        
+        word1 = ar[0];
+        word2 = ar[1];
 
         return new Command(commands.getCommandWord(word1), word2);
     }
 
-    public void showCommands() {
-        commands.showAll();
+    public String showCommands() {
+        return commands.showAll();
     }
 }

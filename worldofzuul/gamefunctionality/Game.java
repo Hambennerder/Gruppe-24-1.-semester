@@ -11,11 +11,10 @@ import worldofzuul.content.Rooms;
 
 public class Game extends Player {
 
-    private Parser parser;
+    public Parser parser;
     private Room currentRoom;
     private Room nextRoom;
     private Player player;
-    private FXMLMainController g;
 
     public Game() {
         parser = new Parser();
@@ -35,7 +34,7 @@ public class Game extends Player {
     }
 
     public void play() {
-        /*
+        
         System.out.println("#");
         System.out.println("#  ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗      ██████╗ ███████╗    ███████╗██████╗ ██╗   ██╗██╗   ██╗██╗     ");
         System.out.println("#  ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗    ██╔═══██╗██╔════╝    ██╔════╝██╔══██╗██║   ██║██║   ██║██║     ");
@@ -48,7 +47,8 @@ public class Game extends Player {
         setPlayerName();
         setGender();
         setAge();
-        */
+        
+        
         Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
@@ -83,19 +83,12 @@ public class Game extends Player {
         Item coffee = new Item();
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
-
+        
         printWelcome(player.getPlayerName());
-
-        boolean finished = false;
-        while (!finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
-        }
-        System.out.println("Thank you for playing. Good bye.");
     }
-
-    private void printWelcome(String playername) {
-        g.setOutput("Welcome " + playername + ", to the world of SDUUL.\n"
+    
+    public void printWelcome(String playername) {
+        System.out.println("Welcome " + playername + ", to the world of SDUUL.\n"
                 +"An adventurous text-based rpg game that tackles the life\n"
                 + "being a new university student in the most boring of \n"
                 + "fashion, we will show you the everchanging day to day\n"
@@ -124,16 +117,15 @@ public class Game extends Player {
 
     }
 
-    private boolean processCommand(Command command) {
+    public String processCommand(Command command) {
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
 
         if (commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
-            return false;
+            return "I don't know what you mean...";
         }
-
+        
         if (commandWord == CommandWord.HELP) {
             printHelp();
         } else if (commandWord == CommandWord.GO) {
@@ -177,8 +169,7 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.INVENTORY) {
             player.getInventory();
         }
-
-        return wantToQuit;
+        return "";
     }
 
     private void processOption(Command command) {
@@ -251,13 +242,11 @@ public class Game extends Player {
         }
     }
 
-    private void printHelp() {
-        System.out.println("Solve your current quest, you can see it by typing journal");
-        System.out.println("HINT: completing quests wins you the game.");
-        System.out.println();
-        System.out.println("Your command words are:");
-        parser.showCommands();
-        System.out.println();
+    private String printHelp() {
+        return"Solve your current quest, you can see it by typing journal"
+        +"HINT: completing quests wins you the game."
+        +"Your command words are:"
+        +parser.showCommands();
     }
 
     private void approachNPC(Command command) {

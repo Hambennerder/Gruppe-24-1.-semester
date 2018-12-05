@@ -25,7 +25,9 @@ import worldofzuul.gamefunctionality.Game;
  * @author joakim
  */
 public class FXMLStartScreenController implements Initializable {
-
+    public String name;
+    private String age;
+    private String gender;
     @FXML
     private TextField nameSetter;
     @FXML
@@ -38,23 +40,36 @@ public class FXMLStartScreenController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public Game g;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println("====================== initialize from FStartScreenController");
     }
-    Game g = new Game();
     
     public void setStartName() {
-        g.setPlayerName(nameSetter.getText());
+        name = nameSetter.getText();
     }
 
     public void setStartAge() {
-        g.setAge(ageSetter.getText());
+        age = ageSetter.getText();
     }
 
     public void setStartGender() {
-        g.setGender(genderSetter.getText());
+        gender = genderSetter.getText();
     }
+    
+    public String getterName(){
+        return this.name;
+    }
+    public String getterAge(){
+        return age;
+    }
+    public String getterGender(){
+       return gender; 
+    }
+    
 
     @FXML
     private void handlePlayBtn(ActionEvent event) throws IOException {
@@ -62,11 +77,11 @@ public class FXMLStartScreenController implements Initializable {
         setStartAge();
         setStartGender();
         
-       if (g.getAge().equals("")||g.getPlayerName().equals("")||g.getGender().equals("")){
+       if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
            System.out.println("Please enter whatever");
        } else {
-        System.out.println(g.getPlayerName()+"    "+g.getAge()+"     "+g.getGender());
-        
+        System.out.println(this.name+"    "+this.age+"     "+this.gender);
+
         Stage stage = GUI.stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMain.fxml"));
 
