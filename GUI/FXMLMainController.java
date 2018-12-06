@@ -91,6 +91,7 @@ public class FXMLMainController implements Initializable{
     public void handleSendBtn(ActionEvent event) {
         output.setText(loop(console.getText()));
         console.clear();
+        System.out.println(g.getS());
     }
 
 }

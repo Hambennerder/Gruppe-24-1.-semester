@@ -12,10 +12,10 @@ import worldofzuul.content.NPCS;
 import worldofzuul.content.Rooms;
 
 public class Game extends Player {
-
+    private String s;
     private String text;
     public Parser parser;
-    private Room currentRoom;
+    public Room currentRoom;
     private Room nextRoom;
     private Player player;
     private boolean finished = true;
@@ -53,6 +53,8 @@ public class Game extends Player {
          setAge();
         
          */
+        s = "blblbllblb";
+        
         Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
@@ -90,7 +92,9 @@ public class Game extends Player {
 
        // printWelcome(player.getPlayerName());
     }
-
+    public String getS(){
+        return s;
+    }
     public void printWelcome(String playername) {
         System.out.println("Welcome " + playername + ", to the world of SDUUL.\n"
                 + "An adventurous text-based rpg game that tackles the life\n"
@@ -134,8 +138,8 @@ public class Game extends Player {
         if (commandWord == CommandWord.HELP) {
             return printHelp();
         } else if (commandWord == CommandWord.BEGIN) {
-            return "Are you ready to dive into this? type (yes/no)\n"
-                    +startScreen(command);
+            return currentRoom.getLongDescription()+"\n" 
+                +  currentRoom.getRoomIntro();
         }else if (commandWord == CommandWord.GO) {
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
@@ -384,19 +388,23 @@ public class Game extends Player {
         return tempInput;
     }
 
-    private String startScreen(Command command) {
-        String s;
+    private String startScreen(String s) {
+        s="";
+        Command command = parser.getCommand(s);
+        s = processCommand(command);
         CommandWord commandWord = command.getCommandWord();
-        
-        if (commandWord==commandWord.YES) {
-        s= currentRoom.getLongDescription()
-        +  currentRoom.getRoomIntro();
-
+        while (commandWord==commandWord.BEGIN){
+        if (commandWord==commandWord.YES|commandWord==commandWord.NO){
+            if (commandWord==commandWord.YES) {
+                s= currentRoom.getLongDescription()
+                +  currentRoom.getRoomIntro();
         } else if (commandWord==commandWord.NO) {
             s = "Oh.. well you will have to play without the initial help text then. Type help for help.";
-
         } else {
             s = "Writing yes or no can't be that hard..";
+        }
+        }
+
         } return s;
     }
 
