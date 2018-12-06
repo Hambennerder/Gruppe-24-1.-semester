@@ -30,9 +30,9 @@ public class CommandWords {
     }
 
     public String showAll() {
-        String s=null;
+        String s="";
         for (String command : validCommands.keySet()) {
-            s += command + "  ";
+            s += command + "\n";
         }
         return s;
     }

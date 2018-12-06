@@ -1,7 +1,9 @@
 package worldofzuul.gamefunctionality;
 
 import GUI.FXMLMainController;
+import GUI.GUI;
 import java.util.Scanner;
+import javafx.application.Application;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
@@ -11,10 +13,12 @@ import worldofzuul.content.Rooms;
 
 public class Game extends Player {
 
+    private String text;
     public Parser parser;
     private Room currentRoom;
     private Room nextRoom;
     private Player player;
+    private boolean finished = true;
 
     public Game() {
         parser = new Parser();
@@ -34,21 +38,21 @@ public class Game extends Player {
     }
 
     public void play() {
+
+        /* System.out.println("#");
+         System.out.println("#  ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗      ██████╗ ███████╗    ███████╗██████╗ ██╗   ██╗██╗   ██╗██╗     ");
+         System.out.println("#  ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗    ██╔═══██╗██╔════╝    ██╔════╝██╔══██╗██║   ██║██║   ██║██║     ");
+         System.out.println("#  ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║    ██║   ██║█████╗      ███████╗██║  ██║██║   ██║██║   ██║██║     ");
+         System.out.println("#  ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║    ██║   ██║██╔══╝      ╚════██║██║  ██║██║   ██║██║   ██║██║     ");
+         System.out.println("#  ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝    ╚██████╔╝██║         ███████║██████╔╝╚██████╔╝╚██████╔╝███████╗");
+         System.out.println("#   ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝      ╚═════╝ ╚═╝         ╚══════╝╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝");
+         System.out.println("#");
         
-        System.out.println("#");
-        System.out.println("#  ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗      ██████╗ ███████╗    ███████╗██████╗ ██╗   ██╗██╗   ██╗██╗     ");
-        System.out.println("#  ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗    ██╔═══██╗██╔════╝    ██╔════╝██╔══██╗██║   ██║██║   ██║██║     ");
-        System.out.println("#  ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║    ██║   ██║█████╗      ███████╗██║  ██║██║   ██║██║   ██║██║     ");
-        System.out.println("#  ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║    ██║   ██║██╔══╝      ╚════██║██║  ██║██║   ██║██║   ██║██║     ");
-        System.out.println("#  ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝    ╚██████╔╝██║         ███████║██████╔╝╚██████╔╝╚██████╔╝███████╗");
-        System.out.println("#   ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝      ╚═════╝ ╚═╝         ╚══════╝╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝");
-        System.out.println("#");
+         setPlayerName();
+         setGender();
+         setAge();
         
-        setPlayerName();
-        setGender();
-        setAge();
-        
-        
+         */
         Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
@@ -83,37 +87,38 @@ public class Game extends Player {
         Item coffee = new Item();
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
-        
-        printWelcome(player.getPlayerName());
+
+       // printWelcome(player.getPlayerName());
     }
-    
+
     public void printWelcome(String playername) {
         System.out.println("Welcome " + playername + ", to the world of SDUUL.\n"
-                +"An adventurous text-based rpg game that tackles the life\n"
+                + "An adventurous text-based rpg game that tackles the life\n"
                 + "being a new university student in the most boring of \n"
                 + "fashion, we will show you the everchanging day to day\n"
                 + "life in a comedic way. This game consists of various\n"
                 + "quests and obstacles, which you as a player must over-\n"
                 + "come to continue. You might be rewarded, and ultimately\n"
                 + "be prepared for how boring studying can be. \n"
-                + "DISCLAIMER: 9/10 feminists want the creators behind this game in jail \n");
+                + "DISCLAIMER: 9/10 feminists want the creators behind this game in jail \n"
+                + "Type begin to continue");
 
         // Code below is a result of a possible outstanding conflict in the group, will be handled shortly
         /* System.out.println("These are some helpful commands: ");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
-        System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
-        System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
-        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
-        System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
-        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");
-        System.out.println("Type '" + CommandWord.INSPECT + "' if you want to inspect a room.");
-        System.out.println("Type '" + CommandWord.APPROACH + "' if you want to approach someone.");
-        System.out.println("Type '" + CommandWord.CHOOSE + "' if you want to choose an option.");
-        System.out.println("Type '" + CommandWord.JOURNAL + "' if you want to known the objective of the quest.");
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+         System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
+         System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
+         System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
+         System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
+         System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
+         System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");
+         System.out.println("Type '" + CommandWord.INSPECT + "' if you want to inspect a room.");
+         System.out.println("Type '" + CommandWord.APPROACH + "' if you want to approach someone.");
+         System.out.println("Type '" + CommandWord.CHOOSE + "' if you want to choose an option.");
+         System.out.println("Type '" + CommandWord.JOURNAL + "' if you want to known the objective of the quest.");
+         System.out.println();
+         System.out.println(currentRoom.getLongDescription());
          */
-        startScreen();
+
 
     }
 
@@ -125,10 +130,13 @@ public class Game extends Player {
         if (commandWord == CommandWord.UNKNOWN) {
             return "I don't know what you mean...";
         }
-        
+
         if (commandWord == CommandWord.HELP) {
-            printHelp();
-        } else if (commandWord == CommandWord.GO) {
+            return printHelp();
+        } else if (commandWord == CommandWord.BEGIN) {
+            return "Are you ready to dive into this? type (yes/no)\n"
+                    +startScreen(command);
+        }else if (commandWord == CommandWord.GO) {
             goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
@@ -160,8 +168,8 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.APPROACH) {
             approachNPC(command);
         } /* else if (commandWord == CommandWord.DROP) {
-            // code along the lines off, dropping an item from player inventory
-        }   // will be implemented in next iteration
+         // code along the lines off, dropping an item from player inventory
+         }   // will be implemented in next iteration
          */ else if (commandWord == CommandWord.CHOOSE) {
             processOption(command);
         } else if (commandWord == CommandWord.JOURNAL) {
@@ -243,10 +251,10 @@ public class Game extends Player {
     }
 
     private String printHelp() {
-        return"Solve your current quest, you can see it by typing journal"
-        +"HINT: completing quests wins you the game."
-        +"Your command words are:"
-        +parser.showCommands();
+        return "Solve your current quest, you can see it by typing journal.\n"
+                + "HINT: completing quests wins you the game.\n\n"
+                + "Your command words are:\n"
+                + parser.showCommands();
     }
 
     private void approachNPC(Command command) {
@@ -376,23 +384,20 @@ public class Game extends Player {
         return tempInput;
     }
 
-    private void startScreen() {
-        System.out.println("Are you ready to dive into this? type (yes/no)");
-        String answer = getSimpleUserInput();
+    private String startScreen(Command command) {
+        String s;
+        CommandWord commandWord = command.getCommandWord();
+        
+        if (commandWord==commandWord.YES) {
+        s= currentRoom.getLongDescription()
+        +  currentRoom.getRoomIntro();
 
-        if (answer.equals("yes")) {
-            for (int i = 0; i < 20; i++) {
-                System.out.println();
-            }
-            System.out.println(currentRoom.getLongDescription());
-            System.out.println(currentRoom.getRoomIntro());
-
-        } else if (answer.equals("no")) {
-            System.out.println("Oh.. well you will have to play without the initial help text then. Type help for help.");
+        } else if (commandWord==commandWord.NO) {
+            s = "Oh.. well you will have to play without the initial help text then. Type help for help.";
 
         } else {
-            System.out.println("Writing yes or no can't be that hard..");
-        }
+            s = "Writing yes or no can't be that hard..";
+        } return s;
     }
 
     private void print20Lines() {

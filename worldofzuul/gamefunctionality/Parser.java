@@ -14,15 +14,19 @@ public class Parser {
         reader = new Scanner(System.in);
     }
 
-    public Command getCommand(String inputLine) {
+    public Command getCommand(String s) {
         
         String word1 = null;
         String word2 = null;       
         
-        String[] ar = inputLine.split(" ");
+        String[] ar = s.split(" ");
         
         word1 = ar[0];
+        try {
         word2 = ar[1];
+        } catch (ArrayIndexOutOfBoundsException ex){
+            
+        }
 
         return new Command(commands.getCommandWord(word1), word2);
     }
