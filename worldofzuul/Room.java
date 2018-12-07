@@ -8,7 +8,7 @@ public class Room extends Entity {
 
     private String description;
     private String roomIntro;
-    private HashMap<String, Room> exits;
+    public HashMap<String, Room> exits;
     private ArrayList<NPC> npcs;
     private ArrayList<Item> items;
     private ArrayList<Encounter> encounters;
@@ -73,11 +73,11 @@ public class Room extends Entity {
     }
 
     public String getShortDescription() {
-        return description;
+        return this.description+"\n";
     }
 
     public String getLongDescription() {
-        return "Location: " + getName() + ".\n" + getExitString();
+        return "Location: " + getName() + ".\n";
     }
 
     public String getSlowDescription() {

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Player extends Entity {
 
     // The arraylist inventory stores the items that the player picks up.
-    private ArrayList<Item> inventory = new ArrayList<>();
+    public ArrayList<Item> inventory = new ArrayList<>();
 
     // Players attributes
     private String playerName;
@@ -14,7 +14,7 @@ public class Player extends Entity {
     private int level;
     private int experience;
     private String age;
-    private String gender;    
+    private String gender;
     private Scanner input;
     private int progress = 0;
     private int indexOfLastAdded = 0;
@@ -27,13 +27,13 @@ public class Player extends Entity {
     public String getGender() {
         return gender;
     }
-  
+
     public void setAge(String age) {
         this.age = age;
     }
-    
+
     public String getAge() {
-          return age;
+        return age;
     }
 
     // Set player name
@@ -83,11 +83,12 @@ public class Player extends Entity {
     }
 
     // Returns the full inventory list
-    public void getInventory() {
-        System.out.println("Inventory:");
+    public String getInventory() {
+        String s="";
         for (Item item : inventory) {
-            System.out.println("*" + item.getName());
+            s += "*" + item.getName();
         }
+        return s;
     }
 
     public void setProgress(int input) {
