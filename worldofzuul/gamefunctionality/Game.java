@@ -113,7 +113,7 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.BEGIN) {//DONE????
             s = currentRoom.getLongDescription() + "\n"
                     + currentRoom.getRoomIntro();
-        } else if (commandWord == CommandWord.GO) {//NOTDONE
+        } else if (commandWord == CommandWord.GO) {//HALFDONE
             return goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {//DONE
             setFinished(true);
@@ -228,7 +228,7 @@ public class Game extends Player {
     }
 
     private String approachNPC(Command command) {
-        String s = "asdasdasdasdasdasd";
+        String s = "";
         try {
             if (!command.hasSecondWord()) {
                 s = "Approach what?";
@@ -240,7 +240,7 @@ public class Game extends Player {
                         + printDialogOptions();
             }
         } catch (IndexOutOfBoundsException ex) {
-            s = "Thers is no one here to talk to.";
+            s = "There is no one here to talk to.";
         }
         return s;
     }
