@@ -40,12 +40,10 @@ public class FXMLStartScreenController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    public Game g;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("====================== initialize from FStartScreenController");
     }
     
     public void setStartName() {
@@ -80,8 +78,7 @@ public class FXMLStartScreenController implements Initializable {
        if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
            System.out.println("Please enter whatever");
        } else {
-        System.out.println(this.name+"    "+this.age+"     "+this.gender);
-
+           
         Stage stage = GUI.stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMain.fxml"));
 

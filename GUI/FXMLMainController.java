@@ -7,6 +7,9 @@ package GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import worldofzuul.Item;
 import worldofzuul.gamefunctionality.Command;
 import worldofzuul.gamefunctionality.Game;
 import worldofzuul.gamefunctionality.Launcher;
@@ -24,11 +28,13 @@ import worldofzuul.gamefunctionality.Launcher;
  * @author joakim
  */
 public class FXMLMainController implements Initializable{
+    ObservableList<String> showInventory = FXCollections.observableArrayList();
+    ObservableList<String> showExits = FXCollections.observableArrayList();
+    
     Game g = new Game();
     
     String text;
-    
-    private boolean finished = false;
+
     @FXML
     private TextArea output;
     @FXML
@@ -36,14 +42,13 @@ public class FXMLMainController implements Initializable{
     @FXML
     private Button sendBtn;
     @FXML
-    private ListView<?> lvInv;
+    private ListView<String> lvInv;
     @FXML
-    private ListView<?> lvEx;
+    private ListView<String> lvEx;
 
     public String loop (String s){
-        if (!finished) {
+        if (!g.getFinished()) {
             Command command = g.parser.getCommand(s);
-            System.out.println(g.processCommand(command));
             s = g.processCommand(command);
         } else {
         System.out.println("Thank you for playing. Good bye.");
@@ -57,7 +62,7 @@ public class FXMLMainController implements Initializable{
     @Override
    public void initialize(URL url, ResourceBundle rb) {
         // TODO
-                output.setText("Welcome blargh, to the world of SDUUL.\n\n"
+                output.setText("Welcome "+g.player.getPlayerName()+", to the world of SDUUL.\n\n"
                 + "An adventurous text-based rpg game that tackles the life being a new\n"
                 + "university student in the most boring of fashion, we will show you the\n"
                 + "everchanging day to day life in a comedic way.\n\n"
@@ -67,6 +72,9 @@ public class FXMLMainController implements Initializable{
                 + "DISCLAIMER: 9/10 feminists want the creators behind this game in jail."
                 + "\n\nType begin to start your adventure!");
                 g.play();
+                
+                lvInv.setItems(showInventory);
+                lvEx.setItems(showExits);
     }
 
     
@@ -86,12 +94,33 @@ public class FXMLMainController implements Initializable{
     public String getText(){
         return text;
     }
+    
+    public void addInventory(){
+        for (Item item : g.player.inventory) {
+            showInventory.add(item.getName());
+            }
+    }
+    
+    public void addExits(){
+        Set<String> keys = g.currentRoom.exits.keySet();
+        for (String exit : keys) {
+            showExits.add(exit);
+        }
+    }
 
     @FXML
     public void handleSendBtn(ActionEvent event) {
+        showInventory.clear();
+        showExits.clear();
+        
         output.setText(loop(console.getText()));
         console.clear();
-        System.out.println(g.getS());
+        
+        addInventory();
+        addExits();
     }
 
 }
+//1. Dialogue options/fight options
+//2. Strings skal "forkortes"
+
