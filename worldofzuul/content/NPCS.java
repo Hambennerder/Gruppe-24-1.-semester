@@ -16,15 +16,19 @@ public class NPCS extends NPC {
 
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
-        mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses, short clean cut redheaded");
+        mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses,\n"
+                + " short clean cut redheaded");
         mentor.setName("mentor");
         mentor.setWelcome("You must be a new student, welcome! \n"
-                + "\nUvuvwevwevwe: As you can see below, you have two options, type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
+                + "\nUvuvwevwevwe: As you can see below, you have two options,\n"
+                + " type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
         mentor.setDialogOptions("< 1: talk"
                 + "\n< 2: leave");
         mentor.setAcceptString("Good luck student! \n"
-                + "\nUvuvwevwevwe: Now that you accepted a quest, you can type journal, and the quest's name \n"
-                + "and a short description will pop up. Complete this quest to advance. To go to a room, you must \n "
+                + "\nUvuvwevwevwe: \n"
+                + "Now that you accepted a quest, you can type journal, and the quest's name \n"
+                + "and a short description will pop up. Complete this quest to advance. \n"
+                + " To go to a room, you must "
                 + "type \'go\' and then the direction you want to go, there are four directions:\n"
                 + "\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
         mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
@@ -33,10 +37,12 @@ public class NPCS extends NPC {
                 + "\n< Before you can enter the entrance of the SDU building, you have "
                 + "\n< to find your ID-card. To do that you have to"
                 + "\n< inspect rooms u1-u3. These rooms are outside the SDU building."
-                + "\n< To find the first room you have to head north. Are you ready for this? (now choose whether or not you accept this mission by typing yes/no)");
+                + "\n< To find the first room you have to head north. Are you ready for this?\n"
+                + " (now choose whether or not you accept this mission by typing yes/no)");
         mentor.setOnQuestString("Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString("I'm sorry, I'm busy. Go find Andars.");
-        mentor.setCompleteQuestString("Yes! you found the ID-card, now you can finally access this god awful place.\n"
+        mentor.setCompleteQuestString("Yes! you found the ID-card, \n"
+                + "now you can finally access this god awful place.\n"
                 + "now you must go find Andars, I've heard that he's in u180. Good luck! \n"
                 + "Uvuvwevwevwe: Congratulations! You finished your very first quest. Sadly, you're on your own now. Bye.");
 
@@ -54,9 +60,13 @@ public class NPCS extends NPC {
                 + "\n< 2: leave");
 
         andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
-                + "\n< You know, a thing between you and me. The book, called Best Java Book for learning Java EVER!. It is the best book to prepare you"
-                + "\n< I used this book back in my ole' days. It saved me tons of trouble! Find it at the bookstore."
-                + "\n< I want you to solve these assignments, solve these with the book and you will be prepared"
+                + "\n< You know, a thing between you and me.\n"
+                + " The book, called Best Java Book for learning Java EVER!.\n"
+                + " It is the best book to prepare you"
+                + "\n< I used this book back in my ole' days.\n"
+                + " It saved me tons of trouble! Find it at the bookstore."
+                + "\n< I want you to solve these assignments,\n"
+                + " solve these with the book and you will be prepared"
                 + "\n< Sound like a pretty good plan, right? (yes/no)");
 
         andars.setAcceptString("Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
@@ -79,8 +89,10 @@ public class NPCS extends NPC {
         bookstoreLady.setDialogOptions("< 1: Talk"
                 + "\n< 2: Trade"
                 + "\n< 3: Leave");
-        bookstoreLady.setQuestString("I would love to help you finding the book darling, but if I have to help you I have to get something in return.\n"
-                + "I would love to get a cup of coffee with you, can you go get it from the canteen, sweetheart? (yes/no)");
+        bookstoreLady.setQuestString("I would love to help you finding the book darling,\n"
+                + " but if I have to help you I have to get something in return.\n"
+                + "I would love to get a cup of coffee with you.\n"
+                + " Can you go get it from the canteen, sweetheart? (yes/no)");
         bookstoreLady.setAcceptString("I knew a strong man like you, wouldn't be afraid of a grown woman like myself.");
         bookstoreLady.setDeclineString("Well, you can have the book when I get my coffee then.");
         bookstoreLady.setOnQuestString("The coffee should be found in the canteen, good looking");
@@ -136,6 +148,8 @@ public class NPCS extends NPC {
                                       + "\n< 3: Leave");
         lune.setQuestString("I can't your my e-moderator. He could be in the T8. \n"
                 + "The room can be quite hard to find, but I'm sure you can find it. \n"
+                + "Oh yeah, please don't get lost down there. \n"
+                + "We have had enough rescue mission already"
                 + "Will you go find him? (yes/no)");
         lune.setAcceptString("That´s great. Remember, he could be in room T8");
         lune.setDeclineString("You can't do your journal-writing wihtout the E-moderator");
@@ -158,12 +172,14 @@ public class NPCS extends NPC {
                                       +"\n< 2: Trade"
                                       + "\n< 3: Leave");
         eryk.setQuestString("The damn light won't work and I can't get the projector to work \n"
-                + "Will try and get the technology working in here? (yes/no)");
+                + "It was so much easier back in the old days, when we only used blackboards"
+                + "Will you try and get the technology working in here? (yes/no)");
         eryk.setAcceptString("Thank you very much. \n "
                 + "There might be a cable or something missing");
         eryk.setDeclineString("I can't teach you if we don't get the technology fixed");
         eryk.setOnQuestString("Please fix the power");
-        eryk.setCompleteQuestString("Great job on getting the screen working, now we can get on with the teaching");
+        eryk.setCompleteQuestString("Great job on getting the screen working,\n"
+                + " now we can get on with the teaching");
         eryk.setQuestCompletedString("Remember your exam today. Head to Andars.");
         
         npcs.add(eryk);
