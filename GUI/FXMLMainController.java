@@ -46,7 +46,7 @@ public class FXMLMainController implements Initializable{
     @FXML
     private ListView<String> lvEx;
 
-    public String loop (String s){
+    public String loop (String s) throws Exception{
         if (!g.getFinished()) {
             Command command = g.parser.getCommand(s);
             s = g.processCommand(command);
@@ -109,7 +109,7 @@ public class FXMLMainController implements Initializable{
     }
 
     @FXML
-    public void handleSendBtn(ActionEvent event) {
+    public void handleSendBtn(ActionEvent event) throws Exception {
         showInventory.clear();
         showExits.clear();
         
