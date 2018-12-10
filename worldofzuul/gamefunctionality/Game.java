@@ -1,6 +1,9 @@
 package worldofzuul.gamefunctionality;
 
+import GUI.FXMLMainController;
+import GUI.GUI;
 import java.util.Scanner;
+import javafx.application.Application;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
@@ -10,10 +13,13 @@ import worldofzuul.content.Rooms;
 
 public class Game extends Player {
 
-    private Parser parser;
-    private Room currentRoom;
+    private String s;
+    private String text;
+    public Parser parser;
+    public Room currentRoom;
     private Room nextRoom;
-    private Player player;
+    public Player player;
+    private boolean finished = false;
 
     public Game() {
         parser = new Parser();
@@ -33,20 +39,8 @@ public class Game extends Player {
     }
 
     public void play() {
-        System.out.println("#");
-        System.out.println("#  ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗      ██████╗ ███████╗    ███████╗██████╗ ██╗   ██╗██╗   ██╗██╗     ");
-        System.out.println("#  ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗    ██╔═══██╗██╔════╝    ██╔════╝██╔══██╗██║   ██║██║   ██║██║     ");
-        System.out.println("#  ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║    ██║   ██║█████╗      ███████╗██║  ██║██║   ██║██║   ██║██║     ");
-        System.out.println("#  ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║    ██║   ██║██╔══╝      ╚════██║██║  ██║██║   ██║██║   ██║██║     ");
-        System.out.println("#  ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝    ╚██████╔╝██║         ███████║██████╔╝╚██████╔╝╚██████╔╝███████╗");
-        System.out.println("#   ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝      ╚═════╝ ╚═╝         ╚══════╝╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝");
-        System.out.println("#");
 
-        setPlayerName();
-        setGender();
-        setAge();
-
-        Rooms listOfRooms = new Rooms();
+      Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
 
@@ -71,113 +65,104 @@ public class Game extends Player {
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
 
+
+        // Adding coffee to the canteen        
+        Item coffee = new Item();
+        coffee.setName("coffee");
+        listOfRooms.getRoom(11).addItem(coffee);
+
         // test code
         Encounter encounter = new Encounter();
         encounter.addEncounterNPC(npcs.getNPC(3));
         encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(4).addEncounter(encounter);
+        
+        // Adding the constitution to the library and student to hallway g3
+        Item holy_constitution = new Item ();
+        holy_constitution.setName("Holy Constitution");
+        listOfRooms.getRoom(16).addItem(holy_constitution);
+        listOfRooms.getRoom(12).addNPC(npcs.getNPC(3));
 
-        Item coffee = new Item();
-        coffee.setName("coffee");
-        listOfRooms.getRoom(11).addItem(coffee);
-
-        printWelcome(player.getPlayerName());
-
-        boolean finished = false;
-        while (!finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
-        }
-        System.out.println("Thank you for playing. Good bye.");
+        // Adding Lune to u55
+        listOfRooms.getRoom(18).addNPC(npcs.getNPC(4));
+        
+        
+        // Adding Eryk and cable to u45
+        Item cable = new Item();
+        cable.setName("cable");
+        listOfRooms.getRoom(19).addItem(cable);
+        listOfRooms.getRoom(19).addNPC(npcs.getNPC(5));
+        
+        
+        
+        // Adding Malta to T8 and his bag to k7
+        Item bag = new Item();
+        bag.setName("bag");
+        listOfRooms.getRoom(20).addNPC(npcs.getNPC(6));
+        listOfRooms.getRoom(42).addItem(bag);
     }
 
-    private void printWelcome(String playername) {
-        System.out.println();
-        System.out.println("Welcome " + playername + ", to the world of SDUUL.\n");
-        System.out.println("An adventurous text-based rpg game that tackles the life being a new university student\n"
-                + "in the most boring of fashion, we will show you the everchanging day to day life in a \n"
-                + "comedic way. The game consists of various quests and obstacles, which you as a player  \n"
-                + "must overcome to continue. You might be rewarded, and ultimately be prepared for how  \n"
-                + "boring studying can be. DISCLAIMER: 9/10 feminists want the creators behind this game in jail \n");
-
-        // Code below is a result of a possible outstanding conflict in the group, will be handled shortly
-        /* System.out.println("These are some helpful commands: ");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
-        System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
-        System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
-        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
-        System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
-        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");
-        System.out.println("Type '" + CommandWord.INSPECT + "' if you want to inspect a room.");
-        System.out.println("Type '" + CommandWord.APPROACH + "' if you want to approach someone.");
-        System.out.println("Type '" + CommandWord.CHOOSE + "' if you want to choose an option.");
-        System.out.println("Type '" + CommandWord.JOURNAL + "' if you want to known the objective of the quest.");
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());
-         */
-        startScreen();
-
+    public boolean getFinished() {
+        return finished;
     }
 
-    private boolean processCommand(Command command) {
-        boolean wantToQuit = false;
+    public void setFinished(boolean b) {
+        this.finished = b;
+    }
 
+    public String processCommand(Command command) {
         CommandWord commandWord = command.getCommandWord();
-
-        if (commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
-            return false;
+        String s = "";
+        if (commandWord == CommandWord.UNKNOWN) { //DONE
+            s = "I don't know what you mean...";
         }
-
-        if (commandWord == CommandWord.HELP) {
-            printHelp();
-        } else if (commandWord == CommandWord.GO) {
-            goRoom(command);
-        } else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
-        } else if (commandWord == CommandWord.INSPECT) {
-            print20Lines();
-            System.out.println("Your location: " + currentRoom.getName());
-            System.out.println(currentRoom.getExitString() + "\n");
-            System.out.println(currentRoom.getDescription());
+        if (commandWord == CommandWord.HELP) {//DONE
+            return printHelp();
+        } else if (commandWord == CommandWord.BEGIN) {//DONE????
+            s = currentRoom.getLongDescription() + "\n"
+                    + currentRoom.getRoomIntro();
+        } else if (commandWord == CommandWord.GO) {//HALFDONE
+            return goRoom(command);
+        } else if (commandWord == CommandWord.QUIT) {//DONE
+            setFinished(true);
+        } else if (commandWord == CommandWord.INSPECT) {//DONE
+            s = "Your location: " + currentRoom.getName()
+                    + currentRoom.getExitString() + "\n"
+                    + currentRoom.getDescription();
             try {
-                System.out.println("This room contains: " + currentRoom.getItem(0).getName());
+                s += "This room contains: " + currentRoom.getItem(0).getName();
             } catch (IndexOutOfBoundsException ex) {
-                System.out.println("\n ***No item to be found***");
+                s += "\n ***No item to be found***";
             }
-        } else if (commandWord == CommandWord.TAKE) {
+        } else if (commandWord == CommandWord.TAKE) { //DONE
 
             if (!command.hasSecondWord()) {
-                System.out.println("Take what?");
+                s = "Take what?";
             }
 
             if (currentRoom.getItem(0) == null) {
-                System.out.println("No item to take");
+                s = "No item to take";
 
             } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
                 player.addItem(currentRoom.getItem(0));
-                System.out.println("You picked up " + currentRoom.getItem(0).getName());
+                s = "You picked up " + currentRoom.getItem(0).getName();
                 currentRoom.removeItem(0);
                 player.incrementProgress();
             }
-        } else if (commandWord == CommandWord.APPROACH) {
-            approachNPC(command);
-        } /* else if (commandWord == CommandWord.DROP) {
-            // code along the lines off, dropping an item from player inventory
-        }   // will be implemented in next iteration
-         */ else if (commandWord == CommandWord.CHOOSE) {
+        } else if (commandWord == CommandWord.APPROACH) {//DONE
+            s = approachNPC(command);
+        } else if (commandWord == CommandWord.CHOOSE) {//NOTDONE
             processOption(command);
-        } else if (commandWord == CommandWord.JOURNAL) {
-            System.out.println(player.getJournal());
-        } else if (commandWord == CommandWord.INVENTORY) {
-            player.getInventory();
+        } else if (commandWord == CommandWord.JOURNAL) {//DONE
+            s = player.getJournal();
+        } else if (commandWord == CommandWord.INVENTORY) {//DONE
+            s = player.getInventory();
         }
-
-        return wantToQuit;
+        return s;
     }
 
     private void processOption(Command command) {
-
+        String option = command.getSecondWord();
         // Check 1: checks if there is a second word, aka a choice between 1 or 2
         if (!command.hasSecondWord()) {
             System.out.println("Choose what?");
@@ -187,8 +172,6 @@ public class Game extends Player {
         } // Check 3: Checks where you are in a quest by multiple stages (!primitive and basic state machine!)
         // Check 3.1: Checks if room has a quest and that second word is the option talk
         else if (currentRoom.getHasQuest() && command.getSecondWord().equals("1")) {
-            print20Lines();
-
             // stage 3.2:
             // checks whether or not a room has an ongoing quest, if the room does not have
             // an ongoing quest, then the player will be presented the quest, and have an option
@@ -203,7 +186,6 @@ public class Game extends Player {
                 // to return another string when they player comes back without completing it
                 // also the string that explains the quest will be added to the players journal
                 if (answer.equals("yes")) {
-                    print20Lines();
                     System.out.println("Your location: " + currentRoom.getName());
                     System.out.println(currentRoom.getExitString() + "\n");
                     System.out.println(currentRoom.getNPC(0).getAcceptString());
@@ -246,38 +228,35 @@ public class Game extends Player {
         }
     }
 
-    private void printHelp() {
-        System.out.println("Solve your current quest, you can see it by typing journal");
-        System.out.println("HINT: completing quests wins you the game.");
-        System.out.println();
-        System.out.println("Your command words are:");
-        parser.showCommands();
-        System.out.println();
+    private String printHelp() {
+        return "Solve your current quest, you can see it by typing journal.\n"
+                + "HINT: completing quests wins you the game.\n\n"
+                + "Your command words are:\n"
+                + parser.showCommands();
     }
 
-    private void approachNPC(Command command) {
+    private String approachNPC(Command command) {
+        String s = "";
         try {
             if (!command.hasSecondWord()) {
-                System.out.println("Approach what?");
+                s = "Approach what?";
 
             } else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
-                for (int i = 0; i < 10; i++) {
-                    System.out.println();
-                }
-                printLocation();
-                printNPCsName();
-                printNPCsWelcome();
-                printDialogOptions();
+                s = printLocation()
+                        + printNPCsName()
+                        + printNPCsWelcome()
+                        + printDialogOptions();
             }
         } catch (IndexOutOfBoundsException ex) {
-            System.out.println("Thers is no one here to talk to.");
+            s = "There is no one here to talk to.";
         }
+        return s;
     }
 
-    private void goRoom(Command command) {
+    private String goRoom(Command command) {
+        String s;
         if (!command.hasSecondWord()) {
-            System.out.println("Go where?");
-            return;
+             return "Go where?";
         }
 
         String direction = command.getSecondWord();
@@ -285,24 +264,21 @@ public class Game extends Player {
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            s = "There is no door!";
 
         } else if (nextRoom.getRequiredProgress() > player.getProgress()) {
-            System.out.println("You can't go there yet!");
+            s = "You can't go there yet!";
 
         } else {
-            for (int i = 0; i < 10; i++) {
-                System.out.println();
-            }
-            System.out.println(nextRoom.getShortDescription());
+            s = nextRoom.getShortDescription();
             currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+            s += currentRoom.getLongDescription();
         }
-        if (currentRoom.hasEncounter()) {
+        /*if (currentRoom.hasEncounter()) {
 
             if (currentRoom.getEncounter().encounterMet()) {
-                System.out.println(currentRoom.getEncounter().getEncounterMessage());
-                System.out.println(currentRoom.getEncounter().getEncounterNPC().getDialogOptions());
+                s = currentRoom.getEncounter().getEncounterMessage()
+                        + currentRoom.getEncounter().getEncounterNPC().getDialogOptions();
 
                 Scanner input = new Scanner(System.in);
                 boolean acceptableAnswer = false;
@@ -333,47 +309,28 @@ public class Game extends Player {
                 System.out.println("Something just moved in the shadows! Seems like it's gone now...");
             }
 
-        }
-
+        }*/
+        return s;
     }
 
-    private boolean quit(Command command) {
-        if (command.hasSecondWord()) {
-            System.out.println("Quit what?");
-            return false;
-        } else {
-            return true;
-        }
+    private String printLocation() {
+        return "Your location: " + currentRoom.getName();
     }
 
-    private void printLocation() {
-        System.out.println("Your location: " + currentRoom.getName());
+    private String printDialogOptions() {
+        return currentRoom.getNPC(0).getDialogOptions();
     }
 
-    private void printDialogOptions() {
-        System.out.println(currentRoom.getNPC(0).getDialogOptions());
+    private String printNPCsName() {
+        return currentRoom.getNPC(0).getName() + ": ";
     }
 
-    private void printNPCsName() {
-        System.out.println(currentRoom.getNPC(0).getName() + ": ");
+    private String printNPCsWelcome() {
+        return currentRoom.getNPC(0).getWelcome();
     }
 
-    private void printNPCsWelcome() {
-        System.out.println(currentRoom.getNPC(0).getWelcome());
-    }
-
-    private void printNPCsGoodbye() {
-        System.out.println(currentRoom.getNPC(0).getGoodbye());
-    }
-
-    private void printPrimitiveUI() {
-        // will be used for next iteration, and also improved upon
-        for (int i = 0; i < 10; i++) {
-            System.out.println();
-        }
-        System.out.println("Your location: " + currentRoom.getName());
-        System.out.println(currentRoom.getExitString());
-        System.out.println(currentRoom.getDescription());
+    private String printNPCsGoodbye() {
+        return currentRoom.getNPC(0).getGoodbye();
     }
 
     private String getSimpleUserInput() {
@@ -382,29 +339,24 @@ public class Game extends Player {
         return tempInput;
     }
 
-    private void startScreen() {
-        System.out.println("Are you ready to dive into this? type (yes/no)");
-        String answer = getSimpleUserInput();
-
-        if (answer.equals("yes")) {
-            for (int i = 0; i < 20; i++) {
-                System.out.println();
+    private String startScreen(String s) {
+        s = "";
+        Command command = parser.getCommand(s);
+        s = processCommand(command);
+        CommandWord commandWord = command.getCommandWord();
+        while (commandWord == commandWord.BEGIN) {
+            if (commandWord == commandWord.YES | commandWord == commandWord.NO) {
+                if (commandWord == commandWord.YES) {
+                    s = currentRoom.getLongDescription()
+                            + currentRoom.getRoomIntro();
+                } else if (commandWord == commandWord.NO) {
+                    s = "Oh.. well you will have to play without the initial help text then. Type help for help.";
+                } else {
+                    s = "Writing yes or no can't be that hard..";
+                }
             }
-            System.out.println(currentRoom.getLongDescription());
-            System.out.println(currentRoom.getRoomIntro());
 
-        } else if (answer.equals("no")) {
-            System.out.println("Oh.. well you will have to play without the initial help text then. Type help for help.");
-
-        } else {
-            System.out.println("Writing yes or no can't be that hard..");
         }
+        return s;
     }
-
-    private void print20Lines() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println();
-        }
-    }
-
 }

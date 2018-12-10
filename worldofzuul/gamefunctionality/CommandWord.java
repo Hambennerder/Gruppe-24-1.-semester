@@ -2,7 +2,8 @@ package worldofzuul.gamefunctionality;
 
 public enum CommandWord {
     GO("go"), QUIT("quit"), HELP("help"), TAKE("take"), CHOOSE("choose"), JOURNAL("journal"),
-    INSPECT("inspect"), APPROACH("approach"), INVENTORY("inventory"), EXITS("exits"), UNKNOWN("?");
+    INSPECT("inspect"), APPROACH("approach"), INVENTORY("inventory"), EXITS("exits"), BEGIN("begin"),
+    YES("yes"), NO("no"), UNKNOWN("?");
 
     // EQUIP("equip") to be implemented
     // DROP("drop") to be implemented

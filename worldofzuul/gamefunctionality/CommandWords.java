@@ -29,10 +29,11 @@ public class CommandWords {
         return validCommands.containsKey(aString);
     }
 
-    public void showAll() {
+    public String showAll() {
+        String s="";
         for (String command : validCommands.keySet()) {
-            System.out.print(command + "  ");
+            s += command + "\n";
         }
-        System.out.println();
+        return s;
     }
 }
