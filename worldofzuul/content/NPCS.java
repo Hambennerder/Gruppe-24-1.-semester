@@ -44,7 +44,8 @@ public class NPCS extends NPC {
         mentor.setCompleteQuestString("Yes! you found the ID-card, \n"
                 + "now you can finally access this god awful place.\n"
                 + "now you must go find Andars, I've heard that he's in u180. Good luck! \n"
-                + "Uvuvwevwevwe: Congratulations! You finished your very first quest. Sadly, you're on your own now. Bye.");
+                + "Uvuvwevwevwe: Congratulations! You finished your very first quest.\n"
+                + " Sadly, you're on your own now. Bye.");
 
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
@@ -87,8 +88,7 @@ public class NPCS extends NPC {
         bookstoreLady.setWelcome("Hello there handsome thing, What can I do you for?");
         bookstoreLady.setDescription("Probably the ugliest and oldest person you've ever seen in a bookstore");
         bookstoreLady.setDialogOptions("< 1: Talk"
-                + "\n< 2: Trade"
-                + "\n< 3: Leave");
+                + "\n< 2: Leave");
         bookstoreLady.setQuestString("I would love to help you finding the book darling,\n"
                 + " but if I have to help you I have to get something in return.\n"
                 + "I would love to get a cup of coffee with you.\n"
@@ -119,8 +119,7 @@ public class NPCS extends NPC {
         student.setWelcome("Hey! Please I need your help!");
         student.setDescription("A student in distress");
         student.setDialogOptions("< 1: Talk"
-                                      +"\n< 2: Trade"
-                                      + "\n< 3: Leave");
+                                      + "\n< 2: Leave");
        
         student.setQuestString("I really need you help. I should be studying in the study hall \n"
                + "But there are way to many medicin students in the study hall \n"
@@ -131,8 +130,8 @@ public class NPCS extends NPC {
         student.setAcceptString("I'm so glad to hear that, I really need to be studying for an exam");
         student.setDeclineString("Please help. Shouldn't you be studying as well?");
         student.setOnQuestString("We have to make room for us to study in the study hall");
-        student.setCompleteQuestString("Thank you so much, now there is a slight chance I'll pass the exam.");
-        student.setQuestCompletedString("You did a good job, I'll owe you");
+        student.setCompleteQuestString("Thanks buddy, we should get a beer at Nedenunder later");
+        student.setQuestCompletedString("Let me know if you wanna grab that beer");
         
         npcs.add(student);
         
@@ -143,9 +142,8 @@ public class NPCS extends NPC {
         lune.setName("Lune");
         lune.setWelcome("Hey there student.");
         lune.setDescription("Your teacher in introduction to Software Engineering");
-        lune.setDialogOptions("< 1: Talk"
-                                      +"\n< 2: Trade"
-                                      + "\n< 3: Leave");
+        lune.setDialogOptions("< 1: Talk"  
+                                      + "\n< 2: Leave");
         lune.setQuestString("I can't your my e-moderator. He could be in the T8. \n"
                 + "The room can be quite hard to find, but I'm sure you can find it. \n"
                 + "Oh yeah, please don't get lost down there. \n"
@@ -168,9 +166,8 @@ public class NPCS extends NPC {
         eryk.setName("Eryk");
         eryk.setWelcome("Hello I'm your teacher in COS");
         eryk.setDescription("Great man with great jokes");
-        eryk.setDialogOptions("< 1: Talk"
-                                      +"\n< 2: Trade"
-                                      + "\n< 3: Leave");
+        eryk.setDialogOptions("< 1: Talk"                            
+                                      + "\n< 2: Leave");
         eryk.setQuestString("The damn light won't work and I can't get the projector to work \n"
                 + "It was so much easier back in the old days, when we only used blackboards"
                 + "Will you try and get the technology working in here? (yes/no)");
@@ -193,8 +190,7 @@ public class NPCS extends NPC {
         moderator.setWelcome("Thanks for helping me escape from the janitors");
         moderator.setDescription("Your e-moderator for journal-writing");
         moderator.setDialogOptions("< 1: Talk"
-                                      +"\n< 2: Trade"
-                                      + "\n< 3: Leave");
+                                      + "\n< 2: Leave");
         moderator.setQuestString("I'm pretty sure I dropped my bag when I was running from the janitors \n"
                 + "will you help me get it back? (yes/no)");
         moderator.setAcceptString("Thank you so much I really need it for administring the journals");
