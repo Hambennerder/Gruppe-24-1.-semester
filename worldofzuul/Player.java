@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Player extends Entity {
 
-    private ArrayList<Item> inventory = new ArrayList<>();
+    public ArrayList<Item> inventory = new ArrayList<>();
 
 
     private String playerName;
