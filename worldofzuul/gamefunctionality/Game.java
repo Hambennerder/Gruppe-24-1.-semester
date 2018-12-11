@@ -281,7 +281,7 @@ public class Game extends Player {
             currentRoom = nextRoom;
             s += currentRoom.getLongDescription();
         }
-        /*if (currentRoom.hasEncounter()) {
+        if (currentRoom.hasEncounter()) {
 
             if (currentRoom.getEncounter().encounterMet()) {
                 s = currentRoom.getEncounter().getEncounterMessage()
@@ -316,7 +316,7 @@ public class Game extends Player {
                 System.out.println("Something just moved in the shadows! Seems like it's gone now...");
             }
 
-        }*/
+        }
         return s;
     }
 
@@ -348,7 +348,7 @@ public class Game extends Player {
         String s = "";
         if (started == 0) {
             s = currentRoom.getLongDescription()
-                    + currentRoom.getRoomIntro();
+            + currentRoom.getRoomIntro();
         } else {
             s = "The game has already begun...";
         }
