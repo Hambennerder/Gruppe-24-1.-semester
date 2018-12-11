@@ -10,6 +10,11 @@ import worldofzuul.Player;
 import worldofzuul.Room;
 import worldofzuul.content.NPCS;
 import worldofzuul.content.Rooms;
+import worldofzuul.combat.Battlesystem;
+import worldofzuul.combat.Bodyslam;
+import worldofzuul.combat.Dropkick;
+import worldofzuul.combat.EncounterAttacks;
+import worldofzuul.combat.Punch;
 
 public class Game extends Player {
 
@@ -274,42 +279,96 @@ public class Game extends Player {
             currentRoom = nextRoom;
             s += currentRoom.getLongDescription();
         }
-        /*if (currentRoom.hasEncounter()) {
-
+    //ENCOUNTER - COMBATSYSTEM!!
+        if (currentRoom.hasEncounter()) {
+            
+            Battlesystem battle = new Battlesystem();
+            Dropkick dropkick = new Dropkick();
+            Punch punch = new Punch();
+            Bodyslam bodyslam = new Bodyslam();
+            EncounterAttacks encounterturn = new EncounterAttacks();
+            
             if (currentRoom.getEncounter().encounterMet()) {
-                s = currentRoom.getEncounter().getEncounterMessage()
-                        + currentRoom.getEncounter().getEncounterNPC().getDialogOptions();
+                System.out.println(currentRoom.getEncounter().getEncounterMessage());
+                battle.Decision();
 
                 Scanner input = new Scanner(System.in);
+                
                 boolean acceptableAnswer = false;
                 while (!acceptableAnswer) {
-                    String answer = input.nextLine();
-
-                    if (answer.equals("1")) {
-                        System.out.println("You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!");
-                        // Load combat system
-                        acceptableAnswer = true;
-
-                    } else if (answer.equals("2")) {
-                        if (currentRoom.getEncounter().tryFlee()) {
-                            System.out.println("You escaped!!");
-                            // print some sort of UI
-                            acceptableAnswer = true;
-                        } else {
-                            // load combat system
-                            System.out.println("BAM you won the fight.");
-                        }
-
-                    } else {
-                        System.out.println("Type in either 1 or 2");
-                    }
+                    String choice = input.next();
+        
+        if(choice.equals("fight")) {
+            
+            print3Lines();
+            battle.Combatoptions();
+            
+        }else if (choice.equals("flee") && currentRoom.getEncounter().tryFlee()){
+            
+            System.out.println("You escaped!!");
+            print3Lines();
+            System.out.println(currentRoom.getDescription());
+            
+            // print some sort of UI
+            acceptableAnswer = true;
+            
+        } else if (choice.equals("attack")){
+            print3Lines();
+            battle.attackoptions();
+            
+        } else if (choice.equals("punch")){    
+            print3Lines();
+            punch.Punch_attack();
+            print3Lines();
+            encounterturn.EncounterTurn();
+            print3Lines();
+            battle.Combatoptions();
+                    
+        } else if (choice.equals("dropkick")){
+           print3Lines();
+           dropkick.Dropkick_attack();
+           print3Lines();
+           encounterturn.EncounterTurn();
+           print3Lines();
+           battle.Combatoptions();
+        
+        } else if(choice.equals("bodyslam")){
+           print3Lines();
+           bodyslam.Bodyslam_attack();
+           print3Lines();
+           encounterturn.EncounterTurn();
+           print3Lines();
+           battle.Combatoptions();
+           
+        } else if(choice.equals("back")){
+            print3Lines();
+            battle.Combatoptions();
+            
+        } else if (choice.equals("heal")){
+           print3Lines();
+           battle.heal();
+           print3Lines();
+           encounterturn.EncounterTurn();
+           print3Lines();
+           battle.Combatoptions();
+            
+        } else if (choice.equals("dodge")){
+            print3Lines();
+            battle.dodge();
+            print3Lines();
+            encounterturn.EncounterTurn();
+            print3Lines();
+            battle.Combatoptions();
+     
+        } else {
+            System.out.println("Error");
+            break;
+        }
                 }
-
-            } else {
-                System.out.println("Something just moved in the shadows! Seems like it's gone now...");
-            }
-
-        }*/
+        }else {
+            System.out.println("Something just moved in the shadows! Seems like it's gone now...");
+       }
+    }
         return s;
     }
 
@@ -358,5 +417,11 @@ public class Game extends Player {
 
         }
         return s;
+    }
+    
+    private void print3Lines(){
+        for(int i = 0; i < 3; i++){
+            System.out.println();
+        }
     }
 }
