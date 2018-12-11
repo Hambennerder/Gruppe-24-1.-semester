@@ -32,7 +32,8 @@ public class Rooms extends Room {
                 + "will see two things, location and exits. Location shows your current \n"
                 + "location. If you haven't guessed it already, exits show our possible exits \n"
                 + "Before we show you how to use the exits, let me first introduce you to \n"
-                + "the command, inspect. Type in inspect and you will get a detailed description \n"
+                + "the command, inspect.\n"
+                + "Type in inspect and you will get a detailed description \n"
                 + "of the current room, and also which elements it contains. Everything surrounded \n"
                 + "by \'single quotation marks\', are interactable. You can interact by typing in \n"
                 + "approach and the figures name, be aware, this system IS case sensitive. \n"
@@ -141,7 +142,8 @@ public class Rooms extends Room {
         bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
                 + " which is somewhere south, remember Andars' warning."
 
-                + "The lady in the bookstore wants you to get her some coffee, head up to the canteen.");        
+                + "The lady in the bookstore wants you to get her some coffee,\n"
+                + "head up to the canteen.");        
 
         rooms.add(bookstore);
 
