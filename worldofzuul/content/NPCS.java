@@ -16,6 +16,7 @@ public class NPCS extends NPC {
 
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
+
         mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses,\n"
                 + " short clean cut redheaded");
         mentor.setName("mentor");
@@ -47,19 +48,19 @@ public class NPCS extends NPC {
                 + "Uvuvwevwevwe: Congratulations! You finished your very first quest.\n"
                 + " Sadly, you're on your own now. Bye.");
 
+
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
 
         // Start of the NPC Andars INDEX: 1--------------------
         NPC andars = new NPC();
-        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
-                + "His face expression seems serious.*");
+        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard."
+                + "\n He appears proffessionel. His face expression seems serious.*");
         andars.setName("Andars");
 
         andars.setDialogOptions(
                 "< 1: talk"
                 + "\n< 2: leave");
-
         andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
                 + "\n< You know, a thing between you and me.\n"
                 + " The book, called Best Java Book for learning Java EVER!.\n"
@@ -70,14 +71,18 @@ public class NPCS extends NPC {
                 + " solve these with the book and you will be prepared"
                 + "\n< Sound like a pretty good plan, right? (yes/no)");
 
-        andars.setAcceptString("Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
-        andars.setDeclineString("You gonna faiiil! Come back if you want the slightest chance of doing the assignments.");
-        andars.setOnQuestString("Finding the book can't be harder than solving e-tiviteter... just find it already..");
+        andars.setAcceptString("< Nice!... by the way watch out for the lady in the bookstore,"
+                + "\n< she is pretty flirtatious.");
+        andars.setDeclineString("< You gonna faiiil! Come back if you want the slightest"
+                + "\n< chance of doing the assignments.");
+        andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter..."
+                + "\n< just find it already..");
 
-        andars.setCompleteQuestString("Damn dude, what took you so long?! \n"
-                + "You should probably go study some more in the studyhall.");
-        andars.setQuestCompletedString("You finally found the book and handed in the assignments. \n"
-                + "You should go study to the study hall.");
+        andars.setCompleteQuestString("< Damn dude, what took you so long?! \n"
+                + "< You should probably go study some more in the studyhall.");
+        andars.setQuestCompletedString("< You finally found the book and"
+                + "\n< handed in the assignments. \n"
+                + "< You should go study to the study hall.");
         
         npcs.add(andars);
         // End of the NPC Andars--------------------
@@ -85,8 +90,9 @@ public class NPCS extends NPC {
         // Start of the NPC at the student bookstore INDEX: 2--------------------
         NPC bookstoreLady = new NPC();
         bookstoreLady.setName("lady");
-        bookstoreLady.setWelcome("Hello there handsome thing, What can I do you for?");
-        bookstoreLady.setDescription("Probably the ugliest and oldest person you've ever seen in a bookstore");
+        bookstoreLady.setWelcome("< Hello there handsome thing, What can I do you for?");
+        bookstoreLady.setDescription("Probably the ugliest and oldest person"
+                                    + "\n you've ever seen in a bookstore");
         bookstoreLady.setDialogOptions("< 1: Talk"
                 + "\n< 2: Leave");
         bookstoreLady.setQuestString("I would love to help you finding the book darling,\n"
@@ -116,17 +122,16 @@ public class NPCS extends NPC {
         // Start of NPC for study hall + library quest INDEX: 3--------------
         NPC student = new NPC();
         student.setName("student");
-        student.setWelcome("Hey! Please I need your help!");
+        student.setWelcome("< Hey! Please I need your help!");
         student.setDescription("A student in distress");
         student.setDialogOptions("< 1: Talk"
                                       + "\n< 2: Leave");
        
         student.setQuestString("I really need you help. I should be studying in the study hall \n"
-               + "But there are way to many medicin students in the study hall \n"
-               + "and I can't get the book from the library because of the law students in there"
-               + "Will you please help me? (yes/no)");
-       
-
+               + "< But there are way to many medicin students in the study hall \n"
+               + "< and I can't get the book from the library because"
+                + "\n< of the law students in there"
+               + "\n< Will you please help me? (yes/no)");
         student.setAcceptString("I'm so glad to hear that, I really need to be studying for an exam");
         student.setDeclineString("Please help. Shouldn't you be studying as well?");
         student.setOnQuestString("We have to make room for us to study in the study hall");
@@ -140,7 +145,7 @@ public class NPCS extends NPC {
         // Start of NPC Lune at u55 INDEX: 4------------------------------------
         NPC lune = new NPC();
         lune.setName("Lune");
-        lune.setWelcome("Hey there student.");
+        lune.setWelcome("< Hey there student.");
         lune.setDescription("Your teacher in introduction to Software Engineering");
         lune.setDialogOptions("< 1: Talk"  
                                       + "\n< 2: Leave");
@@ -164,7 +169,7 @@ public class NPCS extends NPC {
         // Start of NPC Eryk at u45 INDEX: 5------------------------------------
         NPC eryk = new NPC();
         eryk.setName("Eryk");
-        eryk.setWelcome("Hello I'm your teacher in COS");
+        eryk.setWelcome("< Hello I'm your teacher in COS");
         eryk.setDescription("Great man with great jokes");
         eryk.setDialogOptions("< 1: Talk"                            
                                       + "\n< 2: Leave");
@@ -187,7 +192,7 @@ public class NPCS extends NPC {
         // Start of e-moderator in T8 index 6 ----------------------------------------------------
         NPC moderator = new NPC();
         moderator.setName("Malta");
-        moderator.setWelcome("Thanks for helping me escape from the janitors");
+        moderator.setWelcome("< Thanks for helping me escape from the janitors");
         moderator.setDescription("Your e-moderator for journal-writing");
         moderator.setDialogOptions("< 1: Talk"
                                       + "\n< 2: Leave");
