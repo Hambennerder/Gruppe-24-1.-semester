@@ -116,8 +116,7 @@ public class Game extends Player {
         if (commandWord == CommandWord.HELP) {//DONE
             return printHelp();
         } else if (commandWord == CommandWord.BEGIN) {//DONE????
-            s = currentRoom.getLongDescription() + "\n"
-                    + currentRoom.getRoomIntro();
+            return startScreen();
         } else if (commandWord == CommandWord.GO) {//HALFDONE
             return goRoom(command);
         } else if (commandWord == CommandWord.QUIT) {//DONE
