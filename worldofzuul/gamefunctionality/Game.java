@@ -36,7 +36,7 @@ public class Game extends Player {
     }
 
     public void setAge() {
-        player.setAge(player.ConversationAge("Please enter your age: "));
+        player.setAge(player.ConversationWord("Please enter your age: "));
     }
 
     public void play() {

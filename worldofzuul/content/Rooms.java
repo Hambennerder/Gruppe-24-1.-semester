@@ -37,9 +37,11 @@ public class Rooms extends Room {
                 + "by \'single quotation marks\', are interactable. You can interact by typing in \n"
                 + "approach and the figures name, be aware, this system IS case sensitive. \n"
                 + "If you want to take an item in a room, the same applies but with the command take. \n"
-                + "Start the game by typing inspect, and then approach the given figure. type help if you need help");
+                + "Start the game by typing inspect, and then approach the given figure. \n"
+                + " type help if you need help");
 
-        entrance.setJournalString("A quest for the holy ID-card: Start by heading north, find the card and return to the mentor");
+        entrance.setJournalString("A quest for the holy ID-card: Start by heading north \n"
+                + " find the card and return to the mentor");
 
         entrance.setName("Entrance");
         entrance.setHasQuest(true);
@@ -88,7 +90,8 @@ public class Rooms extends Room {
 
         // u180 index 5
         u180 = new Room("You are in u180. A big bright room with many rows of chairs and tables.\n"
-                + "You can feel the struggle and anxiety of the many students who have sat in this room before you.");
+                + "You can feel the struggle and anxiety of the many students \n"
+                + " who have sat in this room before you.");
         u180.setDescription("In the room you see a figure, it looks like \'Andars\'");
         u180.setName("U180");
         u180.setRequiredProgress(2);
@@ -109,7 +112,8 @@ public class Rooms extends Room {
         rooms.add(g2);
 
         // g7 at index 7
-        g7 = new Room("You are standing in a hallway, looks like all other hallways in this damn university."
+        g7 = new Room("You are standing in a hallway, looks like all other\n"
+                + " hallways in this damn university."
                 + "\nYou must have been walking for miles by now."
                 + "It's very dark in here, you are looking for a light switch"
                 + " but there doesn't seem to be any.");
@@ -128,7 +132,8 @@ public class Rooms extends Room {
         bookstore = new Room("in the book store."
                 + "Your first thought is that there are way too"
                 + " many books in such a small area.");
-        bookstore.setDescription("How will you ever find the book you need in here. Maybe that 'lady' over there can help?");
+        bookstore.setDescription("How will you ever find the book you need in here. \n"
+                + " Maybe that 'lady' over there can help?");
         bookstore.setName("Student Bookstore");
         bookstore.setHasQuest(true);
         bookstore.setRequiredProgress(2);
@@ -194,7 +199,8 @@ public class Rooms extends Room {
         // library at index 16
         library = new Room("library");
         rooms.add(library);
-        library.setDescription("You have arrived at the library... Those law students don't look nice \n"
+        library.setDescription("You have arrived at the library...\n"
+                + " Those law students don't look nice \n"
                 + "but that \'Holy Constitution\' might be useful");
         library.setName("library");
         library.setRequiredProgress(6);
@@ -215,12 +221,14 @@ public class Rooms extends Room {
         // index at index 18
         u55 = new Room("u55");
         rooms.add(u55);
-        u55.setDescription("You are in a big auditorium desgined for teaching a large number os students\n"
+        u55.setDescription("You are in a big auditorium desgined for teaching\n"
+                + " a large number of distressed students\n"
                 + "You see your teacher \'Lune\' ");
         u55.setName("u55");
         u55.setRequiredProgress(8);
         u55.setHasQuest(true);
-        u55.setJournalString("Find your e-moderator. Maybe he's in t8. Return to Lune when you're done");
+        u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
+                + "Return to Lune when you're done");
         
         // index at 19
         u45 = new Room("u45");
@@ -236,7 +244,8 @@ public class Rooms extends Room {
         // Index at 20
         t8 = new Room("t8");
         rooms.add(t8);
-        t8.setDescription("The most feared room on campus. It's dark, smelly and almost impossible to find\n"
+        t8.setDescription("The most feared room on campus.\n"
+                + "It's dark, smelly and almost impossible to find\n"
                 + "You see a figure that looks like \'Malta\'");
         t8.setName("T8");
         t8.setRequiredProgress(8);
@@ -271,7 +280,7 @@ public class Rooms extends Room {
         
         g13 = new Room("you are in hallway g13");
         rooms.add(g13);
-        g13.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g13.setDescription("It's really dark down here... ");
         g13.setName("g13");
         
         g14 = new Room("you are in hallway g14");
@@ -286,7 +295,7 @@ public class Rooms extends Room {
         
         g16 = new Room("you are in hallway g16");
         rooms.add(g16);
-        g16.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g16.setDescription("It's really dark down here... The doors can be quite tricky to open");
         g16.setName("g16");
         
         g17 = new Room("you are in hallway 17");
@@ -300,7 +309,7 @@ public class Rooms extends Room {
         
         g19 = new Room("you are in hallway g19");
         rooms.add(g19);
-        g19.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g19.setDescription("It's really dark down here... Is that a dead body over there?");
         g19.setName("g19");
         
         g20 = new Room("you are in hallway g20");
@@ -310,12 +319,12 @@ public class Rooms extends Room {
         
         g21 = new Room("you are in hallway g21");
         rooms.add(g21);
-        g21.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g21.setDescription("It's really dark down here... Wow! Is that an original banksy?");
         g21.setName("g21");
         
         g22 = new Room("you are in hallway g22");
         rooms.add(g22);
-        g22.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g22.setDescription("It's really dark down here... Maybe you can find a switch somewhere");
         g22.setName("g22");
         
         g23 = new Room("you are in hallway g23");
@@ -325,7 +334,7 @@ public class Rooms extends Room {
         
         g24 = new Room("you are in hallway g24");
         rooms.add(g24);
-        g24.setDescription("It's really dark down here... Watch out for the angry janitors");
+        g24.setDescription("It's really dark down here... You might be stuck down here forever");
         g24.setName("g24");
         
         k1 = new Room("you are in the basement in room k1");
