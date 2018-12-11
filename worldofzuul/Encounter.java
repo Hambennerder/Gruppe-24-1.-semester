@@ -11,6 +11,8 @@ public class Encounter extends Entity {
     private int encounterPossibility;
     private Boolean isFleeable;
     private int fleePossibility;
+    private int encounter_health;
+    private int encounter_experience;
 
     public Encounter() {
         this.encountedNPC = new ArrayList<>();
@@ -43,6 +45,23 @@ public class Encounter extends Entity {
         return this.encounterPossibility;
     }
 
+    public int getEncounter_health() {
+        return encounter_health;
+    }
+
+    public void setEncounter_health(int encounter_health) {
+        this.encounter_health = encounter_health;
+    }
+
+    public int getEncounter_experience() {
+        return encounter_experience;
+    }
+
+    public void setEncounter_experience(int encounter_experience) {
+        this.encounter_experience = encounter_experience;
+    }
+
+    
     public boolean encounterMet() {
         Random rand = new Random();
         boolean flag;
