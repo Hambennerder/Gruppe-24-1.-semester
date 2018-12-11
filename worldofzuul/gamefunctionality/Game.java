@@ -156,7 +156,7 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.JOURNAL) {//DONE
             s = player.getJournal();
         } else if (commandWord == CommandWord.INVENTORY) {//DONE
-            s = player.getInventory();
+            //s = player.getInventory();
         }
         return s;
     }
