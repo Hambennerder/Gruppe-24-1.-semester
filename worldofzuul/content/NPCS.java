@@ -52,8 +52,8 @@ public class NPCS extends NPC {
 
         // Start of the NPC Andars INDEX: 1--------------------
         NPC andars = new NPC();
-        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. He appears proffessionel."
-                + "His face expression seems serious.*");
+        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. \n"
+                + " He appears proffessionel. His face expression seems serious.*");
         andars.setName("Andars");
 
         andars.setDialogOptions(
@@ -154,7 +154,8 @@ public class NPCS extends NPC {
         lune.setOnQuestString("Go find the e-moderator");
         lune.setCompleteQuestString("Great job finding the e-moderator \n"
                 + "It must have been quite difficult \n"
-                + "Now get going, I've heard Eryk needs some help in u45... oh and Remember your e-tivities");
+                + "Now get going, I've heard Eryk needs some help in u45... \n"
+                + " oh and Remember your e-tivities");
         lune.setQuestCompletedString("You should really get going now");
         
         npcs.add(lune);
