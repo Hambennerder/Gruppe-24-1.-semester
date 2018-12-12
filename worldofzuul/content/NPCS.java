@@ -121,7 +121,7 @@ public class NPCS extends NPC {
 
         
 
-        // Start of NPC for study hall + library quest INDEX: 3--------------
+        // Start of NPC for study hall + library quest INDEX: 4--------------
         NPC student = new NPC();
         student.setName("student");
         student.setWelcome("< Hey! Please I need your help!");
@@ -144,7 +144,7 @@ public class NPCS extends NPC {
         
         // End of student -------------------------------------------------------
         
-        // Start of NPC Lune at u55 INDEX: 4------------------------------------
+        // Start of NPC Lune at u55 INDEX: 5------------------------------------
         NPC lune = new NPC();
         lune.setName("Lune");
         lune.setWelcome("< Hey there student.");
@@ -168,7 +168,7 @@ public class NPCS extends NPC {
         
         // End of NPC Lune ----------------------------------------------------
         
-        // Start of NPC Eryk at u45 INDEX: 5------------------------------------
+        // Start of NPC Eryk at u45 INDEX: 6------------------------------------
         NPC eryk = new NPC();
         eryk.setName("Eryk");
         eryk.setWelcome("< Hello I'm your teacher in COS");
@@ -191,7 +191,7 @@ public class NPCS extends NPC {
         
         // End of Eryk -------------------------------------------------------------------
         
-        // Start of e-moderator in T8 index 6 ----------------------------------------------------
+        // Start of e-moderator in T8 index 7 ----------------------------------------------------
         NPC moderator = new NPC();
         moderator.setName("Malta");
         moderator.setWelcome("< Thanks for helping me escape from the janitors");

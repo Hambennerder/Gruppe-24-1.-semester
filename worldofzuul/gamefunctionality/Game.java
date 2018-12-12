@@ -79,23 +79,23 @@ public class Game extends Player {
 
         // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item();
-        holy_constitution.setName("Holy Constitution");
+        holy_constitution.setName("Holy-Constitution");
         listOfRooms.getRoom(16).addItem(holy_constitution);
-        listOfRooms.getRoom(12).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(12).addNPC(npcs.getNPC(4));
 
         // Adding Lune to u55
-        listOfRooms.getRoom(18).addNPC(npcs.getNPC(4));
+        listOfRooms.getRoom(18).addNPC(npcs.getNPC(5));
 
         // Adding Eryk and cable to u45
         Item cable = new Item();
         cable.setName("cable");
         listOfRooms.getRoom(19).addItem(cable);
-        listOfRooms.getRoom(19).addNPC(npcs.getNPC(5));
+        listOfRooms.getRoom(19).addNPC(npcs.getNPC(6));
 
         // Adding Malta to T8 and his bag to k7
         Item bag = new Item();
         bag.setName("bag");
-        listOfRooms.getRoom(20).addNPC(npcs.getNPC(6));
+        listOfRooms.getRoom(20).addNPC(npcs.getNPC(7));
         listOfRooms.getRoom(42).addItem(bag);       
     }
 
