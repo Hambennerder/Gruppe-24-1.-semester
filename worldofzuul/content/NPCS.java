@@ -5,15 +5,15 @@ import java.util.List;
 import worldofzuul.NPC;
 
 public class NPCS extends NPC {
-
+    
     private List<NPC> npcs;
 
     public NPCS() {
         npcs = new ArrayList<>();
     }
-
+        
     public void createNPCS() {
-
+        
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
 

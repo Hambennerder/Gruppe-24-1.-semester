@@ -28,7 +28,7 @@ public class Player extends Entity {
 
     public String getGender() {
 
-        return gender;
+        return this.gender;
 
     }
 
@@ -41,7 +41,7 @@ public class Player extends Entity {
   
     public String getAge() {
 
-        return age;
+        return this.age;
 
     }
 
@@ -53,7 +53,7 @@ public class Player extends Entity {
 
     public String getPlayerName() {
 
-        return playerName;
+        return this.playerName;
 
     }
 

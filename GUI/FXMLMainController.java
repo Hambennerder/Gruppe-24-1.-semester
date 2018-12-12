@@ -23,6 +23,7 @@ import worldofzuul.Item;
 import worldofzuul.gamefunctionality.Command;
 import worldofzuul.gamefunctionality.Game;
 import worldofzuul.gamefunctionality.Launcher;
+import worldofzuul.gamefunctionality.PlayerTransporter;
 
 /**
  * FXML Controller class
@@ -34,6 +35,7 @@ public class FXMLMainController implements Initializable{
     ObservableList<String> showExits = FXCollections.observableArrayList();
     
     Game g = new Game();
+    
     
     String text;
 
@@ -69,6 +71,7 @@ public class FXMLMainController implements Initializable{
     @Override
    public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        g.player = PlayerTransporter.getPlayer();
                 output.setText("Welcome "+g.player.getPlayerName()+", to the world of SDUUL.\n\n"
                 + "An adventurous text-based rpg game that tackles the life being a new\n"
                 + "university student in the most boring of fashion, we will show you the\n"

@@ -24,7 +24,7 @@ public class Game extends Player {
 
     public Game() {
         parser = new Parser();
-        player = new Player();
+        player = new Player();        
     }
 
     public void setPlayerName() {
@@ -41,12 +41,12 @@ public class Game extends Player {
 
     public void play() {
 
-        Rooms listOfRooms = new Rooms();
+        Rooms listOfRooms = new Rooms(player.getPlayerName());
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
 
         NPCS npcs = new NPCS();
-        npcs.createNPCS();
+        npcs.createNPCS(player.getPlayerName());
 
         Item id_card = new Item();
         id_card.setName("ID-card");
