@@ -72,12 +72,12 @@ public class Game extends Player {
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
 
-        // test code
-        Encounter encounter = new Encounter();
-        encounter.addEncounterNPC(npcs.getNPC(3));
-        encounter.setEncounterPossibility(100);
-        encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
-        listOfRooms.getRoom(4).addEncounter(encounter);
+        // Adding law student encounter to library
+        Encounter lawStudentEncounter = new Encounter();
+        lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
+        lawStudentEncounter.setEncounterPossibility(100);
+        lawStudentEncounter.setEncounterMessage("Oh no, you have encountered" + lawStudentEncounter.getEncounterNPC() + "!");
+        listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
 
         // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item();
@@ -98,7 +98,24 @@ public class Game extends Player {
         Item bag = new Item();
         bag.setName("bag");
         listOfRooms.getRoom(20).addNPC(npcs.getNPC(7));
-        listOfRooms.getRoom(43).addItem(bag);       
+        listOfRooms.getRoom(43).addItem(bag);   
+        
+        // Adding the janitor encounter to room g22
+        Encounter janitorEncounter = new Encounter();
+        listOfRooms.getRoom(34).addEncounter(janitorEncounter);
+        janitorEncounter.addEncounterNPC(npcs.getNPC(8));
+        janitorEncounter.setEncounterPossibility(100);
+        janitorEncounter.setEncounterMessage("Haha! You filthy students really "
+                + "think you're something special, huh? well you are not!");
+        
+        // Adding medicine student encounter to study hall
+        Encounter medicineEncounter = new Encounter();
+        listOfRooms.getRoom(17).addEncounter(medicineEncounter);
+        medicineEncounter.addEncounterNPC(npcs.getNPC(9));
+        medicineEncounter.setEncounterPossibility(100);
+        medicineEncounter.setEncounterMessage("You think you're smarter than me?"
+                + "HA! I'm studying to become a doctor.. my grades are better than yours!");
+        
     }
 
     public boolean getFinished() {
@@ -366,6 +383,9 @@ public class Game extends Player {
                     if (enemyHealth <= 0) {
                         s = "You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
                                 + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        currentRoom.setIsLocked(false);
+                        player.incrementProgress();
+                        currentRoom.setHasEncounter(false);
                         
                     } else {
                         // if (attack instance off specialAbility) {

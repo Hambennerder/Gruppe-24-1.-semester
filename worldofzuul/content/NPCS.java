@@ -52,7 +52,7 @@ public class NPCS extends NPC {
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
 
-        // Start of the NPC Andars INDEX: 1--------------------
+        // Start of the NPC Andars INDEX: 1-------------------------------------
         NPC andars = new NPC();
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard."
                 + "\n He appears proffessionel. His face expression seems serious.*");
@@ -85,9 +85,9 @@ public class NPCS extends NPC {
                 + "< You should go study to the study hall.");
         
         npcs.add(andars);
-        // End of the NPC Andars--------------------
+        // End of the NPC Andars------------------------------------------------
 
-        // Start of the NPC at the student bookstore INDEX: 2--------------------
+        // Start of the NPC at the student bookstore INDEX: 2-------------------
         NPC bookstoreLady = new NPC();
         bookstoreLady.setName("lady");
         bookstoreLady.setWelcome("< Hello there handsome thing, What can I do you for?");
@@ -117,11 +117,11 @@ public class NPCS extends NPC {
         lawStudent.setExperience(1000);
         npcs.add(lawStudent);
 
-        // End of the NPC at the student bookstore--------------------
+        // End of the NPC at the student bookstore------------------------------
 
         
 
-        // Start of NPC for study hall + library quest INDEX: 4--------------
+        // Start of NPC for study hall + library quest INDEX: 4-----------------
         NPC student = new NPC();
         student.setName("student");
         student.setWelcome("< Hey! Please I need your help!");
@@ -142,7 +142,7 @@ public class NPCS extends NPC {
         
         npcs.add(student);
         
-        // End of student -------------------------------------------------------
+        // End of student ------------------------------------------------------
         
         // Start of NPC Lune at u55 INDEX: 5------------------------------------
         NPC lune = new NPC();
@@ -166,7 +166,7 @@ public class NPCS extends NPC {
         
         npcs.add(lune);
         
-        // End of NPC Lune ----------------------------------------------------
+        // End of NPC Lune -----------------------------------------------------
         
         // Start of NPC Eryk at u45 INDEX: 6------------------------------------
         NPC eryk = new NPC();
@@ -189,9 +189,9 @@ public class NPCS extends NPC {
         npcs.add(eryk);
         
         
-        // End of Eryk -------------------------------------------------------------------
+        // End of Eryk ---------------------------------------------------------
         
-        // Start of e-moderator in T8 index 7 ----------------------------------------------------
+        // Start of e-moderator in T8 index 7 ----------------------------------
         NPC moderator = new NPC();
         moderator.setName("Malta");
         moderator.setWelcome("< Thanks for helping me escape from the janitors");
@@ -209,14 +209,31 @@ public class NPCS extends NPC {
         npcs.add(moderator);
         
         
-        // End of moderator --------------------------------------------------------------
+        // End of moderator ----------------------------------------------------
         
+        // start of janitor in room g22 janitor index at 8
+        NPC janitor = new NPC();
+        janitor.setName("Wild Janitor");
+        janitor.setLevel(3);
+        janitor.setHealth(300);
+        janitor.setFriendly(false);
+        janitor.setDialogOptions("<1: Fight\n"
+                + "<2: Flee");
+        janitor.setExperience(1000);
+        npcs.add(janitor);
+        // End of janitor ------------------------------------------------------
         
-    
-      
-       
-       
-       
+        // start of medicine student in room g22, this student is at index 9
+        NPC medicineStudent = new NPC();
+        medicineStudent.setName("Arrogant \'sTuDeNt Of MeDiCiNe\'");
+        medicineStudent.setLevel(2);
+        medicineStudent.setHealth(300);
+        medicineStudent.setFriendly(false);
+        medicineStudent.setDialogOptions("<1: Fight\n"
+                + "<2: Flee");
+        medicineStudent.setExperience(500);
+        npcs.add(medicineStudent);
+        // End of janitor ------------------------------------------------------
     }
 
     public NPC getNPC(int index) {
