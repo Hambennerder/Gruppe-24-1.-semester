@@ -20,25 +20,26 @@ public class Rooms extends Room {
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
 
         // Entrance index 0
-        entrance = new Room("");
+        entrance = new Room("Entrance of the University");
         entrance.setDescription("You are a new student in software engineering and \n"
                 + "you have just arrived outside the main entrance \n"
                 + "of the university. You look around and see cou- \n"
                 + "ntless of other university students, heading to \n"
                 + "their next class or lecture, you see a man wearing a red shirt saying \'mentor\'");
 
-        entrance.setRoomIntro("Hello player, my name is Uvuvwevwevwe, and I will guide you \n"
-                + "through the first steps of this tutorial. Above this message you \n"
-                + "will see two things, location and exits. Location shows your current \n"
-                + "location. If you haven't guessed it already, exits show our possible exits \n"
-                + "Before we show you how to use the exits, let me first introduce you to \n"
-                + "the command, inspect. Type in inspect and you will get a detailed description \n"
-                + "of the current room, and also which elements it contains. Everything surrounded \n"
-                + "by \'single quotation marks\', are interactable. You can interact by typing in \n"
-                + "approach and the figures name, be aware, this system IS case sensitive. \n"
-                + "If you want to take an item in a room, the same applies but with the command take. \n"
-                + "Start the game by typing inspect, and then approach the given figure. \n"
-                + " type help if you need help");
+        entrance.setRoomIntro("> Hello player, my name is Uvuvwevwevwe, and I will guide you \n"
+                + "> through the first steps of this tutorial. Above this message you \n"
+                + "> will see two things, location and exits. Location shows your current \n"
+                + "> location. If you haven't guessed it already, exits show our possible exits \n"
+                + "> Before we show you how to use the exits, let me first introduce you to \n"
+                + "> the command, inspect. Type in inspect and you will get a detailed\n"
+                + "> description of the current room, and also which elements it contains.\n"
+                + "> Everything surrounded by \'single quotation marks\', are interactable.\n"
+                + "> You can interact by typing in approach and the figures name, be aware,\n"
+                + "> this system IS case sensitive. If you want to take an item in a room,\n"
+                + "> the same applies but with the command take. \n\n"
+                + "> Start the game by typing inspect, and then approach the given figure. \n"
+                + "> type help if you need help");
 
         entrance.setJournalString("A quest for the holy ID-card: Start by heading north \n"
                 + " find the card and return to the mentor");

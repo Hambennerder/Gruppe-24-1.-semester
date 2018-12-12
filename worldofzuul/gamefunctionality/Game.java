@@ -18,13 +18,18 @@ public class Game extends Player {
     public Parser parser;
     public Room currentRoom;
     public Player player;
+    private Battlesystem battle;
     private boolean finished = false;
     private boolean started = false;
     private boolean fight = false;
+    private boolean conversation = false;
+    private boolean questQuestion = false;
+    
 
     public Game() {
         parser = new Parser();
         player = new Player();
+        battle = new Battlesystem();
     }
 
     public void setPlayerName() {
@@ -117,21 +122,36 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.BEGIN) {//DONE
             return startScreen();
         } else if (commandWord == CommandWord.GO) {//DONE
+            if (fight) {
+                return "You can't go anywhere\n"
+                        + "You're still in a fight, perhaps try to flee?\n"
+                        +battle.Combatoptions();
+            }else {
             return goRoom(command)+"\n"
                     + encounterNPC(command);
+            }
         } else if (commandWord == CommandWord.QUIT) {//DONE
             setFinished(true);
         } else if (commandWord == CommandWord.INSPECT) {//DONE
-            s = "Your location: " + currentRoom.getName()
-                    + currentRoom.getExitString() + "\n"
+            if (fight) {
+                return "What are you trying to inspect?\n"
+                        + "You're still in a fight, perhaps try to flee?\n"
+                        +battle.Combatoptions();
+            }else {
+            s = "Your location: " + currentRoom.getName()+ "\n"
                     + currentRoom.getDescription();
+            }
             try {
                 s += "This room contains: " + currentRoom.getItem(0).getName();
             } catch (IndexOutOfBoundsException ex) {
                 s += "\n ***No item to be found***";
             }
         } else if (commandWord == CommandWord.TAKE) { //DONE
-
+            if (fight) {
+                return "What are you trying to take?\n"
+                        + "You're still in a fight, perhaps try to flee?\n"
+                        +battle.Combatoptions();
+            }else {
             if (!command.hasSecondWord()) {
                 s = "Take what?";
             }
@@ -145,14 +165,37 @@ public class Game extends Player {
                 currentRoom.removeItem(0);
                 player.incrementProgress();
             }
+            }
         } else if (commandWord == CommandWord.APPROACH) {//DONE
+            if (fight) {
+                return "You trying to approach your enemy?\n"
+                        + "You're still in a fight,just attack!\n"
+                        +battle.Combatoptions();
+            }else {
             s = approachNPC(command);
+            }
         } else if (commandWord == CommandWord.CHOOSE) {//DONE
+            if (fight) {
+                return "Just write an option\n"
+                        +battle.Combatoptions();
+            }else {
             s = processOption(command);
+            }
         } else if (commandWord == CommandWord.JOURNAL) {//DONE
+            if (fight) {
+                return "You can't go anywhere, you're still in a fight, perhaps try to flee?"
+                        +battle.Combatoptions();
+            }else {
             s = player.getJournal();
+            }
         } else if (commandWord == CommandWord.YES | commandWord == CommandWord.NO) {//DONE
+            if (fight) {
+                return "What are you even trying to do?\n"
+                        + "You're still in a fight, perhaps try to flee?\n"
+                        +battle.Combatoptions();
+            }else {
             s = processChoice(command);
+            }
         } else if (commandWord == CommandWord.FIGHT
                 | commandWord == CommandWord.FIGHT
                 | commandWord == CommandWord.FLEE
@@ -166,7 +209,7 @@ public class Game extends Player {
             if (fight) {
                 return combatOptions(command);
             } else {
-                return "Why are you trying to fight?";
+                return "What are you trying to fight?";
             }
         }
         return s;
@@ -194,8 +237,7 @@ public class Game extends Player {
                     if (player.getProgress() < currentRoom.getNextQuestProgress()) {
                         s = currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString();
                     } else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
-                        s = "Your location: " + currentRoom.getName()
-                                + currentRoom.getExitString() + "\n"
+                        s = "Your location: " + currentRoom.getName()+ "\n"
                                 + currentRoom.getNPC(0).getCompleteQuestString();
                         currentRoom.setHasFinishedQuest(true);
                         player.incrementProgress();
@@ -205,8 +247,7 @@ public class Game extends Player {
                 // if a quest has been completed, it will return the string that explains
                 // to the player that the quest in that room has been finished
                 else if (currentRoom.getHasFinishedQuest()) {
-                    s = "Your location: " + currentRoom.getName()
-                            + currentRoom.getExitString() + "\n"
+                    s = "Your location: " + currentRoom.getName()+"\n"
                             + currentRoom.getNPC(0).getQuestCompletedString();
                 }
             } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("2")) {
@@ -226,8 +267,7 @@ public class Game extends Player {
             // to return another string when they player comes back without completing it
             // also the string that explains the quest will be added to the players journal
             if (command.getCommandWord().equals(CommandWord.YES)) {
-                s = "Your location: " + currentRoom.getName()
-                        + currentRoom.getExitString() + "\n"
+                s = "Your location: " + currentRoom.getName()+ "\n"
                         + currentRoom.getNPC(0).getAcceptString();
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
@@ -236,8 +276,7 @@ public class Game extends Player {
             // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
                 // and player must choose 1 again to accept the quest.
             } else if (command.getCommandWord().equals(CommandWord.NO)) {
-                s = "Your location: " + currentRoom.getName()
-                        + currentRoom.getExitString() + "\n"
+                s = "Your location: " + currentRoom.getName()+ "\n"
                         + currentRoom.getNPC(0).getDeclineString();
 
             }
@@ -295,10 +334,8 @@ public class Game extends Player {
     }
 
     private String encounterNPC(Command command) {
-        String s = "";
         //ENCOUNTER - COMBATSYSTEM!!
         if (currentRoom.hasEncounter()) {
-            Battlesystem battle = new Battlesystem();
             if (currentRoom.getEncounter().encounterMet()) {
 
                 s = currentRoom.getEncounter().getEncounterMessage()
@@ -308,12 +345,13 @@ public class Game extends Player {
             } else {
                 return "Something just moved in the shadows! Seems like it's gone now...";
             }
+        } else {
+            s = "";
         }
         return s;
     }
 
     private String combatOptions(Command command) {
-        Battlesystem battle = new Battlesystem();
         Dropkick dropkick = new Dropkick();
         Punch punch = new Punch();
         Bodyslam bodyslam = new Bodyslam();
@@ -333,37 +371,23 @@ public class Game extends Player {
                     s = battle.attackoptions();
                     break;
                 case PUNCH:
-                    s = punch.Punch_attack()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    s = punch.Punch_attack()+"\n"
+                    + battle.Combatoptions();
                     break;
                 case DROPKICK:
-                    s = dropkick.Dropkick_attack()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    s = dropkick.Dropkick_attack();
                     break;
                 case BODYSLAM:
-                    s = bodyslam.Bodyslam_attack()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    s = bodyslam.Bodyslam_attack();
                     break;
                 case BACK:
                     s = battle.Combatoptions();
                     break;
                 case HEAL:
-                    s = battle.heal()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            +battle.Combatoptions();
+                    s = battle.heal();
                     break;
                 case DODGE:
-                    s = battle.dodge()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            +battle.Combatoptions();
+                    s = battle.dodge();
                     break;
                 default:
                     break;

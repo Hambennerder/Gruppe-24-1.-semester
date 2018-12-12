@@ -29,9 +29,11 @@ import worldofzuul.gamefunctionality.Launcher;
  *
  * @author joakim
  */
-public class FXMLMainController implements Initializable{
+public class FXMLMainController extends FXMLStartScreenController implements Initializable{
     ObservableList<String> showInventory = FXCollections.observableArrayList();
     ObservableList<String> showExits = FXCollections.observableArrayList();
+    
+    String name;
     
     Game g = new Game();
     
@@ -48,7 +50,7 @@ public class FXMLMainController implements Initializable{
     @FXML
     private ListView<String> lvEx;
 
-    public String loop (String s) throws Exception{
+    private String loop (String s) throws Exception{
         showInventory.clear();
         showExits.clear();
         if (!g.getFinished()) {
@@ -63,13 +65,21 @@ public class FXMLMainController implements Initializable{
         
     }
     
+    public void setName(String s){
+        name = s;
+    }
+    
+    private String getName(){
+        return name;
+    }
+    
     /**
      * Initializes the controller class.
      */
     @Override
    public void initialize(URL url, ResourceBundle rb) {
         // TODO
-                output.setText("Welcome "+g.player.getPlayerName()+", to the world of SDUUL.\n\n"
+                output.setText("Welcome "+g.getName()+", to the world of SDUUL.\n\n"
                 + "An adventurous text-based rpg game that tackles the life being a new\n"
                 + "university student in the most boring of fashion, we will show you the\n"
                 + "everchanging day to day life in a comedic way.\n\n"

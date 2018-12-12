@@ -56,19 +56,19 @@ public class Bodyslam {
     
     if (Player_health <= 0 && Encounter_health > 0 ){
 	
-        s = "You have lost.\n";
+        s += "You have lost.\n";
         
     }else if(Player_health > 0 && Encounter_health <= 0){
             
-        s = "You have won.\n";
+        s += "You have won.\n";
             
         Player_experience += Encounter_experience;
             
-        s = "Your experience is now " + Player_experience+"\n";
+        s += "Your experience is now " + Player_experience+"\n";
         
     }else if(Player_health <= 0 && Encounter_health <= 0){
             
-        s = "It's a tie.\n";   
+        s += "It's a tie.\n";   
     }
     return s;
    }

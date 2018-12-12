@@ -25,9 +25,10 @@ import worldofzuul.gamefunctionality.Game;
  * @author joakim
  */
 public class FXMLStartScreenController implements Initializable {
-    public String name;
+    private String name;
     private String age;
     private String gender;
+    
     @FXML
     private TextField nameSetter;
     @FXML
@@ -81,11 +82,12 @@ public class FXMLStartScreenController implements Initializable {
            
         Stage stage = GUI.stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMain.fxml"));
-
+        
         Parent root = loader.load();
-
+        
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     } 
     }
