@@ -46,7 +46,7 @@ public class Game extends Player {
         currentRoom = listOfRooms.getRoom(0);
 
         NPCS npcs = new NPCS();
-        npcs.createNPCS(player.getPlayerName());
+        npcs.createNPCS();
 
         Item id_card = new Item();
         id_card.setName("ID-card");
