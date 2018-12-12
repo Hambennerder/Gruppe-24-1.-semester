@@ -21,6 +21,7 @@ public class Game extends Player {
     private boolean finished = false;
     private boolean started = false;
     private boolean fight = false;
+    boolean fleeAttempted = false;
 
     public Game() {
         parser = new Parser();
@@ -74,6 +75,7 @@ public class Game extends Player {
         // test code
         Encounter encounter = new Encounter();
         encounter.addEncounterNPC(npcs.getNPC(3));
+        encounter.setEncounterPossibility(100);
         encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(4).addEncounter(encounter);
 
@@ -272,6 +274,10 @@ public class Game extends Player {
     }
 
     private String goRoom(Command command) {
+        if (currentRoom.getIsLocked()){
+            s = "You can't escape from this encounter!\n";
+        } else {
+        
         if (!command.hasSecondWord()) {
             return "Go where?";
         }
@@ -291,6 +297,7 @@ public class Game extends Player {
             currentRoom = nextRoom;
             s += currentRoom.getLongDescription();
         }
+        }
         return s;
     }
 
@@ -300,82 +307,128 @@ public class Game extends Player {
         if (currentRoom.hasEncounter()) {
             Battlesystem battle = new Battlesystem();
             if (currentRoom.getEncounter().encounterMet()) {
-
+                
+                if (!fleeAttempted) {
                 s = currentRoom.getEncounter().getEncounterMessage()
                         + battle.Decision();
-
+                
                 fight = true;
+                currentRoom.setIsLocked(true);
             } else {
                 return "Something just moved in the shadows! Seems like it's gone now...";
             }
+        }
+        } else if (fleeAttempted) {
+            s = "You already tried fleeing once you coward";
         }
         return s;
     }
 
     private String combatOptions(Command command) {
         Battlesystem battle = new Battlesystem();
-        Dropkick dropkick = new Dropkick();
-        Punch punch = new Punch();
-        Bodyslam bodyslam = new Bodyslam();
+        Dropkick dropkick = new Dropkick(player.getLevel());
+        Punch punch = new Punch(player.getLevel());
+        Bodyslam bodyslam = new Bodyslam(player.getLevel());
         EncounterAttacks encounterturn = new EncounterAttacks();
-        boolean fightIsActive = true;
         
-        while(fightIsActive) {
+         int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
+         
         if (fight){
             switch (command.getCommandWord()) {
                 case FIGHT:
                     s = battle.Combatoptions();
                     break;
                 case FLEE:
-                    s = "You escaped!! \n"
+                    if (fleeAttempted) {
+                        s = "Sorry, you already tried escaping once.\n"
+                            + battle.Combatoptions();       
+                    } else {
+                    
+                    if (!currentRoom.getEncounter().encounterMet()) {
+                    s = "You escaped! \n"
                             + currentRoom.getDescription();
-                    // print some sort of UI
                     fight = false;
+                    currentRoom.setIsLocked(false);
+                    } else {
+                        s = "Oh no, you werent quick enough!" + battle.Combatoptions();
+                    }
+                    }
                     break;
                 case ATTACK:
                     s = battle.attackoptions();
                     break;
                 case PUNCH:
-                    s = punch.Punch_attack()
                     
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    s = "You punched" + currentRoom.getEncounter().getEncounterNPC();
+                    s += "\nit resulted in" + punch.getDamageAmount() + " damage!";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - punch.getDamageAmount());
+                    
+                    if (enemyHealth <= 0) {
+                        s = "You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        
+                    } else {
+                        // if (attack instance off specialAbility) {
+                        //   loadSpecialAbilityMethod();
+                        // }
+                        // else {
+                        //   loadNormalAttackMethod();
+                        // }
+                        
+                        s += battle.Combatoptions();
+                    }
                     break;
                 case DROPKICK:
-                    s = dropkick.Dropkick_attack()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    
+                    s = "You have dropkicked" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                    s += " the kick resulted in" + dropkick.getDamageAmount() + "points in damage.";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - dropkick.getDamageAmount());
+                    
+                    if (enemyHealth <= 0) {
+                        s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                       
+                    }
+                         s += battle.Combatoptions();
+                    
                     break;
                 case BODYSLAM:
-                    s = bodyslam.Bodyslam_attack()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    
+                    s = "You have bodyslam" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                    s += " the slam resulted in" + bodyslam.getDamageAmount() + "points in damage.";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - bodyslam.getDamageAmount());
+                    
+                    if (enemyHealth <= 0) {
+                        s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        
+                    }
+                    s += battle.Combatoptions();
+                    
                     break;
                 case BACK:
                     s = battle.Combatoptions();
                     break;
                 case HEAL:
-                    s = battle.heal()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
+                    int healAmount = 10;
+                    player.setHealth(player.getHealth() + healAmount);  
+                    s += "You healed for the amount: 10. Current health: " + player.getHealth()
+                            +print3Lines()
                             +battle.Combatoptions();
                     break;
                 case DODGE:
-                    s = battle.dodge()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            +battle.Combatoptions();
+                    //s = battle.dodge()
+                    //        + encounterturn.EncounterTurn();
+                    //s += print3Lines()
+                    //        +battle.Combatoptions();
                     break;
                 default:
                     break;
             }
         }
-        }
-        return s;
-    }
+       return s;
+    } 
+
 
     private String printLocation() {
         return "Your location: " + currentRoom.getName();
@@ -416,5 +469,9 @@ public class Game extends Player {
             s += "\n";
         }
         return s;
+    }
+    
+    public Player getPlayer() {
+        return this.player;
     }
 }
