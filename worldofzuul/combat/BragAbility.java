@@ -4,16 +4,17 @@ import java.util.Random;
 import worldofzuul.Encounter;
 import worldofzuul.Player;
 
-public class Bodyslam extends Battlesystem{
- 
+public class BragAbility extends Battlesystem{
+    
     private Random rand = new Random();
     private int damageAmount;
     private String attackSuccessString;
     
-    
-    public Bodyslam(int playerLevel) {
+   
+    public BragAbility(int playerLevel) {
         damageAmount = (playerLevel * 2) + 10;
     }
+    
     public int getDamageAmount() {
         return damageAmount;
     }
@@ -23,7 +24,11 @@ public class Bodyslam extends Battlesystem{
     }
 
     public String getAttackSuccessString() {
-        return attackSuccessString;
+        return "";
     }
-      
+   
 }
+// multiple damageamount with random 
+// level * 2 + damage * interval
+//int 0,5 - 1,5
+

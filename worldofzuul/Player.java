@@ -11,7 +11,7 @@ public class Player extends Entity {
     private String playerName;
     private int currentHealth = 100;
     private int maxHealth = 100;
-    private int level;
+    private int level = 1;
     private int experience;
     private String age;
     private String gender;    
