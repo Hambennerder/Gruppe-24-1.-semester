@@ -16,8 +16,8 @@ public class NPCS extends NPC {
 
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
-        mentor.setDescription("Short and build student, wearing a hoodie and a pair of glasses,\n"
-                + " short clean cut redheaded");
+        mentor.setDescription("*Short and build student, wearing a hoodie \n"
+                + " and a pair of glasses,short clean cut redheaded*");
         mentor.setName("mentor");
         mentor.setWelcome(">You must be a new student, welcome! \n"
                 + "\nUvuvwevwevwe: As you can see below, you have two options,\n"
@@ -86,7 +86,7 @@ public class NPCS extends NPC {
         NPC bookstoreLady = new NPC();
         bookstoreLady.setName("lady");
         bookstoreLady.setWelcome(">Hello there handsome thing, What can I do you for?");
-        bookstoreLady.setDescription("Probably the ugliest and oldest person you've ever seen in a bookstore");
+        bookstoreLady.setDescription("*Probably the ugliest and oldest person you've ever seen in a bookstore*");
         bookstoreLady.setDialogOptions("> 1: Talk"
                 + "\n> 2: Leave");
         bookstoreLady.setQuestString(">I would love to help you finding the book darling,\n"
@@ -117,7 +117,7 @@ public class NPCS extends NPC {
         NPC student = new NPC();
         student.setName("student");
         student.setWelcome(">Hey! Please I need your help!");
-        student.setDescription("A student in distress");
+        student.setDescription("*A student in distress*");
         student.setDialogOptions("> 1: Talk"
                                       + "\n> 2: Leave");
        
@@ -141,7 +141,7 @@ public class NPCS extends NPC {
         NPC lune = new NPC();
         lune.setName("Lune");
         lune.setWelcome(">Hey there student.");
-        lune.setDescription(">Your teacher in introduction to Software Engineering");
+        lune.setDescription(">*Your teacher in introduction to Software Engineering*");
         lune.setDialogOptions("> 1: Talk"  
                                       + "\n> 2: Leave");
         lune.setQuestString(">I can't your my e-moderator. He could be in the T8. \n"
@@ -165,7 +165,7 @@ public class NPCS extends NPC {
         NPC eryk = new NPC();
         eryk.setName("Eryk");
         eryk.setWelcome(">Hello I'm your teacher in COS");
-        eryk.setDescription("Great man with great jokes");
+        eryk.setDescription("*Great man with great jokes*");
         eryk.setDialogOptions("> 1: Talk"                            
                                       + "\n> 2: Leave");
         eryk.setQuestString(">The damn light won't work and I can't get the projector to work. \n"
@@ -188,7 +188,7 @@ public class NPCS extends NPC {
         NPC moderator = new NPC();
         moderator.setName("Malta");
         moderator.setWelcome(">Thanks for helping me escape from the janitors");
-        moderator.setDescription(">Your e-moderator for journal-writing");
+        moderator.setDescription(">*Your e-moderator for journal-writing*");
         moderator.setDialogOptions("> 1: Talk"
                                       + "\n> 2: Leave");
         moderator.setQuestString(">I'm pretty sure I dropped my bag when I was running from the janitors \n"
