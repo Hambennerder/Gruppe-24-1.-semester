@@ -227,7 +227,7 @@ public class Rooms extends Room {
                 + " a large number of distressed students\n"
                 + "You see your teacher \'Lune\' ");
         u55.setName("u55");
-        u55.setRequiredProgress(8);
+        u55.setRequiredProgress(9);
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
                 + "Return to Lune when you're done");
@@ -238,7 +238,7 @@ public class Rooms extends Room {
         u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
                 + "you can see your teacher \'Eryk\' and a \'cable\' ");
         u45.setName("u45");
-        u45.setRequiredProgress(11);
+        u45.setRequiredProgress(12);
         u45.setHasQuest(true);
         u45.setJournalString("Fix the technology in u45");
         
@@ -250,8 +250,8 @@ public class Rooms extends Room {
                 + "It's dark, smelly and almost impossible to find\n"
                 + "You see a figure that looks like \'Malta\'");
         t8.setName("T8");
-        t8.setRequiredProgress(8);
-        t8.setNextQuestProgress(10);
+        t8.setRequiredProgress(9);
+        t8.setNextQuestProgress(11);
         t8.setHasQuest(true);
         t8.setJournalString("Find Malta's bag and bring it back to him");
        
