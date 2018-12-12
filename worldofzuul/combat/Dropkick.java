@@ -31,8 +31,8 @@ public class Dropkick extends Battlesystem{
         this.Damagegiven = Damagegiven;
     }
     
-    public void Dropkick_attack(){
-    
+    public String Dropkick_attack(){
+    String s = "";
     Damagegiven = 20;
     
     result = (rand.nextInt(100)) + 1;
@@ -40,36 +40,36 @@ public class Dropkick extends Battlesystem{
     if(result >= 50){
         
         //Success attack
-        System.out.println("Your dropkick has resulted in " + Damagegiven + " points of damage.");
+        s = "Your dropkick has resulted in " + Damagegiven + " points of damage.";
         
         Encounter_health -= Damagegiven;
         
-        System.out.println("Your opponents has " + Encounter_health + " left in health.");
+        s+="Your opponents has " + Encounter_health + " left in health.";
     
     }else if(result < 50){
         
         //fail attack
-        System.out.println("Your opponent was able to dogde your dropkick. His/Her health reminds " + Encounter_health);
+        s = "Your opponent was able to dogde your dropkick. His/Her health reminds " + Encounter_health;
         
     }
     
     if (Player_health <= 0 && Encounter_health > 0 ){
 	
-        System.out.println("You have loss.");
+        s = "You have lost.";
         
     }else if(Player_health > 0 && Encounter_health <= 0){
         
-        System.out.println("You have won.");
+        s = "You have won.";
         
         Player_experience += Encounter_experience;
         
-        System.out.println("Your experience is now " + Player_experience);
+        s = "Your experience is now " + Player_experience;
         
     }else if(Player_health <= 0 && Encounter_health <= 0){
         
-        System.out.println("It's a tie.");
+        s = "It's a tie.";
         
     }
-    
+    return s;
 }
 }
