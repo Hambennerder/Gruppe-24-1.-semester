@@ -315,11 +315,13 @@ public class Game extends Player {
 
     private String combatOptions(Command command) {
         Battlesystem battle = new Battlesystem();
-        Dropkick dropkick = new Dropkick();
+        Dropkick dropkick = new Dropkick(player.getLevel());
         Punch punch = new Punch(player.getLevel());
-        Bodyslam bodyslam = new Bodyslam();
+        Bodyslam bodyslam = new Bodyslam(player.getLevel());
         EncounterAttacks encounterturn = new EncounterAttacks();
         
+         int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
+         
         if (fight){
             switch (command.getCommandWord()) {
                 case FIGHT:
@@ -338,7 +340,6 @@ public class Game extends Player {
                     s = battle.attackoptions();
                     break;
                 case PUNCH:
-                    int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
                     
                     s = "You punched" + currentRoom.getEncounter().getEncounterNPC();
                     s += "\nit resulted in" + punch.getDamageAmount() + " damage!";
@@ -360,16 +361,32 @@ public class Game extends Player {
                     }
                     break;
                 case DROPKICK:
-                    s = dropkick.Dropkick_attack()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    
+                    s = "You have dropkicked" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                    s += " the kick resulted in" + dropkick.getDamageAmount() + "points in damage.";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - dropkick.getDamageAmount());
+                    
+                    if (enemyHealth <= 0) {
+                        s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                       
+                    }
+                         s += battle.Combatoptions();
+                    
                     break;
                 case BODYSLAM:
-                    s = bodyslam.Bodyslam_attack()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    
+                    s = "You have bodyslam" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                    s += " the slam resulted in" + bodyslam.getDamageAmount() + "points in damage.";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - bodyslam.getDamageAmount());
+                    
+                    if (enemyHealth <= 0) {
+                        s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        
+                    }
+                    s += battle.Combatoptions();
+                    
                     break;
                 case BACK:
                     s = battle.Combatoptions();
@@ -391,9 +408,9 @@ public class Game extends Player {
                     break;
             }
         }
-        
-        return s;
-    }
+       return s;
+    } 
+
 
     private String printLocation() {
         return "Your location: " + currentRoom.getName();
