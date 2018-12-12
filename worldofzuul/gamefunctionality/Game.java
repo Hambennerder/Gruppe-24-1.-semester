@@ -72,12 +72,15 @@ public class Game extends Player {
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
 
-        // test code
+        // encounters
         Encounter encounter = new Encounter();
         encounter.addEncounterNPC(npcs.getNPC(3));
         encounter.setEncounterPossibility(100);
         encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(4).addEncounter(encounter);
+        
+        
+        
 
         // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item();
