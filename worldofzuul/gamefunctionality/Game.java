@@ -21,6 +21,7 @@ public class Game extends Player {
     private boolean finished = false;
     private boolean started = false;
     private boolean fight = false;
+    boolean fleeAttempted = false;
 
     public Game() {
         parser = new Parser();
@@ -273,6 +274,10 @@ public class Game extends Player {
     }
 
     private String goRoom(Command command) {
+        if (currentRoom.getIsLocked()){
+            s = "You can't escape from this encounter!\n";
+        } else {
+        
         if (!command.hasSecondWord()) {
             return "Go where?";
         }
@@ -292,6 +297,7 @@ public class Game extends Player {
             currentRoom = nextRoom;
             s += currentRoom.getLongDescription();
         }
+        }
         return s;
     }
 
@@ -301,14 +307,19 @@ public class Game extends Player {
         if (currentRoom.hasEncounter()) {
             Battlesystem battle = new Battlesystem();
             if (currentRoom.getEncounter().encounterMet()) {
-
+                
+                if (!fleeAttempted) {
                 s = currentRoom.getEncounter().getEncounterMessage()
                         + battle.Decision();
-
+                
                 fight = true;
+                currentRoom.setIsLocked(true);
             } else {
                 return "Something just moved in the shadows! Seems like it's gone now...";
             }
+        }
+        } else if (fleeAttempted) {
+            s = "You already tried fleeing once you coward";
         }
         return s;
     }
@@ -326,12 +337,19 @@ public class Game extends Player {
                     s = battle.Combatoptions();
                     break;
                 case FLEE:
+                    if (fleeAttempted) {
+                        s = "Sorry, you already tried escaping once.\n"
+                            + battle.Combatoptions();       
+                    } else {
+                    
                     if (!currentRoom.getEncounter().encounterMet()) {
                     s = "You escaped! \n"
                             + currentRoom.getDescription();
                     fight = false;
+                    currentRoom.setIsLocked(false);
                     } else {
                         s = "Oh no, you werent quick enough!" + battle.Combatoptions();
+                    }
                     }
                     break;
                 case ATTACK:
