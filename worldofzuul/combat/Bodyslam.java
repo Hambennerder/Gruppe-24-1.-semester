@@ -31,8 +31,8 @@ public class Bodyslam {
         this.Damagegiven = Damagegiven;
     }
     
-    public void Bodyslam_attack(){
-    
+    public String Bodyslam_attack(){
+    String s = "";
     Damagegiven = 20;
     
     result = (rand.nextInt(100)) + 1;
@@ -40,35 +40,36 @@ public class Bodyslam {
     if(result >= 50){
         
         //Success attack
-        System.out.println("Your bodyslam has resulted in " + Damagegiven + " points of damage.");
+        s = "Your bodyslam has resulted in " + Damagegiven + " points of damage.\n";
         
         Encounter_health -= Damagegiven;
         
-        System.out.println("Your opponents has " + Encounter_health + " left in health.");
+        s += "Your opponents has " + Encounter_health + " left in health.\n";
     
     }else if(result < 50){
         
         //fail attack
-        System.out.println("Your opponent was able to avoid your body. His/Her health is still remains " + Encounter_health);
+        s = "Your opponent was able to avoid your body.\n"
+                + "His/Her health is still remains " + Encounter_health;
         
     }
     
     if (Player_health <= 0 && Encounter_health > 0 ){
 	
-        System.out.println("You have loss.");
+        s = "You have lost.\n";
         
     }else if(Player_health > 0 && Encounter_health <= 0){
             
-        System.out.println("You have won.");
+        s = "You have won.\n";
             
         Player_experience += Encounter_experience;
             
-        System.out.println("Your experience is now " + Player_experience);
+        s = "Your experience is now " + Player_experience+"\n";
         
     }else if(Player_health <= 0 && Encounter_health <= 0){
             
-        System.out.println("It's a tie.");   
+        s = "It's a tie.\n";   
     }
-    
+    return s;
    }
 }

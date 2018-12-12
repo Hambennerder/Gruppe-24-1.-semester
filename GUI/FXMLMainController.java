@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import worldofzuul.Item;
 import worldofzuul.gamefunctionality.Command;
 import worldofzuul.gamefunctionality.Game;
@@ -47,13 +49,18 @@ public class FXMLMainController implements Initializable{
     private ListView<String> lvEx;
 
     public String loop (String s) throws Exception{
+        showInventory.clear();
+        showExits.clear();
         if (!g.getFinished()) {
             Command command = g.parser.getCommand(s);
             s = g.processCommand(command);
         } else {
         System.out.println("Thank you for playing. Good bye.");
         }
+        addInventory();
+        addExits();
         return s;
+        
     }
     
     /**
@@ -110,17 +117,19 @@ public class FXMLMainController implements Initializable{
 
     @FXML
     public void handleSendBtn(ActionEvent event) throws Exception {
-        showInventory.clear();
-        showExits.clear();
-        
         output.setText(loop(console.getText()));
         console.clear();
-        
-        addInventory();
-        addExits();
     }
 
+    @FXML
+    private void enterButton(KeyEvent event) throws Exception{
+        if (event.getCode()==KeyCode.ENTER) {
+            output.setText(loop(console.getText()));
+            console.clear();
+        }
+    }
+    
+    
+    
 }
-//1. Dialogue options/fight options
-//2. Strings skal "forkortes"
 

@@ -1,9 +1,5 @@
 package worldofzuul.gamefunctionality;
 
-import GUI.FXMLMainController;
-import GUI.GUI;
-import java.util.Scanner;
-import javafx.application.Application;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
@@ -18,14 +14,13 @@ import worldofzuul.combat.Punch;
 
 public class Game extends Player {
 
-    private String s;
-    private String text;
+    private String s = "";
     public Parser parser;
     public Room currentRoom;
-    private Room nextRoom;
     public Player player;
     private boolean finished = false;
-    int started = 0;
+    private boolean started = false;
+    private boolean fight = false;
 
     public Game() {
         parser = new Parser();
@@ -101,7 +96,7 @@ public class Game extends Player {
         Item bag = new Item();
         bag.setName("bag");
         listOfRooms.getRoom(20).addNPC(npcs.getNPC(6));
-        listOfRooms.getRoom(42).addItem(bag);
+        listOfRooms.getRoom(42).addItem(bag);       
     }
 
     public boolean getFinished() {
@@ -114,16 +109,16 @@ public class Game extends Player {
 
     public String processCommand(Command command) throws Exception {
         CommandWord commandWord = command.getCommandWord();
-        String s = "";
         if (commandWord == CommandWord.UNKNOWN) { //DONE
             s = "I don't know what you mean...";
         }
         if (commandWord == CommandWord.HELP) {//DONE
             return printHelp();
-        } else if (commandWord == CommandWord.BEGIN) {//DONE????
+        } else if (commandWord == CommandWord.BEGIN) {//DONE
             return startScreen();
-        } else if (commandWord == CommandWord.GO) {//HALFDONE
-            return goRoom(command);
+        } else if (commandWord == CommandWord.GO) {//DONE
+            return goRoom(command)+"\n"
+                    + encounterNPC(command);
         } else if (commandWord == CommandWord.QUIT) {//DONE
             setFinished(true);
         } else if (commandWord == CommandWord.INSPECT) {//DONE
@@ -152,26 +147,32 @@ public class Game extends Player {
             }
         } else if (commandWord == CommandWord.APPROACH) {//DONE
             s = approachNPC(command);
-        } else if (commandWord == CommandWord.CHOOSE) {//NOTDONE
+        } else if (commandWord == CommandWord.CHOOSE) {//DONE
             s = processOption(command);
         } else if (commandWord == CommandWord.JOURNAL) {//DONE
             s = player.getJournal();
-        } else if (commandWord == CommandWord.INVENTORY) {//DONE
-
-            //s = player.getInventory();
-  
-            s = player.getInventory();
-        } else if (commandWord == CommandWord.YES) {//DONE
+        } else if (commandWord == CommandWord.YES | commandWord == CommandWord.NO) {//DONE
             s = processChoice(command);
-        } else if (commandWord == CommandWord.NO) {//DONE
-            s = processChoice(command);
-
+        } else if (commandWord == CommandWord.FIGHT
+                | commandWord == CommandWord.FIGHT
+                | commandWord == CommandWord.FLEE
+                | commandWord == CommandWord.ATTACK
+                | commandWord == CommandWord.HEAL
+                | commandWord == CommandWord.DODGE
+                | commandWord == CommandWord.DROPKICK
+                | commandWord == CommandWord.PUNCH
+                | commandWord == CommandWord.BODYSLAM
+                | commandWord == CommandWord.BACK) {
+            if (fight) {
+                return combatOptions(command);
+            } else {
+                return "Why are you trying to fight?";
+            }
         }
         return s;
     }
 
     private String processOption(Command command) {
-        String s = "";
         // Check 1: checks if there is a second word, aka a choice between 1 or 2
         if (command.hasSecondWord()) {
             // Check 2: checks if a room does not have a quest, so you cant "choose" in that room
@@ -208,6 +209,8 @@ public class Game extends Player {
                             + currentRoom.getExitString() + "\n"
                             + currentRoom.getNPC(0).getQuestCompletedString();
                 }
+            } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("2")) {
+                s = currentRoom.getNPC(0).getGoodbye();
             }
         } else {
             return "Choose what?";
@@ -216,32 +219,32 @@ public class Game extends Player {
     }
 
     private String processChoice(Command command) {
-        String s = "";
         try {
         // stage 3.3: checks if the answer is yes, if the player types in yes
-        // then the the NPC's string acceptString will be returned
-        // and that room will now have an ongoing quest, which makes it possible
-        // to return another string when they player comes back without completing it
-        // also the string that explains the quest will be added to the players journal
-        if (command.getCommandWord().equals(CommandWord.YES)) {
-            s = "Your location: " + currentRoom.getName()
-                    + currentRoom.getExitString() + "\n"
-                    + currentRoom.getNPC(0).getAcceptString();
-            currentRoom.setHasOngoingQuest(true);
-            currentRoom.setHasFinishedQuest(false);
-            player.setJournal(currentRoom.getJournalString());
+            // then the the NPC's string acceptString will be returned
+            // and that room will now have an ongoing quest, which makes it possible
+            // to return another string when they player comes back without completing it
+            // also the string that explains the quest will be added to the players journal
+            if (command.getCommandWord().equals(CommandWord.YES)) {
+                s = "Your location: " + currentRoom.getName()
+                        + currentRoom.getExitString() + "\n"
+                        + currentRoom.getNPC(0).getAcceptString();
+                currentRoom.setHasOngoingQuest(true);
+                currentRoom.setHasFinishedQuest(false);
+                player.setJournal(currentRoom.getJournalString());
 
             // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
-            // and player must choose 1 again to accept the quest.
-        } else if (command.getCommandWord().equals(CommandWord.NO)) {
-            s = "Your location: " + currentRoom.getName()
-                    + currentRoom.getExitString() + "\n"
-                    + currentRoom.getNPC(0).getDeclineString();
+                // and player must choose 1 again to accept the quest.
+            } else if (command.getCommandWord().equals(CommandWord.NO)) {
+                s = "Your location: " + currentRoom.getName()
+                        + currentRoom.getExitString() + "\n"
+                        + currentRoom.getNPC(0).getDeclineString();
 
-        }
-    } catch (IndexOutOfBoundsException ex){
+            }
+        } catch (IndexOutOfBoundsException ex) {
             s += currentRoom.getLongDescription();
-    } return s;
+        }
+        return s;
     }
 
     private String printHelp() {
@@ -252,7 +255,6 @@ public class Game extends Player {
     }
 
     private String approachNPC(Command command) {
-        String s = "";
         try {
             if (!command.hasSecondWord()) {
                 s = "Approach what?";
@@ -270,7 +272,6 @@ public class Game extends Player {
     }
 
     private String goRoom(Command command) {
-        String s;
         if (!command.hasSecondWord()) {
             return "Go where?";
         }
@@ -286,105 +287,88 @@ public class Game extends Player {
             s = "You can't go there yet!";
 
         } else {
-            s = nextRoom.getShortDescription();
+            s = nextRoom.getShortDescription()+"\n";
             currentRoom = nextRoom;
             s += currentRoom.getLongDescription();
         }
+        return s;
+    }
 
-    //ENCOUNTER - COMBATSYSTEM!!
+    private String encounterNPC(Command command) {
+        String s = "";
+        //ENCOUNTER - COMBATSYSTEM!!
         if (currentRoom.hasEncounter()) {
-            
             Battlesystem battle = new Battlesystem();
-            Dropkick dropkick = new Dropkick();
-            Punch punch = new Punch();
-            Bodyslam bodyslam = new Bodyslam();
-            EncounterAttacks encounterturn = new EncounterAttacks();
-            
-
             if (currentRoom.getEncounter().encounterMet()) {
-                System.out.println(currentRoom.getEncounter().getEncounterMessage());
-                battle.Decision();
 
-                Scanner input = new Scanner(System.in);
-                
-                boolean acceptableAnswer = false;
-                while (!acceptableAnswer) {
-                    String choice = input.next();
-        
-        if(choice.equals("fight")) {
-            
-            print3Lines();
-            battle.Combatoptions();
-            
-        }else if (choice.equals("flee") && currentRoom.getEncounter().tryFlee()){
-            
-            System.out.println("You escaped!!");
-            print3Lines();
-            System.out.println(currentRoom.getDescription());
-            
-            // print some sort of UI
-            acceptableAnswer = true;
-            
-        } else if (choice.equals("attack")){
-            print3Lines();
-            battle.attackoptions();
-            
-        } else if (choice.equals("punch")){    
-            print3Lines();
-            punch.Punch_attack();
-            print3Lines();
-            encounterturn.EncounterTurn();
-            print3Lines();
-            battle.Combatoptions();
-                    
-        } else if (choice.equals("dropkick")){
-           print3Lines();
-           dropkick.Dropkick_attack();
-           print3Lines();
-           encounterturn.EncounterTurn();
-           print3Lines();
-           battle.Combatoptions();
-        
-        } else if(choice.equals("bodyslam")){
-           print3Lines();
-           bodyslam.Bodyslam_attack();
-           print3Lines();
-           encounterturn.EncounterTurn();
-           print3Lines();
-           battle.Combatoptions();
-           
-        } else if(choice.equals("back")){
-            print3Lines();
-            battle.Combatoptions();
-            
-        } else if (choice.equals("heal")){
-           print3Lines();
-           battle.heal();
-           print3Lines();
-           encounterturn.EncounterTurn();
-           print3Lines();
-           battle.Combatoptions();
-            
-        } else if (choice.equals("dodge")){
-            print3Lines();
-            battle.dodge();
-            print3Lines();
-            encounterturn.EncounterTurn();
-            print3Lines();
-            battle.Combatoptions();
-     
-        } else {
-            System.out.println("Error");
-            break;
-        }
-               
+                s = currentRoom.getEncounter().getEncounterMessage()
+                        + battle.Decision();
 
+                fight = true;
             } else {
-                System.out.println("Something just moved in the shadows! Seems like it's gone now...");
+                return "Something just moved in the shadows! Seems like it's gone now...";
             }
-
         }
+        return s;
+    }
 
+    private String combatOptions(Command command) {
+        Battlesystem battle = new Battlesystem();
+        Dropkick dropkick = new Dropkick();
+        Punch punch = new Punch();
+        Bodyslam bodyslam = new Bodyslam();
+        EncounterAttacks encounterturn = new EncounterAttacks();
+        if (fight){
+            switch (command.getCommandWord()) {
+                case FIGHT:
+                    s = battle.Combatoptions();
+                    break;
+                case FLEE:
+                    s = "You escaped!! \n"
+                            + currentRoom.getDescription();
+                    // print some sort of UI
+                    fight = false;
+                    break;
+                case ATTACK:
+                    s = battle.attackoptions();
+                    break;
+                case PUNCH:
+                    s = punch.Punch_attack()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            + battle.Combatoptions();
+                    break;
+                case DROPKICK:
+                    s = dropkick.Dropkick_attack()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            + battle.Combatoptions();
+                    break;
+                case BODYSLAM:
+                    s = bodyslam.Bodyslam_attack()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            + battle.Combatoptions();
+                    break;
+                case BACK:
+                    s = battle.Combatoptions();
+                    break;
+                case HEAL:
+                    s = battle.heal()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            +battle.Combatoptions();
+                    break;
+                case DODGE:
+                    s = battle.dodge()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            +battle.Combatoptions();
+                    break;
+                default:
+                    break;
+            }
+        }
         return s;
     }
 
@@ -413,19 +397,19 @@ public class Game extends Player {
     }
 
     private String startScreen() {
-        String s = "";
-        if (started == 0) {
+        if (!started) {
             s = currentRoom.getLongDescription()
-            + currentRoom.getRoomIntro();
+                    + currentRoom.getRoomIntro();
         } else {
-            s = "The game has already begun...";
+            s = "What are you trying to do?";
         }
         return s;
     }
-    
-    private void print3Lines(){
-        for(int i = 0; i < 3; i++){
-            System.out.println();
+
+    private String print3Lines() {
+        for (int i = 0; i < 3; i++) {
+            s += "\n";
         }
+        return s;
     }
 }
