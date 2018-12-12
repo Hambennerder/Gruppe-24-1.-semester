@@ -318,6 +318,9 @@ public class Game extends Player {
         Punch punch = new Punch();
         Bodyslam bodyslam = new Bodyslam();
         EncounterAttacks encounterturn = new EncounterAttacks();
+        boolean fightIsActive = true;
+        
+        while(fightIsActive) {
         if (fight){
             switch (command.getCommandWord()) {
                 case FIGHT:
@@ -334,6 +337,7 @@ public class Game extends Player {
                     break;
                 case PUNCH:
                     s = punch.Punch_attack()
+                    
                             + encounterturn.EncounterTurn();
                     s += print3Lines()
                             + battle.Combatoptions();
@@ -368,6 +372,7 @@ public class Game extends Player {
                 default:
                     break;
             }
+        }
         }
         return s;
     }

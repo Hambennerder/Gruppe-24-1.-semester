@@ -113,6 +113,8 @@ public class NPCS extends NPC {
         lawStudent.setName("Wild law student");
         lawStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
+        lawStudent.setHealth(100);
+        lawStudent.setExperience(1000);
         npcs.add(lawStudent);
 
         // End of the NPC at the student bookstore--------------------
