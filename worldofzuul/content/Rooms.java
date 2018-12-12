@@ -149,6 +149,7 @@ public class Rooms extends Room {
         storage = new Room("You shouldnt be back here... unless");
         storage.setDescription("Is that a \'book\'?");
         storage.setName("Student bookstore storage");
+        storage.setRequiredProgress(4);
         rooms.add(storage);
 
         // canteen at index 11
@@ -238,7 +239,7 @@ public class Rooms extends Room {
         u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
                 + "you can see your teacher \'Eryk\' and a \'cable\' ");
         u45.setName("u45");
-        u45.setRequiredProgress(10);
+        u45.setRequiredProgress(11);
         u45.setHasQuest(true);
         u45.setJournalString("Fix the technology in u45");
         
@@ -264,117 +265,140 @@ public class Rooms extends Room {
         g9.setDescription("You should have worn a pedometer...");
         g9.setName("g9");
         
+        // index at 22
         g10 = new Room("you are in hallway g10");
         rooms.add(g10);
         g10.setDescription("Luckily you don't have to go to the gym anymore\n"
                 + "with all the walking you have been doing here");
         g10.setName("g10");
         
+        // index at 23
         g11 = new Room("you are in hallway g11");
         rooms.add(g11);
         g11.setDescription("You should be at the basement floor soon");
         g11.setName("g11");
         
+        // index at 24
         g12 = new Room("you are in hallway g12");
         rooms.add(g12);
         g12.setDescription("You are almost at the basement. T8 Should be down there");
         g12.setName("g12");
         
+        // index at 25
         g13 = new Room("you are in hallway g13");
         rooms.add(g13);
         g13.setDescription("It's really dark down here... ");
         g13.setName("g13");
         
+        // index at 26
         g14 = new Room("you are in hallway g14");
         rooms.add(g14);
         g14.setDescription("It's really dark down here... Watch out for the angry janitors");
         g14.setName("g14");
         
+        // index at 27
         g15 = new Room("you are in hallway g15");
         rooms.add(g15);
         g15.setDescription("It's really dark down here... Watch out for the angry janitors");
         g15.setName("g15");
         
+        // index at 28
         g16 = new Room("you are in hallway g16");
         rooms.add(g16);
         g16.setDescription("It's really dark down here... The doors can be quite tricky to open");
         g16.setName("g16");
         
+        // index at 29
         g17 = new Room("you are in hallway 17");
         rooms.add(g17);
         g17.setDescription("It's really dark down here... Watch out for the angry janitors");
         
+        // index at 30
         g18 = new Room("you are in hallway g18");
         rooms.add(g18);
         g18.setDescription("It's really dark down here... Watch out for the angry janitors");
         g18.setName("g18");
         
+        // index at 31
         g19 = new Room("you are in hallway g19");
         rooms.add(g19);
         g19.setDescription("It's really dark down here... Is that a dead body over there?");
         g19.setName("g19");
         
+        // index at 32
         g20 = new Room("you are in hallway g20");
         rooms.add(g20);
         g20.setDescription("It's really dark down here... Watch out for the angry janitors");
         g20.setName("g20");
         
+        // index at 33
         g21 = new Room("you are in hallway g21");
         rooms.add(g21);
         g21.setDescription("It's really dark down here... Wow! Is that an original banksy?");
         g21.setName("g21");
         
+        // index at 34
         g22 = new Room("you are in hallway g22");
         rooms.add(g22);
         g22.setDescription("It's really dark down here... Maybe you can find a switch somewhere");
         g22.setName("g22");
         
+        // index at 35
         g23 = new Room("you are in hallway g23");
         rooms.add(g23);
         g23.setDescription("It's really dark down here... Watch out for the angry janitors");
         g23.setName("g23");
         
+        // index at 36
         g24 = new Room("you are in hallway g24");
         rooms.add(g24);
         g24.setDescription("It's really dark down here... You might be stuck down here forever");
         g24.setName("g24");
         
+        // index at 37
         k1 = new Room("you are in the basement in room k1");
         rooms.add(k1);
         k1.setDescription("The basement is dark and scary\n"
                 + "You proably shouldn't linger for too long");
         k1.setName("k1");
         
+        // index at 38
         k2 = new Room("you are in the basement in room k2");
         rooms.add(k2);
         k2.setDescription("This basement is impossible to navigate");
         k2.setName("k2");
         
+        // index at 39
         k3 = new Room("you are in the basement in room k3");
         rooms.add(k3);
         k3.setDescription("Will you ever find T8?");
         k3.setName("k3");
         
+        // index at 40
         k4 = new Room("you are in the basement in room k4");
         rooms.add(k4);
         k4.setDescription("How come you have to be down here... it's all smelly and old");
         k4.setName("k4");
         
+        // index at 41
         k5 = new Room("you are in the basement in room k5");
         rooms.add(k5);
         k5.setDescription("This might be the right way... wait, where are you going?");
         k5.setName("k5");
         
+        // index at 42
         k6 = new Room("you are in the basement in room k6");
         rooms.add(k6);
         k6.setDescription("This basement much be pretty huge");
         k6.setName("k6");
         
+        // index at 43
         k7 = new Room("you are in the basement in room k7");
         rooms.add(k7);
         k7.setDescription("Is that Malta's \'bag\' over there?");
         k7.setName("k7");
         
+        // index at 44
         k8 = new Room("you are in the basement in room k8");
         rooms.add(k8);
         k8.setDescription("What is that weird smell in here?");

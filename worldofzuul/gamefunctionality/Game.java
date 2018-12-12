@@ -96,7 +96,7 @@ public class Game extends Player {
         Item bag = new Item();
         bag.setName("bag");
         listOfRooms.getRoom(20).addNPC(npcs.getNPC(7));
-        listOfRooms.getRoom(42).addItem(bag);       
+        listOfRooms.getRoom(43).addItem(bag);       
     }
 
     public boolean getFinished() {
