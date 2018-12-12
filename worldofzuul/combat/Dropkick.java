@@ -40,34 +40,35 @@ public class Dropkick extends Battlesystem{
     if(result >= 50){
         
         //Success attack
-        s = "Your dropkick has resulted in " + Damagegiven + " points of damage.";
+        s = "Your dropkick has resulted in " + Damagegiven + " points of damage.\n";
         
         Encounter_health -= Damagegiven;
         
-        s+="Your opponents has " + Encounter_health + " left in health.";
+        s+="Your opponents has " + Encounter_health + " left in health.\n";
     
     }else if(result < 50){
         
         //fail attack
-        s = "Your opponent was able to dogde your dropkick. His/Her health reminds " + Encounter_health;
+        s = "Your opponent was able to dogde your dropkick.\n"
+                + "His/Her health reminds " + Encounter_health+"\n";
         
     }
     
     if (Player_health <= 0 && Encounter_health > 0 ){
 	
-        s = "You have lost.";
+        s = "You have lost.\n";
         
     }else if(Player_health > 0 && Encounter_health <= 0){
         
-        s = "You have won.";
+        s = "You have won.\n";
         
         Player_experience += Encounter_experience;
         
-        s = "Your experience is now " + Player_experience;
+        s = "Your experience is now " + Player_experience+"\n";
         
     }else if(Player_health <= 0 && Encounter_health <= 0){
         
-        s = "It's a tie.";
+        s = "It's a tie.\n";
         
     }
     return s;

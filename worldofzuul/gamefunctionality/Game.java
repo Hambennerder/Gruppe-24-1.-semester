@@ -1,9 +1,5 @@
 package worldofzuul.gamefunctionality;
 
-import GUI.FXMLMainController;
-import GUI.GUI;
-import java.util.Scanner;
-import javafx.application.Application;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
@@ -19,10 +15,8 @@ import worldofzuul.combat.Punch;
 public class Game extends Player {
 
     private String s = "";
-    private String text;
     public Parser parser;
     public Room currentRoom;
-    private Room nextRoom;
     public Player player;
     private boolean finished = false;
     private boolean started = false;
@@ -325,55 +319,55 @@ public class Game extends Player {
         Bodyslam bodyslam = new Bodyslam();
         EncounterAttacks encounterturn = new EncounterAttacks();
         if (fight){
-        if (command.getCommandWord().equals(CommandWord.FIGHT)) {
-
-            s = battle.Combatoptions();
-
-        } else if (command.getCommandWord().equals(CommandWord.FLEE)) {
-
-            s = "You escaped!! \n"
-                    + currentRoom.getDescription();
-
-            // print some sort of UI
-            fight = false;
-
-        } else if (command.getCommandWord().equals(CommandWord.ATTACK)) {
-            s = battle.attackoptions();
-
-        } else if (command.getCommandWord().equals(CommandWord.PUNCH)) {
-            s = punch.Punch_attack()
-            + encounterturn.EncounterTurn();
-            s += print3Lines()
-            + battle.Combatoptions();
-
-        } else if (command.getCommandWord().equals(CommandWord.DROPKICK)) {
-            s = dropkick.Dropkick_attack()
-            + encounterturn.EncounterTurn();
-            s += print3Lines()
-            + battle.Combatoptions();
-
-        } else if (command.getCommandWord().equals(CommandWord.BODYSLAM)) {
-            s = bodyslam.Bodyslam_attack()
-            + encounterturn.EncounterTurn();
-            s += print3Lines()
-            + battle.Combatoptions();
-
-        } else if (command.getCommandWord().equals(CommandWord.BACK)) {
-            s = battle.Combatoptions();
-
-        } else if (command.getCommandWord().equals(CommandWord.HEAL)) {
-            s = battle.heal()
-            + encounterturn.EncounterTurn();
-            s += print3Lines()
-            +battle.Combatoptions();
-
-        } else if (command.getCommandWord().equals(CommandWord.DODGE)) {
-            s = battle.dodge()
-            + encounterturn.EncounterTurn();
-            s += print3Lines()
-            +battle.Combatoptions();
-
-        }
+            switch (command.getCommandWord()) {
+                case FIGHT:
+                    s = battle.Combatoptions();
+                    break;
+                case FLEE:
+                    s = "You escaped!! \n"
+                            + currentRoom.getDescription();
+                    // print some sort of UI
+                    fight = false;
+                    break;
+                case ATTACK:
+                    s = battle.attackoptions();
+                    break;
+                case PUNCH:
+                    s = punch.Punch_attack()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            + battle.Combatoptions();
+                    break;
+                case DROPKICK:
+                    s = dropkick.Dropkick_attack()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            + battle.Combatoptions();
+                    break;
+                case BODYSLAM:
+                    s = bodyslam.Bodyslam_attack()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            + battle.Combatoptions();
+                    break;
+                case BACK:
+                    s = battle.Combatoptions();
+                    break;
+                case HEAL:
+                    s = battle.heal()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            +battle.Combatoptions();
+                    break;
+                case DODGE:
+                    s = battle.dodge()
+                            + encounterturn.EncounterTurn();
+                    s += print3Lines()
+                            +battle.Combatoptions();
+                    break;
+                default:
+                    break;
+            }
         }
         return s;
     }

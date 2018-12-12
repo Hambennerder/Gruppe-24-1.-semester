@@ -41,34 +41,35 @@ public class Punch extends Battlesystem {
         if (result >= 50) {
 
             //Success attack
-            s = "Your punch has resulted in " + Damagegiven + " points of damage.";
+            s = "Your punch has resulted in " + Damagegiven + " points of damage.\n";
 
             Encounter_health -= Damagegiven;
 
-            s += "Your opponents has " + Encounter_health + " left in health.";
+            s += "Your opponents has " + Encounter_health + " left in health.\n";
 
         } else if (result < 50) {
 
             //fail attack
-            s = "Your opponent was able to dogde your punch. His/Her health reminds " + Encounter_health;
+            s = "Your opponent was able to dogde your punch\n."
+                    + "His/Her health reminds " + Encounter_health;
 
         }
 
         if (Player_health <= 0 && Encounter_health > 0) {
 
-            s = "You have lost.";
+            s = "You have lost.\n";
 
         } else if (Player_health > 0 && Encounter_health <= 0) {
 
-            s = "You have won.";
+            s = "You have won.\n";
 
             Player_experience += Encounter_experience;
 
-            s += "Your experience is now " + Player_experience;
+            s += "Your experience is now " + Player_experience+"\n";
 
         } else if (Player_health <= 0 && Encounter_health <= 0) {
 
-            s = "It's a tie.";
+            s = "It's a tie.\n";
         }
         return s;
     }

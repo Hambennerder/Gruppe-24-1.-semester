@@ -29,24 +29,24 @@ public class EncounterAttacks {
 
         Player_health -= Damagegiven;
 
-        s = "Your opponent attack resulted in a damage of " + Damagegiven + " points"
+        s = "Your opponent attack resulted in a damage of " + Damagegiven + " points\n"
         + "Your health has decreased down to " + Player_health + " HP.";
 
         if (Player_health <= 0 && Encounter_health > 0) {
 
-            s += "You have lost.";
+            s += "You have lost.\n";
 
         } else if (Player_health > 0 && Encounter_health <= 0) {
 
-            s += "You have won.";
+            s += "You have won.\n";
 
             Player_experience += Encounter_experience;
 
-            s += "Your experience is now " + Player_experience;
+            s += "Your experience is now " + Player_experience+"\n";
 
         } else if (Player_health <= 0 && Encounter_health <= 0) {
 
-            s += "It's a tie.";
+            s += "It's a tie.\n";
 
         }
         return s;
@@ -58,14 +58,16 @@ public class EncounterAttacks {
 
         if (possibility >= 50) {
 
-            s = "Your opponent has dodged the attack. His/Her health is still " + Encounter_health;
+            s = "Your opponent has dodged the attack.\n"
+                    + "His/Her health is still " + Encounter_health;
             EncounterTurn();
 
         } else if (possibility < 50) {
 
             Encounter_health -= 11;
 
-            s = "Your opponent weren't fast enough to dogde to the attack. His/Her health is now " + Encounter_health;
+            s = "Your opponent weren't fast enough to dogde to the attack.\n"
+                    + "His/Her health is now " + Encounter_health;
             battle.Combatoptions();
 
         }
