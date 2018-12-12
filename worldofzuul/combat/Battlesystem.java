@@ -72,5 +72,4 @@ public class Battlesystem extends Game {
         
         return "You healed for" + healAmount + " Your current health is: " + newHealth;
     }   
-
 }
