@@ -74,6 +74,7 @@ public class Game extends Player {
         // test code
         Encounter encounter = new Encounter();
         encounter.addEncounterNPC(npcs.getNPC(3));
+        encounter.setEncounterPossibility(100);
         encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(4).addEncounter(encounter);
 
@@ -315,32 +316,48 @@ public class Game extends Player {
     private String combatOptions(Command command) {
         Battlesystem battle = new Battlesystem();
         Dropkick dropkick = new Dropkick();
-        Punch punch = new Punch();
+        Punch punch = new Punch(player.getLevel());
         Bodyslam bodyslam = new Bodyslam();
         EncounterAttacks encounterturn = new EncounterAttacks();
-        boolean fightIsActive = true;
         
-        while(fightIsActive) {
         if (fight){
             switch (command.getCommandWord()) {
                 case FIGHT:
                     s = battle.Combatoptions();
                     break;
                 case FLEE:
-                    s = "You escaped!! \n"
+                    if (!currentRoom.getEncounter().encounterMet()) {
+                    s = "You escaped! \n"
                             + currentRoom.getDescription();
-                    // print some sort of UI
                     fight = false;
+                    } else {
+                        s = "Oh no, you werent quick enough!" + battle.Combatoptions();
+                    }
                     break;
                 case ATTACK:
                     s = battle.attackoptions();
                     break;
                 case PUNCH:
-                    s = punch.Punch_attack()
+                    int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
                     
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            + battle.Combatoptions();
+                    s = "You punched" + currentRoom.getEncounter().getEncounterNPC();
+                    s += "\nit resulted in" + punch.getDamageAmount() + " damage!";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - punch.getDamageAmount());
+                    
+                    if (enemyHealth <= 0) {
+                        s = "You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        
+                    } else {
+                        // if (attack instance off specialAbility) {
+                        //   loadSpecialAbilityMethod();
+                        // }
+                        // else {
+                        //   loadNormalAttackMethod();
+                        // }
+                        
+                        s += battle.Combatoptions();
+                    }
                     break;
                 case DROPKICK:
                     s = dropkick.Dropkick_attack()
@@ -358,22 +375,23 @@ public class Game extends Player {
                     s = battle.Combatoptions();
                     break;
                 case HEAL:
-                    s = battle.heal()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
+                    int healAmount = 10;
+                    player.setHealth(player.getHealth() + healAmount);  
+                    s += "You healed for the amount: 10. Current health: " + player.getHealth()
+                            +print3Lines()
                             +battle.Combatoptions();
                     break;
                 case DODGE:
-                    s = battle.dodge()
-                            + encounterturn.EncounterTurn();
-                    s += print3Lines()
-                            +battle.Combatoptions();
+                    //s = battle.dodge()
+                    //        + encounterturn.EncounterTurn();
+                    //s += print3Lines()
+                    //        +battle.Combatoptions();
                     break;
                 default:
                     break;
             }
         }
-        }
+        
         return s;
     }
 
@@ -416,5 +434,9 @@ public class Game extends Player {
             s += "\n";
         }
         return s;
+    }
+    
+    public Player getPlayer() {
+        return this.player;
     }
 }
