@@ -202,6 +202,7 @@ public class Rooms extends Room {
         // library at index 16
         library = new Room("library");
         rooms.add(library);
+        library.setHasEncounter(true);
         library.setDescription("You have arrived at the library...\n"
                 + " Those law students don't look nice \n"
                 + "but that \'Holy-Constitution\' might be useful");
