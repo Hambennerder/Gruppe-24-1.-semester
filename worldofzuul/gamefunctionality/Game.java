@@ -68,7 +68,7 @@ public class Game extends Player {
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
 
-        // Adding coffee to the canteen        
+        // Adding coffee to the canteen
         Item coffee = new Item();
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
@@ -100,8 +100,8 @@ public class Game extends Player {
         Item bag = new Item();
         bag.setName("bag");
         listOfRooms.getRoom(20).addNPC(npcs.getNPC(7));
-        listOfRooms.getRoom(43).addItem(bag);   
-        
+        listOfRooms.getRoom(43).addItem(bag);
+
         // Adding the janitor encounter to room g22
         Encounter janitorEncounter = new Encounter();
         listOfRooms.getRoom(34).addEncounter(janitorEncounter);
@@ -109,7 +109,7 @@ public class Game extends Player {
         janitorEncounter.setEncounterPossibility(100);
         janitorEncounter.setEncounterMessage("Haha! You filthy students really "
                 + "think you're something special, huh? well you are not!");
-        
+
         // Adding medicine student encounter to study hall
         Encounter medicineEncounter = new Encounter();
         listOfRooms.getRoom(17).addEncounter(medicineEncounter);
@@ -117,7 +117,7 @@ public class Game extends Player {
         medicineEncounter.setEncounterPossibility(100);
         medicineEncounter.setEncounterMessage("You think you're smarter than me?"
                 + "HA! I'm studying to become a doctor.. my grades are better than yours!");
-        
+
     }
 
     public boolean getFinished() {
@@ -303,7 +303,7 @@ public class Game extends Player {
                 + "b) Heal \n"
                 + "c) Dodge \n";
         } else {
-        
+
         if (!command.hasSecondWord()) {
             return "Go where?";
         }
@@ -333,11 +333,11 @@ public class Game extends Player {
         if (currentRoom.hasEncounter()) {
             Battlesystem battle = new Battlesystem();
             if (currentRoom.getEncounter().encounterMet()) {
-                
+
                 if (!fleeAttempted) {
                 s = currentRoom.getEncounter().getEncounterMessage()
                         + battle.Decision();
-                
+
                 fight = true;
                 currentRoom.setIsLocked(true);
             }
@@ -355,9 +355,9 @@ public class Game extends Player {
         OptionalAbility specialAbility = new OptionalAbility(player.getLevel());
         EncounterAttacks encounterturn = new EncounterAttacks();
         Heal healAbility = new Heal(player.getHealth(), player.getMaxHealth(), player.getLevel());
-        
+
         int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
-         
+
         if (fight){
             switch (command.getCommandWord()) {
                 case FIGHT:
@@ -367,9 +367,9 @@ public class Game extends Player {
                 case FLEE:
                     if (fleeAttempted) {
                         s = "You can't escape!.\n"
-                            + battle.Combatoptions();       
+                            + battle.Combatoptions();
                     } else {
-                    
+
                     if (!currentRoom.getEncounter().encounterMet()) {
                     s = "You escaped! \n"
                             + currentRoom.getDescription();
@@ -381,25 +381,25 @@ public class Game extends Player {
                     }
                     }
                     break;
-                    
+
                 case ATTACK:
                     s = battle.attackoptions();
                     break;
-                
-                // Witty remark    
+
+                // Witty remark
                 case A:
-                    
+
                     s = "You used a witty remark on" + currentRoom.getEncounter().getEncounterNPC() + "!";
                     s += "\nit resulted in " + wittyRemark.getDamageAmount() + " points of damage!\n";
                     currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - wittyRemark.getDamageAmount());
-                    
+
                     if (enemyHealth <= 0) {
                         s = "You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
                                 + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
                         currentRoom.setIsLocked(false);
                         player.incrementProgress();
                         currentRoom.setHasEncounter(false);
-                        
+
                     } else {
                         s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
                         player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
@@ -407,50 +407,50 @@ public class Game extends Player {
                         s += battle.Combatoptions();
                     }
                     break;
-                 
-                // Brag about being an engineer    
+
+                // Brag about being an engineer
                 case B:
-                    
+
                     s = "You bragged about being an engineer and agitated" + currentRoom.getEncounter().getEncounterNPC() + " \n";
                     s += "The bragging resulted in " + brag.getDamageAmount() + " points of damage.\n";
                     currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - brag.getDamageAmount());
-                    
+
                     if (enemyHealth <= 0) {
                         s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
                                 + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
                         currentRoom.setIsLocked(false);
                         player.incrementProgress();
                         currentRoom.setHasEncounter(false);
-                       
+
                     } else {
                          s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
                          player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
                          s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
-                         s += battle.Combatoptions();  
+                         s += battle.Combatoptions();
                     }
                     break;
-                 
-                // Optional    
+
+                // Optional
                 case C:
-                    
+
                     s = "You used your special ability on" + currentRoom.getEncounter().getEncounterNPC() + " \n";
                     s += "It resulted in " + specialAbility.getDamageAmount() + " points of damage.\n";
                     currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - specialAbility.getDamageAmount());
-                    
+
                     if (enemyHealth <= 0) {
                         s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
                                 + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
                         currentRoom.setIsLocked(false);
                         player.incrementProgress();
                         currentRoom.setHasEncounter(false);
-                        
+
                     } else {
                     s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
                         player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
                         s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
                         s += battle.Combatoptions();
                     }
-                    
+
                     break;
                 case BACK:
                     s = battle.Combatoptions();
@@ -461,10 +461,10 @@ public class Game extends Player {
                         s += battle.attackoptions();
                     } else {
                     player.setHealth(player.getHealth() + healAbility.heal());
-                    
+
                     if (player.getHealth() > player.getMaxHealth()) {
                         player.setHealth(player.getMaxHealth());
-                        
+
                     }
                     s = ("Your heal was successful!\nYour current health is " + player.getHealth() + "HP\n");
                     s += battle.Combatoptions();
@@ -481,7 +481,7 @@ public class Game extends Player {
             }
         }
        return s;
-    } 
+    }
 
 
     private String printLocation() {
@@ -524,7 +524,7 @@ public class Game extends Player {
         }
         return s;
     }
-    
+
     public Player getPlayer() {
         return this.player;
     }
