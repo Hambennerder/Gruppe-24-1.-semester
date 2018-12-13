@@ -80,8 +80,7 @@ public class Game extends Player {
         lawStudentEncounter.setEncounterPossibility(100);
         lawStudentEncounter.setEncounterMessage("Oh no, you have encountered" + lawStudentEncounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
-        listOfRooms.getRoom(1).addEncounter(lawStudentEncounter);
-        listOfRooms.getRoom(2).addEncounter(lawStudentEncounter);
+
 
         // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item();
