@@ -19,6 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import worldofzuul.Item;
 import worldofzuul.gamefunctionality.Command;
 import worldofzuul.gamefunctionality.Game;
@@ -32,12 +33,8 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     ObservableList<String> showInventory = FXCollections.observableArrayList();
     ObservableList<String> showExits = FXCollections.observableArrayList();
     
-    String name;
-    
     Game g = new Game();
     
-    String text;
-
     @FXML
     private TextArea output;
     @FXML
@@ -48,6 +45,16 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     private ListView<String> lvInv;
     @FXML
     private ListView<String> lvEx;
+    @FXML
+    private TextArea location;
+    @FXML
+    private Text playerNameHP;
+    @FXML
+    private Text enemyNameHP;
+    @FXML
+    private TextArea setPlayerHP;
+    @FXML
+    private TextArea setEnemyHP;
 
     private String loop (String s) throws Exception{
         showInventory.clear();
@@ -56,20 +63,20 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
             Command command = g.parser.getCommand(s);
             s = g.processCommand(command);
         } else {
-        System.out.println("Thank you for playing. Good bye.");
+        return "Thank you for playing. Good bye.";
         }
         addInventory();
         addExits();
-        return s;
         
-    }
-    
-    public void setName(String s){
-        name = s;
-    }
-    
-    private String getName(){
-        return name;
+        location.setText(g.currentRoom.getName());
+        playerNameHP.setText(g.player.getName());
+        setPlayerHP.setText(g.player.getStringHealth());
+        
+        if (g.currentRoom.hasEncounter()) {
+        enemyNameHP.setText(g.currentRoom.getEncounter().getName());
+        //setEnemyHP.setText(g.currentRoom.getEncounter().getHealth());
+        }
+        return s;
     }
     
     /**
@@ -78,7 +85,7 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     @Override
    public void initialize(URL url, ResourceBundle rb) {
         // TODO
-                output.setText("Welcome "+g.getName()+", to the world of SDUUL.\n\n"
+                output.setText("Welcome "+g.player.getName()+", to the world of SDUUL.\n\n"
                 + "An adventurous text-based rpg game that tackles the life being a new\n"
                 + "university student in the most boring of fashion, we will show you the\n"
                 + "everchanging day to day life in a comedic way.\n\n"
@@ -93,24 +100,6 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
                 lvEx.setItems(showExits);
     }
 
-    
-    
-    public void setOutput(String text) {
-        output.setText(text);
-    }
-
-    public void addLine(String line) {
-        output.setText(output.getText() + " " + line);
-    }
-
-    public void clearOutput() {
-        output.clear();
-    }
-    
-    public String getText(){
-        return text;
-    }
-    
     public void addInventory(){
         for (Item item : g.player.inventory) {
             showInventory.add(item.getName());

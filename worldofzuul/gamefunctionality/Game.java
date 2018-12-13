@@ -112,18 +112,17 @@ public class Game extends Player {
     }
 
     public String processCommand(Command command) throws Exception {
-        System.out.println("q" + questQuestion + "\nc" + conversation + "\nf" + fight);
         CommandWord commandWord = command.getCommandWord();
-        if (commandWord == CommandWord.UNKNOWN) { //DONE
+        if (commandWord == CommandWord.UNKNOWN) {
             s = "I don't know what you mean...";
         }
-        if (commandWord == CommandWord.HELP) {//DONE
+        if (commandWord == CommandWord.HELP) {
             return printHelp();
 
-        } else if (commandWord == CommandWord.BEGIN) {//DONE
+        } else if (commandWord == CommandWord.BEGIN) {
             return startScreen();
 
-        } else if (commandWord == CommandWord.GO) {//DONE
+        } else if (commandWord == CommandWord.GO) {
             if (fight) {
                 return "You can't go anywhere\n"
                         + "You're still in a fight, perhaps try to flee?\n\n"
@@ -133,9 +132,13 @@ public class Game extends Player {
                         + "please type 'yes' or 'no' instead.\n\n"
                         + checkQuest();
             } else if (conversation) {
-                s = "It's really rude to just walk away, please choose the leave option instead.\n\n"
-                        + currentRoom.getNPC(0).getWelcome()
-                        + currentRoom.getNPC(0).getDialogOptions();
+                s = "It's really rude to just walk away, please choose the leave option instead.\n\n";
+                try {
+                    s += currentRoom.getNPC(0).getWelcome()
+                            + "\n" + currentRoom.getNPC(0).getDialogOptions();
+                } catch (IndexOutOfBoundsException ex){
+                    
+                }
             } else {
                 conversation = false;
                 questQuestion = false;
@@ -143,10 +146,10 @@ public class Game extends Player {
                         + encounterNPC(command);
             }
 
-        } else if (commandWord == CommandWord.QUIT) {//DONE
+        } else if (commandWord == CommandWord.QUIT) {
             setFinished(true);
 
-        } else if (commandWord == CommandWord.INSPECT) {//DONE
+        } else if (commandWord == CommandWord.INSPECT) {
             if (fight) {
                 return "What are you trying to inspect?\n"
                         + "You're still in a fight, perhaps try to flee?\n"
@@ -161,7 +164,7 @@ public class Game extends Player {
                 s += "\n ***No item to be found***";
             }
 
-        } else if (commandWord == CommandWord.TAKE) { //DONE
+        } else if (commandWord == CommandWord.TAKE) {
             if (fight) {
                 return "What are you trying to take?\n"
                         + "You're still in a fight, perhaps try to flee?\n\n"
@@ -182,18 +185,24 @@ public class Game extends Player {
                 }
             }
 
-        } else if (commandWord == CommandWord.APPROACH) {//DONE
-            if (fight) {
-                return "Are you trying to approach your enemy?\n"
-                        + "You're still in a fight, just attack!\n\n"
-                        + battle.Combatoptions();
-            } else if (questQuestion) {
-                    
-            } else {
-                conversation = true;
-                s = approachNPC(command);
+        } else if (commandWord == CommandWord.APPROACH) {
+            try {
+                if (fight) {
+                    return "Are you trying to approach your enemy?\n"
+                            + "You're still in a fight, just attack!\n\n"
+                            + battle.Combatoptions();
+                } else if (questQuestion) {
+                    s = "Don't you start approaching anything,\n"
+                            + "it's a simple yes/no question, just answer it!\n\n"
+                            + checkQuest();
+                } else {
+                    conversation = true;
+                    s = approachNPC(command);
+                }
+            } catch (IndexOutOfBoundsException ex) {
+                s = "There is no NPC to approach.";
             }
-        } else if (commandWord == CommandWord.CHOOSE) {//DONE
+        } else if (commandWord == CommandWord.CHOOSE) {
             if (fight) {
                 return "Just write the option without 'chose'\n\n"
                         + battle.Combatoptions();
@@ -203,11 +212,10 @@ public class Game extends Player {
                 } else {
                     s = "Approach a NPC first, to choose dialogue options.\n\n";
                     s += currentRoom.getShortDescription() + "\n";
-                    s += currentRoom.getLongDescription();
                 }
             }
 
-        } else if (commandWord == CommandWord.JOURNAL) {//DONE
+        } else if (commandWord == CommandWord.JOURNAL) {
             if (fight) {
                 return "You can't go anywhere, you're still in a fight, perhaps try to flee?\n\n"
                         + battle.Combatoptions();
@@ -215,7 +223,7 @@ public class Game extends Player {
                 s = player.getJournal();
             }
 
-        } else if (commandWord == CommandWord.YES | commandWord == CommandWord.NO) {//DONE
+        } else if (commandWord == CommandWord.YES | commandWord == CommandWord.NO) {
             if (fight) {
                 return "What are you even trying to do?\n"
                         + "You're still in a fight, perhaps try to flee?\n\n"
@@ -227,7 +235,6 @@ public class Game extends Player {
                 s += currentRoom.getNPC(0).getWelcome();
             } else {
                 s = currentRoom.getShortDescription() + "\n";
-                s += currentRoom.getLongDescription();
             }
 
         } else if (commandWord == CommandWord.FIGHT
@@ -267,7 +274,6 @@ public class Game extends Player {
             } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("2")) {
                 s = currentRoom.getNPC(0).getGoodbye() + "\n\n";
                 s += currentRoom.getShortDescription() + "\n";
-                s += currentRoom.getLongDescription();
                 questQuestion = false;
                 conversation = false;
             }
@@ -327,7 +333,7 @@ public class Game extends Player {
 
             }
         } catch (IndexOutOfBoundsException ex) {
-            s += currentRoom.getLongDescription();
+            s += currentRoom.getShortDescription();
         }
         questQuestion = false;
         conversation = false;
@@ -376,7 +382,6 @@ public class Game extends Player {
         } else {
             s = nextRoom.getShortDescription() + "\n";
             currentRoom = nextRoom;
-            s += currentRoom.getLongDescription();
         }
         return s;
     }
@@ -470,8 +475,7 @@ public class Game extends Player {
 
     private String startScreen() {
         if (!started) {
-            s = currentRoom.getLongDescription()
-                    + currentRoom.getRoomIntro();
+            s = currentRoom.getRoomIntro();
         } else {
             s = "What are you trying to do?";
         }

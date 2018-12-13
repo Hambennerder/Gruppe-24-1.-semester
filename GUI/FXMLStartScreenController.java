@@ -16,6 +16,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /**
@@ -68,17 +70,7 @@ public class FXMLStartScreenController implements Initializable {
        return gender; 
     }
     
-
-    @FXML
-    private void handlePlayBtn(ActionEvent event) throws IOException {
-        setStartName();
-        setStartAge();
-        setStartGender();
-        
-       if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
-           System.out.println("Please enter whatever");
-       } else {
-           
+    private void nextGUI () throws IOException{
         Stage stage = GUI.stage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMain.fxml"));
         
@@ -88,6 +80,33 @@ public class FXMLStartScreenController implements Initializable {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+    }
+    
+    @FXML
+    private void nextGUIButton(KeyEvent event) throws IOException{
+        if (event.getCode()==KeyCode.ENTER) {
+        setStartName();
+        setStartAge();
+        setStartGender();
+        
+       if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
+           System.out.println("Please enter whatever");
+       } else {
+           nextGUI();
+        }
+    }
+    }
+    
+    @FXML
+    private void handlePlayBtn(ActionEvent event) throws IOException {
+        setStartName();
+        setStartAge();
+        setStartGender();
+        
+       if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
+           System.out.println("Please enter whatever");
+       } else {   
+        nextGUI();
     } 
     }
         

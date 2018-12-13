@@ -30,10 +30,15 @@ public class CommandWords {
     }
 
     public String showAll() {
-        String s="";
-        for (String command : validCommands.keySet()) {
-            s += command + "\n";
-        }
+        
+        String s = "'go' to go to a room\n"
+                + "'quit' to quit the game\n"
+                + "'take' to take an item from a room\n"
+                + "'choose' to choose from a dialogue option\n"
+                + "'journal' to look at your current quest\n"
+                + "'inspect' to inspect the current room\n"
+                + "'approach' to approach a given NPC \n";
+        
         return s;
     }
 }
