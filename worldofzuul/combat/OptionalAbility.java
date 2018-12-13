@@ -12,7 +12,9 @@ public class OptionalAbility extends Battlesystem{
     
     
     public OptionalAbility(int playerLevel) {
-        damageAmount = (playerLevel * 2) + 25;
+
+        damageAmount = (playerLevel * 2) + 10;
+
     }
     public int getDamageAmount() {
         return damageAmount;
