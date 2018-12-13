@@ -23,6 +23,7 @@ import javafx.scene.text.Text;
 import worldofzuul.Item;
 import worldofzuul.gamefunctionality.Command;
 import worldofzuul.gamefunctionality.Game;
+import worldofzuul.gamefunctionality.PlayerTransporter;
 
 /**
  * FXML Controller class
@@ -82,11 +83,14 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        output.setText("Welcome " + g.player.getName() + ", to the world of SDUUL.\n\n"
+        g.player = PlayerTransporter.getPlayer();
+                output.setText("Welcome "+g.player.getPlayerName()+", to the world of SDUUL.\n\n"
                 + "An adventurous text-based rpg game that tackles the life being a new\n"
                 + "university student in the most boring of fashion, we will show you the\n"
                 + "everchanging day to day life in a comedic way.\n\n"

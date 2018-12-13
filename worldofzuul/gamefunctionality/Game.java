@@ -31,7 +31,11 @@ public class Game extends Player {
 
     public Game() {
         parser = new Parser();
+<<<<<<< HEAD
         player = new Player();
+=======
+        player = new Player();        
+>>>>>>> d14b643e2a151fb3933953d14308887e030d040d
     }
 
     public void setPlayerName() {
@@ -48,7 +52,7 @@ public class Game extends Player {
 
     public void play() {
 
-        Rooms listOfRooms = new Rooms();
+        Rooms listOfRooms = new Rooms(player.getPlayerName());
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
 
@@ -58,7 +62,7 @@ public class Game extends Player {
         Item id_card = new Item();
         id_card.setName("ID-card");
         id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
-        
+
 
         Item book = new Item();
         book.setName("book");
@@ -85,8 +89,7 @@ public class Game extends Player {
         lawStudentEncounter.setEncounterPossibility(100);
         lawStudentEncounter.setEncounterMessage("Oh no, you have encountered" + lawStudentEncounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
-        listOfRooms.getRoom(1).addEncounter(lawStudentEncounter);
-        listOfRooms.getRoom(2).addEncounter(lawStudentEncounter);
+
 
         // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item();
@@ -106,7 +109,7 @@ public class Game extends Player {
         // Adding Malta to T8 and his bag to k7
         Item bag = new Item();
         bag.setName("bag");
-      
+
         listOfRooms.getRoom(20).addNPC(npcs.getNPC(7));
         listOfRooms.getRoom(43).addItem(bag);
 
@@ -120,11 +123,11 @@ public class Game extends Player {
 
         // Adding medicine student encounter to study hall
         Encounter medicineEncounter = new Encounter();
-        listOfRooms.getRoom(17).addEncounter(medicineEncounter);
         medicineEncounter.addEncounterNPC(npcs.getNPC(9));
         medicineEncounter.setEncounterPossibility(100);
         medicineEncounter.setEncounterMessage("You think you're smarter than me?"
                 + "HA! I'm studying to become a doctor.. my grades are better than yours!");
+        listOfRooms.getRoom(17).addEncounter(medicineEncounter);
     }
 
     public boolean getFinished() {
@@ -496,11 +499,11 @@ public class Game extends Player {
                     currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - wittyRemark.getDamageAmount());
 
                     if (enemyHealth > 0) {
-                        
+
                         s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
                         player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
                         s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
-                        s += battle.Combatoptions();                        
+                        s += battle.Combatoptions();
                     } else {
                         s = "something went wrong";
                     }
@@ -514,11 +517,11 @@ public class Game extends Player {
                     currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - brag.getDamageAmount());
 
                     if (enemyHealth > 0) {
-                        
+
                         s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
                         player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
                         s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
-                        s += battle.Combatoptions();                        
+                        s += battle.Combatoptions();
                     } else {
                         s = "something went wrong";
                     }
@@ -532,15 +535,15 @@ public class Game extends Player {
                     currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - specialAbility.getDamageAmount());
 
                     if (enemyHealth > 0) {
-                        
+
                         s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
                         player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
                         s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
-                        s += battle.Combatoptions();                        
+                        s += battle.Combatoptions();
                     } else {
                         s = "something went wrong";
                     }
-                    
+
                     break;
                 case BACK:
                     s = battle.Combatoptions();
@@ -577,7 +580,7 @@ public class Game extends Player {
            player.incrementProgress();
            currentRoom.setHasEncounter(false);
            fleeAttempted = false;
-       } 
+       }
        return s;
     }
 
