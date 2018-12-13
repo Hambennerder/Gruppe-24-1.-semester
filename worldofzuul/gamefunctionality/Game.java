@@ -93,10 +93,6 @@ public class Game extends Player {
         lawStudentEncounter.setEncounterMessage("Oh no, you have encountered"+ npcs.getNPC(3).getName()+ "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
 
-
-
-
-
         // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item();
         holy_constitution.setName("Holy-Constitution");
@@ -182,20 +178,13 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.QUIT) {
             setFinished(true);
 
-        } else if (commandWord == CommandWord.INSPECT) {//DONE
-            s = "Your location: " + currentRoom.getName() + "\n"
-                    + currentRoom.getExitString() + "\n"
-                    + currentRoom.getDescription();
-
-
         } else if (commandWord == CommandWord.INSPECT) {
             if (fight) {
                 return "What are you trying to inspect?\n"
                         + "You're still in a fight, perhaps try to flee?\n"
                         + battle.Combatoptions();
             } else {
-                s = "Your location: " + currentRoom.getName() + "\n"
-                        + currentRoom.getDescription();
+                s = currentRoom.getDescription();
             }
 
             try {
@@ -210,6 +199,7 @@ public class Game extends Player {
                         + "You're still in a fight, perhaps try to flee?\n\n"
                         + battle.Combatoptions();
             } else {
+                try {
                 if (!command.hasSecondWord()) {
                     s = "Take what?";
                 }
@@ -222,6 +212,9 @@ public class Game extends Player {
                     s = "You picked up " + currentRoom.getItem(0).getName() + "\n";
                     currentRoom.removeItem(0);
                     player.incrementProgress();
+                }
+                } catch (IndexOutOfBoundsException ex){
+                    
                 }
             }
 
@@ -367,11 +360,8 @@ public class Game extends Player {
             // to return another string when they player comes back without completing it
             // also the string that explains the quest will be added to the players journal
             if (command.getCommandWord().equals(CommandWord.YES)) {
-                s = "Your location: " + currentRoom.getName() + "\n"
-
-                        + currentRoom.getExitString() + "\n"
-
-                        + currentRoom.getNPC(0).getAcceptString();
+                s = currentRoom.getNPC(0).getAcceptString()+"\n"
+                        +currentRoom.getDescription();
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
                 player.setJournal(currentRoom.getJournalString());
@@ -379,11 +369,8 @@ public class Game extends Player {
                 // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
                 // and player must choose 1 again to accept the quest.
             } else if (command.getCommandWord().equals(CommandWord.NO)) {
-                s = "Your location: " + currentRoom.getName() + "\n"
-
-                        + currentRoom.getExitString() + "\n"
-
-                        + currentRoom.getNPC(0).getDeclineString();
+                s = currentRoom.getNPC(0).getDeclineString()+"\n"
+                        +currentRoom.getDescription();
 
             }
         } catch (IndexOutOfBoundsException ex) {
@@ -407,8 +394,7 @@ public class Game extends Player {
                 s = "Approach what?";
 
             } else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
-                s = printLocation()
-                        + printNPCsName()
+                s =  printNPCsName()
                         + printNPCsWelcome()
                         + printDialogOptions();
             }
@@ -615,11 +601,6 @@ public class Game extends Player {
            // Method
        }
        return s;
-    }
-
-
-    private String printLocation() {
-        return "Your location: " + currentRoom.getName() + "\n";
     }
 
     private String printDialogOptions() {
