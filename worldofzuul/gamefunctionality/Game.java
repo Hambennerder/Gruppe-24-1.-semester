@@ -53,6 +53,7 @@ public class Game extends Player {
         Item id_card = new Item();
         id_card.setName("ID-card");
         id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
+        
 
         Item book = new Item();
         book.setName("book");
@@ -160,7 +161,7 @@ public class Game extends Player {
 
             if (currentRoom.getItem(0) == null) {
                 s = "No item to take";
-
+                
             } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
                 player.addItem(currentRoom.getItem(0));
                 s = "You picked up " + currentRoom.getItem(0).getName();

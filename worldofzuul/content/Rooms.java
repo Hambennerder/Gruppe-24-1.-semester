@@ -32,7 +32,8 @@ public class Rooms extends Room {
                 + "will see two things, location and exits. Location shows your current \n"
                 + "location. If you haven't guessed it already, exits show our possible exits \n"
                 + "Before we show you how to use the exits, let me first introduce you to \n"
-                + "the command, inspect. Type in inspect and you will get a detailed description \n"
+                + "the command, inspect.\n"
+                + "Type in inspect and you will get a detailed description \n"
                 + "of the current room, and also which elements it contains. Everything surrounded \n"
                 + "by \'single quotation marks\', are interactable. You can interact by typing in \n"
                 + "approach and the figures name, be aware, this system IS case sensitive. \n"
@@ -141,7 +142,10 @@ public class Rooms extends Room {
         bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
                 + " which is somewhere south, remember Andars' warning."
 
-                + "The lady in the bookstore wants you to get her some coffee, head up to the canteen.");
+
+                + "The lady in the bookstore wants you to get her some coffee,\n"
+                + "head up to the canteen.");        
+
 
         rooms.add(bookstore);
 
@@ -230,7 +234,9 @@ public class Rooms extends Room {
                 + " a large number of distressed students\n"
                 + "You see your teacher \'Lune\' ");
         u55.setName("u55");
-        u55.setRequiredProgress(7);
+
+        u55.setRequiredProgress(9);
+
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
                 + "Return to Lune when you're done");
@@ -242,7 +248,7 @@ public class Rooms extends Room {
         u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
                 + "you can see your teacher \'Eryk\' and a \'cable\' ");
         u45.setName("u45");
-        u45.setRequiredProgress(11);
+        u45.setRequiredProgress(12);
         u45.setHasQuest(true);
         u45.setJournalString("Fix the technology in u45");
         rooms.add(u45);
@@ -254,8 +260,10 @@ public class Rooms extends Room {
                 + "It's dark, smelly and almost impossible to find\n"
                 + "You see a figure that looks like \'Malta\'");
         t8.setName("T8");
-        t8.setRequiredProgress(7);
-        t8.setNextQuestProgress(9);
+
+        t8.setRequiredProgress(9);
+        t8.setNextQuestProgress(11);
+
         t8.setHasQuest(true);
         t8.setJournalString("Find Malta's bag and bring it back to him");
         rooms.add(t8);
