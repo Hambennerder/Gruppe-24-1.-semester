@@ -96,6 +96,10 @@ public class Player extends Entity {
         return level;
 
     }
+    
+    public String getStringLevel(){
+        return ""+level;
+    }
 
     public void setHealth(int currentHealth) {
 

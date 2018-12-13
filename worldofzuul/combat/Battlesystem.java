@@ -5,13 +5,12 @@ import worldofzuul.Encounter;
 import worldofzuul.Player;
 import worldofzuul.gamefunctionality.Game;
 
-public class Battlesystem extends Game {
-
+public class Battlesystem {
+    
     private Random rand = new Random();
     private int Damagegiven;
     private int Damagetaken;
     private int Energydrink = 11;
-    private int currentHealth = player.getHealth();
 
 
     public String Decision() {
@@ -29,10 +28,10 @@ public class Battlesystem extends Game {
 
     public String attackoptions() {
         return "Attack options: \n"
-                + "a) Witty remark \n"
-                + "b) Brag about being an engineer \n"
-                + "c) Optional \n"
-                + "d) Back \n";
+                + "a) 'Witty' remark \n"
+                + "b) 'Brag' about being an engineer \n"
+                + "c) 'Optional' \n"
+                + "d) 'Back' \n";
     }
 
     public String heal(int health) {

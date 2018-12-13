@@ -162,7 +162,6 @@ public class Rooms extends Room {
         bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
                 + " which is somewhere south, remember Andars' warning."
 
-
                 + "The lady in the bookstore wants you to get her some coffee,\n"
                 + "head up to the canteen.");        
 
@@ -193,7 +192,7 @@ public class Rooms extends Room {
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU\n"
                 + "you should probablt talk to that 'student'");
-        g3.setNextQuestProgress(7);
+        g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
         g3.setJournalString("Clear the studyhall and library of students from other faculties");
@@ -232,7 +231,6 @@ public class Rooms extends Room {
         rooms.add(library);
         // study hall at index 17
 
-
         studyhall = new Room("study hall");
         studyhall.setHasEncounter(true);
 
@@ -252,6 +250,7 @@ public class Rooms extends Room {
         u55.setName("u55");
 
         u55.setRequiredProgress(9);
+        u55.setNextQuestProgress(11);
 
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
@@ -264,7 +263,8 @@ public class Rooms extends Room {
         u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
                 + "you can see your teacher \'Eryk\' and a \'cable\' ");
         u45.setName("u45");
-        u45.setRequiredProgress(12);
+        u45.setRequiredProgress(13);
+        u45.setNextQuestProgress(14);
         u45.setHasQuest(true);
         u45.setJournalString("Fix the technology in u45");
         rooms.add(u45);
@@ -277,7 +277,7 @@ public class Rooms extends Room {
                 + "You see a figure that looks like \'Malta\'");
         t8.setName("T8");
 
-        t8.setRequiredProgress(9);
+        t8.setRequiredProgress(10);
         t8.setNextQuestProgress(11);
 
         t8.setHasQuest(true);
