@@ -25,5 +25,6 @@
       <Text fx:id="enemyNameHP" layoutX="9.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy hp:" />
       <TextArea fx:id="setPlayerHP" editable="false" focusTraversable="false" layoutX="7.0" layoutY="311.0" mouseTransparent="true" prefHeight="22.0" prefWidth="80.0" />
       <TextArea fx:id="setEnemyHP" editable="false" focusTraversable="false" layoutX="6.0" layoutY="375.0" mouseTransparent="true" prefHeight="22.0" prefWidth="80.0" />
+      <TextArea fx:id="levelText" layoutX="6.0" layoutY="419.0" prefHeight="27.0" prefWidth="80.0" />
    </children>
 </AnchorPane>

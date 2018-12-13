@@ -57,6 +57,8 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     private TextArea setPlayerHP;
     @FXML
     private TextArea setEnemyHP;
+    @FXML
+    private TextArea levelText;
 
     private String loop(String s) throws Exception {
         showInventory.clear();
