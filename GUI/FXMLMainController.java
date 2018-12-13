@@ -29,12 +29,13 @@ import worldofzuul.gamefunctionality.Game;
  *
  * @author joakim
  */
-public class FXMLMainController extends FXMLStartScreenController implements Initializable{
+public class FXMLMainController extends FXMLStartScreenController implements Initializable {
+
     ObservableList<String> showInventory = FXCollections.observableArrayList();
     ObservableList<String> showExits = FXCollections.observableArrayList();
-    
+
     Game g = new Game();
-    
+
     @FXML
     private TextArea output;
     @FXML
@@ -56,36 +57,36 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     @FXML
     private TextArea setEnemyHP;
 
-    private String loop (String s) throws Exception{
+    private String loop(String s) throws Exception {
         showInventory.clear();
         showExits.clear();
         if (!g.getFinished()) {
             Command command = g.parser.getCommand(s);
             s = g.processCommand(command);
         } else {
-        return "Thank you for playing. Good bye.";
+            return "Thank you for playing. Good bye.";
         }
         addInventory();
         addExits();
-        
+
         location.setText(g.currentRoom.getName());
         playerNameHP.setText(g.player.getName());
         setPlayerHP.setText(g.player.getStringHealth());
-        
+
         if (g.currentRoom.hasEncounter()) {
-        enemyNameHP.setText(g.currentRoom.getEncounter().getName());
-        //setEnemyHP.setText(g.currentRoom.getEncounter().getHealth());
+            enemyNameHP.setText(g.currentRoom.getEncounter().getName());
+            //setEnemyHP.setText(g.currentRoom.getEncounter().getHealth());
         }
         return s;
     }
-    
+
     /**
      * Initializes the controller class.
      */
     @Override
-   public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {
         // TODO
-                output.setText("Welcome "+g.player.getName()+", to the world of SDUUL.\n\n"
+        output.setText("Welcome " + g.player.getName() + ", to the world of SDUUL.\n\n"
                 + "An adventurous text-based rpg game that tackles the life being a new\n"
                 + "university student in the most boring of fashion, we will show you the\n"
                 + "everchanging day to day life in a comedic way.\n\n"
@@ -94,19 +95,19 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
                 + "ultimately be prepared for how boring studying can be.\n\n"
                 + "DISCLAIMER: 9/10 feminists want the creators behind this game in jail."
                 + "\n\nType begin to start your adventure!");
-                g.play();
-                
-                lvInv.setItems(showInventory);
-                lvEx.setItems(showExits);
+        g.play();
+
+        lvInv.setItems(showInventory);
+        lvEx.setItems(showExits);
     }
 
-    public void addInventory(){
+    public void addInventory() {
         for (Item item : g.player.inventory) {
             showInventory.add(item.getName());
-            }
+        }
     }
-    
-    public void addExits(){
+
+    public void addExits() {
         Set<String> keys = g.currentRoom.exits.keySet();
         for (String exit : keys) {
             showExits.add(exit);
@@ -120,14 +121,11 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     }
 
     @FXML
-    private void enterButton(KeyEvent event) throws Exception{
-        if (event.getCode()==KeyCode.ENTER) {
+    private void enterButton(KeyEvent event) throws Exception {
+        if (event.getCode() == KeyCode.ENTER) {
             output.setText(loop(console.getText()));
             console.clear();
         }
     }
-    
-    
-    
-}
 
+}

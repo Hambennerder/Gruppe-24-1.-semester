@@ -136,8 +136,8 @@ public class Game extends Player {
                 try {
                     s += currentRoom.getNPC(0).getWelcome()
                             + "\n" + currentRoom.getNPC(0).getDialogOptions();
-                } catch (IndexOutOfBoundsException ex){
-                    
+                } catch (IndexOutOfBoundsException ex) {
+
                 }
             } else {
                 conversation = false;
@@ -220,7 +220,12 @@ public class Game extends Player {
                 return "You can't go anywhere, you're still in a fight, perhaps try to flee?\n\n"
                         + battle.Combatoptions();
             } else {
-                s = player.getJournal();
+                if (!player.getJournal().equals("")) {
+                    s = player.getJournal();
+                } else {
+                    s = "You have no current quest.\n"
+                            + "Explore to find the next quest!";
+                }
             }
 
         } else if (commandWord == CommandWord.YES | commandWord == CommandWord.NO) {
@@ -269,13 +274,12 @@ public class Game extends Player {
                 // checks whether or not a room has an ongoing quest, if the room does not have
                 // an ongoing quest, then the player will be presented the quest, and have an option
                 // between yes and no
-                questQuestion = true;
                 s = checkQuest();
             } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("2")) {
-                s = currentRoom.getNPC(0).getGoodbye() + "\n\n";
-                s += currentRoom.getShortDescription() + "\n";
                 questQuestion = false;
                 conversation = false;
+                s = currentRoom.getNPC(0).getGoodbye() + "\n\n";
+                s += currentRoom.getShortDescription() + "\n";
             }
         } else {
             return "Choose what?";
@@ -289,6 +293,7 @@ public class Game extends Player {
             // check 3.5: Checks if the quest has been finished or not. if the quest has not been finished, then
             // the "on a quest string" will be returned, otherwise the next string introducing the player to
             // where he should go next is returned
+            questQuestion = true;
         } else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
             if (player.getProgress() < currentRoom.getNextQuestProgress()) {
                 s = currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString();

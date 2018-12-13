@@ -30,7 +30,7 @@ public class CommandWords {
     }
 
     public String showAll() {
-        
+
         String s = "'go' to go to a room\n"
                 + "'quit' to quit the game\n"
                 + "'take' to take an item from a room\n"
@@ -38,7 +38,7 @@ public class CommandWords {
                 + "'journal' to look at your current quest\n"
                 + "'inspect' to inspect the current room\n"
                 + "'approach' to approach a given NPC \n";
-        
+
         return s;
     }
 }
