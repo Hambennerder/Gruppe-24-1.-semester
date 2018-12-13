@@ -289,12 +289,9 @@ public class Game extends Player {
                 | commandWord == CommandWord.ATTACK
                 | commandWord == CommandWord.HEAL
                 | commandWord == CommandWord.DODGE
-                | commandWord == CommandWord.DROPKICK
-                | commandWord == CommandWord.PUNCH
-                | commandWord == CommandWord.BODYSLAM
-                | commandWord == CommandWord.A
-                | commandWord == CommandWord.B
-                | commandWord == CommandWord.C
+                | commandWord == CommandWord.WITTY
+                | commandWord == CommandWord.BRAG
+                | commandWord == CommandWord.OPTIONAL
                 | commandWord == CommandWord.BACK) {
             if (fight) {
                 return combatOptions(command);
@@ -514,7 +511,7 @@ public class Game extends Player {
                     s = battle.attackoptions();
                     break;
                 // Witty remark
-                case A:
+                case WITTY:
                     s = "You used a witty remark on" + currentRoom.getEncounter().getEncounterNPC() + "!";
                     s += "\nit resulted in " + wittyRemark.getDamageAmount() + " points of damage!\n";
                     currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - wittyRemark.getDamageAmount());
@@ -531,7 +528,7 @@ public class Game extends Player {
                     break;
 
                 // Brag about being an engineer
-                case B:
+                case BRAG:
 
                     s = "You bragged about being an engineer and agitated" + currentRoom.getEncounter().getEncounterNPC() + " \n";
                     s += "The bragging resulted in " + brag.getDamageAmount() + " points of damage.\n";
@@ -549,7 +546,7 @@ public class Game extends Player {
                     break;
 
                 // Optional
-                case C:
+                case OPTIONAL:
 
                     s = "You used your special ability on" + currentRoom.getEncounter().getEncounterNPC() + " \n";
                     s += "It resulted in " + specialAbility.getDamageAmount() + " points of damage.\n";
