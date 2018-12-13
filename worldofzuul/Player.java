@@ -207,8 +207,10 @@ public class Player extends Entity {
     public void gainExperience(int amount) {
 
         getExperience();
+        
+        int currentEXP = experience + amount;
 
-        double levelSystem = 0.04 * Math.sqrt(experience);
+        double levelSystem = 0.04 * Math.sqrt(currentEXP);
 
         if ((int) levelSystem == 0) {
 
@@ -275,6 +277,8 @@ public class Player extends Entity {
             System.out.println("Something not good is happening.");
 
         }
+        
+        setExperience(currentEXP);
     }
 
     public void levelUp() {
