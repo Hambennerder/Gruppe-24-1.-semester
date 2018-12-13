@@ -32,7 +32,6 @@ public class Game extends Player {
     public Game() {
         parser = new Parser();
         player = new Player();
-        battle = new Battlesystem();
     }
 
     public void setPlayerName() {
@@ -167,7 +166,7 @@ public class Game extends Player {
             } else {
                 conversation = false;
                 questQuestion = false;
-                return goRoom(command) + "\n"
+                s = goRoom(command) + "\n"
                         + encounterNPC(command);
             }
 
@@ -446,6 +445,8 @@ public class Game extends Player {
         }
         } else if (fleeAttempted) {
             s = "You already tried fleeing once you coward";
+        } else {
+            s = "";
         }
         return s;
     }

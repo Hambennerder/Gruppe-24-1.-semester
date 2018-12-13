@@ -11,7 +11,6 @@ public class Parser {
 
     public Parser() {
         commands = new CommandWords();
-        reader = new Scanner(System.in);
     }
 
     public Command getCommand(String s) {

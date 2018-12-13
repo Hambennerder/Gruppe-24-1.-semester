@@ -56,14 +56,12 @@ public class Rooms extends Room {
                 + "HINT: inspecting a room reveals interactable objects.");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
-        u1.setHasEncounter(true);
         rooms.add(u1);
 
         // u2 index 2
         u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint");
         u2.setDescription("No ID card here...");
         u2.setName("u2");
-        u2.setHasEncounter(true);
         rooms.add(u2);
 
         // u3 at index 3
@@ -206,14 +204,12 @@ public class Rooms extends Room {
 
         // library at index 16
         library = new Room("library");
-        rooms.add(library);
         library.setHasEncounter(true);
         library.setDescription("You have arrived at the library...\n"
                 + " Those law students don't look nice \n"
                 + "but that \'Holy-Constitution\' might be useful");
         library.setName("library");
         library.setRequiredProgress(6);
-        library.setHasEncounter(true);
         rooms.add(library);
         // study hall at index 17
 

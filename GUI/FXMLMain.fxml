@@ -19,7 +19,7 @@
       <Button fx:id="sendBtn" layoutX="605.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleSendBtn" text="Send" />
       <ListView fx:id="lvEx" layoutX="659.0" layoutY="99.0" prefHeight="155.0" prefWidth="87.0" />
       <Text layoutX="663.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exits:" />
-      <TextArea fx:id="location" layoutX="658.0" layoutY="25.0" prefHeight="22.0" prefWidth="88.0" />
+      <TextArea fx:id="location" editable="false" focusTraversable="false" layoutX="658.0" layoutY="25.0" mouseTransparent="true" prefHeight="22.0" prefWidth="88.0" />
       <Text layoutX="660.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" />
       <Text fx:id="playerNameHP" layoutX="9.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player hp:" />
       <Text fx:id="enemyNameHP" layoutX="9.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy hp:" />
