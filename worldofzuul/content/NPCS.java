@@ -59,13 +59,7 @@ public class NPCS extends NPC {
                 + "> are four directions: \'north\', \'south\', \'west\' and \'east\'.\n"
                 + "> Type \'go north\' to get started in your adventure!");
         mentor.setDeclineString(">Ow, well you won't be able to study properly then.. a shame");
-        mentor.setQuestString("> Hello there!"
-                + "\n> Welcome to SDU. My name is Morten. I'll be your mentor for today."
-                + "\n> Before you can enter the entrance of the SDU building, you have "
-                + "\n> to find your ID-card. To do that you have to"
-                + "\n> inspect rooms u1-u3. These rooms are outside the SDU building."
-                + "\n> To find the first room you have to head north. Are you ready for this?\n"
-                + " (now choose whether or not you accept this mission by typing yes/no)");
+       
         mentor.setOnQuestString(">Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString(">I'm sorry, I'm busy. Go find Andars.");
         mentor.setCompleteQuestString(">Yes! you found the ID-card, \n"
@@ -136,10 +130,10 @@ public class NPCS extends NPC {
         NPC bookstoreLady = new NPC();
         bookstoreLady.setName("lady");
 
-        bookstoreLady.setWelcome(">Hello there handsome thing, What can I do you for?");
+        bookstoreLady.setWelcome(">Hello there handsome thing, What can I do you for? \n");
         bookstoreLady.setDescription("*Probably the ugliest and oldest person you've ever seen in a bookstore*");
-        bookstoreLady.setDialogOptions("> 1: Talk"
-                + "\n> 2: Leave");
+        bookstoreLady.setDialogOptions("> 1: Talk \n"
+                + "> 2: Leave \n");
         bookstoreLady.setQuestString(">I would love to help you finding the book darling,\n"
                 + "> but if I have to help you I have to get something in return.\n"
                 + ">I would love to get a cup of coffee with you.\n"
