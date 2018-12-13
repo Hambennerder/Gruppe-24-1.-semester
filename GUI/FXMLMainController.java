@@ -59,6 +59,8 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     private TextField setEnemyHP;
     @FXML
     private TextField levelText;
+    @FXML
+    private TextField amountHeal;
 
     private String loop(String s) throws Exception {
         showInventory.clear();
@@ -71,18 +73,18 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
         }
         addInventory();
         addExits();
-
+        
         location.setText(g.currentRoom.getName());
         playerNameHP.setText(g.player.getPlayerName());
-        setPlayerHP.setText(g.player.getStringHealth());
+        setPlayerHP.setText("HP: "+g.player.getStringHealth());
         levelText.setText(g.player.getStringLevel());
 
         if (g.currentRoom.hasEncounter()) {
-            enemyNameHP.setText(g.currentRoom.getEncounter().getName());
-            setEnemyHP.setText(g.currentRoom.getEncounter().getStringEncounter_health());
+            enemyNameHP.setText(g.currentRoom.getEncounter().getEncounterNPC().getName());
+            setEnemyHP.setText("HP: "+g.currentRoom.getEncounter().getEncounterNPC().getStringHealth());
         } else {
             enemyNameHP.setText("No enemy");
-            setEnemyHP.setAccessibleHelp("No value");
+            setEnemyHP.setText("No value");
         }
         return s;
     }
