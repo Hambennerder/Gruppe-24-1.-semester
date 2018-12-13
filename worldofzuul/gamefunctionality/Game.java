@@ -31,11 +31,7 @@ public class Game extends Player {
 
     public Game() {
         parser = new Parser();
-<<<<<<< HEAD
         player = new Player();
-=======
-        player = new Player();        
->>>>>>> d14b643e2a151fb3933953d14308887e030d040d
     }
 
     public void setPlayerName() {

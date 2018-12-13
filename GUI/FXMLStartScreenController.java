@@ -28,9 +28,9 @@ import worldofzuul.gamefunctionality.PlayerTransporter;
  * @author joakim
  */
 public class FXMLStartScreenController implements Initializable {
-    //public String name;
-    //private String age;
-    //private String gender;
+    public String name;
+    private String age;
+    private String gender;
     Game g = new Game();
 
     
