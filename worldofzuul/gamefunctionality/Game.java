@@ -113,12 +113,11 @@ public class Game extends Player {
 
         // Adding medicine student encounter to study hall
         Encounter medicineEncounter = new Encounter();
-        listOfRooms.getRoom(17).addEncounter(medicineEncounter);
         medicineEncounter.addEncounterNPC(npcs.getNPC(9));
         medicineEncounter.setEncounterPossibility(100);
         medicineEncounter.setEncounterMessage("You think you're smarter than me?"
                 + "HA! I'm studying to become a doctor.. my grades are better than yours!");
-
+        listOfRooms.getRoom(17).addEncounter(medicineEncounter);
     }
 
     public boolean getFinished() {
