@@ -45,11 +45,11 @@ public class Rooms extends Room {
 
         entrance = new Room("Entrance to the University. \n"
                 + "What exciting adventure lies behind these doors?");
-        entrance.setDescription("You are a new student in software engineering and \n"
-                + "you have just arrived outside the main entrance \n"
-                + "of the university. You look around and see cou- \n"
-                + "ntless of other university students, heading to \n"
-                + "their next class or lecture, you see a man wearing a red shirt saying \'mentor\'");
+        entrance.setDescription("You are a new student in software engineering and you have just arrived outside\n"
+                + "the main entrance of the university. You look around and see countless of other \n"
+                + "university students, heading to their next class or lecture, you see a man \n"
+                + "wearing a red shirt saying \'mentor\'\n");
+            
 
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
                 + "> through the first steps of this tutorial. Above this message you \n"
@@ -143,7 +143,7 @@ public class Rooms extends Room {
         rooms.add(g7);
 
         // g8 at index 8
-        g8 = new Room("You are in hallway g8. \n "
+        g8 = new Room("You are in hallway g8."
                 + "As you enter the door slams behind you. \n"
                 + "Must be the draft again... Where does it originate?");
         g8.setDescription("Nothing really exciting in this hallway");
