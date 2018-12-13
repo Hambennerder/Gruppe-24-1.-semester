@@ -281,7 +281,8 @@ public class Rooms extends Room {
         t8.setNextQuestProgress(11);
 
         t8.setHasQuest(true);
-        t8.setJournalString("Find Malta's bag and bring it back to him");
+        t8.setJournalString("Find Malta's bag and bring it back to him."
+                + "\nThen find Lune and tell her Malta is okay.");
         rooms.add(t8);
 
 
