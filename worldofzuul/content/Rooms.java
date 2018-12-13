@@ -250,7 +250,7 @@ public class Rooms extends Room {
         u55.setName("u55");
 
         u55.setRequiredProgress(9);
-        u55.setNextQuestProgress(11);
+        u55.setNextQuestProgress(12);
 
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
@@ -378,7 +378,7 @@ public class Rooms extends Room {
 
         // index at 34
         g22 = new Room("you are in hallway g22");
-
+        g22.setHasEncounter(true);
         g22.setDescription("It's really dark down here... Maybe you can find a switch somewhere");
         g22.setName("g22");
         rooms.add(g22);
