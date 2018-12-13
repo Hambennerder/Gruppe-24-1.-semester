@@ -120,6 +120,8 @@ public class NPCS extends NPC {
                 + ">You should probably go study some more in the studyhall.");
         andars.setQuestCompletedString(">You finally found the book and handed in the assignments. \n"
                 + ">You should go study to the study hall.");
+        andars.setHealth(1000);
+        andars.setEnemyBaseAttackDamage(10);
 
 
 
