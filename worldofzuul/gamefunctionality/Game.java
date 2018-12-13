@@ -7,10 +7,10 @@ import worldofzuul.Room;
 import worldofzuul.content.NPCS;
 import worldofzuul.content.Rooms;
 import worldofzuul.combat.Battlesystem;
-import worldofzuul.combat.Bodyslam;
-import worldofzuul.combat.Dropkick;
+import worldofzuul.combat.OptionalAbility;
+import worldofzuul.combat.BragAbility;
 import worldofzuul.combat.EncounterAttacks;
-import worldofzuul.combat.Punch;
+import worldofzuul.combat.WittyRemarkAbility;
 
 public class Game extends Player {
 
@@ -410,9 +410,9 @@ public class Game extends Player {
     }
 
     private String combatOptions(Command command) {
-        Dropkick dropkick = new Dropkick();
-        Punch punch = new Punch();
-        Bodyslam bodyslam = new Bodyslam();
+        BragAbility dropkick = new BragAbility();
+        WittyRemarkAbility punch = new WittyRemarkAbility();
+        OptionalAbility bodyslam = new OptionalAbility();
         EncounterAttacks encounterturn = new EncounterAttacks();
         if (fight) {
             switch (command.getCommandWord()) {

@@ -4,7 +4,7 @@ import java.util.Random;
 import worldofzuul.Encounter;
 import worldofzuul.Player;
 
-public class Dropkick extends Battlesystem{
+public class BragAbility extends Battlesystem{
     
     Random rand = new Random();
     Encounter encounter = new Encounter();
@@ -19,7 +19,7 @@ public class Dropkick extends Battlesystem{
     private int Damagegiven;
     private int result;
     
-    public Dropkick(){
+    public BragAbility(){
         
     }
 

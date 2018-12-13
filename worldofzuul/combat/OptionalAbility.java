@@ -4,7 +4,7 @@ import java.util.Random;
 import worldofzuul.Encounter;
 import worldofzuul.Player;
 
-public class Bodyslam {
+public class OptionalAbility {
     
     Random rand = new Random();
     Encounter encounter = new Encounter();
@@ -19,7 +19,7 @@ public class Bodyslam {
     private int Damagegiven;
     private int result;
     
-    public Bodyslam(){
+    public OptionalAbility(){
         
     }
 

@@ -4,7 +4,7 @@ import java.util.Random;
 import worldofzuul.Encounter;
 import worldofzuul.Player;
 
-public class Punch extends Battlesystem {
+public class WittyRemarkAbility extends Battlesystem {
 
     Random rand = new Random();
     Encounter encounter = new Encounter();
@@ -19,7 +19,7 @@ public class Punch extends Battlesystem {
     private int Damagegiven;
     private int result;
 
-    public Punch() {
+    public WittyRemarkAbility() {
 
     }
 
