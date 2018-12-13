@@ -19,7 +19,7 @@ public class Game extends Player {
     public Parser parser;
     public Room currentRoom;
     public Player player;
-    private Battlesystem battle;
+    private Battlesystem battle = new Battlesystem();
     private boolean finished = false;
     private boolean started = false;
     private boolean fight = false;
@@ -459,7 +459,7 @@ public class Game extends Player {
 
                 if (!fleeAttempted) {
                 s = currentRoom.getEncounter().getEncounterMessage()
-                        + battle.Decision();
+                + battle.Decision();
 
                 fight = true;
                 currentRoom.setIsLocked(true);

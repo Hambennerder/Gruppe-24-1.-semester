@@ -5,13 +5,12 @@ import worldofzuul.Encounter;
 import worldofzuul.Player;
 import worldofzuul.gamefunctionality.Game;
 
-public class Battlesystem extends Game {
-
+public class Battlesystem {
+    
     private Random rand = new Random();
     private int Damagegiven;
     private int Damagetaken;
     private int Energydrink = 11;
-    private int currentHealth = player.getHealth();
 
 
     public String Decision() {

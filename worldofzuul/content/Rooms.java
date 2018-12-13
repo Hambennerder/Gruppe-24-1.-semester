@@ -232,7 +232,6 @@ public class Rooms extends Room {
         rooms.add(library);
         // study hall at index 17
 
-
         studyhall = new Room("study hall");
         studyhall.setHasEncounter(true);
 
