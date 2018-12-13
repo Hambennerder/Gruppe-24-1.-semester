@@ -71,13 +71,13 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
         addExits();
 
         location.setText(g.currentRoom.getName());
-        playerNameHP.setText(g.player.getName());
+        playerNameHP.setText(g.player.getPlayerName());
         setPlayerHP.setText(g.player.getStringHealth());
 
         if (g.currentRoom.hasEncounter()) {
             enemyNameHP.setText(g.currentRoom.getEncounter().getName());
-            //setEnemyHP.setText(g.currentRoom.getEncounter().getHealth());
-        }
+            setEnemyHP.setText(g.currentRoom.getEncounter().getStringEncounter_health());
+        }    
         return s;
     }
 
