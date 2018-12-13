@@ -1,5 +1,6 @@
 package worldofzuul.gamefunctionality;
 
+import worldofzuul.Consumable;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
@@ -61,6 +62,17 @@ public class Game extends Player {
 
         Item book = new Item();
         book.setName("book");
+        
+        // Adding heals to different rooms.
+        Consumable healz = new Consumable();
+        healz.setName("healz");
+        listOfRooms.getRoom(15).addItem(healz);
+        listOfRooms.getRoom(18).addItem(healz);
+        listOfRooms.getRoom(21).addItem(healz);
+        listOfRooms.getRoom(25).addItem(healz);
+        listOfRooms.getRoom(29).addItem(healz);
+        listOfRooms.getRoom(37).addItem(healz);
+        listOfRooms.getRoom(43).addItem(healz);
 
         // Adding mentor NPC to entrance, and adding ID-card to u3.
         listOfRooms.getRoom(0).addNPC(npcs.getNPC(0));
@@ -182,12 +194,6 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.QUIT) {
             setFinished(true);
 
-        } else if (commandWord == CommandWord.INSPECT) {//DONE
-            s = "Your location: " + currentRoom.getName() + "\n"
-                    + currentRoom.getExitString() + "\n"
-                    + currentRoom.getDescription();
-
-
         } else if (commandWord == CommandWord.INSPECT) {
             if (fight) {
                 return "What are you trying to inspect?\n"
@@ -199,7 +205,11 @@ public class Game extends Player {
             }
 
             try {
-                s += "This room contains: " + currentRoom.getItem(0).getName();
+                if (currentRoom.getItem(0) instanceof Consumable) {
+                    s += "\nConsumeable item: healz\n";
+                } else {
+                return "This room contains: " + currentRoom.getItem(0).getName();
+                }
             } catch (IndexOutOfBoundsException ex) {
                 s += "\n ***No item to be found***";
             }
@@ -218,10 +228,21 @@ public class Game extends Player {
                     s = "No item to take" + "\n";
 
                 } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
+                    if (currentRoom.getItem(0) instanceof Consumable) {
+                        if (player.getHeals() == player.getMaxHeals()) {
+                           s = "You can't carry anymore heals!"; 
+                        } else {
+                        player.replenishHeal(1);
+                        currentRoom.removeItem(0);
+                        s = "You found a heal! Now you have " + player.getHeals() + " heals.";
+                        }
+                    } else {
+                    
                     player.addItem(currentRoom.getItem(0));
                     s = "You picked up " + currentRoom.getItem(0).getName() + "\n";
                     currentRoom.removeItem(0);
                     player.incrementProgress();
+                    }
                 }
             }
 
