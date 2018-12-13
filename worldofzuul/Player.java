@@ -255,36 +255,15 @@ public class Player extends Entity {
 
     }
 
-    /*
-
-    // Player age conversation
-
-    public int ConversationAge(String question) {
-
-        input = new Scanner(System.in);
-
-        System.out.println(question);
-
-        System.out.print("> ");
-
-        int answer = input.nextInt();
-
-        
-
-        return answer;
-
-    }
-
-     */
+    
+    
     public void gainExperience(int amount) {
 
         getExperience();
+        
+        int currentEXP = experience + amount;
 
-        int currentExperience;
-
-        currentExperience = experience + amount;
-
-        double levelSystem = 0.04 * Math.sqrt(currentExperience);
+        double levelSystem = 0.04 * Math.sqrt(currentEXP);
 
         if ((int) levelSystem == 0) {
 
@@ -351,9 +330,8 @@ public class Player extends Entity {
             System.out.println("Something not good is happening.");
 
         }
-
-        setExperience(currentExperience);
-
+        
+        setExperience(currentEXP);
     }
 
     public void levelUp() {
@@ -369,7 +347,7 @@ public class Player extends Entity {
         setHealth(healthLevel);
         
         this.maxHeals++;
-        
+
         this.heals = this.maxHeals;
         
         this.special = this.maxSpecial;

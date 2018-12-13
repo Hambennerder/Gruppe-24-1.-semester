@@ -5,15 +5,15 @@ import java.util.List;
 import worldofzuul.NPC;
 
 public class NPCS extends NPC {
-    
+
     private List<NPC> npcs;
 
     public NPCS() {
         npcs = new ArrayList<>();
     }
-        
+
     public void createNPCS() {
-        
+
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
 
@@ -59,7 +59,7 @@ public class NPCS extends NPC {
                 + "> are four directions: \'north\', \'south\', \'west\' and \'east\'.\n"
                 + "> Type \'go north\' to get started in your adventure!");
         mentor.setDeclineString(">Ow, well you won't be able to study properly then.. a shame");
-       
+
         mentor.setOnQuestString(">Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString(">I'm sorry, I'm busy. Go find Andars.");
         mentor.setCompleteQuestString(">Yes! you found the ID-card, \n"
@@ -74,7 +74,7 @@ public class NPCS extends NPC {
 
         // Start of the NPC Andars INDEX: 1-------------------------------------
         NPC andars = new NPC();
-      
+
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard."
                 + "\n He appears professional. His face expression seems serious.*");
         andars.setName("Andars");
@@ -84,7 +84,7 @@ public class NPCS extends NPC {
               + "\n < 2: leave ");
         andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap \n"
                             + "< You know, a thing between you and me. The book, called Best Java Book for \n"
-                            + "< learning Java EVER!. It is the best book to prepare you I used this book \n" 
+                            + "< learning Java EVER!. It is the best book to prepare you I used this book \n"
                             + "< back in my old days. It saved me tons of trouble! Find it at the bookstore. \n"
                             + "< I want you to solve these assignments, solve these with the book and you \n"
                             + "< will be prepared. Sound like a pretty good plan, right? (yes/no) \n");
@@ -101,7 +101,7 @@ public class NPCS extends NPC {
         andars.setQuestCompletedString("< You finally found the book and"
                 + "\n< handed in the assignments. \n"
                 + "< You should go study to the study hall.");
-      
+
         andars.setQuestString("> Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
                 + "\n> You know, a thing between you and me.\n"
                 + "> The book, called Best Java Book for learning Java EVER!.\n"
@@ -153,8 +153,10 @@ public class NPCS extends NPC {
         lawStudent.setName("Wild law student");
         lawStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
-        lawStudent.setHealth(50);
-        lawStudent.setExperience(5);
+        lawStudent.setHealth(30);
+
+        lawStudent.setExperience(1000);
+
         lawStudent.setEnemyBaseAttackDamage(5);
         npcs.add(lawStudent);
 
@@ -220,7 +222,7 @@ public class NPCS extends NPC {
         eryk.setName("Eryk");
         eryk.setWelcome("< Hello I'm your teacher in COS");
         eryk.setDescription("Great man with great jokes");
-        eryk.setDialogOptions("< 1: Talk"                            
+        eryk.setDialogOptions("< 1: Talk"
                                       + "\n< 2: Leave");
         eryk.setQuestString("The damn light won't work and I can't get the projector to work \n"
                 + "It was so much easier back in the old days, when we only used blackboards \n"
@@ -231,7 +233,7 @@ public class NPCS extends NPC {
         eryk.setOnQuestString("Please fix the power");
         eryk.setCompleteQuestString("Great job on getting the screen working,\n"
                 + " now we can get on with the teaching");
-        eryk.setQuestCompletedString("Remember your exam today. Head to Andars."); 
+        eryk.setQuestCompletedString("Remember your exam today. Head to Andars.");
 
         eryk.setWelcome(">Hello I'm your teacher in COS");
         eryk.setDescription("*Great man with great jokes*");
@@ -283,7 +285,7 @@ public class NPCS extends NPC {
         janitor.setFriendly(false);
         janitor.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
-        janitor.setExperience(1000);
+        janitor.setExperience(6000);
         npcs.add(janitor);
         // End of janitor ------------------------------------------------------
 
@@ -295,7 +297,7 @@ public class NPCS extends NPC {
         medicineStudent.setFriendly(false);
         medicineStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
-        medicineStudent.setExperience(500);
+        medicineStudent.setExperience(2000);
         npcs.add(medicineStudent);
         // End of medicine student ------------------------------------------------------
 

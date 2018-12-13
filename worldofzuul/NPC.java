@@ -83,6 +83,10 @@ public class NPC extends Entity {
     public int getHealth() {
         return health;
     }
+    
+    public String getStringHealth(){
+        return ""+health;
+    }
 
     public void addToInventory(Item item) {
         inventory.add(item);

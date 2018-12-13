@@ -156,7 +156,7 @@ public class Rooms extends Room {
                 + "a small area.\n");
         bookstore.setDescription("How will you ever find the book you need in here. \n"
                 + " Maybe that 'lady' over there can help?");
-        bookstore.setName("Student Bookstore");
+        bookstore.setName("Bookstore");
         bookstore.setHasQuest(true);
         bookstore.setRequiredProgress(2);
         bookstore.setNextQuestProgress(3);
