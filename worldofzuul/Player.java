@@ -7,14 +7,13 @@ public class Player extends Entity {
 
     public ArrayList<Item> inventory = new ArrayList<>();
 
-
     private String playerName;
     private int currentHealth = 100;
     private int maxHealth = 100;
     private int level = 1;
     private int experience;
     private String age;
-    private String gender;    
+    private String gender;
     private Scanner input;
     private int progress = 0;
     private int indexOfLastAdded = 0;
@@ -58,7 +57,7 @@ public class Player extends Entity {
 
     public String getGender() {
 
-        return gender;
+        return this.gender;
 
     }
 
@@ -68,10 +67,9 @@ public class Player extends Entity {
 
     }
 
-  
     public String getAge() {
 
-        return age;
+        return this.age;
 
     }
 
@@ -83,10 +81,9 @@ public class Player extends Entity {
 
     public String getPlayerName() {
 
-        return playerName;
+        return this.playerName;
 
     }
-
 
     public void setLevel(int level) {
 
@@ -94,13 +91,11 @@ public class Player extends Entity {
 
     }
 
-    
     public int getLevel() {
 
         return level;
 
     }
-
 
     public void setHealth(int currentHealth) {
 
@@ -108,13 +103,15 @@ public class Player extends Entity {
 
     }
 
-
     public int getHealth() {
 
         return currentHealth;
 
     }
 
+    public String getStringHealth() {
+        return "" + currentHealth;
+    }
 
     public void setMaxHealth(int maxHealth) {
 
@@ -122,13 +119,11 @@ public class Player extends Entity {
 
     }
 
-
     public int getMaxHealth() {
 
-       return maxHealth;
+        return maxHealth;
 
     }
-
 
     public void setExperience(int experience) {
 
@@ -136,13 +131,11 @@ public class Player extends Entity {
 
     }
 
-
     public int getExperience() {
 
         return experience;
 
     }
-
 
     public void addItem(Item item) {
 
@@ -151,7 +144,6 @@ public class Player extends Entity {
         this.indexOfLastAdded++;
 
     }
-
 
     public void getInventory() {
 
@@ -165,21 +157,17 @@ public class Player extends Entity {
 
     }
 
-
     public void setProgress(int input) {
 
         this.progress = input;
 
     }
 
-    
     public int getProgress() {
 
         return this.progress;
 
     }
-
-    
 
     public void incrementProgress() {
 
@@ -187,15 +175,11 @@ public class Player extends Entity {
 
     }
 
-    
-
     public String getJournal() {
 
         return this.journal;
 
     }
-
-    
 
     public void setJournal(String input) {
 
@@ -203,8 +187,7 @@ public class Player extends Entity {
 
     }
 
-        // Player name conversation
-
+    // Player name conversation
     public String ConversationWord(String question) {
 
         input = new Scanner(System.in);
@@ -217,7 +200,7 @@ public class Player extends Entity {
 
         return answer;
 
-}
+    }
 
     /*
 
@@ -239,10 +222,7 @@ public class Player extends Entity {
 
     }
 
-    */
-
-    
-
+     */
     public void gainExperience(int amount) {
 
         getExperience();
@@ -252,8 +232,6 @@ public class Player extends Entity {
         currentExperience = experience + amount;
 
         double levelSystem = 0.04 * Math.sqrt(currentExperience);
-
-        
 
         if ((int) levelSystem == 0) {
 
@@ -269,7 +247,7 @@ public class Player extends Entity {
 
         } else if ((int) levelSystem == 2) {
 
-            setLevel(3);   
+            setLevel(3);
 
             levelUp();
 
@@ -323,22 +301,18 @@ public class Player extends Entity {
 
         setExperience(currentExperience);
 
-        
-
     }
-
-    
 
     public void levelUp() {
 
         getMaxHealth();
-        
+
         getHealth();
-        
+
         int healthLevel = maxHealth + 10;
-        
+
         setMaxHealth(healthLevel);
-        
+
         setHealth(healthLevel);
         
         this.maxHeals++;
