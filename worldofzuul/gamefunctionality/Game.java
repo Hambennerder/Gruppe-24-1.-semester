@@ -318,34 +318,7 @@ public class Game extends Player {
                 // checks whether or not a room has an ongoing quest, if the room does not have
                 // an ongoing quest, then the player will be presented the quest, and have an option
                 // between yes and no
-
-                if (!currentRoom.getHasOngoingQuest()) {
-                    s = currentRoom.getNPC(0).getQuestString();
-                    // check 3.5: Checks if the quest has been finished or not. if the quest has not been finished, then
-                    // the "on a quest string" will be returned, otherwise the next string introducing the player to
-                    // where he should go next is returned
-                } else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
-                    if (player.getProgress() < currentRoom.getNextQuestProgress()) {
-                        s = currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString();
-                    } else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
-                        s = "Your location: " + currentRoom.getName() + "\n"
-                                + currentRoom.getExitString() + "\n"
-                                + currentRoom.getNPC(0).getCompleteQuestString();
-                        currentRoom.setHasFinishedQuest(true);
-                        player.incrementProgress();
-                        player.setJournal("No active quests...");
-                    }
-                } // check 3.6: Checks whether or not a quest has been completed in that room
-                // if a quest has been completed, it will return the string that explains
-                // to the player that the quest in that room has been finished
-                else if (currentRoom.getHasFinishedQuest()) {
-                    s = "Your location: " + currentRoom.getName() + "\n"
-                            + currentRoom.getExitString() + "\n"
-                            + currentRoom.getNPC(0).getQuestCompletedString();
-                }
-
                 s = checkQuest();
-
             } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("2")) {
                 questQuestion = false;
                 conversation = false;
