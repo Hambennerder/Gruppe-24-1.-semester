@@ -1,4 +1,4 @@
-package worldofzuul.content;
+    package worldofzuul.content;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +22,18 @@ public class NPCS extends NPC {
 
         mentor.setName("mentor");
         mentor.setWelcome(">You must be a new student, welcome! \n"
-                + "\nUvuvwevwevwe: As you can see below, you have two options,\n"
-                + " type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
+                + "\n> Uvuvwevwevwe: As you can see below, you have two options,\n"
+                + "> type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
         mentor.setDialogOptions("> 1: talk"
                 + "\n> 2: leave");
         mentor.setAcceptString(">Good luck student! \n"
                 + "\nUvuvwevwevwe: \n"
-                + "Now that you accepted a quest, you can type journal, and the quest's name \n"
-                + "and a short description will pop up. Complete this quest to advance. \n"
-                + " To go to a room, you must "
-                + "type \'go\' and then the direction you want to go, there are four directions:\n"
-                + "\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
+                + "> Now that you accepted a quest, you can type journal, and the quest's name \n"
+                + "> and a short description will pop up. Complete this quest to advance. \n"
+                + "> To go to a room, you must "
+                + "> type \'go\' and then the direction you want to go, there are four directions:\n"
+                + "> \'north\', \'south\', \'west\' and \'east\'.\n"
+                + "> Type \'go north\' to get started in your adventure!");
         mentor.setDeclineString(">Ow, well you won't be able to study properly then.. a shame");
         mentor.setQuestString("> Hello there!"
                 + "\n> Welcome to SDU. My name is Morten. I'll be your mentor for today."
@@ -55,9 +56,9 @@ public class NPCS extends NPC {
 
         // Start of the NPC Andars INDEX: 1-------------------------------------
         NPC andars = new NPC();
-
-        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. \n"
-                + " He appears proffessionel. His face expression seems serious.*");
+      
+        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard."
+                + "\n He appears professional. His face expression seems serious.*");
         andars.setName("Andars");
 
         andars.setDialogOptions(
