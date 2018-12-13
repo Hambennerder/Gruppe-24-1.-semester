@@ -19,10 +19,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import worldofzuul.Item;
 import worldofzuul.gamefunctionality.Command;
 import worldofzuul.gamefunctionality.Game;
-import worldofzuul.gamefunctionality.Launcher;
 import worldofzuul.gamefunctionality.PlayerTransporter;
 
 /**
@@ -30,14 +30,12 @@ import worldofzuul.gamefunctionality.PlayerTransporter;
  *
  * @author joakim
  */
-public class FXMLMainController implements Initializable{
+public class FXMLMainController extends FXMLStartScreenController implements Initializable {
+
     ObservableList<String> showInventory = FXCollections.observableArrayList();
     ObservableList<String> showExits = FXCollections.observableArrayList();
-    
+
     Game g = new Game();
-    
-    
-    String text;
 
     @FXML
     private TextArea output;
@@ -49,29 +47,47 @@ public class FXMLMainController implements Initializable{
     private ListView<String> lvInv;
     @FXML
     private ListView<String> lvEx;
+    @FXML
+    private TextArea location;
+    @FXML
+    private Text playerNameHP;
+    @FXML
+    private Text enemyNameHP;
+    @FXML
+    private TextArea setPlayerHP;
+    @FXML
+    private TextArea setEnemyHP;
 
-    public String loop (String s) throws Exception{
+    private String loop(String s) throws Exception {
         showInventory.clear();
         showExits.clear();
         if (!g.getFinished()) {
             Command command = g.parser.getCommand(s);
             s = g.processCommand(command);
         } else {
-        System.out.println("Thank you for playing. Good bye.");
+            return "Thank you for playing. Good bye.";
         }
         addInventory();
         addExits();
+
+        location.setText(g.currentRoom.getName());
+        playerNameHP.setText(g.player.getName());
+        setPlayerHP.setText(g.player.getStringHealth());
+
+        if (g.currentRoom.hasEncounter()) {
+            enemyNameHP.setText(g.currentRoom.getEncounter().getName());
+            //setEnemyHP.setText(g.currentRoom.getEncounter().getHealth());
+        }
         return s;
-        
     }
-    
+
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
      */
     @Override
-   public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {
         // TODO
         g.player = PlayerTransporter.getPlayer();
                 output.setText("Welcome "+g.player.getPlayerName()+", to the world of SDUUL.\n\n"
@@ -83,37 +99,19 @@ public class FXMLMainController implements Initializable{
                 + "ultimately be prepared for how boring studying can be.\n\n"
                 + "DISCLAIMER: 9/10 feminists want the creators behind this game in jail."
                 + "\n\nType begin to start your adventure!");
-                g.play();
-                
-                lvInv.setItems(showInventory);
-                lvEx.setItems(showExits);
+        g.play();
+
+        lvInv.setItems(showInventory);
+        lvEx.setItems(showExits);
     }
 
-    
-    
-    public void setOutput(String text) {
-        output.setText(text);
-    }
-
-    public void addLine(String line) {
-        output.setText(output.getText() + " " + line);
-    }
-
-    public void clearOutput() {
-        output.clear();
-    }
-    
-    public String getText(){
-        return text;
-    }
-    
-    public void addInventory(){
+    public void addInventory() {
         for (Item item : g.player.inventory) {
             showInventory.add(item.getName());
-            }
+        }
     }
-    
-    public void addExits(){
+
+    public void addExits() {
         Set<String> keys = g.currentRoom.exits.keySet();
         for (String exit : keys) {
             showExits.add(exit);
@@ -127,14 +125,11 @@ public class FXMLMainController implements Initializable{
     }
 
     @FXML
-    private void enterButton(KeyEvent event) throws Exception{
-        if (event.getCode()==KeyCode.ENTER) {
+    private void enterButton(KeyEvent event) throws Exception {
+        if (event.getCode() == KeyCode.ENTER) {
             output.setText(loop(console.getText()));
             console.clear();
         }
     }
-    
-    
-    
-}
 
+}

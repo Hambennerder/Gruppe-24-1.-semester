@@ -17,9 +17,9 @@
       <Text layoutX="14.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
       <Text layoutX="14.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age:" />
       <Text layoutX="14.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" />
-      <TextField fx:id="nameSetter" layoutX="77.0" layoutY="250.0" />
-      <TextField fx:id="ageSetter" layoutX="77.0" layoutY="290.0" />
-      <TextField fx:id="genderSetter" layoutX="77.0" layoutY="332.0" />
+      <TextField fx:id="nameSetter" layoutX="77.0" layoutY="250.0" onKeyPressed="#nextGUIButton" />
+      <TextField fx:id="ageSetter" layoutX="77.0" layoutY="290.0" onKeyPressed="#nextGUIButton" />
+      <TextField fx:id="genderSetter" layoutX="77.0" layoutY="332.0" onKeyPressed="#nextGUIButton" />
       <Button fx:id="playBtn" layoutX="504.0" layoutY="332.0" mnemonicParsing="false" onAction="#handlePlayBtn" text="Play!" />
    </children>
 </AnchorPane>
