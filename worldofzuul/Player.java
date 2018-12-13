@@ -48,6 +48,10 @@ public class Player extends Entity {
     public int getHeals() {
         return this.heals;
     }
+    
+    public int getMaxHeals() {
+        return this.maxHeals;
+    }
 
     public void setGender(String gender) {
 
