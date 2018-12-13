@@ -103,7 +103,7 @@ public class FXMLStartScreenController implements Initializable {
         setStartAge();
         setStartGender();
         
-       if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
+       if (g.player.getPlayerName().equals("")||g.player.getAge().equals("")||g.player.getGender().equals("")){
            System.out.println("Please enter whatever");
        } else {   
         PlayerTransporter.setPlayer(g.player);

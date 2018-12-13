@@ -83,9 +83,8 @@ public class Game extends Player {
         Encounter lawStudentEncounter = new Encounter();
         lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
         lawStudentEncounter.setEncounterPossibility(100);
-        lawStudentEncounter.setEncounterMessage("Oh no, you have encountered" + lawStudentEncounter.getEncounterNPC() + "!");
+        lawStudentEncounter.setEncounterMessage("Oh no, you have encountered"+ npcs.getNPC(3).getName()+ "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
-
 
         // Adding the constitution to the library and student to hallway g3
         Item holy_constitution = new Item();
@@ -330,6 +329,8 @@ public class Game extends Player {
                 currentRoom.setHasFinishedQuest(true);
                 player.incrementProgress();
                 player.setJournal("No active quests...");
+                questQuestion = false;
+                conversation = false;
             }
             // check 3.6: Checks whether or not a quest has been completed in that room
             // if a quest has been completed, it will return the string that explains

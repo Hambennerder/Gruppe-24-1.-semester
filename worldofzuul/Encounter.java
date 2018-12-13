@@ -48,6 +48,10 @@ public class Encounter extends Entity {
     public int getEncounter_health() {
         return encounter_health;
     }
+    
+    public String getStringEncounter_health(){
+        return ""+encounter_health;
+    }
 
     public void setEncounter_health(int encounter_health) {
         this.encounter_health = encounter_health;

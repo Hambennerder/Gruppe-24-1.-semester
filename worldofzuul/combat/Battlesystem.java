@@ -34,35 +34,6 @@ public class Battlesystem extends Game {
                 + "c) Optional \n"
                 + "d) Back \n";
     }
-    /*
-     public void attack() {
-        
-     Damagetaken = (rand.nextInt(25)) + 1;
-     Damagegiven = (rand.nextInt(25)) + 1;
-        
-     Encounter_health -= Damagegiven;
-     Player_health -= Damagetaken;
-        
-     System.out.println("You're attack resulted in " + Damagegiven + " point damage");
-     System.out.println("Your opponent have been hit with a damage of " + Damagegiven + " points");
-     System.out.println("Your health has decreased down to " + Player_health + " HP."
-     + "\n And your opponent has " + Encounter_health + " HP left.");
-        
-     if (Player_health <= 0 && Encounter_health > 0 ){
-     System.out.println("You have loss.");
-        
-     }else if(Player_health > 0 && Encounter_health <= 0){
-     System.out.println("You have won.");
-     Player_experience += Encounter_experience;
-     System.out.println("Your experience is now " + Player_experience);
-     }else if(Player_health <= 0 && Encounter_health <= 0){
-     System.out.println("It's a tie.");
-           
-     }
-        
-     }
-    
-     */
 
     public String heal(int health) {
         int maximumHealth;
