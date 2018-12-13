@@ -4,14 +4,14 @@ import java.util.Random;
 import worldofzuul.Encounter;
 import worldofzuul.Player;
 
-public class Punch extends Battlesystem {
+public class WittyRemarkAbility extends Battlesystem {
 
     private Random rand = new Random();
     private int damageAmount;
     private String attackSuccessString;
 
-    public Punch(int playerLevel) {
-        damageAmount = (playerLevel * 2) + 10;
+    public WittyRemarkAbility(int playerLevel) {
+        damageAmount = (playerLevel * 2) + 5;
     }
 
     public int getDamageAmount() {
@@ -60,7 +60,7 @@ public class Punch extends Battlesystem {
                     + "His/Her health reminds " + Encounter_health;
 
         }
-
+        
         if (Player_health <= 0 && Encounter_health > 0) {
 
             s = "You have lost.\n";
