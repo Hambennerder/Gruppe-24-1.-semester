@@ -250,7 +250,7 @@ public class Rooms extends Room {
         u55.setName("u55");
 
         u55.setRequiredProgress(9);
-        u55.setNextQuestProgress(11);
+        u55.setNextQuestProgress(12);
 
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
