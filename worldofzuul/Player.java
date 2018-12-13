@@ -20,6 +20,20 @@ public class Player extends Entity {
     private String journal;
     private int heals = 1;
     private int maxHeals = 1;
+    private int special = 1;
+    private int maxSpecial = 1;
+    private int minorSpecial = 3;
+    private int maxMinorSpecial = 3;
+    
+    public boolean hasMinorSpecial() {
+        boolean flag;
+        if (this.minorSpecial > 0) {
+           flag =  true;
+        } else {
+            flag = false;
+        }
+        return flag;
+    }
     
     public boolean hasHeals() {
         boolean flag;
@@ -31,10 +45,41 @@ public class Player extends Entity {
         return flag;
     }
     
+    public boolean hasSpecial() {
+        boolean flag;
+        if (this.special > 0) {
+           flag =  true;
+        } else {
+            flag = false;
+        }
+        return flag;
+    }
+    
     public void decrementHeal() {
         this.heals--;
         if (this.heals < 0) {
            this.heals = 0; 
+        }
+    }
+    
+    public void decrementSpecial() {
+        this.special--;
+        if (this.special < 0) {
+           this.special = 0; 
+        }
+    }
+    
+    public void decrementMinorSpecial() {
+        this.minorSpecial--;
+        if (this.minorSpecial < 0) {
+           this.minorSpecial = 0; 
+        }
+    }
+    
+    public void replenishSpecial(int amount) {
+        this.special += amount;
+        if (this.special > this.maxSpecial) {
+            this.special = this.maxSpecial;
         }
     }
     
@@ -326,6 +371,10 @@ public class Player extends Entity {
         this.maxHeals++;
         
         this.heals = this.maxHeals;
+        
+        this.special = this.maxSpecial;
+        
+        this.minorSpecial = this.maxMinorSpecial;
 
     }
 

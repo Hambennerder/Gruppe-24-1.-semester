@@ -80,6 +80,7 @@ public class Rooms extends Room {
                 + "HINT: inspecting a room reveals interactable objects.");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
+        u1.setHasEncounter(true);
         rooms.add(u1);
 
         // u2 index 2

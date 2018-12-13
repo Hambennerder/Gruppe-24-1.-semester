@@ -170,8 +170,8 @@ public class NPC extends Entity {
     
     public int enemyAttack() {
         Random rand = new Random();
-        int r = rand.nextInt(5) + 1;
-        return this.enemyBaseAttackDamage * r;
+        int r = rand.nextInt(10) + 1;
+        return this.enemyBaseAttackDamage + r;
     }
     
     public void setEnemyBaseAttackDamage(int input) {

@@ -153,7 +153,7 @@ public class NPCS extends NPC {
         lawStudent.setName("Wild law student");
         lawStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
-        lawStudent.setHealth(30);
+        lawStudent.setHealth(50);
         lawStudent.setExperience(5);
         lawStudent.setEnemyBaseAttackDamage(5);
         npcs.add(lawStudent);

@@ -30,7 +30,7 @@ public class Battlesystem {
         return "Attack options: \n"
                 + "a) 'Witty' remark \n"
                 + "b) 'Brag' about being an engineer \n"
-                + "c) 'Optional' \n"
+                + "c) 'Special' ability \n"
                 + "d) 'Back' \n";
     }
 

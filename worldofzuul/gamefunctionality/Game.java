@@ -8,7 +8,7 @@ import worldofzuul.Room;
 import worldofzuul.content.NPCS;
 import worldofzuul.content.Rooms;
 import worldofzuul.combat.Battlesystem;
-import worldofzuul.combat.OptionalAbility;
+import worldofzuul.combat.SpecialAbility;
 import worldofzuul.combat.BragAbility;
 import worldofzuul.combat.EncounterAttacks;
 import worldofzuul.combat.Heal;
@@ -94,9 +94,10 @@ public class Game extends Player {
         // test code
         Encounter encounter = new Encounter();
         encounter.addEncounterNPC(npcs.getNPC(3));
-        encounter.setEncounterPossibility(10);
+        encounter.setEncounterPossibility(100);
         encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "! \n");
         listOfRooms.getRoom(4).addEncounter(encounter);
+        listOfRooms.getRoom(1).addEncounter(encounter);
 
         // Adding law student encounter to library
         Encounter lawStudentEncounter = new Encounter();
@@ -312,7 +313,7 @@ public class Game extends Player {
                 | commandWord == CommandWord.DODGE
                 | commandWord == CommandWord.WITTY
                 | commandWord == CommandWord.BRAG
-                | commandWord == CommandWord.OPTIONAL
+                | commandWord == CommandWord.SPECIAL
                 | commandWord == CommandWord.BACK) {
             if (fight) {
                 return combatOptions(command);
@@ -498,7 +499,7 @@ public class Game extends Player {
         Battlesystem battle = new Battlesystem();
         BragAbility brag = new BragAbility(player.getLevel());
         WittyRemarkAbility wittyRemark = new WittyRemarkAbility(player.getLevel());
-        OptionalAbility specialAbility = new OptionalAbility(player.getLevel());
+        SpecialAbility specialAbility = new SpecialAbility(player.getLevel());
         EncounterAttacks encounterturn = new EncounterAttacks();
         Heal healAbility = new Heal(player.getHealth(), player.getMaxHealth(), player.getLevel());
 
@@ -522,7 +523,7 @@ public class Game extends Player {
                     currentRoom.setIsLocked(false);
 
                     } else {
-                        s = "Oh no, you werent quick enough!" + battle.Combatoptions();
+                        s = "Oh no, you werent quick enough!\n" + battle.Combatoptions();
                         fleeAttempted = true;
                     }
 
@@ -533,9 +534,10 @@ public class Game extends Player {
                     break;
                 // Witty remark
                 case WITTY:
-                    s = "You used a witty remark on" + currentRoom.getEncounter().getEncounterNPC() + "!";
-                    s += "\nit resulted in " + wittyRemark.getDamageAmount() + " points of damage!\n";
-                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - wittyRemark.getDamageAmount());
+                    int damage = wittyRemark.remarkAttack();
+                    s = "You used a witty remark insulting" + currentRoom.getEncounter().getEncounterNPC() + "!";
+                    s += "\nit resulted in " + damage + " points of damage!\n";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - damage);
 
                     if (enemyHealth > 0) {
 
@@ -550,10 +552,36 @@ public class Game extends Player {
 
                 // Brag about being an engineer
                 case BRAG:
-
+                    if (player.hasMinorSpecial()){
+                    int damage2 = brag.bragAttack();
                     s = "You bragged about being an engineer and agitated" + currentRoom.getEncounter().getEncounterNPC() + " \n";
-                    s += "The bragging resulted in " + brag.getDamageAmount() + " points of damage.\n";
-                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - brag.getDamageAmount());
+                    s += "The bragging resulted in " + damage2 + " points of damage.\n";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - damage2);
+                    player.decrementMinorSpecial();
+                    if (enemyHealth > 0) {
+
+                        s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
+                        player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
+                        s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
+                        s += battle.Combatoptions();
+                    } else {
+                        s = "something went wrong";
+                    }
+                    
+                    } else {
+                    s = "You already exhausted your brag ability!\n";
+                    s += battle.attackoptions();
+                    }
+                    break;
+
+                // Optional
+                case SPECIAL:
+                    if (player.hasSpecial()) {
+                    int damage3 = specialAbility.specialAttack();
+                    s = "You used your special ability on" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                    s += "It resulted in " + damage3 + " points of damage.\n";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - damage3);
+                    player.decrementSpecial();
 
                     if (enemyHealth > 0) {
 
@@ -564,23 +592,9 @@ public class Game extends Player {
                     } else {
                         s = "something went wrong";
                     }
-                    break;
-
-                // Optional
-                case OPTIONAL:
-
-                    s = "You used your special ability on" + currentRoom.getEncounter().getEncounterNPC() + " \n";
-                    s += "It resulted in " + specialAbility.getDamageAmount() + " points of damage.\n";
-                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - specialAbility.getDamageAmount());
-
-                    if (enemyHealth > 0) {
-
-                        s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
-                        player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
-                        s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
-                        s += battle.Combatoptions();
                     } else {
-                        s = "something went wrong";
+                        s = "You already exhausted your special ability!\n";
+                        s += battle.attackoptions();
                     }
 
                     break;
@@ -604,7 +618,7 @@ public class Game extends Player {
                         player.setHealth(player.getMaxHealth());
                     }
                     s = ("Your healed for "+ tempHealAmount + "!" + "\nYour current health is " + player.getHealth() + "HP\n");
-                    s += (player.getHeals() + " heal(s) remaining!\n\n");
+                    s += ((player.getHeals()-1) + " heal(s) remaining!\n\n");
                     player.decrementHeal();
                     s += battle.Combatoptions();
                     }
