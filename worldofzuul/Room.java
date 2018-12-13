@@ -80,10 +80,6 @@ public class Room extends Entity {
         return "Location: " + getName() + ".\n";
     }
 
-    public String getSlowDescription() {
-        return "You are still " + description + ".\n" + getExitString();
-    }
-
     public String getExitString() {
         String returnString = "Exits:";
         Set<String> keys = exits.keySet();
