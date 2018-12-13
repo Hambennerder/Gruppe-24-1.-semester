@@ -48,6 +48,10 @@ public class Player extends Entity {
     public int getHeals() {
         return this.heals;
     }
+    
+    public int getMaxHeals() {
+        return this.maxHeals;
+    }
 
     public void setGender(String gender) {
 
@@ -95,6 +99,10 @@ public class Player extends Entity {
 
         return level;
 
+    }
+    
+    public String getStringLevel(){
+        return ""+level;
     }
 
     public void setHealth(int currentHealth) {
@@ -294,8 +302,8 @@ public class Player extends Entity {
         setHealth(healthLevel);
         
         this.maxHeals++;
-        
-        System.out.println("Congratulations! You are now level " + getLevel() + "!");
+
+        this.heals = this.maxHeals;
 
     }
 

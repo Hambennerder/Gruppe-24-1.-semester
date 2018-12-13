@@ -28,10 +28,10 @@ public class Battlesystem {
 
     public String attackoptions() {
         return "Attack options: \n"
-                + "a) Witty remark \n"
-                + "b) Brag about being an engineer \n"
-                + "c) Optional \n"
-                + "d) Back \n";
+                + "a) 'Witty' remark \n"
+                + "b) 'Brag' about being an engineer \n"
+                + "c) 'Optional' \n"
+                + "d) 'Back' \n";
     }
 
     public String heal(int health) {

@@ -33,12 +33,12 @@ public class NPCS extends NPC {
                 + "to a room, you must type \'go\' and then the direction you want to go, there \n"
                 + "are four directions:\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
         mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
-        mentor.setQuestString("< Hello there!"
-                + "\n< Welcome to SDU. My name is Morten. I'll be your mentor for today."
-                + "\n< Before you can enter the entrance of the SDU building, you have "
-                + "\n< to find your ID-card. To do that you have to"
-                + "\n< inspect rooms u1-u3. These rooms are outside the SDU building."
-                + "\n< To find the first room you have to head north. Are you ready for this?\n"
+        mentor.setQuestString("< Hello there! \n"
+                + "< Welcome to SDU. My name is Morten. I'll be your mentor for today. \n"
+                + "< Before you can enter the entrance of the SDU building, you have \n"
+                + "< to find your ID-card. To do that you have to inspect rooms u1-u3. \n"
+                + "< These rooms are outside the SDU building. To find the first room \n"
+                + "< you have to head north. Are you ready for this? \n"
                 + " (now choose whether or not you accept this mission by typing yes/no)");
         mentor.setOnQuestString("Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString("I'm sorry, I'm busy. Go find Andars.");
@@ -54,19 +54,12 @@ public class NPCS extends NPC {
         mentor.setAcceptString(">Good luck student! \n"
                 + "\nUvuvwevwevwe: \n"
                 + "> Now that you accepted a quest, you can type journal, and the quest's name \n"
-                + "> and a short description will pop up. Complete this quest to advance. \n"
-                + "> To go to a room, you must "
-                + "> type \'go\' and then the direction you want to go, there are four directions:\n"
-                + "> \'north\', \'south\', \'west\' and \'east\'.\n"
+                + "> and a short description will pop up. Complete this quest to advance. To go \n"
+                + "> to a room, you must type \'go\' and then the direction you want to go, there \n"
+                + "> are four directions: \'north\', \'south\', \'west\' and \'east\'.\n"
                 + "> Type \'go north\' to get started in your adventure!");
         mentor.setDeclineString(">Ow, well you won't be able to study properly then.. a shame");
-        mentor.setQuestString("> Hello there!"
-                + "\n> Welcome to SDU. My name is Morten. I'll be your mentor for today."
-                + "\n> Before you can enter the entrance of the SDU building, you have "
-                + "\n> to find your ID-card. To do that you have to"
-                + "\n> inspect rooms u1-u3. These rooms are outside the SDU building."
-                + "\n> To find the first room you have to head north. Are you ready for this?\n"
-                + " (now choose whether or not you accept this mission by typing yes/no)");
+       
         mentor.setOnQuestString(">Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString(">I'm sorry, I'm busy. Go find Andars.");
         mentor.setCompleteQuestString(">Yes! you found the ID-card, \n"
@@ -100,8 +93,8 @@ public class NPCS extends NPC {
                 + "\n< She is pretty flirtatious.");
         andars.setDeclineString("< You gonna faiiil! Come back if you want the slightest"
                 + "\n< chance of doing the assignments.");
-        andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter..."
-                + "\n< just find it already..");
+        andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter... \n"
+                + "< just find it already.. \n");
 
         andars.setCompleteQuestString("< Damn dude, what took you so long?! \n"
                 + "< You should probably go study some more in the studyhall.");
@@ -137,10 +130,10 @@ public class NPCS extends NPC {
         NPC bookstoreLady = new NPC();
         bookstoreLady.setName("lady");
 
-        bookstoreLady.setWelcome(">Hello there handsome thing, What can I do you for?");
+        bookstoreLady.setWelcome(">Hello there handsome thing, What can I do you for? \n");
         bookstoreLady.setDescription("*Probably the ugliest and oldest person you've ever seen in a bookstore*");
-        bookstoreLady.setDialogOptions("> 1: Talk"
-                + "\n> 2: Leave");
+        bookstoreLady.setDialogOptions("> 1: Talk \n"
+                + "> 2: Leave \n");
         bookstoreLady.setQuestString(">I would love to help you finding the book darling,\n"
                 + "> but if I have to help you I have to get something in return.\n"
                 + ">I would love to get a cup of coffee with you.\n"
@@ -161,7 +154,9 @@ public class NPCS extends NPC {
         lawStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
         lawStudent.setHealth(30);
+
         lawStudent.setExperience(1000);
+
         lawStudent.setEnemyBaseAttackDamage(5);
         npcs.add(lawStudent);
 
@@ -286,7 +281,7 @@ public class NPCS extends NPC {
         NPC janitor = new NPC();
         janitor.setName("Wild Janitor");
         janitor.setLevel(3);
-        janitor.setHealth(300);
+        janitor.setHealth(10);
         janitor.setFriendly(false);
         janitor.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
@@ -298,7 +293,7 @@ public class NPCS extends NPC {
         NPC medicineStudent = new NPC();
         medicineStudent.setName("Arrogant \'sTuDeNt Of MeDiCiNe\'");
         medicineStudent.setLevel(2);
-        medicineStudent.setHealth(300);
+        medicineStudent.setHealth(50);
         medicineStudent.setFriendly(false);
         medicineStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");

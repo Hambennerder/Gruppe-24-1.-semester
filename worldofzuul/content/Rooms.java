@@ -45,11 +45,11 @@ public class Rooms extends Room {
 
         entrance = new Room("Entrance to the University. \n"
                 + "What exciting adventure lies behind these doors?");
-        entrance.setDescription("You are a new student in software engineering and \n"
-                + "you have just arrived outside the main entrance \n"
-                + "of the university. You look around and see cou- \n"
-                + "ntless of other university students, heading to \n"
-                + "their next class or lecture, you see a man wearing a red shirt saying \'mentor\'");
+        entrance.setDescription("You are a new student in software engineering and you have just arrived outside\n"
+                + "the main entrance of the university. You look around and see countless of other \n"
+                + "university students, heading to their next class or lecture, you see a man \n"
+                + "wearing a red shirt saying \'mentor\'\n");
+            
 
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
                 + "> through the first steps of this tutorial. Above this message you \n"
@@ -143,7 +143,7 @@ public class Rooms extends Room {
         rooms.add(g7);
 
         // g8 at index 8
-        g8 = new Room("You are in hallway g8. \n "
+        g8 = new Room("You are in hallway g8."
                 + "As you enter the door slams behind you. \n"
                 + "Must be the draft again... Where does it originate?");
         g8.setDescription("Nothing really exciting in this hallway");
@@ -161,7 +161,6 @@ public class Rooms extends Room {
         bookstore.setNextQuestProgress(3);
         bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
                 + " which is somewhere south, remember Andars' warning."
-
 
                 + "The lady in the bookstore wants you to get her some coffee,\n"
                 + "head up to the canteen.");        
@@ -193,7 +192,7 @@ public class Rooms extends Room {
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU\n"
                 + "you should probablt talk to that 'student'");
-        g3.setNextQuestProgress(7);
+        g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
         g3.setJournalString("Clear the studyhall and library of students from other faculties");
@@ -251,6 +250,7 @@ public class Rooms extends Room {
         u55.setName("u55");
 
         u55.setRequiredProgress(9);
+        u55.setNextQuestProgress(12);
 
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
@@ -263,7 +263,8 @@ public class Rooms extends Room {
         u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
                 + "you can see your teacher \'Eryk\' and a \'cable\' ");
         u45.setName("u45");
-        u45.setRequiredProgress(12);
+        u45.setRequiredProgress(13);
+        u45.setNextQuestProgress(14);
         u45.setHasQuest(true);
         u45.setJournalString("Fix the technology in u45");
         rooms.add(u45);
@@ -276,11 +277,12 @@ public class Rooms extends Room {
                 + "You see a figure that looks like \'Malta\'");
         t8.setName("T8");
 
-        t8.setRequiredProgress(9);
+        t8.setRequiredProgress(10);
         t8.setNextQuestProgress(11);
 
         t8.setHasQuest(true);
-        t8.setJournalString("Find Malta's bag and bring it back to him");
+        t8.setJournalString("Find Malta's bag and bring it back to him."
+                + "\nThen find Lune and tell her Malta is okay.");
         rooms.add(t8);
 
 
@@ -377,7 +379,7 @@ public class Rooms extends Room {
 
         // index at 34
         g22 = new Room("you are in hallway g22");
-
+        g22.setHasEncounter(true);
         g22.setDescription("It's really dark down here... Maybe you can find a switch somewhere");
         g22.setName("g22");
         rooms.add(g22);
