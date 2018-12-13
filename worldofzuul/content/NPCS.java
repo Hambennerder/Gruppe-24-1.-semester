@@ -33,12 +33,12 @@ public class NPCS extends NPC {
                 + "to a room, you must type \'go\' and then the direction you want to go, there \n"
                 + "are four directions:\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
         mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
-        mentor.setQuestString("< Hello there!"
-                + "\n< Welcome to SDU. My name is Morten. I'll be your mentor for today."
-                + "\n< Before you can enter the entrance of the SDU building, you have "
-                + "\n< to find your ID-card. To do that you have to"
-                + "\n< inspect rooms u1-u3. These rooms are outside the SDU building."
-                + "\n< To find the first room you have to head north. Are you ready for this?\n"
+        mentor.setQuestString("< Hello there! \n"
+                + "< Welcome to SDU. My name is Morten. I'll be your mentor for today. \n"
+                + "< Before you can enter the entrance of the SDU building, you have \n"
+                + "< to find your ID-card. To do that you have to inspect rooms u1-u3. \n"
+                + "< These rooms are outside the SDU building. To find the first room \n"
+                + "< you have to head north. Are you ready for this? \n"
                 + " (now choose whether or not you accept this mission by typing yes/no)");
         mentor.setOnQuestString("Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString("I'm sorry, I'm busy. Go find Andars.");
@@ -54,10 +54,9 @@ public class NPCS extends NPC {
         mentor.setAcceptString(">Good luck student! \n"
                 + "\nUvuvwevwevwe: \n"
                 + "> Now that you accepted a quest, you can type journal, and the quest's name \n"
-                + "> and a short description will pop up. Complete this quest to advance. \n"
-                + "> To go to a room, you must "
-                + "> type \'go\' and then the direction you want to go, there are four directions:\n"
-                + "> \'north\', \'south\', \'west\' and \'east\'.\n"
+                + "> and a short description will pop up. Complete this quest to advance. To go \n"
+                + "> to a room, you must type \'go\' and then the direction you want to go, there \n"
+                + "> are four directions: \'north\', \'south\', \'west\' and \'east\'.\n"
                 + "> Type \'go north\' to get started in your adventure!");
         mentor.setDeclineString(">Ow, well you won't be able to study properly then.. a shame");
         mentor.setQuestString("> Hello there!"
@@ -100,8 +99,8 @@ public class NPCS extends NPC {
                 + "\n< She is pretty flirtatious.");
         andars.setDeclineString("< You gonna faiiil! Come back if you want the slightest"
                 + "\n< chance of doing the assignments.");
-        andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter..."
-                + "\n< just find it already..");
+        andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter... \n"
+                + "< just find it already.. \n");
 
         andars.setCompleteQuestString("< Damn dude, what took you so long?! \n"
                 + "< You should probably go study some more in the studyhall.");

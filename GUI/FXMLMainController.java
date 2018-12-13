@@ -54,11 +54,11 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     @FXML
     private Text enemyNameHP;
     @FXML
-    private TextArea setPlayerHP;
+    private TextField setPlayerHP;
     @FXML
-    private TextArea setEnemyHP;
+    private TextField setEnemyHP;
     @FXML
-    private TextArea levelText;
+    private TextField levelText;
 
     private String loop(String s) throws Exception {
         showInventory.clear();
@@ -75,11 +75,15 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
         location.setText(g.currentRoom.getName());
         playerNameHP.setText(g.player.getPlayerName());
         setPlayerHP.setText(g.player.getStringHealth());
+        levelText.setText(g.player.getStringLevel());
 
         if (g.currentRoom.hasEncounter()) {
             enemyNameHP.setText(g.currentRoom.getEncounter().getName());
             setEnemyHP.setText(g.currentRoom.getEncounter().getStringEncounter_health());
-        }    
+        } else {
+            enemyNameHP.setText("No enemy");
+            setEnemyHP.setAccessibleHelp("No value");
+        }
         return s;
     }
 
