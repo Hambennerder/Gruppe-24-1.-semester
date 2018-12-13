@@ -192,7 +192,7 @@ public class Rooms extends Room {
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU\n"
                 + "you should probablt talk to that 'student'");
-        g3.setNextQuestProgress(8);
+        g3.setNextQuestProgress(9);
         g3.setName("g3");
         g3.setHasQuest(true);
         g3.setJournalString("Clear the studyhall and library of students from other faculties");
@@ -201,7 +201,7 @@ public class Rooms extends Room {
 
         // Index 13
         g4 = new Room("you are in hallway g4");
-        g4.setRequiredProgress(6);
+        g4.setRequiredProgress(7);
         g4.setDescription("wow... how long are these hallways");
         g4.setName("g4");
         rooms.add(g4);
