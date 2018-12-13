@@ -78,7 +78,7 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
         levelText.setText(g.player.getStringLevel());
 
         if (g.currentRoom.hasEncounter()) {
-            enemyNameHP.setText(g.currentRoom.getEncounter().getName());
+            enemyNameHP.setText(g.currentRoom.getEncounter().getEncounterNPC().getName());
             setEnemyHP.setText(g.currentRoom.getEncounter().getStringEncounter_health());
         } else {
             enemyNameHP.setText("No enemy");
