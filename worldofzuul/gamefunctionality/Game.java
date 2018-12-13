@@ -10,7 +10,6 @@ import worldofzuul.combat.Battlesystem;
 import worldofzuul.combat.OptionalAbility;
 import worldofzuul.combat.BragAbility;
 import worldofzuul.combat.EncounterAttacks;
-
 import worldofzuul.combat.Heal;
 import worldofzuul.combat.WittyRemarkAbility;
 
@@ -79,12 +78,21 @@ public class Game extends Player {
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
 
+
+        // test code
+        Encounter encounter = new Encounter();
+        encounter.addEncounterNPC(npcs.getNPC(3));
+        encounter.setEncounterPossibility(10);
+        encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "! \n");
+        listOfRooms.getRoom(4).addEncounter(encounter);
+
         // Adding law student encounter to library
         Encounter lawStudentEncounter = new Encounter();
         lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
         lawStudentEncounter.setEncounterPossibility(100);
         lawStudentEncounter.setEncounterMessage("Oh no, you have encountered" + lawStudentEncounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
+
 
 
         // Adding the constitution to the library and student to hallway g3
@@ -172,6 +180,12 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.QUIT) {
             setFinished(true);
 
+        } else if (commandWord == CommandWord.INSPECT) {//DONE
+            s = "Your location: " + currentRoom.getName() + "\n"
+                    + currentRoom.getExitString() + "\n"
+                    + currentRoom.getDescription();
+
+
         } else if (commandWord == CommandWord.INSPECT) {
             if (fight) {
                 return "What are you trying to inspect?\n"
@@ -181,6 +195,7 @@ public class Game extends Player {
                 s = "Your location: " + currentRoom.getName() + "\n"
                         + currentRoom.getDescription();
             }
+
             try {
                 s += "This room contains: " + currentRoom.getItem(0).getName();
             } catch (IndexOutOfBoundsException ex) {
@@ -301,7 +316,34 @@ public class Game extends Player {
                 // checks whether or not a room has an ongoing quest, if the room does not have
                 // an ongoing quest, then the player will be presented the quest, and have an option
                 // between yes and no
+
+                if (!currentRoom.getHasOngoingQuest()) {
+                    s = currentRoom.getNPC(0).getQuestString();
+                    // check 3.5: Checks if the quest has been finished or not. if the quest has not been finished, then
+                    // the "on a quest string" will be returned, otherwise the next string introducing the player to
+                    // where he should go next is returned
+                } else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
+                    if (player.getProgress() < currentRoom.getNextQuestProgress()) {
+                        s = currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString();
+                    } else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
+                        s = "Your location: " + currentRoom.getName() + "\n"
+                                + currentRoom.getExitString() + "\n"
+                                + currentRoom.getNPC(0).getCompleteQuestString();
+                        currentRoom.setHasFinishedQuest(true);
+                        player.incrementProgress();
+                        player.setJournal("No active quests...");
+                    }
+                } // check 3.6: Checks whether or not a quest has been completed in that room
+                // if a quest has been completed, it will return the string that explains
+                // to the player that the quest in that room has been finished
+                else if (currentRoom.getHasFinishedQuest()) {
+                    s = "Your location: " + currentRoom.getName() + "\n"
+                            + currentRoom.getExitString() + "\n"
+                            + currentRoom.getNPC(0).getQuestCompletedString();
+                }
+
                 s = checkQuest();
+
             } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("2")) {
                 questQuestion = false;
                 conversation = false;
@@ -352,6 +394,9 @@ public class Game extends Player {
             // also the string that explains the quest will be added to the players journal
             if (command.getCommandWord().equals(CommandWord.YES)) {
                 s = "Your location: " + currentRoom.getName() + "\n"
+
+                        + currentRoom.getExitString() + "\n"
+
                         + currentRoom.getNPC(0).getAcceptString();
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
@@ -361,6 +406,9 @@ public class Game extends Player {
                 // and player must choose 1 again to accept the quest.
             } else if (command.getCommandWord().equals(CommandWord.NO)) {
                 s = "Your location: " + currentRoom.getName() + "\n"
+
+                        + currentRoom.getExitString() + "\n"
+
                         + currentRoom.getNPC(0).getDeclineString();
 
             }
@@ -453,9 +501,15 @@ public class Game extends Player {
     private String combatOptions(Command command) {
 
         Battlesystem battle = new Battlesystem();
+
+        BragAbility dropkick = new BragAbility(player.getLevel());
+        WittyRemarkAbility punch = new WittyRemarkAbility(player.getLevel());
+        OptionalAbility bodyslam = new OptionalAbility(player.getLevel());
+
         BragAbility brag = new BragAbility(player.getLevel());
         WittyRemarkAbility wittyRemark = new WittyRemarkAbility(player.getLevel());
         OptionalAbility specialAbility = new OptionalAbility(player.getLevel());
+
         EncounterAttacks encounterturn = new EncounterAttacks();
         Heal healAbility = new Heal(player.getHealth(), player.getMaxHealth(), player.getLevel());
 
@@ -582,7 +636,7 @@ public class Game extends Player {
 
 
     private String printLocation() {
-        return "Your location: " + currentRoom.getName();
+        return "Your location: " + currentRoom.getName() + "\n";
     }
 
     private String printDialogOptions() {
