@@ -1,5 +1,6 @@
 package worldofzuul.gamefunctionality;
 
+import worldofzuul.Consumable;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
@@ -61,6 +62,10 @@ public class Game extends Player {
 
         Item book = new Item();
         book.setName("book");
+        
+        Consumable healz = new Consumable();
+        healz.setName("healz");
+        listOfRooms.getRoom(1).addItem(healz);
 
         // Adding mentor NPC to entrance, and adding ID-card to u3.
         listOfRooms.getRoom(0).addNPC(npcs.getNPC(0));
@@ -199,7 +204,11 @@ public class Game extends Player {
             }
 
             try {
-                s += "This room contains: " + currentRoom.getItem(0).getName();
+                if (currentRoom.getItem(0) instanceof Consumable) {
+                    s += "Consumeable item: healz";
+                } else {
+                return "This room contains: " + currentRoom.getItem(0).getName();
+                }
             } catch (IndexOutOfBoundsException ex) {
                 s += "\n ***No item to be found***";
             }
@@ -218,10 +227,16 @@ public class Game extends Player {
                     s = "No item to take" + "\n";
 
                 } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
+                    if (currentRoom.getItem(0) instanceof Consumable) {
+                        player.replenishHeal(1);
+                        s = "You found a heal! Now you have " + player.getHeals() + " heals.";
+                    } else {
+                    
                     player.addItem(currentRoom.getItem(0));
                     s = "You picked up " + currentRoom.getItem(0).getName() + "\n";
                     currentRoom.removeItem(0);
                     player.incrementProgress();
+                    }
                 }
             }
 

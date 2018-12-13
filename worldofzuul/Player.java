@@ -316,6 +316,8 @@ public class Player extends Entity {
         setHealth(healthLevel);
         
         this.maxHeals++;
+        
+        this.heals = this.maxHeals;
 
     }
 
