@@ -192,11 +192,10 @@ public class Rooms extends Room {
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU\n"
                 + "you should probablt talk to that 'student'");
-        g3.setNextQuestProgress(9);
+        g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
         g3.setJournalString("Clear the studyhall and library of students from other faculties");
-        g3.setNextQuestProgress(10);
         rooms.add(g3);
 
         // Index 13
@@ -251,7 +250,7 @@ public class Rooms extends Room {
         u55.setName("u55");
 
         u55.setRequiredProgress(9);
-        u55.setNextQuestProgress(12);
+        u55.setNextQuestProgress(11);
 
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
@@ -265,7 +264,7 @@ public class Rooms extends Room {
                 + "you can see your teacher \'Eryk\' and a \'cable\' ");
         u45.setName("u45");
         u45.setRequiredProgress(13);
-        u45.setNextQuestProgress(15);
+        u45.setNextQuestProgress(14);
         u45.setHasQuest(true);
         u45.setJournalString("Fix the technology in u45");
         rooms.add(u45);
@@ -279,7 +278,7 @@ public class Rooms extends Room {
         t8.setName("T8");
 
         t8.setRequiredProgress(10);
-        t8.setNextQuestProgress(12);
+        t8.setNextQuestProgress(11);
 
         t8.setHasQuest(true);
         t8.setJournalString("Find Malta's bag and bring it back to him");
