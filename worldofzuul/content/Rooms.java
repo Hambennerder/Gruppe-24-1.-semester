@@ -192,7 +192,7 @@ public class Rooms extends Room {
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU\n"
                 + "you should probablt talk to that 'student'");
-        g3.setNextQuestProgress(8);
+        g3.setNextQuestProgress(9);
         g3.setName("g3");
         g3.setHasQuest(true);
         g3.setJournalString("Clear the studyhall and library of students from other faculties");
