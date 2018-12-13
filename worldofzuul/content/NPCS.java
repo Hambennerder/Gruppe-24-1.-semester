@@ -162,7 +162,7 @@ public class NPCS extends NPC {
                 + "<2: Flee");
         lawStudent.setHealth(30);
         lawStudent.setExperience(5);
-        lawStudent.setEnemyBaseAttackDamage(100);
+        lawStudent.setEnemyBaseAttackDamage(5);
         npcs.add(lawStudent);
 
         // End of the NPC at the student bookstore------------------------------
@@ -286,7 +286,7 @@ public class NPCS extends NPC {
         NPC janitor = new NPC();
         janitor.setName("Wild Janitor");
         janitor.setLevel(3);
-        janitor.setHealth(300);
+        janitor.setHealth(10);
         janitor.setFriendly(false);
         janitor.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
@@ -298,7 +298,7 @@ public class NPCS extends NPC {
         NPC medicineStudent = new NPC();
         medicineStudent.setName("Arrogant \'sTuDeNt Of MeDiCiNe\'");
         medicineStudent.setLevel(2);
-        medicineStudent.setHealth(300);
+        medicineStudent.setHealth(50);
         medicineStudent.setFriendly(false);
         medicineStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
