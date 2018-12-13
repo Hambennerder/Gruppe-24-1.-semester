@@ -8,7 +8,7 @@ public class Room extends Entity {
 
     private String description;
     private String roomIntro;
-    private HashMap<String, Room> exits;
+    public HashMap<String, Room> exits;
     private ArrayList<NPC> npcs;
     private ArrayList<Item> items;
     private ArrayList<Encounter> encounters;
@@ -17,6 +17,7 @@ public class Room extends Entity {
     private boolean hasOngoingQuest = false;
     private boolean hasFinishedQuest = false;
     private boolean hasEncounter = false;
+    private boolean isLocked = false;
     private String questItemName;
     private int nextQuestProgress = 0;
     private String journalString;
@@ -34,6 +35,15 @@ public class Room extends Entity {
         this.requiredProgress = 0;
         this.roomIntro = "A room description";
     }
+    
+    public boolean getIsLocked() {
+        return this.isLocked;
+    }
+    
+    public void setIsLocked(boolean flag) {
+        this.isLocked = flag;
+    }
+    
 
     public void setJournalString(String input) {
         this.journalString = input;
@@ -73,11 +83,11 @@ public class Room extends Entity {
     }
 
     public String getShortDescription() {
-        return description;
+        return this.description+"\n";
     }
 
     public String getLongDescription() {
-        return "Location: " + getName() + ".\n" + getExitString();
+        return "Location: " + getName() + ".\n";
     }
 
     public String getSlowDescription() {

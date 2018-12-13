@@ -1,19 +1,28 @@
 package worldofzuul.gamefunctionality;
 
-import java.util.Scanner;
 import worldofzuul.Encounter;
 import worldofzuul.Item;
 import worldofzuul.Player;
 import worldofzuul.Room;
 import worldofzuul.content.NPCS;
 import worldofzuul.content.Rooms;
+import worldofzuul.combat.Battlesystem;
+import worldofzuul.combat.OptionalAbility;
+import worldofzuul.combat.BragAbility;
+import worldofzuul.combat.EncounterAttacks;
+import worldofzuul.combat.Heal;
+import worldofzuul.combat.WittyRemarkAbility;
 
 public class Game extends Player {
 
-    private Parser parser;
-    private Room currentRoom;
-    private Room nextRoom;
-    private Player player;
+    private String s = "";
+    public Parser parser;
+    public Room currentRoom;
+    public Player player;
+    private boolean finished = false;
+    private boolean started = false;
+    private boolean fight = false;
+    boolean fleeAttempted = false;
 
     public Game() {
         parser = new Parser();
@@ -29,22 +38,10 @@ public class Game extends Player {
     }
 
     public void setAge() {
-        player.setAge(player.ConversationAge("Please enter your age: "));
+        player.setAge(player.ConversationWord("Please enter your age: "));
     }
 
     public void play() {
-        System.out.println("#");
-        System.out.println("#  ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗      ██████╗ ███████╗    ███████╗██████╗ ██╗   ██╗██╗   ██╗██╗     ");
-        System.out.println("#  ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗    ██╔═══██╗██╔════╝    ██╔════╝██╔══██╗██║   ██║██║   ██║██║     ");
-        System.out.println("#  ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║    ██║   ██║█████╗      ███████╗██║  ██║██║   ██║██║   ██║██║     ");
-        System.out.println("#  ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║    ██║   ██║██╔══╝      ╚════██║██║  ██║██║   ██║██║   ██║██║     ");
-        System.out.println("#  ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝    ╚██████╔╝██║         ███████║██████╔╝╚██████╔╝╚██████╔╝███████╗");
-        System.out.println("#   ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝      ╚═════╝ ╚═╝         ╚══════╝╚═════╝  ╚═════╝  ╚═════╝ ╚══════╝");
-        System.out.println("#");
-
-        setPlayerName();
-        setGender();
-        setAge();
 
         Rooms listOfRooms = new Rooms();
         listOfRooms.createRooms();
@@ -56,6 +53,7 @@ public class Game extends Player {
         Item id_card = new Item();
         id_card.setName("ID-card");
         id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
+        
 
         Item book = new Item();
         book.setName("book");
@@ -71,242 +69,244 @@ public class Game extends Player {
         listOfRooms.getRoom(10).addItem(book);
         listOfRooms.getRoom(9).addNPC(npcs.getNPC(2));
 
-
-        // Adding coffee to the canteen        
+        // Adding coffee to the canteen
         Item coffee = new Item();
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
 
-        // test code
-        Encounter encounter = new Encounter();
-        encounter.addEncounterNPC(npcs.getNPC(3));
-        encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
-        listOfRooms.getRoom(4).addEncounter(encounter);
+        // Adding law student encounter to library
+        Encounter lawStudentEncounter = new Encounter();
+        lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
+        lawStudentEncounter.setEncounterPossibility(100);
+        lawStudentEncounter.setEncounterMessage("Oh no, you have encountered" + lawStudentEncounter.getEncounterNPC() + "!");
+        listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
+        listOfRooms.getRoom(1).addEncounter(lawStudentEncounter);
 
-
-        
         // Adding the constitution to the library and student to hallway g3
-        Item holy_constitution = new Item ();
-        holy_constitution.setName("Holy Constitution");
+        Item holy_constitution = new Item();
+        holy_constitution.setName("Holy-Constitution");
         listOfRooms.getRoom(16).addItem(holy_constitution);
-        listOfRooms.getRoom(12).addNPC(npcs.getNPC(3));
+        listOfRooms.getRoom(12).addNPC(npcs.getNPC(4));
 
         // Adding Lune to u55
-        listOfRooms.getRoom(18).addNPC(npcs.getNPC(4));
-        
-        
+        listOfRooms.getRoom(18).addNPC(npcs.getNPC(5));
+
         // Adding Eryk and cable to u45
         Item cable = new Item();
         cable.setName("cable");
         listOfRooms.getRoom(19).addItem(cable);
-        listOfRooms.getRoom(19).addNPC(npcs.getNPC(5));
-        
-        
-        
+        listOfRooms.getRoom(19).addNPC(npcs.getNPC(6));
+
         // Adding Malta to T8 and his bag to k7
         Item bag = new Item();
         bag.setName("bag");
-        listOfRooms.getRoom(20).addNPC(npcs.getNPC(6));
-        listOfRooms.getRoom(42).addItem(bag);
-        
-        
-        printWelcome(player.getPlayerName());
+        listOfRooms.getRoom(20).addNPC(npcs.getNPC(7));
+        listOfRooms.getRoom(43).addItem(bag);
 
-        boolean finished = false;
-        while (!finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
-        }
-        System.out.println("Thank you for playing. Good bye.");
-    }
+        // Adding the janitor encounter to room g22
+        Encounter janitorEncounter = new Encounter();
+        listOfRooms.getRoom(34).addEncounter(janitorEncounter);
+        janitorEncounter.addEncounterNPC(npcs.getNPC(8));
+        janitorEncounter.setEncounterPossibility(100);
+        janitorEncounter.setEncounterMessage("Haha! You filthy students really "
+                + "think you're something special, huh? well you are not!");
 
-    private void printWelcome(String playername) {
-        System.out.println();
-        System.out.println("Welcome " + playername + ", to the world of SDUUL.\n");
-        System.out.println("An adventurous text-based rpg game that tackles the life being a new university student\n"
-                + "in the most boring of fashion, we will show you the everchanging day to day life in a \n"
-                + "comedic way. The game consists of various quests and obstacles, which you as a player  \n"
-                + "must overcome to continue. You might be rewarded, and ultimately be prepared for how  \n"
-                + "boring studying can be. DISCLAIMER: 9/10 feminists want the creators behind this game in jail \n");
-
-        // Code below is a result of a possible outstanding conflict in the group, will be handled shortly
-        /* System.out.println("These are some helpful commands: ");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help and additional information.");
-        System.out.println("Type '" + CommandWord.QUIT + "' if you don't want to play the game anymore.");
-        System.out.println("Type '" + CommandWord.GO + "' if you want to move at certain direction.");
-        System.out.println("Type '" + CommandWord.TAKE + "' if you want to pick up an item near you.");
-        System.out.println("Type '" + CommandWord.EQUIP + "' if you want to equip and use the item.");
-        System.out.println("Type '" + CommandWord.DROP + "' if you want to drop an item you.");
-        System.out.println("Type '" + CommandWord.INSPECT + "' if you want to inspect a room.");
-        System.out.println("Type '" + CommandWord.APPROACH + "' if you want to approach someone.");
-        System.out.println("Type '" + CommandWord.CHOOSE + "' if you want to choose an option.");
-        System.out.println("Type '" + CommandWord.JOURNAL + "' if you want to known the objective of the quest.");
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());
-         */
-        startScreen();
+        // Adding medicine student encounter to study hall
+        Encounter medicineEncounter = new Encounter();
+        listOfRooms.getRoom(17).addEncounter(medicineEncounter);
+        medicineEncounter.addEncounterNPC(npcs.getNPC(9));
+        medicineEncounter.setEncounterPossibility(100);
+        medicineEncounter.setEncounterMessage("You think you're smarter than me?"
+                + "HA! I'm studying to become a doctor.. my grades are better than yours!");
 
     }
 
-    private boolean processCommand(Command command) {
-        boolean wantToQuit = false;
+    public boolean getFinished() {
+        return finished;
+    }
 
+    public void setFinished(boolean b) {
+        this.finished = b;
+    }
+
+    public String processCommand(Command command) throws Exception {
         CommandWord commandWord = command.getCommandWord();
-
-        if (commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
-            return false;
+        if (commandWord == CommandWord.UNKNOWN) { //DONE
+            s = "I don't know what you mean...";
         }
-
-        if (commandWord == CommandWord.HELP) {
-            printHelp();
-        } else if (commandWord == CommandWord.GO) {
-            goRoom(command);
-        } else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
-        } else if (commandWord == CommandWord.INSPECT) {
-            print20Lines();
-            System.out.println("Your location: " + currentRoom.getName());
-            System.out.println(currentRoom.getExitString() + "\n");
-            System.out.println(currentRoom.getDescription());
+        if (commandWord == CommandWord.HELP) {//DONE
+            return printHelp();
+        } else if (commandWord == CommandWord.BEGIN) {//DONE
+            return startScreen();
+        } else if (commandWord == CommandWord.GO) {//DONE
+            return goRoom(command)+"\n"
+                    + encounterNPC(command);
+        } else if (commandWord == CommandWord.QUIT) {//DONE
+            setFinished(true);
+        } else if (commandWord == CommandWord.INSPECT) {//DONE
+            s = "Your location: " + currentRoom.getName()
+                    + currentRoom.getExitString() + "\n"
+                    + currentRoom.getDescription();
             try {
-                System.out.println("This room contains: " + currentRoom.getItem(0).getName());
+                s += "This room contains: " + currentRoom.getItem(0).getName();
             } catch (IndexOutOfBoundsException ex) {
-                System.out.println("\n ***No item to be found***");
+                s += "\n ***No item to be found***";
             }
-        } else if (commandWord == CommandWord.TAKE) {
+        } else if (commandWord == CommandWord.TAKE) { //DONE
 
             if (!command.hasSecondWord()) {
-                System.out.println("Take what?");
+                s = "Take what?";
             }
 
             if (currentRoom.getItem(0) == null) {
-                System.out.println("No item to take");
-
+                s = "No item to take";
+                
             } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
                 player.addItem(currentRoom.getItem(0));
-                System.out.println("You picked up " + currentRoom.getItem(0).getName());
+                s = "You picked up " + currentRoom.getItem(0).getName();
                 currentRoom.removeItem(0);
                 player.incrementProgress();
             }
-        } else if (commandWord == CommandWord.APPROACH) {
-            approachNPC(command);
-        } /* else if (commandWord == CommandWord.DROP) {
-            // code along the lines off, dropping an item from player inventory
-        }   // will be implemented in next iteration
-         */ else if (commandWord == CommandWord.CHOOSE) {
-            processOption(command);
-        } else if (commandWord == CommandWord.JOURNAL) {
-            System.out.println(player.getJournal());
-        } else if (commandWord == CommandWord.INVENTORY) {
-            player.getInventory();
-        }
-
-        return wantToQuit;
-    }
-
-    private void processOption(Command command) {
-
-        // Check 1: checks if there is a second word, aka a choice between 1 or 2
-        if (!command.hasSecondWord()) {
-            System.out.println("Choose what?");
-        } // Check 2: checks if a room does not have a quest, so you cant "choose" in that room
-        else if (!currentRoom.getHasQuest()) {
-            System.out.println("What?");
-        } // Check 3: Checks where you are in a quest by multiple stages (!primitive and basic state machine!)
-        // Check 3.1: Checks if room has a quest and that second word is the option talk
-        else if (currentRoom.getHasQuest() && command.getSecondWord().equals("1")) {
-            print20Lines();
-
-            // stage 3.2:
-            // checks whether or not a room has an ongoing quest, if the room does not have
-            // an ongoing quest, then the player will be presented the quest, and have an option
-            // between yes and no
-            if (!currentRoom.getHasOngoingQuest()) {
-                System.out.println(currentRoom.getNPC(0).getQuestString());
-                String answer = getSimpleUserInput();
-
-                // stage 3.3: checks if the answer is yes, if the player types in yes
-                // then the the NPC's string acceptString will be returned
-                // and that room will now have an ongoing quest, which makes it possible
-                // to return another string when they player comes back without completing it
-                // also the string that explains the quest will be added to the players journal
-                if (answer.equals("yes")) {
-                    print20Lines();
-                    System.out.println("Your location: " + currentRoom.getName());
-                    System.out.println(currentRoom.getExitString() + "\n");
-                    System.out.println(currentRoom.getNPC(0).getAcceptString());
-                    currentRoom.setHasOngoingQuest(true);
-                    currentRoom.setHasFinishedQuest(false);
-                    player.setJournal(currentRoom.getJournalString());
-
-                    // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
-                    // and player must choose 1 again to accept the quest.
-                } else if (answer.equals("no")) {
-                    System.out.println("Your location: " + currentRoom.getName());
-                    System.out.println(currentRoom.getExitString() + "\n");
-                    System.out.println(currentRoom.getNPC(0).getDeclineString());
-
-                } else {
-                    System.out.println("you did not type yes or no, sadly you will have to try this again");
-                }
-            } // check 3.5: Checks if the quest has been finished or not. if the quest has not been finished, then
-            // the "on a quest string" will be returned, otherwise the next string introducing the player to
-            // where he should go next is returned
-            else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
-                if (player.getProgress() < currentRoom.getNextQuestProgress()) {
-                    System.out.println(currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString());
-                } else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
-                    System.out.println("Your location: " + currentRoom.getName());
-                    System.out.println(currentRoom.getExitString() + "\n");
-                    System.out.println(currentRoom.getNPC(0).getCompleteQuestString());
-                    currentRoom.setHasFinishedQuest(true);
-                    player.incrementProgress();
-                    player.setJournal("No active quests...");
-                }
-            } // check 3.6: Checks whether or not a quest has been completed in that room
-            // if a quest has been completed, it will return the string that explains
-            // to the player that the quest in that room has been finished
-            else if (currentRoom.getHasFinishedQuest()) {
-                System.out.println("Your location: " + currentRoom.getName());
-                System.out.println(currentRoom.getExitString() + "\n");
-                System.out.println(currentRoom.getNPC(0).getQuestCompletedString());
+        } else if (commandWord == CommandWord.APPROACH) {//DONE
+            s = approachNPC(command);
+        } else if (commandWord == CommandWord.CHOOSE) {//DONE
+            s = processOption(command);
+        } else if (commandWord == CommandWord.JOURNAL) {//DONE
+            s = player.getJournal();
+        } else if (commandWord == CommandWord.YES | commandWord == CommandWord.NO) {//DONE
+            s = processChoice(command);
+        } else if (commandWord == CommandWord.FIGHT
+                | commandWord == CommandWord.FIGHT
+                | commandWord == CommandWord.FLEE
+                | commandWord == CommandWord.ATTACK
+                | commandWord == CommandWord.HEAL
+                | commandWord == CommandWord.DODGE
+                | commandWord == CommandWord.DROPKICK
+                | commandWord == CommandWord.PUNCH
+                | commandWord == CommandWord.BODYSLAM
+                | commandWord == CommandWord.A
+                | commandWord == CommandWord.B
+                | commandWord == CommandWord.C
+                | commandWord == CommandWord.BACK) {
+            if (fight) {
+                return combatOptions(command);
+            } else {
+                return "Why are you trying to fight?";
             }
         }
+        return s;
     }
 
-    private void printHelp() {
-        System.out.println("Solve your current quest, you can see it by typing journal");
-        System.out.println("HINT: completing quests wins you the game.");
-        System.out.println();
-        System.out.println("Your command words are:");
-        parser.showCommands();
-        System.out.println();
-    }
-
-    private void approachNPC(Command command) {
-        try {
-            if (!command.hasSecondWord()) {
-                System.out.println("Approach what?");
-
-            } else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
-                for (int i = 0; i < 10; i++) {
-                    System.out.println();
+    private String processOption(Command command) {
+        // Check 1: checks if there is a second word, aka a choice between 1 or 2
+        if (command.hasSecondWord()) {
+            // Check 2: checks if a room does not have a quest, so you cant "choose" in that room
+            if (!currentRoom.getHasQuest()) {
+                return "What?";
+            } // Check 3: Checks where you are in a quest by multiple stages (!primitive and basic state machine!)
+            // Check 3.1: Checks if room has a quest and that second word is the option talk
+            else if (currentRoom.getHasQuest() && command.getSecondWord().equals("1")) {
+                // stage 3.2:
+                // checks whether or not a room has an ongoing quest, if the room does not have
+                // an ongoing quest, then the player will be presented the quest, and have an option
+                // between yes and no
+                if (!currentRoom.getHasOngoingQuest()) {
+                    s = currentRoom.getNPC(0).getQuestString();
+                    // check 3.5: Checks if the quest has been finished or not. if the quest has not been finished, then
+                    // the "on a quest string" will be returned, otherwise the next string introducing the player to
+                    // where he should go next is returned
+                } else if (currentRoom.getHasOngoingQuest() && currentRoom.getHasFinishedQuest() == false) {
+                    if (player.getProgress() < currentRoom.getNextQuestProgress()) {
+                        s = currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString();
+                    } else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
+                        s = "Your location: " + currentRoom.getName()
+                                + currentRoom.getExitString() + "\n"
+                                + currentRoom.getNPC(0).getCompleteQuestString();
+                        currentRoom.setHasFinishedQuest(true);
+                        player.incrementProgress();
+                        player.setJournal("No active quests...");
+                    }
+                } // check 3.6: Checks whether or not a quest has been completed in that room
+                // if a quest has been completed, it will return the string that explains
+                // to the player that the quest in that room has been finished
+                else if (currentRoom.getHasFinishedQuest()) {
+                    s = "Your location: " + currentRoom.getName()
+                            + currentRoom.getExitString() + "\n"
+                            + currentRoom.getNPC(0).getQuestCompletedString();
                 }
-                printLocation();
-                printNPCsName();
-                printNPCsWelcome();
-                printDialogOptions();
+            } else if (currentRoom.getHasQuest() && command.getSecondWord().equals("2")) {
+                s = currentRoom.getNPC(0).getGoodbye();
+            }
+        } else {
+            return "Choose what?";
+        }
+        return s;
+    }
+
+    private String processChoice(Command command) {
+        try {
+        // stage 3.3: checks if the answer is yes, if the player types in yes
+            // then the the NPC's string acceptString will be returned
+            // and that room will now have an ongoing quest, which makes it possible
+            // to return another string when they player comes back without completing it
+            // also the string that explains the quest will be added to the players journal
+            if (command.getCommandWord().equals(CommandWord.YES)) {
+                s = "Your location: " + currentRoom.getName()
+                        + currentRoom.getExitString() + "\n"
+                        + currentRoom.getNPC(0).getAcceptString();
+                currentRoom.setHasOngoingQuest(true);
+                currentRoom.setHasFinishedQuest(false);
+                player.setJournal(currentRoom.getJournalString());
+
+            // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
+                // and player must choose 1 again to accept the quest.
+            } else if (command.getCommandWord().equals(CommandWord.NO)) {
+                s = "Your location: " + currentRoom.getName()
+                        + currentRoom.getExitString() + "\n"
+                        + currentRoom.getNPC(0).getDeclineString();
+
             }
         } catch (IndexOutOfBoundsException ex) {
-            System.out.println("Thers is no one here to talk to.");
+            s += currentRoom.getLongDescription();
         }
+        return s;
     }
 
-    private void goRoom(Command command) {
+    private String printHelp() {
+        return "Solve your current quest, you can see it by typing journal.\n"
+                + "HINT: completing quests wins you the game.\n\n"
+                + "Your command words are:\n"
+                + parser.showCommands();
+    }
+
+    private String approachNPC(Command command) {
+        try {
+            if (!command.hasSecondWord()) {
+                s = "Approach what?";
+
+            } else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
+                s = printLocation()
+                        + printNPCsName()
+                        + printNPCsWelcome()
+                        + printDialogOptions();
+            }
+        } catch (IndexOutOfBoundsException ex) {
+            s = "There is no one here to talk to.";
+        }
+        return s;
+    }
+
+    private String goRoom(Command command) {
+        if (currentRoom.getIsLocked()){
+            s = "You can't escape from this encounter!\n";
+            return "Combatoptions: \n"
+                + "a) Attack \n"
+                + "b) Heal \n"
+                + "c) Dodge \n";
+        } else {
+
         if (!command.hasSecondWord()) {
-            System.out.println("Go where?");
-            return;
+            return "Go where?";
         }
 
         String direction = command.getSecondWord();
@@ -314,126 +314,219 @@ public class Game extends Player {
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            s = "There is no door!";
 
         } else if (nextRoom.getRequiredProgress() > player.getProgress()) {
-            System.out.println("You can't go there yet!");
+            s = "You can't go there yet!";
 
         } else {
-            for (int i = 0; i < 10; i++) {
-                System.out.println();
-            }
-            System.out.println(nextRoom.getShortDescription());
+            s = nextRoom.getShortDescription()+"\n";
             currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+            s += currentRoom.getLongDescription();
         }
+        }
+        return s;
+    }
+
+    private String encounterNPC(Command command) {
+        String s = "";
+        //ENCOUNTER - COMBATSYSTEM!!
         if (currentRoom.hasEncounter()) {
-
+            Battlesystem battle = new Battlesystem();
             if (currentRoom.getEncounter().encounterMet()) {
-                System.out.println(currentRoom.getEncounter().getEncounterMessage());
-                System.out.println(currentRoom.getEncounter().getEncounterNPC().getDialogOptions());
 
-                Scanner input = new Scanner(System.in);
-                boolean acceptableAnswer = false;
-                while (!acceptableAnswer) {
-                    String answer = input.nextLine();
+                if (!fleeAttempted) {
+                s = currentRoom.getEncounter().getEncounterMessage()
+                        + battle.Decision();
 
-                    if (answer.equals("1")) {
-                        System.out.println("You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!");
-                        // Load combat system
-                        acceptableAnswer = true;
+                fight = true;
+                currentRoom.setIsLocked(true);
+            }
+        }
+        } else if (fleeAttempted) {
+            s = "You already tried fleeing once you coward";
+        }
+        return s;
+    }
 
-                    } else if (answer.equals("2")) {
-                        if (currentRoom.getEncounter().tryFlee()) {
-                            System.out.println("You escaped!!");
-                            // print some sort of UI
-                            acceptableAnswer = true;
-                        } else {
-                            // load combat system
-                            System.out.println("BAM you won the fight.");
-                        }
+    private String combatOptions(Command command) {
+        Battlesystem battle = new Battlesystem();
+        BragAbility brag = new BragAbility(player.getLevel());
+        WittyRemarkAbility wittyRemark = new WittyRemarkAbility(player.getLevel());
+        OptionalAbility specialAbility = new OptionalAbility(player.getLevel());
+        EncounterAttacks encounterturn = new EncounterAttacks();
+        Heal healAbility = new Heal(player.getHealth(), player.getMaxHealth(), player.getLevel());
+
+        int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
+
+        if (fight){
+            switch (command.getCommandWord()) {
+                case FIGHT:
+                    s = battle.Combatoptions();
+                    fleeAttempted = true;
+                    break;
+                case FLEE:
+                    if (fleeAttempted) {
+                        s = "You can't escape!.\n"
+                            + battle.Combatoptions();
+                    } else {
+
+                    if (!currentRoom.getEncounter().encounterMet()) {
+                    s = "You escaped! \n"
+                            + currentRoom.getDescription();
+                    fight = false;
+                    currentRoom.setIsLocked(false);
+                    } else {
+                        s = "Oh no, you werent quick enough!" + battle.Combatoptions();
+                        fleeAttempted = true;
+                    }
+                    }
+                    break;
+
+                case ATTACK:
+                    s = battle.attackoptions();
+                    break;
+
+                // Witty remark
+                case A:
+
+                    s = "You used a witty remark on" + currentRoom.getEncounter().getEncounterNPC() + "!";
+                    s += "\nit resulted in " + wittyRemark.getDamageAmount() + " points of damage!\n";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - wittyRemark.getDamageAmount());
+
+                    if (enemyHealth <= 0) {
+                        s = "You defeated " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        currentRoom.setIsLocked(false);
+                        player.incrementProgress();
+                        currentRoom.setHasEncounter(false);
 
                     } else {
-                        System.out.println("Type in either 1 or 2");
+                        s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
+                        player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
+                        s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
+                        s += battle.Combatoptions();
                     }
-                }
+                    break;
 
-            } else {
-                System.out.println("Something just moved in the shadows! Seems like it's gone now...");
+                // Brag about being an engineer
+                case B:
+
+                    s = "You bragged about being an engineer and agitated" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                    s += "The bragging resulted in " + brag.getDamageAmount() + " points of damage.\n";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - brag.getDamageAmount());
+
+                    if (enemyHealth <= 0) {
+                        s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        currentRoom.setIsLocked(false);
+                        player.incrementProgress();
+                        currentRoom.setHasEncounter(false);
+
+                    } else {
+                         s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
+                         player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
+                         s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
+                         s += battle.Combatoptions();
+                    }
+                    break;
+
+                // Optional
+                case C:
+
+                    s = "You used your special ability on" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                    s += "It resulted in " + specialAbility.getDamageAmount() + " points of damage.\n";
+                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - specialAbility.getDamageAmount());
+
+                    if (enemyHealth <= 0) {
+                        s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+                        currentRoom.setIsLocked(false);
+                        player.incrementProgress();
+                        currentRoom.setHasEncounter(false);
+
+                    } else {
+                    s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
+                        player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
+                        s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
+                        s += battle.Combatoptions();
+                    }
+
+                    break;
+                case BACK:
+                    s = battle.Combatoptions();
+                    break;
+                case HEAL:
+                    if (player.getHealth() == player.getMaxHealth()) {
+                        s = "Your health is already full!";
+                        s += battle.attackoptions();
+                    } else {
+                    player.setHealth(player.getHealth() + healAbility.heal());
+
+                    if (player.getHealth() > player.getMaxHealth()) {
+                        player.setHealth(player.getMaxHealth());
+
+                    }
+                    s = ("Your heal was successful!\nYour current health is " + player.getHealth() + "HP\n");
+                    s += battle.Combatoptions();
+                    }
+                    break;
+                case DODGE:
+                    //s = battle.dodge()
+                    //        + encounterturn.EncounterTurn();
+                    //s += print3Lines()
+                    //        +battle.Combatoptions();
+                    break;
+                default:
+                    break;
             }
-
         }
-
+       return s;
     }
 
-    private boolean quit(Command command) {
-        if (command.hasSecondWord()) {
-            System.out.println("Quit what?");
-            return false;
+
+    private String printLocation() {
+        return "Your location: " + currentRoom.getName();
+    }
+
+    private String printDialogOptions() {
+        return currentRoom.getNPC(0).getDialogOptions();
+    }
+
+    private String printNPCsName() {
+        return currentRoom.getNPC(0).getName() + ": ";
+    }
+
+    private String printNPCsWelcome() {
+        return currentRoom.getNPC(0).getWelcome();
+    }
+
+    private String printNPCsGoodbye() {
+        return currentRoom.getNPC(0).getGoodbye();
+    }
+
+    public String getSimpleUserInput(String s) {
+        return s;
+    }
+
+    private String startScreen() {
+        if (!started) {
+            s = currentRoom.getLongDescription()
+                    + currentRoom.getRoomIntro();
         } else {
-            return true;
+            s = "What are you trying to do?";
         }
+        return s;
     }
 
-    private void printLocation() {
-        System.out.println("Your location: " + currentRoom.getName());
-    }
-
-    private void printDialogOptions() {
-        System.out.println(currentRoom.getNPC(0).getDialogOptions());
-    }
-
-    private void printNPCsName() {
-        System.out.println(currentRoom.getNPC(0).getName() + ": ");
-    }
-
-    private void printNPCsWelcome() {
-        System.out.println(currentRoom.getNPC(0).getWelcome());
-    }
-
-    private void printNPCsGoodbye() {
-        System.out.println(currentRoom.getNPC(0).getGoodbye());
-    }
-
-    private void printPrimitiveUI() {
-        // will be used for next iteration, and also improved upon
-        for (int i = 0; i < 10; i++) {
-            System.out.println();
+    private String print3Lines() {
+        for (int i = 0; i < 3; i++) {
+            s += "\n";
         }
-        System.out.println("Your location: " + currentRoom.getName());
-        System.out.println(currentRoom.getExitString());
-        System.out.println(currentRoom.getDescription());
+        return s;
     }
 
-    private String getSimpleUserInput() {
-        Scanner input = new Scanner(System.in);
-        String tempInput = input.nextLine();
-        return tempInput;
+    public Player getPlayer() {
+        return this.player;
     }
-
-    private void startScreen() {
-        System.out.println("Are you ready to dive into this? type (yes/no)");
-        String answer = getSimpleUserInput();
-
-        if (answer.equals("yes")) {
-            for (int i = 0; i < 20; i++) {
-                System.out.println();
-            }
-            System.out.println(currentRoom.getLongDescription());
-            System.out.println(currentRoom.getRoomIntro());
-
-        } else if (answer.equals("no")) {
-            System.out.println("Oh.. well you will have to play without the initial help text then. Type help for help.");
-
-        } else {
-            System.out.println("Writing yes or no can't be that hard..");
-        }
-    }
-
-    private void print20Lines() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println();
-        }
-    }
-
 }

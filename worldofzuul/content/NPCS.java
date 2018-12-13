@@ -16,8 +16,10 @@ public class NPCS extends NPC {
 
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
+
         mentor.setDescription("*Short and build student, wearing a hoodie \n"
                 + " and a pair of glasses,short clean cut redheaded*");
+
         mentor.setName("mentor");
         mentor.setWelcome(">You must be a new student, welcome! \n"
                 + "\nUvuvwevwevwe: As you can see below, you have two options,\n"
@@ -47,11 +49,13 @@ public class NPCS extends NPC {
                 + "Uvuvwevwevwe: Congratulations! You finished your very first quest.\n"
                 + " Sadly, you're on your own now. Bye.");
 
+
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
 
-        // Start of the NPC Andars INDEX: 1--------------------
+        // Start of the NPC Andars INDEX: 1-------------------------------------
         NPC andars = new NPC();
+
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. \n"
                 + " He appears proffessionel. His face expression seems serious.*");
         andars.setName("Andars");
@@ -78,13 +82,15 @@ public class NPCS extends NPC {
                 + ">You should probably go study some more in the studyhall.");
         andars.setQuestCompletedString(">You finally found the book and handed in the assignments. \n"
                 + ">You should go study to the study hall.");
+
         
         npcs.add(andars);
-        // End of the NPC Andars--------------------
+        // End of the NPC Andars------------------------------------------------
 
-        // Start of the NPC at the student bookstore INDEX: 2--------------------
+        // Start of the NPC at the student bookstore INDEX: 2-------------------
         NPC bookstoreLady = new NPC();
         bookstoreLady.setName("lady");
+
         bookstoreLady.setWelcome(">Hello there handsome thing, What can I do you for?");
         bookstoreLady.setDescription("*Probably the ugliest and oldest person you've ever seen in a bookstore*");
         bookstoreLady.setDialogOptions("> 1: Talk"
@@ -99,23 +105,27 @@ public class NPCS extends NPC {
         bookstoreLady.setQuestCompletedString(">It was a pleasure getting to know you honey");
         bookstoreLady.setCompleteQuestString(">Thanks for the coffee. The book is back in the storage room, you can go get it.");
 
+
         npcs.add(bookstoreLady);
 
         // lawStudent at index 3
         NPC lawStudent = new NPC();
         lawStudent.setFriendly(false);
         lawStudent.setName("Wild law student");
+
         lawStudent.setDialogOptions(">1: Fight\n"
                 + ">2: Flee");
+
         npcs.add(lawStudent);
 
-        // End of the NPC at the student bookstore--------------------
+        // End of the NPC at the student bookstore------------------------------
 
         
 
-        // Start of NPC for study hall + library quest INDEX: 3--------------
+        // Start of NPC for study hall + library quest INDEX: 4-----------------
         NPC student = new NPC();
         student.setName("student");
+
         student.setWelcome(">Hey! Please I need your help!");
         student.setDescription("*A student in distress*");
         student.setDialogOptions("> 1: Talk"
@@ -132,14 +142,17 @@ public class NPCS extends NPC {
         student.setOnQuestString(">We have to make room for us to study in the study hall");
         student.setCompleteQuestString(">Thanks buddy, we should get a beer at Nedenunder later");
         student.setQuestCompletedString(">Let me know if you wanna grab that beer");
+
+
         
         npcs.add(student);
         
-        // End of student -------------------------------------------------------
+        // End of student ------------------------------------------------------
         
-        // Start of NPC Lune at u55 INDEX: 4------------------------------------
+        // Start of NPC Lune at u55 INDEX: 5------------------------------------
         NPC lune = new NPC();
         lune.setName("Lune");
+
         lune.setWelcome(">Hey there student.");
         lune.setDescription(">*Your teacher in introduction to Software Engineering*");
         lune.setDialogOptions("> 1: Talk"  
@@ -156,14 +169,16 @@ public class NPCS extends NPC {
                 + ">it must have been quite difficult. \n"
                 + ">Now get going, I've heard Eryk needs some help in u45...");
         lune.setQuestCompletedString(">You should really get going now");
+
         
         npcs.add(lune);
         
-        // End of NPC Lune ----------------------------------------------------
+        // End of NPC Lune -----------------------------------------------------
         
-        // Start of NPC Eryk at u45 INDEX: 5------------------------------------
+        // Start of NPC Eryk at u45 INDEX: 6------------------------------------
         NPC eryk = new NPC();
         eryk.setName("Eryk");
+
         eryk.setWelcome(">Hello I'm your teacher in COS");
         eryk.setDescription("*Great man with great jokes*");
         eryk.setDialogOptions("> 1: Talk"                            
@@ -178,13 +193,14 @@ public class NPCS extends NPC {
         eryk.setCompleteQuestString(">Great job on getting the screen working,\n"
                 + "> now we can get on with the teaching");
         eryk.setQuestCompletedString(">Remember your exam today. Head to Andars.");
+
         
         npcs.add(eryk);
         
         
-        // End of Eryk -------------------------------------------------------------------
+        // End of Eryk ---------------------------------------------------------
         
-        // Start of e-moderator in T8 index 6 ----------------------------------------------------
+        // Start of e-moderator in T8 index 7 ----------------------------------
         NPC moderator = new NPC();
         moderator.setName("Malta");
         moderator.setWelcome(">Thanks for helping me escape from the janitors");
@@ -198,15 +214,38 @@ public class NPCS extends NPC {
         moderator.setOnQuestString(">Please find my bag");
         moderator.setCompleteQuestString(">Great job finding my bag. Get back to Lune");
         moderator.setQuestCompletedString(">Get back to Lune");
+
         
         npcs.add(moderator);
         
         
-        // End of moderator --------------------------------------------------------------
-             
-       
-       
-       
+
+        // End of moderator ----------------------------------------------------
+        
+        // start of janitor in room g22 janitor index at 8
+        NPC janitor = new NPC();
+        janitor.setName("Wild Janitor");
+        janitor.setLevel(3);
+        janitor.setHealth(300);
+        janitor.setFriendly(false);
+        janitor.setDialogOptions("<1: Fight\n"
+                + "<2: Flee");
+        janitor.setExperience(1000);
+        npcs.add(janitor);
+        // End of janitor ------------------------------------------------------
+        
+        // start of medicine student in room g22, this student is at index 9
+        NPC medicineStudent = new NPC();
+        medicineStudent.setName("Arrogant \'sTuDeNt Of MeDiCiNe\'");
+        medicineStudent.setLevel(2);
+        medicineStudent.setHealth(300);
+        medicineStudent.setFriendly(false);
+        medicineStudent.setDialogOptions("<1: Fight\n"
+                + "<2: Flee");
+        medicineStudent.setExperience(500);
+        npcs.add(medicineStudent);
+        // End of medicine student ------------------------------------------------------
+
     }
 
     public NPC getNPC(int index) {

@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Player extends Entity {
 
-    // The arraylist inventory stores the items that the player picks up.
-    private ArrayList<Item> inventory = new ArrayList<>();
+    public ArrayList<Item> inventory = new ArrayList<>();
 
-    // Players attributes
+
     private String playerName;
-    private int health;
-    private int level;
+    private int currentHealth = 100;
+    private int maxHealth = 100;
+    private int level = 1;
     private int experience;
     private String age;
     private String gender;    
@@ -21,111 +21,296 @@ public class Player extends Entity {
     private String journal;
 
     public void setGender(String gender) {
+
         this.gender = gender;
+
     }
 
     public String getGender() {
+
         return gender;
+
     }
-  
+
     public void setAge(String age) {
+
         this.age = age;
+
     }
-    
+
+  
     public String getAge() {
-          return age;
+
+        return age;
+
     }
 
-    // Set player name
     public void setPlayerName(String playerName) {
+
         this.playerName = playerName;
+
     }
 
-    // Return player name
     public String getPlayerName() {
+
         return playerName;
+
     }
 
-    // Set the players level
+
     public void setLevel(int level) {
+
         this.level = level;
+
     }
 
-    // Return players level
+    
     public int getLevel() {
+
         return level;
+
     }
 
-    // Set the players health
-    public void setHealth(int health) {
-        this.health = health;
+
+    public void setHealth(int currentHealth) {
+
+        this.currentHealth = currentHealth;
+
     }
 
-    // Return players health
+
     public int getHealth() {
-        return health;
+
+        return currentHealth;
+
     }
 
-    // Set players experience points
+
+    public void setMaxHealth(int maxHealth) {
+
+        this.maxHealth = maxHealth;
+
+    }
+
+
+    public int getMaxHealth() {
+
+       return maxHealth;
+
+    }
+
+
     public void setExperience(int experience) {
+
         this.experience = experience;
+
     }
 
-    // Return players experience points
+
     public int getExperience() {
+
         return experience;
+
     }
 
-    // Adds an item to the inventory
+
     public void addItem(Item item) {
+
         inventory.add(item);
+
         this.indexOfLastAdded++;
+
     }
 
-    // Returns the full inventory list
+
     public void getInventory() {
+
         System.out.println("Inventory:");
+
         for (Item item : inventory) {
+
             System.out.println("*" + item.getName());
+
         }
+
     }
+
 
     public void setProgress(int input) {
+
         this.progress = input;
+
     }
 
+    
     public int getProgress() {
+
         return this.progress;
+
     }
+
+    
 
     public void incrementProgress() {
+
         this.progress++;
+
     }
+
+    
 
     public String getJournal() {
+
         return this.journal;
+
     }
+
+    
 
     public void setJournal(String input) {
+
         this.journal = input;
+
     }
 
-    // Player name conversation
+        // Player name conversation
+
     public String ConversationWord(String question) {
+
         input = new Scanner(System.in);
 
         System.out.println(question);
+
         System.out.print("> ");
+
         String answer = input.nextLine();
+
         return answer;
-    }
+
+}
+
+    /*
 
     // Player age conversation
-    public String ConversationAge(String question) {
+
+    public int ConversationAge(String question) {
+
         input = new Scanner(System.in);
+
         System.out.println(question);
+
         System.out.print("> ");
-        String answer = input.next();
+
+        int answer = input.nextInt();
+
+        
+
         return answer;
+
     }
+
+    */
+
+    
+
+    public void gainExperience(int amount) {
+
+        getExperience();
+
+        int currentExperience;
+
+        currentExperience = experience + amount;
+
+        double levelSystem = 0.04 * Math.sqrt(currentExperience);
+
+        
+
+        if ((int) levelSystem == 0) {
+
+            setLevel(1);
+
+            levelUp();
+
+        } else if ((int) levelSystem == 1) {
+
+            setLevel(2);
+
+            levelUp();
+
+        } else if ((int) levelSystem == 2) {
+
+            setLevel(3);   
+
+            levelUp();
+
+        } else if ((int) levelSystem == 3) {
+
+            setLevel(4);
+
+            levelUp();
+
+        } else if ((int) levelSystem == 4) {
+
+            setLevel(5);
+
+            levelUp();
+
+        } else if ((int) levelSystem == 5) {
+
+            setLevel(6);
+
+            levelUp();
+
+        } else if ((int) levelSystem == 6) {
+
+            setLevel(7);
+
+            levelUp();
+
+        } else if ((int) levelSystem == 7) {
+
+            setLevel(8);
+
+            levelUp();
+
+        } else if ((int) levelSystem == 8) {
+
+            setLevel(9);
+
+            levelUp();
+
+        } else if ((int) levelSystem >= 9) {
+
+            setLevel(10);
+
+            levelUp();
+
+        } else {
+
+            System.out.println("Something not good is happening.");
+
+        }
+
+        setExperience(currentExperience);
+
+        
+
+    }
+
+    
+
+    public void levelUp() {
+
+        getMaxHealth();
+        
+        getHealth();
+        
+        int healthLevel = maxHealth + 10;
+        
+        setMaxHealth(healthLevel);
+        
+        setHealth(healthLevel);
+
+    }
+
 }
