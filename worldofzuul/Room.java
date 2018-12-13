@@ -86,13 +86,9 @@ public class Room extends Entity {
         return this.description+"\n";
     }
 
-    public String getLongDescription() {
+    /*public String getLongDescription() {
         return "Location: " + getName() + ".\n";
-    }
-
-    public String getSlowDescription() {
-        return "You are still " + description + ".\n" + getExitString();
-    }
+    }*/
 
     public String getExitString() {
         String returnString = "Exits:";

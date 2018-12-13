@@ -16,8 +16,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import worldofzuul.gamefunctionality.Game;
 
 /**
  * FXML Controller class
@@ -25,9 +26,10 @@ import worldofzuul.gamefunctionality.Game;
  * @author joakim
  */
 public class FXMLStartScreenController implements Initializable {
-    public String name;
+    private String name;
     private String age;
     private String gender;
+    
     @FXML
     private TextField nameSetter;
     @FXML
@@ -68,7 +70,33 @@ public class FXMLStartScreenController implements Initializable {
        return gender; 
     }
     
-
+    private void nextGUI () throws IOException{
+        Stage stage = GUI.stage;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMain.fxml"));
+        
+        Parent root = loader.load();
+        
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+    
+    @FXML
+    private void nextGUIButton(KeyEvent event) throws IOException{
+        if (event.getCode()==KeyCode.ENTER) {
+        setStartName();
+        setStartAge();
+        setStartGender();
+        
+       if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
+           System.out.println("Please enter whatever");
+       } else {
+           nextGUI();
+        }
+    }
+    }
+    
     @FXML
     private void handlePlayBtn(ActionEvent event) throws IOException {
         setStartName();
@@ -77,16 +105,8 @@ public class FXMLStartScreenController implements Initializable {
         
        if (this.age.equals("")||this.name.equals("")||this.gender.equals("")){
            System.out.println("Please enter whatever");
-       } else {
-           
-        Stage stage = GUI.stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMain.fxml"));
-
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+       } else {   
+        nextGUI();
     } 
     }
         
