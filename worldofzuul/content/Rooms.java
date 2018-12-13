@@ -8,12 +8,16 @@ import worldofzuul.Room;
 public class Rooms extends Room {
 
     private List<Room> rooms;
-
-    public Rooms() {
+    private String name;
+    
+    public Rooms(String name) {
         rooms = new ArrayList<>();
+        this.name = name;
+        
     }
 
     public void createRooms() {
+        
 
         Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookstore, storage, t8,
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
@@ -28,7 +32,7 @@ public class Rooms extends Room {
                 + "ntless of other university students, heading to \n"
                 + "their next class or lecture, you see a man wearing a red shirt saying \'mentor\'");
 
-        entrance.setRoomIntro("> Hello player, my name is Uvuvwevwevwe, and I will guide you \n"
+        entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
                 + "> through the first steps of this tutorial. Above this message you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
                 + "> location. If you haven't guessed it already, exits show our possible exits \n"

@@ -31,8 +31,7 @@ public class Game extends Player {
 
     public Game() {
         parser = new Parser();
-        player = new Player();
-        battle = new Battlesystem();
+        player = new Player();        
     }
 
     public void setPlayerName() {
@@ -49,7 +48,7 @@ public class Game extends Player {
 
     public void play() {
 
-        Rooms listOfRooms = new Rooms();
+        Rooms listOfRooms = new Rooms(player.getPlayerName());
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
 
