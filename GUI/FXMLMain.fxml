@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="489.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLMainController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLMainController">
    <children>
       <ListView fx:id="lvInv" layoutX="4.0" layoutY="22.0" prefHeight="261.0" prefWidth="107.0" />
       <Text layoutX="6.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory:" />
@@ -17,7 +17,13 @@
          </font></TextArea>
       <TextField fx:id="console" layoutX="119.0" layoutY="419.0" onKeyPressed="#enterButton" prefHeight="27.0" prefWidth="462.0" />
       <Button fx:id="sendBtn" layoutX="605.0" layoutY="418.0" mnemonicParsing="false" onAction="#handleSendBtn" text="Send" />
-      <ListView fx:id="lvEx" layoutX="663.0" layoutY="23.0" prefHeight="155.0" prefWidth="87.0" />
-      <Text layoutX="663.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exits:" />
+      <ListView fx:id="lvEx" layoutX="659.0" layoutY="99.0" prefHeight="155.0" prefWidth="87.0" />
+      <Text layoutX="663.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exits:" />
+      <TextArea fx:id="location" layoutX="658.0" layoutY="25.0" prefHeight="22.0" prefWidth="88.0" />
+      <Text layoutX="660.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" />
+      <Text fx:id="playerNameHP" layoutX="9.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player hp:" />
+      <Text fx:id="enemyNameHP" layoutX="9.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enemy hp:" />
+      <TextArea fx:id="setPlayerHP" editable="false" focusTraversable="false" layoutX="7.0" layoutY="311.0" mouseTransparent="true" prefHeight="22.0" prefWidth="80.0" />
+      <TextArea fx:id="setEnemyHP" editable="false" focusTraversable="false" layoutX="6.0" layoutY="375.0" mouseTransparent="true" prefHeight="22.0" prefWidth="80.0" />
    </children>
 </AnchorPane>

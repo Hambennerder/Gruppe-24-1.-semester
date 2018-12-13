@@ -1,6 +1,7 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class NPC extends Entity {
 
@@ -11,6 +12,7 @@ public class NPC extends Entity {
     private int health;
     private int questCount;
     private int stringCount = 0;
+    private int enemyBaseAttackDamage;
     private String welcome;
     private String goodbye;
     private String acceptString;
@@ -21,6 +23,7 @@ public class NPC extends Entity {
     private Boolean friendly;
     private String completeQuestString;
     private String questString;
+    private String attackString;
 
     public NPC() {
         this.level = 1;
@@ -30,6 +33,8 @@ public class NPC extends Entity {
         this.welcome = "Hello traveler!";
         this.goodbye = "Farewell traveler!";
         this.friendly = true;
+        this.enemyBaseAttackDamage = 2;
+        this.attackString = "The enemy attacked you!";
     }
 
     public NPC(int level, int experience, int health, Boolean friendly) {
@@ -37,6 +42,14 @@ public class NPC extends Entity {
         this.experience = experience;
         this.health = health;
         this.friendly = friendly;
+    }
+    
+    public void setAttackString(String input) {
+        this.attackString = input;
+    }
+    
+    public String getAttackString() {
+        return this.attackString;
     }
 
     public void setQuestString(String input) {
@@ -153,6 +166,16 @@ public class NPC extends Entity {
 
     public String getCompleteQuestString() {
         return this.completeQuestString;
+    }
+    
+    public int enemyAttack() {
+        Random rand = new Random();
+        int r = rand.nextInt(5) + 1;
+        return this.enemyBaseAttackDamage * r;
+    }
+    
+    public void setEnemyBaseAttackDamage(int input) {
+        this.enemyBaseAttackDamage = input;
     }
 
     @Override

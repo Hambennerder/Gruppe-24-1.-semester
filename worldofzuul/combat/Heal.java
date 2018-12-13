@@ -1,23 +1,23 @@
 package worldofzuul.combat;
 
+import java.util.Random;
+
 public class Heal {
     
+    private int currentHealth;
+    private int maxHealth;
     private int healAmount;
+    
+    private Random rand;
 
-    public int getHealAmount() {
-        return healAmount;
+    public Heal(int currentHealth, int maxHealth, int playerLevel) {
+        rand = new Random();
+        int r = rand.nextInt(3) + 1;
+        this.healAmount = (5 + (playerLevel * 2) * r);
     }
 
-    public void setHealAmount(int healAmount) {
-        this.healAmount = healAmount;
-    }
-
-    public void heal(int currenthealth, int maxhealth, int newhealth){
-        
-    healAmount = 10;
-    
-    newhealth = healAmount + currenthealth;
-    
+    public int heal(){
+        return this.healAmount;
     }
     
     

@@ -5,7 +5,7 @@ import worldofzuul.Encounter;
 import worldofzuul.Player;
 
 public class BragAbility extends Battlesystem{
-    
+
     private Random rand = new Random();
     private int damageAmount;
     private String attackSuccessString;
@@ -27,8 +27,6 @@ public class BragAbility extends Battlesystem{
         return "";
     }
    
+
 }
-// multiple damageamount with random 
-// level * 2 + damage * interval
-//int 0,5 - 1,5
 

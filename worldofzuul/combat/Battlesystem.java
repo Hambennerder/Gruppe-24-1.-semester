@@ -28,10 +28,10 @@ public class Battlesystem extends Game {
     }
 
     public String attackoptions() {
-        return "Options in attack: \n"
-                + "a) Dropkick \n"
-                + "b) Punch \n"
-                + "c) Bodyslam \n"
+        return "Attack options: \n"
+                + "a) Witty remark \n"
+                + "b) Brag about being an engineer \n"
+                + "c) Optional \n"
                 + "d) Back \n";
     }
     /*
