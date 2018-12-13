@@ -174,7 +174,7 @@ public class Rooms extends Room {
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU\n"
                 + "you should probablt talk to that 'student'");
-        g3.setNextQuestProgress(7);
+        g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
         g3.setJournalString("Clear the studyhall and library of students from other faculties");
@@ -234,7 +234,7 @@ public class Rooms extends Room {
                 + "You see your teacher \'Lune\' ");
         u55.setName("u55");
 
-        u55.setRequiredProgress(9);
+        u55.setRequiredProgress(11);
 
         u55.setHasQuest(true);
         u55.setJournalString("Find your e-moderator. Maybe he's in t8.\n"
@@ -261,7 +261,7 @@ public class Rooms extends Room {
         t8.setName("T8");
 
         t8.setRequiredProgress(9);
-        t8.setNextQuestProgress(11);
+        t8.setNextQuestProgress(10);
 
         t8.setHasQuest(true);
         t8.setJournalString("Find Malta's bag and bring it back to him");
