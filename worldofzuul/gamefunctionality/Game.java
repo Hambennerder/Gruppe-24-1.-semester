@@ -596,6 +596,7 @@ public class Game extends Player {
 
        } else if (player.getHealth() < 0) {
            s = "You got rekt son, game over.";
+           finished = true;
            // some code to tell the player that game is over and something
        } else {
            // Method

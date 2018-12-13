@@ -59,6 +59,8 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
     private TextField setEnemyHP;
     @FXML
     private TextField levelText;
+    @FXML
+    private TextField amountHeal;
 
     private String loop(String s) throws Exception {
         showInventory.clear();
