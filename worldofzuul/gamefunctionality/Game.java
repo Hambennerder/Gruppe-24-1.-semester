@@ -77,7 +77,7 @@ public class Game extends Player {
         // Adding law student encounter to library
         Encounter lawStudentEncounter = new Encounter();
         lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
-        lawStudentEncounter.setEncounterPossibility(100);
+        lawStudentEncounter.setEncounterPossibility(50);
         lawStudentEncounter.setEncounterMessage("Oh no, you have encountered" + lawStudentEncounter.getEncounterNPC() + "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
         listOfRooms.getRoom(1).addEncounter(lawStudentEncounter);
@@ -370,18 +370,18 @@ public class Game extends Player {
                     if (fleeAttempted) {
                         s = "You can't escape!.\n"
                             + battle.Combatoptions();
-                    } else {
-
-                    if (!currentRoom.getEncounter().encounterMet()) {
+                        
+                    } else if (!currentRoom.getEncounter().tryFlee()) {
                     s = "You escaped! \n"
                             + currentRoom.getDescription();
                     fight = false;
                     currentRoom.setIsLocked(false);
+                    
                     } else {
                         s = "Oh no, you werent quick enough!" + battle.Combatoptions();
                         fleeAttempted = true;
                     }
-                    }
+                    
                     break;
 
                 case ATTACK:
@@ -446,17 +446,26 @@ public class Game extends Player {
                     s = battle.Combatoptions();
                     break;
                 case HEAL:
+                    if (!player.hasHeals()) {
+                        s = "You don't have any heals.\n";
+                        s += battle.Combatoptions();  
+                    } else {
+                    
                     if (player.getHealth() == player.getMaxHealth()) {
                         s = "Your health is already full!";
                         s += battle.attackoptions();
                     } else {
-                    player.setHealth(player.getHealth() + healAbility.heal());
+                    int tempHealAmount = healAbility.heal();
+                    player.setHealth(player.getHealth() + tempHealAmount);
 
                     if (player.getHealth() > player.getMaxHealth()) {
                         player.setHealth(player.getMaxHealth());
                     }
-                    s = ("Your heal was successful!\nYour current health is " + player.getHealth() + "HP\n");
+                    s = ("Your healed for "+ tempHealAmount + "!" + "\nYour current health is " + player.getHealth() + "HP\n");
+                    s += (player.getHeals() + " heal(s) remaining!\n\n");
+                    player.decrementHeal();
                     s += battle.Combatoptions();
+                    }
                     }
                     break;
                 case DODGE:
@@ -469,7 +478,7 @@ public class Game extends Player {
                     break;
             }
         }
-       if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0) {
+       if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0 && player.getHealth() > 0) {
            s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
                                 + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
            fight = false;
@@ -477,7 +486,13 @@ public class Game extends Player {
            player.incrementProgress();
            currentRoom.setHasEncounter(false);
            fleeAttempted = false;
-       } 
+           
+       } else if (player.getHealth() < 0) {
+           s = "You got rekt son, game over.";
+           // some code to tell the player that game is over and something
+       } else {
+           // Method
+       }
        return s;
     }
 

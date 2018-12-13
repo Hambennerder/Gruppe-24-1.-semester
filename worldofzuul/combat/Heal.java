@@ -11,13 +11,13 @@ public class Heal {
     private Random rand;
 
     public Heal(int currentHealth, int maxHealth, int playerLevel) {
-        rand = new Random();
-        int r = rand.nextInt(3) + 1;
-        this.healAmount = (5 + (playerLevel * 2) * r);
+        this.healAmount = 5 + (playerLevel * 2);
     }
 
     public int heal(){
-        return this.healAmount;
+        rand = new Random();
+        int r = rand.nextInt(3) + 1;
+        return this.healAmount * r;
     }
     
     

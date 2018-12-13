@@ -19,6 +19,36 @@ public class Player extends Entity {
     private int progress = 0;
     private int indexOfLastAdded = 0;
     private String journal;
+    private int heals = 1;
+    private int maxHeals = 1;
+    
+    public boolean hasHeals() {
+        boolean flag;
+        if (this.heals > 0) {
+           flag =  true;
+        } else {
+            flag = false;
+        }
+        return flag;
+    }
+    
+    public void decrementHeal() {
+        this.heals--;
+        if (this.heals < 0) {
+           this.heals = 0; 
+        }
+    }
+    
+    public void replenishHeal(int amount) {
+        this.heals += amount;
+        if (this.heals > this.maxHeals) {
+            this.heals = this.maxHeals;
+        }
+    }
+    
+    public int getHeals() {
+        return this.heals;
+    }
 
     public void setGender(String gender) {
 
@@ -310,6 +340,8 @@ public class Player extends Entity {
         setMaxHealth(healthLevel);
         
         setHealth(healthLevel);
+        
+        this.maxHeals++;
 
     }
 
