@@ -605,6 +605,7 @@ public class Game extends Player {
        if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0 && player.getHealth() > 0) {
            s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
                                 + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+           player.gainExperience(currentRoom.getEncounter().getEncounterNPC().getExperience());
            fight = false;
            currentRoom.setIsLocked(false);
            player.incrementProgress();
