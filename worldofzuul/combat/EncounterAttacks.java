@@ -40,9 +40,12 @@ public class EncounterAttacks {
 
             s += "You have won.\n";
 
+
             Player_experience += Encounter_experience;
 
             s += "Your experience is now " + Player_experience+"\n";
+            
+            player.setExperience(Player_experience);
 
         } else if (Player_health <= 0 && Encounter_health <= 0) {
 
