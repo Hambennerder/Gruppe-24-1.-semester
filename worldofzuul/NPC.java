@@ -173,6 +173,10 @@ public class NPC extends Entity {
         int r = rand.nextInt(5) + 1;
         return this.enemyBaseAttackDamage * r;
     }
+    
+    public void setEnemyBaseAttackDamage(int input) {
+        this.enemyBaseAttackDamage = input;
+    }
 
     @Override
     public String toString() {

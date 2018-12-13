@@ -11,7 +11,9 @@ public class WittyRemarkAbility extends Battlesystem {
     private String attackSuccessString;
 
     public WittyRemarkAbility(int playerLevel) {
-        damageAmount = (playerLevel * 2) + 5;
+        rand = new Random();
+        int r = rand.nextInt(3) + 1;
+        damageAmount = (playerLevel * 2) * r + 5;
     }
 
     public int getDamageAmount() {

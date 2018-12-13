@@ -61,6 +61,7 @@ public class Rooms extends Room {
         u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint");
         u2.setDescription("No ID card here...");
         u2.setName("u2");
+        u2.setHasEncounter(true);
         rooms.add(u2);
 
         // u3 at index 3

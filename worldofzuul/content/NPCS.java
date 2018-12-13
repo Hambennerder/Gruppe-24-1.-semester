@@ -115,6 +115,7 @@ public class NPCS extends NPC {
                 + "<2: Flee");
         lawStudent.setHealth(20);
         lawStudent.setExperience(1000);
+        lawStudent.setEnemyBaseAttackDamage(4);
         npcs.add(lawStudent);
 
         // End of the NPC at the student bookstore------------------------------
