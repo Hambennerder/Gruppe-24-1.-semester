@@ -501,15 +501,9 @@ public class Game extends Player {
     private String combatOptions(Command command) {
 
         Battlesystem battle = new Battlesystem();
-
-        BragAbility dropkick = new BragAbility(player.getLevel());
-        WittyRemarkAbility punch = new WittyRemarkAbility(player.getLevel());
-        OptionalAbility bodyslam = new OptionalAbility(player.getLevel());
-
         BragAbility brag = new BragAbility(player.getLevel());
         WittyRemarkAbility wittyRemark = new WittyRemarkAbility(player.getLevel());
         OptionalAbility specialAbility = new OptionalAbility(player.getLevel());
-
         EncounterAttacks encounterturn = new EncounterAttacks();
         Heal healAbility = new Heal(player.getHealth(), player.getMaxHealth(), player.getLevel());
 
