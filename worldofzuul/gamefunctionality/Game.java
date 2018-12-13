@@ -7,10 +7,10 @@ import worldofzuul.Room;
 import worldofzuul.content.NPCS;
 import worldofzuul.content.Rooms;
 import worldofzuul.combat.Battlesystem;
-import worldofzuul.combat.Bodyslam;
-import worldofzuul.combat.Dropkick;
+import worldofzuul.combat.OptionalAbility;
+import worldofzuul.combat.BragAbility;
 import worldofzuul.combat.EncounterAttacks;
-import worldofzuul.combat.Punch;
+import worldofzuul.combat.WittyRemarkAbility;
 
 public class Game extends Player {
 
@@ -75,8 +75,8 @@ public class Game extends Player {
         // test code
         Encounter encounter = new Encounter();
         encounter.addEncounterNPC(npcs.getNPC(3));
-        encounter.setEncounterPossibility(100);
-        encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "!");
+        encounter.setEncounterPossibility(10);
+        encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "! \n");
         listOfRooms.getRoom(4).addEncounter(encounter);
 
         // Adding the constitution to the library and student to hallway g3
@@ -124,7 +124,7 @@ public class Game extends Player {
         } else if (commandWord == CommandWord.QUIT) {//DONE
             setFinished(true);
         } else if (commandWord == CommandWord.INSPECT) {//DONE
-            s = "Your location: " + currentRoom.getName()
+            s = "Your location: " + currentRoom.getName() + "\n"
                     + currentRoom.getExitString() + "\n"
                     + currentRoom.getDescription();
             try {
@@ -196,7 +196,7 @@ public class Game extends Player {
                     if (player.getProgress() < currentRoom.getNextQuestProgress()) {
                         s = currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString();
                     } else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
-                        s = "Your location: " + currentRoom.getName()
+                        s = "Your location: " + currentRoom.getName() + "\n"
                                 + currentRoom.getExitString() + "\n"
                                 + currentRoom.getNPC(0).getCompleteQuestString();
                         currentRoom.setHasFinishedQuest(true);
@@ -207,7 +207,7 @@ public class Game extends Player {
                 // if a quest has been completed, it will return the string that explains
                 // to the player that the quest in that room has been finished
                 else if (currentRoom.getHasFinishedQuest()) {
-                    s = "Your location: " + currentRoom.getName()
+                    s = "Your location: " + currentRoom.getName() + "\n"
                             + currentRoom.getExitString() + "\n"
                             + currentRoom.getNPC(0).getQuestCompletedString();
                 }
@@ -228,7 +228,7 @@ public class Game extends Player {
             // to return another string when they player comes back without completing it
             // also the string that explains the quest will be added to the players journal
             if (command.getCommandWord().equals(CommandWord.YES)) {
-                s = "Your location: " + currentRoom.getName()
+                s = "Your location: " + currentRoom.getName() + "\n"
                         + currentRoom.getExitString() + "\n"
                         + currentRoom.getNPC(0).getAcceptString();
                 currentRoom.setHasOngoingQuest(true);
@@ -238,7 +238,7 @@ public class Game extends Player {
             // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
                 // and player must choose 1 again to accept the quest.
             } else if (command.getCommandWord().equals(CommandWord.NO)) {
-                s = "Your location: " + currentRoom.getName()
+                s = "Your location: " + currentRoom.getName() + "\n"
                         + currentRoom.getExitString() + "\n"
                         + currentRoom.getNPC(0).getDeclineString();
 
@@ -326,9 +326,9 @@ public class Game extends Player {
 
     private String combatOptions(Command command) {
         Battlesystem battle = new Battlesystem();
-        Dropkick dropkick = new Dropkick(player.getLevel());
-        Punch punch = new Punch(player.getLevel());
-        Bodyslam bodyslam = new Bodyslam(player.getLevel());
+        BragAbility dropkick = new BragAbility(player.getLevel());
+        WittyRemarkAbility punch = new WittyRemarkAbility(player.getLevel());
+        OptionalAbility bodyslam = new OptionalAbility(player.getLevel());
         EncounterAttacks encounterturn = new EncounterAttacks();
         
          int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
@@ -431,7 +431,7 @@ public class Game extends Player {
 
 
     private String printLocation() {
-        return "Your location: " + currentRoom.getName();
+        return "Your location: " + currentRoom.getName() + "\n";
     }
 
     private String printDialogOptions() {

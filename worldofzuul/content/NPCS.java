@@ -21,17 +21,16 @@ public class NPCS extends NPC {
                 + " short clean cut redheaded");
         mentor.setName("mentor");
         mentor.setWelcome("You must be a new student, welcome! \n"
-                + "\nUvuvwevwevwe: As you can see below, you have two options,\n"
-                + " type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
+                + "\nUvuvwevwevwe: As you can see below, you have two options, type \"choose 1\" to \n"
+                + "choose the first, and I'll let you figure out the rest.\n");
         mentor.setDialogOptions("< 1: talk"
                 + "\n< 2: leave");
         mentor.setAcceptString("Good luck student! \n"
                 + "\nUvuvwevwevwe: \n"
                 + "Now that you accepted a quest, you can type journal, and the quest's name \n"
-                + "and a short description will pop up. Complete this quest to advance. \n"
-                + " To go to a room, you must "
-                + "type \'go\' and then the direction you want to go, there are four directions:\n"
-                + "\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
+                + "and a short description will pop up. Complete this quest to advance. To go \n"
+                + "to a room, you must type \'go\' and then the direction you want to go, there \n"
+                + "are four directions:\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
         mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
         mentor.setQuestString("< Hello there!"
                 + "\n< Welcome to SDU. My name is Morten. I'll be your mentor for today."
@@ -42,11 +41,12 @@ public class NPCS extends NPC {
                 + " (now choose whether or not you accept this mission by typing yes/no)");
         mentor.setOnQuestString("Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString("I'm sorry, I'm busy. Go find Andars.");
-        mentor.setCompleteQuestString("Yes! you found the ID-card, \n"
-                + "now you can finally access this god awful place.\n"
-                + "now you must go find Andars, I've heard that he's in u180. Good luck! \n"
+        mentor.setCompleteQuestString("Yes! you found the ID-card. \n"
+                + "Now you can finally access this god awful place. "
+                + "You must go find Andars, I've heard \n"
+                + "that he's in u180. Good luck! \n"
                 + "Uvuvwevwevwe: Congratulations! You finished your very first quest.\n"
-                + " Sadly, you're on your own now. Bye.");
+                + "Sadly, you're on your own now. Bye.");
 
 
         npcs.add(mentor);
@@ -59,20 +59,17 @@ public class NPCS extends NPC {
         andars.setName("Andars");
 
         andars.setDialogOptions(
-                "< 1: talk"
-                + "\n< 2: leave");
-        andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
-                + "\n< You know, a thing between you and me.\n"
-                + " The book, called Best Java Book for learning Java EVER!.\n"
-                + " It is the best book to prepare you"
-                + "\n< I used this book back in my ole' days.\n"
-                + " It saved me tons of trouble! Find it at the bookstore."
-                + "\n< I want you to solve these assignments,\n"
-                + " solve these with the book and you will be prepared"
-                + "\n< Sound like a pretty good plan, right? (yes/no)");
+                "\n < 1: talk "
+              + "\n < 2: leave ");
+        andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap \n"
+                            + "< You know, a thing between you and me. The book, called Best Java Book for \n"
+                            + "< learning Java EVER!. It is the best book to prepare you I used this book \n" 
+                            + "< back in my old days. It saved me tons of trouble! Find it at the bookstore. \n"
+                            + "< I want you to solve these assignments, solve these with the book and you \n"
+                            + "< will be prepared. Sound like a pretty good plan, right? (yes/no) \n");
 
-        andars.setAcceptString("< Nice!... by the way watch out for the lady in the bookstore,"
-                + "\n< she is pretty flirtatious.");
+        andars.setAcceptString("< Nice!... by the way watch out for the lady in the bookstore."
+                + "\n< She is pretty flirtatious.");
         andars.setDeclineString("< You gonna faiiil! Come back if you want the slightest"
                 + "\n< chance of doing the assignments.");
         andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter..."
@@ -176,7 +173,7 @@ public class NPCS extends NPC {
         eryk.setDialogOptions("< 1: Talk"                            
                                       + "\n< 2: Leave");
         eryk.setQuestString("The damn light won't work and I can't get the projector to work \n"
-                + "It was so much easier back in the old days, when we only used blackboards"
+                + "It was so much easier back in the old days, when we only used blackboards \n"
                 + "Will you try and get the technology working in here? (yes/no)");
         eryk.setAcceptString("Thank you very much. \n "
                 + "There might be a cable or something missing");

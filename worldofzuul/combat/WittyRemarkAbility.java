@@ -4,13 +4,13 @@ import java.util.Random;
 import worldofzuul.Encounter;
 import worldofzuul.Player;
 
-public class Punch extends Battlesystem {
+public class WittyRemarkAbility extends Battlesystem {
 
     private Random rand = new Random();
     private int damageAmount;
     private String attackSuccessString;
 
-    public Punch(int playerLevel) {
+    public WittyRemarkAbility(int playerLevel) {
         damageAmount = (playerLevel * 2) + 10;
     }
 

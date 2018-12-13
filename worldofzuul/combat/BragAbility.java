@@ -4,14 +4,14 @@ import java.util.Random;
 import worldofzuul.Encounter;
 import worldofzuul.Player;
 
-public class Dropkick extends Battlesystem{
+public class BragAbility extends Battlesystem{
     
     private Random rand = new Random();
     private int damageAmount;
     private String attackSuccessString;
     
    
-    public Dropkick(int playerLevel) {
+    public BragAbility(int playerLevel) {
         damageAmount = (playerLevel * 2) + 10;
     }
     
