@@ -88,8 +88,9 @@ public class NPCS extends NPC {
 
         andars.setQuestCompletedString("> You finally found the book and handed in the assignments. \n"
                                      + "> You should go study to the study hall.");
-        andars.setHealth(1000);
+        andars.setHealth(250);
         andars.setEnemyBaseAttackDamage(10);
+        andars.setExperience(1000);
         npcs.add(andars);
         // End of the NPC Andars------------------------------------------------
 
