@@ -429,6 +429,9 @@ public class Game extends Player {
 
     private String printHelp() {
         return "Solve your current quest, you can see it by typing journal.\n"
+                + "Special attack can be used once. \n"
+                + "Brag ability can be used three times. \n"
+                + "Both your special and brag abilities gets charged after you level up. \n"
                 + "HINT: completing quests wins you the game.\n\n"
                 + "Your command words are:\n"
                 + parser.showCommands();
