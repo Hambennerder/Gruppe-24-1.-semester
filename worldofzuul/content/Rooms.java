@@ -96,7 +96,7 @@ public class Rooms extends Room {
         rooms.add(g1);
 
         // u180 index 5
-        u180 = new Room("You are in u180. A big bright room with many rows of chairs and tables.\n"
+        u180 = new Room("A big bright room with many rows of chairs and tables.\n"
                 + "You can feel the struggle and anxiety of the many students who have \n"
                 + "sat in this room before you.");
         u180.setDescription("In the room you see a figure, it looks like \'Andars\'");

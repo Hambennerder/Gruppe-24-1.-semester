@@ -62,26 +62,6 @@ public class NPCS extends NPC {
         andars.setDialogOptions(
                 "\n < 1: talk "
               + "\n < 2: leave ");
-        andars.setQuestString("< Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap \n"
-                            + "< You know, a thing between you and me. There is a book in the bookstore. \n"
-                            + "< It is the best book to prepare you. I used this book \n"
-                            + "< back in my old days. It saved me tons of trouble! Find it at the bookstore. \n"
-                            + "< I want you to complete these assignments, solve them with the book and you \n"
-                            + "< will be prepared. Sound like a pretty good plan, right? (yes/no) \n");
-
-        andars.setAcceptString("< Nice!... by the way watch out for the lady in the bookstore."
-                + "\n< She is pretty flirtatious.");
-        andars.setDeclineString("< You gonna faiiil! Come back if you want the slightest"
-                + "\n< chance of doing the assignments.");
-        andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter... \n"
-                + "< just find it already.. \n");
-
-        andars.setCompleteQuestString("< Damn dude, what took you so long?! \n"
-                + "< You should probably go study some more in the studyhall.");
-        andars.setQuestCompletedString("< You finally found the book and"
-                + "\n< handed in the assignments. \n"
-                + "< You should go study to the study hall.");
-
         andars.setQuestString("> Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap"
                 + "\n> You know, a thing between you and me.\n"
                 + ">There is a book in the bookstore.\n"
