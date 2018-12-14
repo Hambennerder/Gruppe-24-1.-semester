@@ -22,9 +22,8 @@ public class Rooms extends Room {
         Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookstore, storage, t8,
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
-
+      
         // Entrance index 0
-
         entrance = new Room("Entrance to the University. \n"
                 + "What exciting adventure lies behind these doors?");
         entrance.setDescription("You are a new student in software engineering and\n"
@@ -144,16 +143,15 @@ public class Rooms extends Room {
         bookstore.setNextQuestProgress(3);
         bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n"
                 + "which is somewhere south, remember Andars' warning.\n"
-                + "The lady in the bookstore wants you to get her some coffee,\n"
+                + "The lady in the bookstore wants you to get her some coffee,\n"                               
                 + "head up to the canteen.");
-
 
         rooms.add(bookstore);
 
         // student bookstores storage at index 10
         storage = new Room("You shouldnt be back here... unless");
         storage.setDescription("Is that a \'book\'?");
-        storage.setName("Student bookstore storage");
+        storage.setName("Storage");
         storage.setRequiredProgress(4);
         rooms.add(storage);
 
@@ -170,14 +168,14 @@ public class Rooms extends Room {
                 // Index 12
         g3 = new Room("It's very chilly in here.\n"
                 + "That guy over there must be freezing.");
-
         g3.setRequiredProgress(6);
         g3.setDescription("Another part of the maze that is SDU\n"
                 + "There is a \'student\' in the room.");
         g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
-        g3.setJournalString("Clear the studyhall and library of students from other faculties");
+        g3.setJournalString("Clear the studyhall and library of students from other faculties.\n"
+                + "Then return to the student in g3.");
         rooms.add(g3);
 
         // Index 13
@@ -210,8 +208,8 @@ public class Rooms extends Room {
         library.setName("library");
         library.setRequiredProgress(6);
         rooms.add(library);
+        
         // study hall at index 17
-
         studyhall = new Room("This is a wonderful place");
         studyhall.setHasEncounter(true);
 

@@ -74,7 +74,6 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
         addInventory();
         addExits();
         
-        
         location.setText(g.currentRoom.getName());
         playerNameHP.setText(g.player.getPlayerName());
         setPlayerHP.setText("HP: "+g.player.getStringHealth());

@@ -17,7 +17,7 @@ public class Player extends Entity {
     private Scanner input;
     private int progress = 0;
     private int indexOfLastAdded = 0;
-    private String journal;
+    private String journal = "";
     private int heals = 0;
     private int maxHeals = 1;
     private int special = 1;
