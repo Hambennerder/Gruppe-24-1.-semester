@@ -144,8 +144,6 @@ public class Rooms extends Room {
 
                 + "The lady in the bookstore wants you to get her some coffee,\n"
                 + "head up to the canteen.");        
-
-
         rooms.add(bookstore);
 
         // student bookstores storage at index 10

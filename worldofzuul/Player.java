@@ -15,7 +15,7 @@ public class Player extends Entity {
     private String age;
     private String gender;
     private Scanner input;
-    private int progress = 8;
+    private int progress = 12;
     private int indexOfLastAdded = 0;
     private String journal = "";
     private int heals = 1;

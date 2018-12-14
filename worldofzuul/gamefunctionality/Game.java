@@ -41,7 +41,7 @@ public class Game extends Player {
     public void play() {
 
         listOfRooms.createRooms();
-        currentRoom = listOfRooms.getRoom(0);
+        currentRoom = listOfRooms.getRoom(34);
 
         npcs.createNPCS();
 
@@ -271,7 +271,19 @@ public class Game extends Player {
             if (fight) {
                 return "You can't go anywhere, you're still in a fight, perhaps try to flee?\n\n"
                         + battle.Combatoptions();
-            } else {
+            } else if (questQuestion){
+               s = "Please accept or decline the quest before checking your journal!\n"
+                        + "Please type 'yes' or 'no' to do so.\n\n"
+                        + checkQuest();
+            } else if (conversation){
+                s= "Please finish your conversation before checking your journal.\n";
+                try {
+                    s += currentRoom.getNPC(0).getWelcome()
+                            + "\n" + currentRoom.getNPC(0).getDialogOptions();
+                } catch (IndexOutOfBoundsException ex) {
+
+                }  
+            }else {
                 if (!player.getJournal().equals("")) {
                     s = player.getJournal();
                 } else {
@@ -360,10 +372,19 @@ public class Game extends Player {
 
                 questQuestion = false;
                 conversation = false;
-                
+                if (player.getProgress() == 4 && currentRoom.getName().equals("Bookstore")){
+                    player.setJournal("A Programmers Bible:\n"
+                            + "The lady has received her coffee, and is very thankful.\n"
+                            + "She has unlocked the storage room, where all the books are.\n\n"
+                            + "You may now with her permission enter the storage room and take the book.\n"
+                            + "Afterwards return to Andars with the book!");
+                } else if (player.getProgress() == 12 && currentRoom.getName().equals("T8")) {
+                    player.setJournal("You have returned Maltas bag.\n"
+                            + "Return to Lune.");
+                } else {
                 player.setJournal("You have no current quest.\n"
                                 + "Explore to find the next quest!");
-                        
+                }  
             }
             // check 3.6: Checks whether or not a quest has been completed in that room
             // if a quest has been completed, it will return the string that explains
