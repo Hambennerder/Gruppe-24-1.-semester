@@ -20,7 +20,9 @@ public class Game extends Player {
     public Parser parser;
     public Room currentRoom;
     public Player player;
-    private Battlesystem battle = new Battlesystem();
+    public NPCS npcs;
+    Rooms listOfRooms;
+    private Battlesystem battle;
     private boolean finished = false;
     private boolean started = false;
     private boolean fight = false;
@@ -32,27 +34,16 @@ public class Game extends Player {
     public Game() {
         parser = new Parser();
         player = new Player();
-    }
-
-    public void setPlayerName() {
-        player.setPlayerName(player.ConversationWord("What is your name?"));
-    }
-
-    public void setGender() {
-        player.setGender(player.ConversationWord("Please enter your gender: "));
-    }
-
-    public void setAge() {
-        player.setAge(player.ConversationWord("Please enter your age: "));
+        battle = new Battlesystem();
+        npcs = new NPCS();
+        listOfRooms = new Rooms(player.getPlayerName());
     }
 
     public void play() {
 
-        Rooms listOfRooms = new Rooms(player.getPlayerName());
         listOfRooms.createRooms();
         currentRoom = listOfRooms.getRoom(0);
 
-        NPCS npcs = new NPCS();
         npcs.createNPCS();
 
         Item id_card = new Item();
@@ -102,7 +93,7 @@ public class Game extends Player {
         Encounter lawStudentEncounter = new Encounter();
         lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
         lawStudentEncounter.setEncounterPossibility(100);
-        lawStudentEncounter.setEncounterMessage("Oh no, you have encountered"+ npcs.getNPC(3).getName()+ "!");
+        lawStudentEncounter.setEncounterMessage("> Oh no, you have encountered"+ npcs.getNPC(3).getName()+ "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
 
         // Adding student to hallway g3
@@ -129,16 +120,22 @@ public class Game extends Player {
         listOfRooms.getRoom(34).addEncounter(janitorEncounter);
         janitorEncounter.addEncounterNPC(npcs.getNPC(8));
         janitorEncounter.setEncounterPossibility(100);
-        janitorEncounter.setEncounterMessage("Haha! You filthy students really "
-                + "think you're something special, huh? well you are not!");
+        janitorEncounter.setEncounterMessage("> Haha! You filthy students really "
+                + "> think you're something special, huh? well you are not!");
 
         // Adding medicine student encounter to study hall
         Encounter medicineEncounter = new Encounter();
         medicineEncounter.addEncounterNPC(npcs.getNPC(9));
         medicineEncounter.setEncounterPossibility(100);
-        medicineEncounter.setEncounterMessage("You think you're smarter than me?"
-                + "HA! I'm studying to become a doctor.. my grades are better than yours!");
+        medicineEncounter.setEncounterMessage("> You think you're smarter than me?"
+                + "> HA! I'm studying to become a doctor.. my grades are better than yours!");
         listOfRooms.getRoom(17).addEncounter(medicineEncounter);
+        
+        Encounter bossFight = new Encounter();
+        bossFight.addEncounterNPC(npcs.getNPC(1));
+        bossFight.setEncounterPossibility(0);
+        bossFight.setEncounterMessage("Exam time!");
+        listOfRooms.getRoom(5).addEncounter(bossFight);
     }
 
     public boolean getFinished() {
@@ -180,10 +177,17 @@ public class Game extends Player {
             } else {
                 conversation = false;
                 questQuestion = false;
-                s = goRoom(command) + "\n"
-                        + encounterNPC(command);
-            }
+                 s = goRoom(command);
+                if (player.getProgress() == 15 && currentRoom.getName().equals("U180")){
+                    
+                        currentRoom.getNPC(0).setFriendly(false);
+                        currentRoom.getEncounter().setEncounterPossibility(100);
+                        currentRoom.setHasEncounter(true);
 
+                    } 
+                s += "\n" + encounterNPC(command);
+            }
+            
         } else if (commandWord == CommandWord.QUIT) {
             setFinished(true);
 
@@ -384,8 +388,7 @@ public class Game extends Player {
             // to return another string when they player comes back without completing it
             // also the string that explains the quest will be added to the players journal
             if (command.getCommandWord().equals(CommandWord.YES)) {
-                s = currentRoom.getNPC(0).getAcceptString()+"\n"
-                        +currentRoom.getDescription();
+                s = currentRoom.getNPC(0).getAcceptString()+"\n";
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
                 player.setJournal(currentRoom.getJournalString());
@@ -393,9 +396,7 @@ public class Game extends Player {
                 // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
                 // and player must choose 1 again to accept the quest.
             } else if (command.getCommandWord().equals(CommandWord.NO)) {
-                s = currentRoom.getNPC(0).getDeclineString()+"\n"
-                        +currentRoom.getDescription();
-
+                s = currentRoom.getNPC(0).getDeclineString()+"\n";
             }
         } catch (IndexOutOfBoundsException ex) {
             s += currentRoom.getShortDescription();

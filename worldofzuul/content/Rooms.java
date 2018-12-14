@@ -30,45 +30,23 @@ public class Rooms extends Room {
                               + "the main entrance of the university. You look around and see countless of other \n"
                               + "university students, heading to their next class or lecture, you see a man wearing \n" 
                               + "a red shirt saying \'mentor\' \n");
-
-        entrance.setRoomIntro("Hello player, my name is Uvuvwevwevwe, and I will guide you through the first \n"
-                            + "steps of this tutorial. Above this message you will see two things, location and \n"
-                            + "exits. Location shows your current location. If you haven't guessed it already,\n"
-                            + "exits show our possible exits. Before we show you how to use the exits, let me \n"
-                            + "first introduce you to the command, inspect. Type in inspect and you will get a \n"
-                            + "detailed description of thecurrent room, and also which elements it contains. \n"
-                            + "Everything surrounded by \'single quotation marks\', are interactable. You can \n"
-                            + "interact by typing in approach and the figures name, be aware, this system IS \n"
-                            + "case sensitive. If you want to take an item in a room, the same applies but with \n"
-                            + "the command take. Start the game by typing inspect, and then approach the \n"
-                            + "given figure. Type help if you need help \n");
-
         entrance = new Room("Entrance to the University. \n"
                 + "What exciting adventure lies behind these doors?");
-        entrance.setDescription("You are a new student in software engineering and you have just arrived outside\n"
-                + "the main entrance of the university. You look around and see countless of other \n"
-                + "university students, heading to their next class or lecture, you see a man \n"
-                + "wearing a red shirt saying \'mentor\'\n");
-            
-
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
                 + "> through the first steps of this tutorial. Above this message you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
                 + "> location. If you haven't guessed it already, exits show our possible exits \n"
                 + "> Before we show you how to use the exits, let me first introduce you to \n"
-                + "> the command, inspect. Type in inspect and you will get a detailed\n"
+                + "> the command, inspect. Type in inspect and you will get a detailed \n"
                 + "> description of the current room, and also which elements it contains.\n"
                 + "> Everything surrounded by \'single quotation marks\', are interactable.\n"
                 + "> You can interact by typing in approach and the figures name, be aware,\n"
                 + "> this system IS case sensitive. If you want to take an item in a room,\n"
-                + "> the same applies but with the command take. \n\n"
+                + "> the same applies but with the command take. \n"
                 + "> Start the game by typing inspect, and then approach the given figure. \n"
                 + "> type help if you need help");
-
-
         entrance.setJournalString("A quest for the holy ID-card: Start by heading north \n"
                 + " find the card and return to the mentor");
-
         entrance.setName("Entrance");
         entrance.setHasQuest(true);
         entrance.setQuestItemName("ID-card");
@@ -76,21 +54,25 @@ public class Rooms extends Room {
         rooms.add(entrance);
 
         // u1 index 1
-        u1 = new Room("A small room, rather empty and quiet. \n"
+        u1 = new Room("A small room, rather empty and quiet. There were nothing unique \n"
+                + "about the room that made it stand out.\n"
                 + "HINT: inspecting a room reveals interactable objects.");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
         rooms.add(u1);
 
         // u2 index 2
-        u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint");
-        u2.setDescription("No ID card here...");
+        u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint \n"
+                    + "inside the room there were a couple of chairs and the infront big screen showing \n"
+                    + "showing a timetable. Roaming in and out of the room where students who like \n"
+                    + "seniors wearing red t-shirt with logo and name of the university.");
+        u2.setDescription("I look around. No ID card here...");
         u2.setName("u2");
         rooms.add(u2);
 
         // u3 at index 3
-        u3 = new Room("Room full of people, they seem like new students as I.\n"
-                + "Maybe the ID-card is in here.. try inspecting the room?");
+        u3 = new Room("Room was full of people standing i a line, they seem like new students just like me. \n"
+                    + " Maybe the ID-card is in here..try inspecting the room?\n");
         u3.setDescription("The ID-card is here!. Type \'take ID-card\' to pick it up.\n"
                 + "You can type inventory to make sure you picked it up.\n"
                 + "Remember to turn your quest in at the mentor. \n");
@@ -201,7 +183,7 @@ public class Rooms extends Room {
         // Index 13
         g4 = new Room("you are in hallway g4");
         g4.setRequiredProgress(6);
-        g4.setDescription("wow... how long are these hallways");
+        g4.setDescription("wow... how long are these hallways. I am begin to feel drained");
         g4.setName("g4");
         rooms.add(g4);
 
