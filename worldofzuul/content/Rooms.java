@@ -212,21 +212,20 @@ public class Rooms extends Room {
         rooms.add(library);
         // study hall at index 17
 
-        studyhall = new Room("study hall");
+        studyhall = new Room("This is a wonderful place");
         studyhall.setHasEncounter(true);
 
         studyhall.setRequiredProgress(6);
-        studyhall.setDescription("The studyhall is full of people who study medicin \n"
-                + "You probably need to get them out of here, if you want a place to study");
+        studyhall.setDescription("This is a nice place to study");
         studyhall.setName("Studyhall");
         rooms.add(studyhall);
 
 
         // index at index 18
-        u55 = new Room("u55");
+        u55 = new Room("Holy crap this room is huge!!");
 
         u55.setDescription("You are in a big auditorium desgined for teaching\n"
-                + " a large number of distressed students\n"
+                + "a large number of distressed students\n"
                 + "You see your teacher \'Lune\' ");
         u55.setName("u55");
 
@@ -268,7 +267,7 @@ public class Rooms extends Room {
 
 
         //index at 21
-        g9 = new Room("you are in hallway g9");
+        g9 = new Room("Just a hallway");
 
         g9.setRequiredProgress(7);
         g9.setDescription("You should have worn a pedometer...");
@@ -276,7 +275,7 @@ public class Rooms extends Room {
         rooms.add(g9);
 
         // index at 22
-        g10 = new Room("you are in hallway g10");
+        g10 = new Room("Just a hallway");
 
         g10.setDescription("Luckily you don't have to go to the gym anymore\n"
                 + "with all the walking you have been doing here");
@@ -284,96 +283,96 @@ public class Rooms extends Room {
         rooms.add(g10);
 
         // index at 23
-        g11 = new Room("you are in hallway g11");
+        g11 = new Room("Just a hallway");
 
         g11.setDescription("You should be at the basement floor soon");
         g11.setName("g11");
         rooms.add(g11);
 
         // index at 24
-        g12 = new Room("you are in hallway g12");
+        g12 = new Room("Just a hallway");
 
         g12.setDescription("You are almost at the basement. T8 Should be down there");
         g12.setName("g12");
         rooms.add(g12);
 
         // index at 25
-        g13 = new Room("you are in hallway g13");
+        g13 = new Room("Just a hallway");
 
         g13.setDescription("It's really dark down here... ");
         g13.setName("g13");
         rooms.add(g13);
 
         // index at 26
-        g14 = new Room("you are in hallway g14");
+        g14 = new Room("Just a hallway");
 
         g14.setDescription("It's really dark down here... Watch out for the angry janitors");
         g14.setName("g14");
         rooms.add(g14);
 
         // index at 27
-        g15 = new Room("you are in hallway g15");
+        g15 = new Room("Just a hallway");
 
         g15.setDescription("It's really dark down here... Watch out for the angry janitors");
         g15.setName("g15");
         rooms.add(g15);
 
         // index at 28
-        g16 = new Room("you are in hallway g16");
+        g16 = new Room("Just a hallway");
 
         g16.setDescription("It's really dark down here... The doors can be quite tricky to open");
         g16.setName("g16");
         rooms.add(g16);
 
         // index at 29
-        g17 = new Room("you are in hallway 17");
+        g17 = new Room("Just a hallway");
 
         g17.setDescription("It's really dark down here... Watch out for the angry janitors");
         rooms.add(g17);
         // index at 30
-        g18 = new Room("you are in hallway g18");
+        g18 = new Room("Just a hallway");
 
         g18.setDescription("It's really dark down here... Watch out for the angry janitors");
         g18.setName("g18");
         rooms.add(g18);
 
         // index at 31
-        g19 = new Room("you are in hallway g19");
+        g19 = new Room("Just a hallway");
 
         g19.setDescription("It's really dark down here... Is that a dead body over there?");
         g19.setName("g19");
         rooms.add(g19);
 
         // index at 32
-        g20 = new Room("you are in hallway g20");
+        g20 = new Room("Just a hallway");
 
         g20.setDescription("It's really dark down here... Watch out for the angry janitors");
         g20.setName("g20");
         rooms.add(g20);
 
         // index at 33
-        g21 = new Room("you are in hallway g21");
+        g21 = new Room("Just a hallway");
 
         g21.setDescription("It's really dark down here... Wow! Is that an original banksy?");
         g21.setName("g21");
         rooms.add(g21);
 
         // index at 34
-        g22 = new Room("you are in hallway g22");
+        g22 = new Room("Just a hallway");
         g22.setHasEncounter(true);
         g22.setDescription("It's really dark down here... Maybe you can find a switch somewhere");
         g22.setName("g22");
         rooms.add(g22);
 
         // index at 35
-        g23 = new Room("you are in hallway g23");
+        g23 = new Room("Just a hallway");
 
         g23.setDescription("It's really dark down here... Watch out for the angry janitors");
         g23.setName("g23");
         rooms.add(g23);
 
         // index at 36
-        g24 = new Room("you are in hallway g24");
+        g24 = new Room("Just a hallway");
 
         g24.setDescription("It's really dark down here... You might be stuck down here forever");
         g24.setName("g24");

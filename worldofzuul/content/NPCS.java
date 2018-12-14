@@ -139,7 +139,9 @@ public class NPCS extends NPC {
         student.setAcceptString(">I'm so glad to hear that, I really need to be studying for an exam");
         student.setDeclineString(">Please help. Shouldn't you be studying as well?");
         student.setOnQuestString(">You have to make room for us to study in the study hall");
-        student.setCompleteQuestString(">Thanks buddy, we should get a beer at Nedenunder later");
+        student.setCompleteQuestString(">Thanks buddy, I heard you cleard out the study hall and library\n"
+                + ">we should get a beer at Nedenunder later\n"
+                + ">If you're looking for something to do I've heard that Lune needs help");
         student.setQuestCompletedString(">Let me know if you wanna grab that beer");
         npcs.add(student);
         // End of student ------------------------------------------------------
@@ -151,13 +153,13 @@ public class NPCS extends NPC {
         lune.setDescription(">*Your teacher in introduction to Software Engineering*");
         lune.setDialogOptions("> 1: Talk \n"
                             + "> 2: Leave \n");
-        lune.setQuestString(">I can't your my e-moderator. He could be in the T8. \n"
+        lune.setQuestString(">I can't our e-moderator. He could be in T8. \n"
                           + ">The room can be quite hard to find, but I'm sure you can find it. \n"
                           + ">Oh yeah, please don't get lost down there \n"
                           + ">we have had enough rescue mission already"
                           + ">Will you go find him? (yes/no)");
-        lune.setAcceptString(">That´s great. Remember, he could be in room T8");
-        lune.setDeclineString(">You can't do your journal-writing wihtout the E-moderator");
+        lune.setAcceptString(">That's great. Remember, he could be in T8");
+        lune.setDeclineString(">You can't do your journal writing without the e-moderator");
         lune.setOnQuestString(">Go find the e-moderator");
         lune.setCompleteQuestString(">Great job finding the e-moderator \n"
                                   + ">it must have been quite difficult. \n"

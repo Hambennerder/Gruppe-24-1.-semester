@@ -58,7 +58,6 @@ public class Game extends Player {
         Consumable healz = new Consumable();
         healz.setName("healz");
         listOfRooms.getRoom(15).addItem(healz);
-        listOfRooms.getRoom(18).addItem(healz);
         listOfRooms.getRoom(21).addItem(healz);
         listOfRooms.getRoom(25).addItem(healz);
         listOfRooms.getRoom(29).addItem(healz);
@@ -122,8 +121,8 @@ public class Game extends Player {
         Encounter medicineEncounter = new Encounter();
         medicineEncounter.addEncounterNPC(npcs.getNPC(9));
         medicineEncounter.setEncounterPossibility(100);
-        medicineEncounter.setEncounterMessage("> You think you're smarter than me?"
-                + "> HA! I'm studying to become a doctor.. my grades are better than yours!");
+        medicineEncounter.setEncounterMessage("> You think you're smarter than me?\n"
+                + ">HA! I'm studying to become a doctor.. my grades are better than yours!");
         listOfRooms.getRoom(17).addEncounter(medicineEncounter);
         
         Encounter bossFight = new Encounter();
@@ -619,7 +618,7 @@ public class Game extends Player {
             }
         }
        if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0 && player.getHealth() > 0) {
-           s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+           s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "\n"
                                 + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
            player.gainExperience(currentRoom.getEncounter().getEncounterNPC().getExperience());
            fight = false;
