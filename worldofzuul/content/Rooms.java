@@ -36,9 +36,9 @@ public class Rooms extends Room {
                               + "a red shirt saying \'mentor\' \n");
 
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
-                + "> through the first steps of this tutorial. In the right side of the screen you \n"
+                + "> through the first steps of this tutorial. On the right side of the screen you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
-                + "> location. If you haven't guessed it already, exits show our possible exits \n"
+                + "> location. If you haven't guessed it already, exits show your possible exits \n"
                 + "> Before we show you how to use the exits, let me first introduce you to \n"
                 + "> the command, inspect. Type in inspect and you will get a detailed \n"
                 + "> description of the current room, and also which elements it contains.\n"
@@ -49,7 +49,7 @@ public class Rooms extends Room {
                 + "> Start the game by typing inspect, and then approach the given figure. \n"
                 + "> type help if you need help");
         entrance.setJournalString("A quest for the holy ID-card: Start by heading north \n"
-                + " find the card and return to the mentor");
+                + "find the card and return to the mentor");
         entrance.setName("Entrance");
         entrance.setHasQuest(true);
         entrance.setQuestItemName("ID-card");
@@ -57,8 +57,8 @@ public class Rooms extends Room {
         rooms.add(entrance);
 
         // u1 index 1
-        u1 = new Room("A small room, rather empty and quiet. There were nothing unique \n"
-                + "about the room that made it stand out.\n"
+        u1 = new Room("A small room, rather empty and quiet. There is nothing unique \n"
+                + "about this room that makes it stand out.\n"
                 + "\n"
                 + "HINT: inspecting a room reveals interactable objects.");
         u1.setName("u1");
@@ -67,16 +67,16 @@ public class Rooms extends Room {
 
         // u2 index 2
         u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint \n"
-                    + "inside the room there is a couple of chairs and the infront big screen showing \n"
-                    + "showing a timetable. Roaming in and out of the room where students who like \n"
-                    + "seniors wearing red t-shirt with logo and name of the university.");
+                    + "inside the room there is a couple of chairs in front of a big screen \n"
+                    + "showing a timetable. Roaming in and out of the room there are students who are \n"
+                    + "seniors wearing red t-shirt with logos and the name of the university.");
         u2.setDescription("I look around. No ID card here...");
         u2.setName("u2");
         rooms.add(u2);
 
         // u3 at index 3
-        u3 = new Room("Room was full of people standing i a line, \n"
-                + " they seem like new students just like me. \n"
+        u3 = new Room("This room is full of people standing in a line, \n"
+                + " they seem to be like new students just like me. \n"
                     + " Maybe the ID-card is in here..try inspecting the room?\n");
         u3.setDescription("The ID-card is here!. Type \'take ID-card\' to pick it up.\n"
                 + "You can type inventory to make sure you picked it up.\n"
@@ -106,7 +106,7 @@ public class Rooms extends Room {
         u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
         u180.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
-                + " which is somewhere south, remember Andars' warning.");
+                + "which is somewhere south, remember Andars' warning.");
         rooms.add(u180);
 
         // index 6

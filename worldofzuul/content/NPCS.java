@@ -21,10 +21,14 @@ public class NPCS extends NPC {
                 + " and a pair of glasses,short clean cut redheaded*");
         mentor.setName("mentor");
         mentor.setWelcome(">You must be a new student, welcome! \n"
+                + "\n"
                 + "> Uvuvwevwevwe: As you can see below, you have two options,\n"
                 + "> type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
         mentor.setDialogOptions("> 1: talk"
                 + "\n> 2: leave");
+        mentor.setQuestString("You have to find your student ID card it should be around here.\n"
+                + "Are you ready to face this task?\n"
+                + "Type yes or no (yes/no) to accept or decline the quest.");
         mentor.setAcceptString(">Good luck student! \n"
                 + "\nUvuvwevwevwe: \n"
                 + "> Now that you accepted a quest, you can type journal, and the quest's name \n"
@@ -38,14 +42,14 @@ public class NPCS extends NPC {
         mentor.setQuestCompletedString(">I'm sorry, I'm busy. Go find Andars.");
         mentor.setCompleteQuestString(">Yes! you found the ID-card, \n"
                 + ">now you can finally access this god awful place.\n"
-                + ">now you must go find Andars, I've heard that he's in u180. Good luck! \n"
+                + ">Go find Andars, I've heard that he's in u180. Good luck! \n"
                 + "\n"
                 + ">Uvuvwevwevwe: Congratulations! You finished your very first quest.\n"
                 + ">Sadly, you're on your own now. But before you go I have to warn you. \n"
-                + ">As you continue your journey you'll face some powerful opponents along \n"
-                + ">the way whom you have to battle, through the means of wittyness, and brag etc. \n"
+                + ">As you continue your journey you'll face some powerful opponents \n"
+                + ">whom you have to battle, through the means of wittyness, and brag etc. \n"
                 + ">You also have the ability to heal yourself when your health happens to \n"
-                + ">be low. But there are limitations you have to inspect rooms and collect more \n"
+                + ">be low. But there are limitations. You have to inspect rooms and collect more \n"
                 + ">healz when you run out.");
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
@@ -62,25 +66,28 @@ public class NPCS extends NPC {
         andars.setDialogOptions(
                 "\n < 1: talk "
               + "\n < 2: leave ");
-        andars.setQuestString("> Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap"
+        andars.setQuestString(">Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap."
                 + "\n> You know, a thing between you and me.\n"
                 + ">There is a book in the bookstore.\n"
-                + "> It is the best book to prepare you."
-                + "\n> I used this book back in my old days.\n"
-                + "> It saved me tons of trouble! Find it at the bookstore."
-                + "\n> I want you to complete these assignments,\n"
-                + "> solve them with the book and you will be prepared"
-                + "\n> Sound like a pretty good plan, right? (yes/no)");
+                + ">It is the best book to prepare you."
+                + "\n>I used this book back in my old days.\n"
+                + ">It saved me tons of trouble! Find it at the bookstore."
+                + "\n>I want you to complete these assignments,\n"
+                + ">solve them with the book and you will be prepared"
+                + "\n>Sound like a pretty good plan, right? (yes/no)");
 
-        andars.setAcceptString(">Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
-        andars.setDeclineString(">You gonna faiiil! Come back if you want the slightest chance of doing the assignments.");
-        andars.setOnQuestString(">Finding the book can't be harder than solving e-tiviteter... just find it already..");
+        andars.setAcceptString(">Nice!...\n"
+                + ">by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
+        andars.setDeclineString(">You gonna faiiil!\n"
+                + ">Come back if you want the slightest chance of doing the assignments.");
+        andars.setOnQuestString(">Finding the book can't be harder than solving e-tiviteter...\n"
+                + ">just find it already.");
 
         andars.setCompleteQuestString(">Damn dude, what took you so long?! \n"
                 + ">You should probably go study some more in the studyhall.");
 
-        andars.setQuestCompletedString(">You finally found the book and handed in the assignments. \n"
-                                     + ">You should go study to the study hall.");
+        andars.setQuestCompletedString("> You finally found the book and handed in the assignments. \n"
+                                     + "> You should go study to the study hall.");
         andars.setHealth(1000);
         andars.setEnemyBaseAttackDamage(10);
         npcs.add(andars);
