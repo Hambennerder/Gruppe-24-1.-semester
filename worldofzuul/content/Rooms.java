@@ -68,16 +68,16 @@ public class Rooms extends Room {
         // u2 index 2
         u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint \n"
                     + "inside the room there is a couple of chairs in front of a big screen \n"
-                    + "showing a timetable. Roaming in and out of the room there are students who are \n"
-                    + "seniors wearing red t-shirt with logos and the name of the university.");
+                    + "showing a timetable. Roaming in and out of the room there are students who\n"
+                    + "are seniors wearing red t-shirt with logos and the name of the university.");
         u2.setDescription("I look around. No ID card here...");
         u2.setName("u2");
         rooms.add(u2);
 
         // u3 at index 3
         u3 = new Room("This room is full of people standing in a line, \n"
-                + " they seem to be like new students just like me. \n"
-                    + " Maybe the ID-card is in here..try inspecting the room?\n");
+                + "they seem to be like new students just like me. \n"
+                    + "Maybe the ID-card is in here..try inspecting the room?\n");
         u3.setDescription("The ID-card is here!. Type \'take ID-card\' to pick it up.\n"
                 + "You can type inventory to make sure you picked it up.\n"
                 + "Remember to turn your quest in at the mentor. \n");
@@ -105,12 +105,12 @@ public class Rooms extends Room {
         u180.setHasQuest(true);
         u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
-        u180.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
+        u180.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n"
                 + "which is somewhere south, remember Andars' warning.");
         rooms.add(u180);
 
         // index 6
-        g2 = new Room("You are in a hallway. "
+        g2 = new Room(""
                 + "It's dark, a little smelly, and a weird draft keeps running down \n"
                 + "your neck. There are doors everywhere. \n");
         g2.setDescription("wow... inspecting this really was a waste of time");
@@ -119,15 +119,14 @@ public class Rooms extends Room {
         rooms.add(g2);
 
         // g7 at index 7
-        g7 = new Room("You are standing in a hallway, looks like all other hallways in this damn university.\n"
-                + "You must have been walking for miles by now. It's very dark in here, you are looking \n"
-                + "for a light switch but there doesn't seem to be any.");
+        g7 = new Room("This hallway looks like all other hallways in this damn university.\n"
+                + "You must have been walking for miles by now."); 
         g7.setDescription("Just your average dark hallway at SDU");
         g7.setName("g7");
         rooms.add(g7);
 
         // g8 at index 8
-        g8 = new Room("You are in hallway g8."
+        g8 = new Room(""
                 + "As you enter the door slams behind you. \n"
                 + "Must be the draft again... Where does it originate?");
         g8.setDescription("Nothing really exciting in this hallway");
@@ -135,17 +134,16 @@ public class Rooms extends Room {
         rooms.add(g8);
 
         // Student bookstore at index 9
-        bookstore = new Room("In the book store. Your first thought is that there are way too many books in such \n"
+        bookstore = new Room("Your first thought is that there are way too many books in such \n"
                 + "a small area.\n");
         bookstore.setDescription("How will you ever find the book you need in here. \n"
-                + " Maybe that 'lady' over there can help?");
+                + "Maybe that 'lady' over there can help?");
         bookstore.setName("Bookstore");
         bookstore.setHasQuest(true);
         bookstore.setRequiredProgress(2);
         bookstore.setNextQuestProgress(3);
         bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
-                + " which is somewhere south, remember Andars' warning."
-
+                + "which is somewhere south, remember Andars' warning.\n"
                 + "The lady in the bookstore wants you to get her some coffee,\n"
                 + "head up to the canteen.");
 
@@ -160,10 +158,9 @@ public class Rooms extends Room {
         rooms.add(storage);
 
         // canteen at index 11
-        canteen = new Room("In the canteen. A place where Chaos reigns. A place where only the fittest will \n"
-                + "survive but atleast there is food. \n");
-        canteen.setDescription("You see some \'coffee'.\n"
-                + "It might or might not be useful in some situations");
+        canteen = new Room("This is a place where chaos reigns. There are way too many people here!");
+        canteen.setDescription("You see a \'coffee\' machine \n"
+                + "It might or might not be useful.");
         canteen.setName("Canteen");
         rooms.add(canteen);
 
@@ -171,11 +168,12 @@ public class Rooms extends Room {
 
 
                 // Index 12
-        g3 = new Room("you are in hallway g3");
+        g3 = new Room("It's very chilly in here.\n"
+                + "That guy over there must be freezing.");
 
         g3.setRequiredProgress(6);
-        g3.setDescription("another part of the maze that is SDU\n"
-                + "you should probablt talk to that 'student'");
+        g3.setDescription("Another part of the maze that is SDU\n"
+                + "There is a student in the room.");
         g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
@@ -183,32 +181,32 @@ public class Rooms extends Room {
         rooms.add(g3);
 
         // Index 13
-        g4 = new Room("you are in hallway g4");
+        g4 = new Room("Just another hallway");
         g4.setRequiredProgress(6);
-        g4.setDescription("wow... how long are these hallways. I am begin to feel drained");
+        g4.setDescription("wow... how long are these hallways. I am begining to feel drained");
         g4.setName("g4");
         rooms.add(g4);
 
         // Index 14
-        g5 = new Room("you are in hallway g5");
+        g5 = new Room("What is that smell?");
         g5.setRequiredProgress(6);
-        g5.setDescription("You wonder how students have gotten lost at the university \n"
+        g5.setDescription("You wonder how many students have gotten lost at the university \n"
                 + "some of them must still be walking around here looking for an exit");
         g5.setName("g5");
         rooms.add(g5);
 
         // Index 15
-        g6 = new Room("you are in hallway g6");
+        g6 = new Room("That's a funny kangaroo.");
         g6.setRequiredProgress(6);
         g6.setDescription("Finally a part of the hallway which is bright");
         g6.setName("g6");
         rooms.add(g6);
 
         // library at index 16
-        library = new Room("library");
+        library = new Room("That's a lot of books.");
         library.setHasEncounter(true);
         library.setDescription("You have arrived at the library...\n"
-                + " Those law students don't look nice");
+                + "Those law students don't look nice");
         library.setName("library");
         library.setRequiredProgress(6);
         rooms.add(library);

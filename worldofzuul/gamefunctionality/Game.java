@@ -87,7 +87,8 @@ public class Game extends Player {
         Encounter lawStudentEncounter = new Encounter();
         lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
         lawStudentEncounter.setEncounterPossibility(100);
-        lawStudentEncounter.setEncounterMessage("> Oh no, you have encountered"+ npcs.getNPC(3).getName()+ "!");
+        lawStudentEncounter.setEncounterMessage("> Oh no, you have encountered "+ npcs.getNPC(3).getName()+ "!\n"
+                + "");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
 
         // Adding student to hallway g3
@@ -279,7 +280,7 @@ public class Game extends Player {
                 if (!player.getJournal().equals("")) {
                     s = player.getJournal();
                 } else {
-                    s = "You have no current quest.\n"
+                    s = "You have no current quests.\n"
                             + "Explore to find the next quest!";
                 }
             }
@@ -358,7 +359,7 @@ public class Game extends Player {
                         + currentRoom.getNPC(0).getCompleteQuestString();
                 currentRoom.setHasFinishedQuest(true);
                 player.incrementProgress();
-                player.setJournal("No active quests...");
+                player.setJournal("No active quests. You should seach around for one.");
                 questQuestion = false;
                 conversation = false;
             }

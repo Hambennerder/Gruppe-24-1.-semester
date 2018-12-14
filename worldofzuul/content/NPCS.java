@@ -67,7 +67,7 @@ public class NPCS extends NPC {
                 "\n < 1: talk "
               + "\n < 2: leave ");
         andars.setQuestString(">Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap."
-                + "\n> You know, a thing between you and me.\n"
+                + "\n>You know, a thing between you and me.\n"
                 + ">There is a book in the bookstore.\n"
                 + ">It is the best book to prepare you."
                 + "\n>I used this book back in my old days.\n"
@@ -100,15 +100,16 @@ public class NPCS extends NPC {
         bookstoreLady.setDescription("*Probably the ugliest and oldest person you've ever seen in a bookstore*");
         bookstoreLady.setDialogOptions("> 1: Talk \n"
                                      + "> 2: Leave \n");
-        bookstoreLady.setQuestString(">I would love to help you finding the book darling,\n"
-                                   + "> but if I have to help you I have to get something in return.\n"
+        bookstoreLady.setQuestString(">I would love to help you find the book darling,\n"
+                                   + ">but if I have to help you I have to get something in return.\n"
                                    + ">I would love to get a cup of coffee with you.\n"
-                                   + "> Can you go get it from the canteen, sweetheart? (yes/no)");
-        bookstoreLady.setAcceptString(">I knew a strong man like you, wouldn't be afraid of a grown woman like myself.");
-        bookstoreLady.setDeclineString(">Well, you can have the book when I get my coffee then.");
-        bookstoreLady.setOnQuestString(">The coffee should be found in the canteen, good looking");
+                                   + ">Can you go get it from the canteen, sweetheart? (yes/no)");
+        bookstoreLady.setAcceptString(">I knew a strong man like you wouldn't be afraid of a grown woman like myself.");
+        bookstoreLady.setDeclineString(">Well, you can't have the book then. Return when you want to help");
+        bookstoreLady.setOnQuestString(">The coffee can be found in the canteen, good looking");
         bookstoreLady.setQuestCompletedString(">It was a pleasure getting to know you honey");
-        bookstoreLady.setCompleteQuestString(">Thanks for the coffee. The book is back in the storage room, you can go get it.");
+        bookstoreLady.setCompleteQuestString(">Great, you found my coffee!\n"
+                + "The book is back in the storage room, you can go get it.");
         npcs.add(bookstoreLady);
 
         // lawStudent at index 3
@@ -126,17 +127,18 @@ public class NPCS extends NPC {
         // Start of NPC for study hall + library quest INDEX: 4-----------------
         NPC student = new NPC();
         student.setName("student");
-        student.setWelcome(">Hey! Please I need your help! \n");
+        student.setWelcome(">Hey bruh! \n");
         student.setDescription("*A student in distress*");
+        student.setGoodbye("You bouncin\' already? see you around.");
         student.setDialogOptions("> 1: Talk \n"
                                + "> 2: Leave \n");
-        student.setQuestString(">I really need you help. I should be studying in the study hall \n"
-                             + ">But there are way to many medicin students in the study hall \n"
-                             + ">and I can't get the book from the library because of the law students in there"
+        student.setQuestString(">I really need your help. I should be studying in the study hall \n"
+                             + ">But there are way too many medicine students in the study hall \n"
+                             + ">and I can't get the book from the library because of the law students there\n"
                              + ">Will you please help me? (yes/no)");
         student.setAcceptString(">I'm so glad to hear that, I really need to be studying for an exam");
         student.setDeclineString(">Please help. Shouldn't you be studying as well?");
-        student.setOnQuestString(">We have to make room for us to study in the study hall");
+        student.setOnQuestString(">You have to make room for us to study in the study hall");
         student.setCompleteQuestString(">Thanks buddy, we should get a beer at Nedenunder later");
         student.setQuestCompletedString(">Let me know if you wanna grab that beer");
         npcs.add(student);
