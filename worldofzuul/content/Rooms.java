@@ -24,14 +24,14 @@ public class Rooms extends Room {
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
 
         // Entrance index 0
-
-        entrance = new Room("");        
+       
+        
+        entrance = new Room("Entrance to the University. \n"
+                + "What exciting adventure lies behind these doors?");
         entrance.setDescription("You are a new student in software engineering and you have just arrived outside \n"
                               + "the main entrance of the university. You look around and see countless of other \n"
                               + "university students, heading to their next class or lecture, you see a man wearing \n" 
                               + "a red shirt saying \'mentor\' \n");
-        entrance = new Room("Entrance to the University. \n"
-                + "What exciting adventure lies behind these doors?");
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
                 + "> through the first steps of this tutorial. Above this message you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
