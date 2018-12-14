@@ -50,9 +50,9 @@ public class NPCS extends NPC {
                 + ">whom you have to battle, through the means of wittyness, and brag etc. \n"
                 + ">You also have the ability to heal yourself when your health happens to \n"
                 + ">be low. But there are limitations. You have to inspect rooms and collect more \n"
-                + ">healz when you run out. \n";
+                + ">healz when you run out. \n"
                 + ">There are limitations to your abilities as well, you can only use your special attack \n"
-                + ">once and your brag ability three times.";
+                + ">once and your brag ability three times.");
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
 
