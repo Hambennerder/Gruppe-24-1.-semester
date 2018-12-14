@@ -5,15 +5,15 @@ import java.util.List;
 import worldofzuul.NPC;
 
 public class NPCS extends NPC {
-    
+
     private List<NPC> npcs;
 
     public NPCS() {
         npcs = new ArrayList<>();
     }
-        
+
     public void createNPCS() {
-        
+
         // Start of the first mentor NPC INDEX: 0--------------------
         NPC mentor = new NPC();
 
@@ -58,7 +58,7 @@ public class NPCS extends NPC {
                 + "> are four directions: \'north\', \'south\', \'west\' and \'east\'.\n"
                 + "> Type \'go north\' to get started in your adventure!");
         mentor.setDeclineString(">Ow, well you won't be able to study properly then.. a shame");
-       
+
         mentor.setOnQuestString(">Have you found your ID-card? It should be around here somewhere.");
         mentor.setQuestCompletedString(">I'm sorry, I'm busy. Go find Andars.");
         mentor.setCompleteQuestString(">Yes! you found the ID-card, \n"
@@ -76,23 +76,51 @@ public class NPCS extends NPC {
 
         // Start of the NPC Andars INDEX: 1-------------------------------------
         NPC andars = new NPC();
-        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard. \n"
-                            + "He appears professional. His face expression seems serious.* \n");
+
+        andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard."
+                + "\n He appears professional. His face expression seems serious.*");
         andars.setName("Andars");
-        andars.setDialogOptions("> 1: talk \n"
-                              + "> 2: leave \n");      
-        andars.setQuestString("> Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap \n"
-                            + "> You know, a thing between you and me. The book, called Best Java Book for\n"
-                            + "> learning Java EVER!. It is the best book to prepare you I used this \n"
-                            + "> book back in my ole' days. It saved me tons of trouble! Find it at the \n"
-                            + "> bookstore. I want you to solve these assignments, solve these with the \n"
-                            + "> book and you will be prepared. Sound like a pretty good plan, right? \n"
-                            + "> (yes/no) \n");
-        andars.setAcceptString("> Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious. \n");
-        andars.setDeclineString("> You gonna faiiil! Come back if you want the slightest chance of doing the assignments. \n");
-        andars.setOnQuestString("> Finding the book can't be harder than solving e-tiviteter... just find it already..");
-        andars.setCompleteQuestString("> Damn dude, what took you so long?! \n"
-                                    + ">You should probably go study some more in the studyhall.");
+
+        andars.setDialogOptions(
+                "\n < 1: talk "
+              + "\n < 2: leave ");
+        andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap \n"
+                            + "< You know, a thing between you and me. The book, called Best Java Book for \n"
+                            + "< learning Java EVER!. It is the best book to prepare you I used this book \n"
+                            + "< back in my old days. It saved me tons of trouble! Find it at the bookstore. \n"
+                            + "< I want you to solve these assignments, solve these with the book and you \n"
+                            + "< will be prepared. Sound like a pretty good plan, right? (yes/no) \n");
+
+        andars.setAcceptString("< Nice!... by the way watch out for the lady in the bookstore."
+                + "\n< She is pretty flirtatious.");
+        andars.setDeclineString("< You gonna faiiil! Come back if you want the slightest"
+                + "\n< chance of doing the assignments.");
+        andars.setOnQuestString("< Finding the book can't be harder than solving e-tiviteter... \n"
+                + "< just find it already.. \n");
+
+        andars.setCompleteQuestString("< Damn dude, what took you so long?! \n"
+                + "< You should probably go study some more in the studyhall.");
+        andars.setQuestCompletedString("< You finally found the book and"
+                + "\n< handed in the assignments. \n"
+                + "< You should go study to the study hall.");
+
+        andars.setQuestString("> Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
+                + "\n> You know, a thing between you and me.\n"
+                + "> The book, called Best Java Book for learning Java EVER!.\n"
+                + "> It is the best book to prepare you"
+                + "\n> I used this book back in my ole' days.\n"
+                + "> It saved me tons of trouble! Find it at the bookstore."
+                + "\n> I want you to solve these assignments,\n"
+                + "> solve these with the book and you will be prepared"
+                + "\n> Sound like a pretty good plan, right? (yes/no)");
+
+        andars.setAcceptString(">Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
+        andars.setDeclineString(">You gonna faiiil! Come back if you want the slightest chance of doing the assignments.");
+        andars.setOnQuestString(">Finding the book can't be harder than solving e-tiviteter... just find it already..");
+
+        andars.setCompleteQuestString(">Damn dude, what took you so long?! \n"
+                + ">You should probably go study some more in the studyhall.");
+
         andars.setQuestCompletedString(">You finally found the book and handed in the assignments. \n"
                                      + ">You should go study to the study hall.");
         andars.setHealth(1000);
