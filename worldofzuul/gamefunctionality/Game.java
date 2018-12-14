@@ -56,7 +56,6 @@ public class Game extends Player {
         Consumable healz = new Consumable();
         healz.setName("healz");
         listOfRooms.getRoom(15).addItem(healz);
-        listOfRooms.getRoom(18).addItem(healz);
         listOfRooms.getRoom(21).addItem(healz);
         listOfRooms.getRoom(25).addItem(healz);
         listOfRooms.getRoom(29).addItem(healz);
@@ -83,7 +82,8 @@ public class Game extends Player {
         Encounter lawStudentEncounter = new Encounter();
         lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
         lawStudentEncounter.setEncounterPossibility(100);
-        lawStudentEncounter.setEncounterMessage("> Oh no, you have encountered" + npcs.getNPC(3).getName() + "!");
+        lawStudentEncounter.setEncounterMessage("> Oh no, you have encountered "+ npcs.getNPC(3).getName()+ "!\n"
+                + "");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
 
         // Adding student to hallway g3
@@ -117,8 +117,8 @@ public class Game extends Player {
         Encounter medicineEncounter = new Encounter();
         medicineEncounter.addEncounterNPC(npcs.getNPC(9));
         medicineEncounter.setEncounterPossibility(100);
-        medicineEncounter.setEncounterMessage("> You think you're smarter than me?"
-                + "> HA! I'm studying to become a doctor.. my grades are better than yours!");
+        medicineEncounter.setEncounterMessage("> You think you're smarter than me?\n"
+                + ">HA! I'm studying to become a doctor.. my grades are better than yours!");
         listOfRooms.getRoom(17).addEncounter(medicineEncounter);
 
         Encounter bossFight = new Encounter();
@@ -287,7 +287,7 @@ public class Game extends Player {
                 if (!player.getJournal().equals("")) {
                     s = player.getJournal();
                 } else {
-                    s = "You have no current quest.\n"
+                    s = "You have no current quests.\n"
                             + "Explore to find the next quest!";
                 }
             }
@@ -369,7 +369,6 @@ public class Game extends Player {
 
                 currentRoom.setHasFinishedQuest(true);
                 player.incrementProgress();
-
                 questQuestion = false;
                 conversation = false;
                 if (player.getProgress() == 4 && currentRoom.getName().equals("Bookstore")){
@@ -635,24 +634,21 @@ public class Game extends Player {
                     break;
             }
         }
-        if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0 && player.getHealth() > 0) {
-            s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
-                    + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
-            player.gainExperience(currentRoom.getEncounter().getEncounterNPC().getExperience());
-            fight = false;
-            currentRoom.setIsLocked(false);
-            player.incrementProgress();
-            currentRoom.setHasEncounter(false);
-            fleeAttempted = false;
+       if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0 && player.getHealth() > 0) {
+           s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "\n"
+                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+           player.gainExperience(currentRoom.getEncounter().getEncounterNPC().getExperience());
+           fight = false;
+           currentRoom.setIsLocked(false);
+           player.incrementProgress();
+           currentRoom.setHasEncounter(false);
+           fleeAttempted = false;
 
-        } else if (player.getHealth() < 0) {
-            s = "You got rekt son, game over.";
-            finished = true;
-            // some code to tell the player that game is over and something
-        } else {
-            // Method
-        }
-        return s;
+       } else if (player.getHealth() < 0) {
+           s = "You got rekt son, game over.";
+           finished = true;
+       } 
+       return s;
     }
 
     private String printDialogOptions() {

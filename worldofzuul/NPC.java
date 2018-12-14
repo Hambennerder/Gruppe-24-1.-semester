@@ -30,8 +30,8 @@ public class NPC extends Entity {
         this.experience = 1;
         this.health = 100;
         this.questCount = 0;
-        this.welcome = "Hello traveler!";
-        this.goodbye = "Farewell traveler!";
+        this.welcome = "Hello student!";
+        this.goodbye = "Farewell student!";
         this.friendly = true;
         this.enemyBaseAttackDamage = 2;
         this.attackString = "The enemy attacked you!";
