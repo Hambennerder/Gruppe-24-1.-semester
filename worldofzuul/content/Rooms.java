@@ -9,15 +9,15 @@ public class Rooms extends Room {
 
     private List<Room> rooms;
     private String name;
-    
+
     public Rooms(String name) {
         rooms = new ArrayList<>();
         this.name = name;
-        
+
     }
 
     public void createRooms() {
-        
+
 
         Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookstore, storage, t8,
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
@@ -25,50 +25,31 @@ public class Rooms extends Room {
 
         // Entrance index 0
 
-        entrance = new Room("");        
-        entrance.setDescription("You are a new student in software engineering and you have just arrived outside \n"
-                              + "the main entrance of the university. You look around and see countless of other \n"
-                              + "university students, heading to their next class or lecture, you see a man wearing \n" 
-                              + "a red shirt saying \'mentor\' \n");
-
-        entrance.setRoomIntro("Hello player, my name is Uvuvwevwevwe, and I will guide you through the first \n"
-                            + "steps of this tutorial. Above this message you will see two things, location and \n"
-                            + "exits. Location shows your current location. If you haven't guessed it already,\n"
-                            + "exits show our possible exits. Before we show you how to use the exits, let me \n"
-                            + "first introduce you to the command, inspect. Type in inspect and you will get a \n"
-                            + "detailed description of thecurrent room, and also which elements it contains. \n"
-                            + "Everything surrounded by \'single quotation marks\', are interactable. You can \n"
-                            + "interact by typing in approach and the figures name, be aware, this system IS \n"
-                            + "case sensitive. If you want to take an item in a room, the same applies but with \n"
-                            + "the command take. Start the game by typing inspect, and then approach the \n"
-                            + "given figure. Type help if you need help \n");
-
         entrance = new Room("Entrance to the University. \n"
                 + "What exciting adventure lies behind these doors?");
-        entrance.setDescription("You are a new student in software engineering and you have just arrived outside\n"
-                + "the main entrance of the university. You look around and see countless of other \n"
-                + "university students, heading to their next class or lecture, you see a man \n"
-                + "wearing a red shirt saying \'mentor\'\n");
-            
+        entrance.setDescription("You are a new student in software engineering and\n"
+                              + "you have just arrived outside \n"
+                              + "the main entrance of the university. \n"
+                              +  "You look around and see countless of other \n"
+                              + "university students, heading to their next class or lecture, \n"
+                              + "you see a man wearing \n"
+                              + "a red shirt saying \'mentor\' \n");
 
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
-                + "> through the first steps of this tutorial. Above this message you \n"
+                + "> through the first steps of this tutorial. On the right side of the screen you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
-                + "> location. If you haven't guessed it already, exits show our possible exits \n"
+                + "> location. If you haven't guessed it already, exits show your possible exits \n"
                 + "> Before we show you how to use the exits, let me first introduce you to \n"
-                + "> the command, inspect. Type in inspect and you will get a detailed\n"
+                + "> the command, inspect. Type in inspect and you will get a detailed \n"
                 + "> description of the current room, and also which elements it contains.\n"
                 + "> Everything surrounded by \'single quotation marks\', are interactable.\n"
-                + "> You can interact by typing in approach and the figures name, be aware,\n"
+                + "> You can interact by typing in approach and the figure's name, be aware,\n"
                 + "> this system IS case sensitive. If you want to take an item in a room,\n"
-                + "> the same applies but with the command take. \n\n"
+                + "> type 'take' and the name of the item  \n"
                 + "> Start the game by typing inspect, and then approach the given figure. \n"
                 + "> type help if you need help");
-
-
         entrance.setJournalString("A quest for the holy ID-card: Start by heading north \n"
-                + " find the card and return to the mentor");
-
+                + "find the card and return to the mentor");
         entrance.setName("Entrance");
         entrance.setHasQuest(true);
         entrance.setQuestItemName("ID-card");
@@ -76,21 +57,27 @@ public class Rooms extends Room {
         rooms.add(entrance);
 
         // u1 index 1
-        u1 = new Room("A small room, rather empty and quiet. \n"
+        u1 = new Room("A small room, rather empty and quiet. There is nothing unique \n"
+                + "about this room that makes it stand out.\n"
+                + "\n"
                 + "HINT: inspecting a room reveals interactable objects.");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
         rooms.add(u1);
 
         // u2 index 2
-        u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint");
-        u2.setDescription("No ID card here...");
+        u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint \n"
+                    + "inside the room there is a couple of chairs in front of a big screen \n"
+                    + "showing a timetable. Roaming in and out of the room there are students who are \n"
+                    + "seniors wearing red t-shirt with logos and the name of the university.");
+        u2.setDescription("I look around. No ID card here...");
         u2.setName("u2");
         rooms.add(u2);
 
         // u3 at index 3
-        u3 = new Room("Room full of people, they seem like new students as I.\n"
-                + "Maybe the ID-card is in here.. try inspecting the room?");
+        u3 = new Room("This room is full of people standing in a line, \n"
+                + " they seem to be like new students just like me. \n"
+                    + " Maybe the ID-card is in here..try inspecting the room?\n");
         u3.setDescription("The ID-card is here!. Type \'take ID-card\' to pick it up.\n"
                 + "You can type inventory to make sure you picked it up.\n"
                 + "Remember to turn your quest in at the mentor. \n");
@@ -98,21 +85,18 @@ public class Rooms extends Room {
         rooms.add(u3);
 
         // g1 at index 4
-        g1 = new Room("In hallway g1. "
-                + "It feels like you wander alone in this vast labrinth of hallways and \n"
+        g1 = new Room(""
+                + "It feels like you wander alone in this vast labyrinth of hallways and \n"
                 + "dead ends even though people are all around you. Will you be able to find \n"
                 + "the place you need to be? \n");
-        g1.setDescription("In hallway g1. "
-                + "It feels like you wander alone in this vast labrinth"
-                + " of hallways and dead ends even though people"
-                + " are all around you. Will you be able to"
-                + " find the place you need to be?");
+        g1.setDescription("This room seems to be empty");
+
         g1.setName("g1");
         g1.setRequiredProgress(2);
         rooms.add(g1);
 
         // u180 index 5
-        u180 = new Room("You are in u180. A big bright room with many rows of chairs and tables.\n"
+        u180 = new Room("A big bright room with many rows of chairs and tables.\n"
                 + "You can feel the struggle and anxiety of the many students who have \n"
                 + "sat in this room before you.");
         u180.setDescription("In the room you see a figure, it looks like \'Andars\'");
@@ -122,7 +106,7 @@ public class Rooms extends Room {
         u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
         u180.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
-                + " which is somewhere south, remember Andars' warning.");
+                + "which is somewhere south, remember Andars' warning.");
         rooms.add(u180);
 
         // index 6
@@ -163,7 +147,7 @@ public class Rooms extends Room {
                 + " which is somewhere south, remember Andars' warning."
 
                 + "The lady in the bookstore wants you to get her some coffee,\n"
-                + "head up to the canteen.");        
+                + "head up to the canteen.");
 
 
         rooms.add(bookstore);
@@ -201,7 +185,7 @@ public class Rooms extends Room {
         // Index 13
         g4 = new Room("you are in hallway g4");
         g4.setRequiredProgress(6);
-        g4.setDescription("wow... how long are these hallways");
+        g4.setDescription("wow... how long are these hallways. I am begin to feel drained");
         g4.setName("g4");
         rooms.add(g4);
 
@@ -224,8 +208,7 @@ public class Rooms extends Room {
         library = new Room("library");
         library.setHasEncounter(true);
         library.setDescription("You have arrived at the library...\n"
-                + " Those law students don't look nice \n"
-                + "but that \'Holy-Constitution\' might be useful");
+                + " Those law students don't look nice");
         library.setName("library");
         library.setRequiredProgress(6);
         rooms.add(library);
