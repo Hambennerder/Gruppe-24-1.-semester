@@ -130,7 +130,7 @@ public class NPCS extends NPC {
         lawStudent.setDialogOptions("<1: Fight \n"
                                   + "<2: Flee \n");
         lawStudent.setHealth(50);
-        lawStudent.setExperience(50);
+        lawStudent.setExperience(200);
         lawStudent.setEnemyBaseAttackDamage(5);
         npcs.add(lawStudent);
         // End of the NPC at the student bookstore------------------------------
@@ -229,7 +229,7 @@ public class NPCS extends NPC {
 
         janitor.setDialogOptions("<1: Fight \n"
                                + "<2: Flee \n");
-        janitor.setExperience(800);
+        janitor.setExperience(1000);
         janitor.setEnemyBaseAttackDamage(10);
 
         npcs.add(janitor);
@@ -244,7 +244,7 @@ public class NPCS extends NPC {
 
         medicineStudent.setDialogOptions("<1: Fight \n"
                                         + "<2: Flee \n");
-        medicineStudent.setExperience(100);
+        medicineStudent.setExperience(200);
         medicineStudent.setEnemyBaseAttackDamage(8);
 
         npcs.add(medicineStudent);

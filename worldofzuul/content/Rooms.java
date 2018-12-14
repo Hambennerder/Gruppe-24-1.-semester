@@ -16,7 +16,7 @@ public class Rooms extends Room {
 
     }
 
-    public void createRooms() {
+    public void createRooms(String s) {
 
 
         Room entrance, u1, u2, u3, u180, canteen, library, studyhall, u55, u45, bookstore, storage, t8,
@@ -34,7 +34,7 @@ public class Rooms extends Room {
                               + "you see a man wearing \n"
                               + "a red shirt saying \'mentor\' \n");
 
-        entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
+        entrance.setRoomIntro("> Hello " + s + ", my name is Uvuvwevwevwe, and I will guide you \n"
                 + "> through the first steps of this tutorial. On the right side of the screen you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
                 + "> location. If you haven't guessed it already, exits show your possible exits \n"
