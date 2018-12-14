@@ -69,16 +69,18 @@ public class FXMLMainController extends FXMLStartScreenController implements Ini
             Command command = g.parser.getCommand(s);
             s = g.processCommand(command);
         } else {
-            return "Thank you for playing. Good bye.";
+            return "Thank you for playing. Feel free to try the game again!";
         }
         addInventory();
         addExits();
+        
         
         location.setText(g.currentRoom.getName());
         playerNameHP.setText(g.player.getPlayerName());
         setPlayerHP.setText("HP: "+g.player.getStringHealth());
         levelText.setText(g.player.getStringLevel());
-
+        amountHeal.setText(g.player.getStringHeals());
+        
         if (g.currentRoom.hasEncounter()) {
             enemyNameHP.setText(g.currentRoom.getEncounter().getEncounterNPC().getName());
             setEnemyHP.setText("HP: "+g.currentRoom.getEncounter().getEncounterNPC().getStringHealth());
