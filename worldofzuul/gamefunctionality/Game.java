@@ -41,7 +41,7 @@ public class Game extends Player {
     public void play() {
 
         listOfRooms.createRooms();
-        currentRoom = listOfRooms.getRoom(34);
+        currentRoom = listOfRooms.getRoom(0);
 
         npcs.createNPCS();
 
