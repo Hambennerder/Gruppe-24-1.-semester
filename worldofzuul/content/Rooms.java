@@ -24,25 +24,25 @@ public class Rooms extends Room {
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
 
         // Entrance index 0
-
-        entrance = new Room("");        
+        
+        entrance = new Room("Entrance to the University. \n"
+                + "What exciting adventure lies behind these doors?");
         entrance.setDescription("You are a new student in software engineering and you have just arrived outside \n"
                               + "the main entrance of the university. You look around and see countless of other \n"
                               + "university students, heading to their next class or lecture, you see a man wearing \n" 
                               + "a red shirt saying \'mentor\' \n");
-        entrance = new Room("Entrance to the University. \n"
-                + "What exciting adventure lies behind these doors?");
+
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
-                + "> through the first steps of this tutorial. Above this message you \n"
+                + "> through the first steps of this tutorial. In the right side of the screen you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
                 + "> location. If you haven't guessed it already, exits show our possible exits \n"
                 + "> Before we show you how to use the exits, let me first introduce you to \n"
                 + "> the command, inspect. Type in inspect and you will get a detailed \n"
                 + "> description of the current room, and also which elements it contains.\n"
                 + "> Everything surrounded by \'single quotation marks\', are interactable.\n"
-                + "> You can interact by typing in approach and the figures name, be aware,\n"
+                + "> You can interact by typing in approach and the figure's name, be aware,\n"
                 + "> this system IS case sensitive. If you want to take an item in a room,\n"
-                + "> the same applies but with the command take. \n"
+                + "> type 'take' and the name of the item  \n"
                 + "> Start the game by typing inspect, and then approach the given figure. \n"
                 + "> type help if you need help");
         entrance.setJournalString("A quest for the holy ID-card: Start by heading north \n"
