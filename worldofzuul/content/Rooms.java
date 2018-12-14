@@ -142,7 +142,7 @@ public class Rooms extends Room {
         bookstore.setHasQuest(true);
         bookstore.setRequiredProgress(2);
         bookstore.setNextQuestProgress(3);
-        bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n "
+        bookstore.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n"
                 + "which is somewhere south, remember Andars' warning.\n"
                 + "The lady in the bookstore wants you to get her some coffee,\n"
                 + "head up to the canteen.");
@@ -173,7 +173,7 @@ public class Rooms extends Room {
 
         g3.setRequiredProgress(6);
         g3.setDescription("Another part of the maze that is SDU\n"
-                + "There is a student in the room.");
+                + "There is a \'student\' in the room.");
         g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
@@ -238,7 +238,7 @@ public class Rooms extends Room {
         rooms.add(u55);
 
         // index at 19
-        u45 = new Room("u45");
+        u45 = new Room("This is a big room with horrible lighting");
 
         u45.setDescription("You are in a huge auditorium known for it's technical problems \n"
                 + "you can see your teacher \'Eryk\' and a \'cable\' ");
@@ -250,7 +250,7 @@ public class Rooms extends Room {
         rooms.add(u45);
 
         // Index at 20
-        t8 = new Room("t8");
+        t8 = new Room("It's smells in here");
 
         t8.setDescription("The most feared room on campus.\n"
                 + "It's dark, smelly and almost impossible to find\n"
@@ -379,7 +379,7 @@ public class Rooms extends Room {
         rooms.add(g24);
 
         // index at 37
-        k1 = new Room("you are in the basement in room k1");
+        k1 = new Room("A cold room in the basement");
 
         k1.setDescription("The basement is dark and scary\n"
                 + "You proably shouldn't linger for too long");
@@ -387,49 +387,49 @@ public class Rooms extends Room {
         rooms.add(k1);
 
         // index at 38
-        k2 = new Room("you are in the basement in room k2");
+        k2 = new Room("A cold room in the basement");
 
         k2.setDescription("This basement is impossible to navigate");
         k2.setName("k2");
         rooms.add(k2);
 
         // index at 39
-        k3 = new Room("you are in the basement in room k3");
+        k3 = new Room("A cold room in the basement");
 
         k3.setDescription("Will you ever find T8?");
         k3.setName("k3");
         rooms.add(k3);
 
         // index at 40
-        k4 = new Room("you are in the basement in room k4");
+        k4 = new Room("A cold room in the basement");
 
         k4.setDescription("How come you have to be down here... it's all smelly and old");
         k4.setName("k4");
         rooms.add(k4);
 
         // index at 41
-        k5 = new Room("you are in the basement in room k5");
+        k5 = new Room("A cold room in the basement");
 
         k5.setDescription("This might be the right way... wait, where are you going?");
         k5.setName("k5");
         rooms.add(k5);
 
         // index at 42
-        k6 = new Room("you are in the basement in room k6");
+        k6 = new Room("A cold room in the basement");
 
         k6.setDescription("This basement much be pretty huge");
         k6.setName("k6");
         rooms.add(k6);
 
         // index at 43
-        k7 = new Room("you are in the basement in room k7");
+        k7 = new Room("A cold room in the basement");
 
         k7.setDescription("Is that Malta's \'bag\' over there?");
         k7.setName("k7");
         rooms.add(k7);
 
         // index at 44
-        k8 = new Room("you are in the basement in room k8");
+        k8 = new Room("A cold room in the basement");
 
         k8.setDescription("What is that weird smell in here?");
         k8.setName("k8");

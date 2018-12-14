@@ -114,8 +114,8 @@ public class Game extends Player {
         listOfRooms.getRoom(34).addEncounter(janitorEncounter);
         janitorEncounter.addEncounterNPC(npcs.getNPC(8));
         janitorEncounter.setEncounterPossibility(100);
-        janitorEncounter.setEncounterMessage("> Haha! You filthy students really "
-                + "> think you're something special, huh? well you are not!");
+        janitorEncounter.setEncounterMessage("> Haha! You filthy students really \n"
+                + ">think you're something special, huh? well you are not!");
 
         // Adding medicine student encounter to study hall
         Encounter medicineEncounter = new Encounter();
