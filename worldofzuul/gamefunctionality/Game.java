@@ -40,7 +40,7 @@ public class Game extends Player {
 
     public void play() {
 
-        listOfRooms.createRooms();
+        listOfRooms.createRooms(player.getPlayerName());
         currentRoom = listOfRooms.getRoom(0);
 
         npcs.createNPCS();
@@ -142,7 +142,9 @@ public class Game extends Player {
     }
 
     public String processCommand(Command command) throws Exception {
-        System.out.println(player.getProgress());
+        if (player.getProgress() == 16){
+            finished = true;
+        } else {
         CommandWord commandWord = command.getCommandWord();
         if (commandWord == CommandWord.UNKNOWN) {
             s = "I don't know what you mean...";
@@ -329,6 +331,7 @@ public class Game extends Player {
             } else {
                 return "You are not battling with anyone, so you can't use combatoptions.";
             }
+        }
         }
         return s;
     }
@@ -522,21 +525,15 @@ public class Game extends Player {
                     fleeAttempted = true;
                     break;
                 case FLEE:
-                    if (fleeAttempted) {
-                        s = "You can't escape!.\n"
-                                + battle.Combatoptions();
-
-                    } else if (!currentRoom.getEncounter().tryFlee()) {
+                    if(currentRoom.getEncounter().tryFlee()){
                         s = "You escaped! \n"
-                                + currentRoom.getDescription();
-                        fight = false;
-                        currentRoom.setIsLocked(false);
-
+                            + currentRoom.getDescription();
+                    fight = false;
+                    currentRoom.setIsLocked(false);
                     } else {
                         s = "Oh no, you werent quick enough!\n" + battle.Combatoptions();
-                        fleeAttempted = true;
+                        battle.Combatoptions();
                     }
-
                     break;
 
                 case ATTACK:
