@@ -93,7 +93,7 @@ public class NPCS extends NPC {
         andars.setQuestCompletedString("> You finally found the book and handed in the assignments. \n"
                                      + "> You should go study to the study hall.");
 
-        andars.setHealth(250);
+        andars.setHealth(200);
         andars.setEnemyBaseAttackDamage(10);
         andars.setExperience(1000);
 
@@ -224,12 +224,12 @@ public class NPCS extends NPC {
         NPC janitor = new NPC();
         janitor.setName("Wild Janitor \n");
         janitor.setLevel(3);
-        janitor.setHealth(150);
+        janitor.setHealth(120);
         janitor.setFriendly(false);
 
         janitor.setDialogOptions("<1: Fight \n"
                                + "<2: Flee \n");
-        janitor.setExperience(400);
+        janitor.setExperience(800);
         janitor.setEnemyBaseAttackDamage(10);
 
         npcs.add(janitor);
@@ -244,7 +244,7 @@ public class NPCS extends NPC {
 
         medicineStudent.setDialogOptions("<1: Fight \n"
                                         + "<2: Flee \n");
-        medicineStudent.setExperience(50);
+        medicineStudent.setExperience(100);
         medicineStudent.setEnemyBaseAttackDamage(8);
 
         npcs.add(medicineStudent);
