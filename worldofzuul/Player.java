@@ -352,7 +352,7 @@ public class Player extends Entity {
         
         this.maxHeals++;
 
-        this.heals = this.maxHeals;
+        this.heals++;
         
         this.special = this.maxSpecial;
         
