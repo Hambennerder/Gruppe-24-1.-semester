@@ -94,6 +94,10 @@ public class Player extends Entity {
         return this.heals;
     }
     
+    public String getStringHeals(){
+        return ""+this.heals;
+    }
+    
     public int getMaxHeals() {
         return this.maxHeals;
     }
