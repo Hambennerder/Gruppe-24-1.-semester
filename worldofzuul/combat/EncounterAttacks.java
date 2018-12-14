@@ -25,7 +25,7 @@ public class EncounterAttacks {
 
     public String Encounterattack() {
         String s = "";
-        Damagegiven = (rand.nextInt(20)) + 1;
+        Damagegiven = (rand.nextInt(7)) + 3;
 
         Player_health -= Damagegiven;
 

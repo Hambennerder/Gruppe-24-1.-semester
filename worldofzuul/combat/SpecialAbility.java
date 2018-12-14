@@ -11,16 +11,16 @@ public class SpecialAbility extends Battlesystem{
     
     public SpecialAbility(int playerLevel) {
 
-        this.baseDamage += playerLevel;
-
+        this.baseDamage += (2 * playerLevel);
     }
+    
     public void setBaseDamage(int damageAmount) {
         this.baseDamage = damageAmount;
     }
 
     public int specialAttack() {
         rand = new Random();
-        int r = rand.nextInt(10) + 1;
+        int r = rand.nextInt(20) + 1;
         return this.baseDamage + r;
     }
 

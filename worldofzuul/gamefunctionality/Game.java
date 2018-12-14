@@ -612,6 +612,7 @@ public class Game extends Player {
                         s += battle.Combatoptions();
                     } else {
 
+
                         if (player.getHealth() == player.getMaxHealth()) {
                             s = "Your health is already full!";
                             s += battle.attackoptions();
@@ -627,6 +628,7 @@ public class Game extends Player {
                             player.decrementHeal();
                             s += battle.Combatoptions();
                         }
+
                     }
                     break;
         

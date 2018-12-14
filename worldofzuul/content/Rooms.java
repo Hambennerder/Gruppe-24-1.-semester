@@ -69,14 +69,17 @@ public class Rooms extends Room {
                     + "inside the room there is a couple of chairs in front of a big screen \n"
                     + "showing a timetable. Roaming in and out of the room there are students who\n"
                     + "are seniors wearing red t-shirt with logos and the name of the university.");
+
         u2.setDescription("I look around. No ID card here...");
         u2.setName("u2");
         rooms.add(u2);
 
         // u3 at index 3
         u3 = new Room("This room is full of people standing in a line, \n"
+
                 + "they seem to be like new students just like me. \n"
                     + "Maybe the ID-card is in here..try inspecting the room?\n");
+
         u3.setDescription("The ID-card is here!. Type \'take ID-card\' to pick it up.\n"
                 + "You can type inventory to make sure you picked it up.\n"
                 + "Remember to turn your quest in at the mentor. \n");
@@ -104,7 +107,9 @@ public class Rooms extends Room {
         u180.setHasQuest(true);
         u180.setNextQuestProgress(5);
         u180.setQuestItemName("Java Book");
+
         u180.setJournalString("A Programmers Bible: Find the book, it should be at the bookstore\n"
+
                 + "which is somewhere south, remember Andars' warning.");
         rooms.add(u180);
 
@@ -181,7 +186,9 @@ public class Rooms extends Room {
         // Index 13
         g4 = new Room("Just another hallway");
         g4.setRequiredProgress(6);
+
         g4.setDescription("wow... how long are these hallways. I am begining to feel drained");
+
         g4.setName("g4");
         rooms.add(g4);
 
@@ -204,7 +211,9 @@ public class Rooms extends Room {
         library = new Room("That's a lot of books.");
         library.setHasEncounter(true);
         library.setDescription("You have arrived at the library...\n"
+
                 + "Those law students don't look nice");
+
         library.setName("library");
         library.setRequiredProgress(6);
         rooms.add(library);
