@@ -105,10 +105,7 @@ public class Game extends Player {
         lawStudentEncounter.setEncounterMessage("Oh no, you have encountered"+ npcs.getNPC(3).getName()+ "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
 
-        // Adding the constitution to the library and student to hallway g3
-        Item holy_constitution = new Item();
-        holy_constitution.setName("Holy-Constitution");
-        listOfRooms.getRoom(16).addItem(holy_constitution);
+        // Adding student to hallway g3
         listOfRooms.getRoom(12).addNPC(npcs.getNPC(4));
 
         // Adding Lune to u55
