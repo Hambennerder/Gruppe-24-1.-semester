@@ -61,6 +61,11 @@ public class Game extends Player {
         listOfRooms.getRoom(29).addItem(healz);
         listOfRooms.getRoom(37).addItem(healz);
         listOfRooms.getRoom(41).addItem(healz);
+        listOfRooms.getRoom(7).addItem(healz);
+        listOfRooms.getRoom(44).addItem(healz);
+        listOfRooms.getRoom(42).addItem(healz);
+        listOfRooms.getRoom(4).addItem(healz);
+        
 
         // Adding mentor NPC to entrance, and adding ID-card to u3.
         listOfRooms.getRoom(0).addNPC(npcs.getNPC(0));
