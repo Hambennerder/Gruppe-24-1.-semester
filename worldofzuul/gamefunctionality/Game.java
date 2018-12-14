@@ -608,7 +608,7 @@ public class Game extends Player {
                     if (player.getHealth() > player.getMaxHealth()) {
                         player.setHealth(player.getMaxHealth());
                     }
-                    s = ("Your healed for "+ tempHealAmount + "!" + "\nYour current health is " + player.getHealth() + "HP\n");
+                    s = ("You have healed for "+ tempHealAmount + "!" + "\nYour current health is " + player.getHealth() + "HP\n");
                     s += ((player.getHeals()-1) + " heal(s) remaining!\n\n");
                     player.decrementHeal();
                     s += battle.Combatoptions();
