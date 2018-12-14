@@ -10,7 +10,7 @@ public class BragAbility extends Battlesystem{
     
    
     public BragAbility(int playerLevel) {
-        this.baseDamage += playerLevel;
+        this.baseDamage += (2 * playerLevel);
     }
 
     public void setBaseDamage(int damageAmount) {

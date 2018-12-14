@@ -50,7 +50,9 @@ public class NPCS extends NPC {
                 + ">whom you have to battle, through the means of wittyness, and brag etc. \n"
                 + ">You also have the ability to heal yourself when your health happens to \n"
                 + ">be low. But there are limitations. You have to inspect rooms and collect more \n"
-                + ">healz when you run out.");
+                + ">healz when you run out. \n";
+                + ">There are limitations to your abilities as well, you can only use your special attack \n"
+                + ">once and your brag ability three times.";
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
 
@@ -67,7 +69,9 @@ public class NPCS extends NPC {
                 "\n < 1: talk "
               + "\n < 2: leave ");
         andars.setQuestString(">Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap."
+
                 + "\n>You know, a thing between you and me.\n"
+
                 + ">There is a book in the bookstore.\n"
                 + ">It is the best book to prepare you."
                 + "\n>I used this book back in my old days.\n"
@@ -88,8 +92,11 @@ public class NPCS extends NPC {
 
         andars.setQuestCompletedString("> You finally found the book and handed in the assignments. \n"
                                      + "> You should go study to the study hall.");
-        andars.setHealth(1000);
+
+        andars.setHealth(250);
         andars.setEnemyBaseAttackDamage(10);
+        andars.setExperience(1000);
+
         npcs.add(andars);
         // End of the NPC Andars------------------------------------------------
 
@@ -100,6 +107,7 @@ public class NPCS extends NPC {
         bookstoreLady.setDescription("*Probably the ugliest and oldest person you've ever seen in a bookstore*");
         bookstoreLady.setDialogOptions("> 1: Talk \n"
                                      + "> 2: Leave \n");
+
         bookstoreLady.setQuestString(">I would love to help you find the book darling,\n"
                                    + ">but if I have to help you I have to get something in return.\n"
                                    + ">I would love to get a cup of coffee with you.\n"
@@ -108,18 +116,21 @@ public class NPCS extends NPC {
         bookstoreLady.setDeclineString(">Well, you can't have the book then. Return when you want to help");
         bookstoreLady.setOnQuestString(">The coffee can be found in the canteen, good looking");
         bookstoreLady.setQuestCompletedString(">It was a pleasure getting to know you honey");
+
         bookstoreLady.setCompleteQuestString(">Great, you found my coffee!\n"
                 + "The book is back in the storage room, you can go get it.");
+
         npcs.add(bookstoreLady);
 
         // lawStudent at index 3
         NPC lawStudent = new NPC();
         lawStudent.setFriendly(false);
         lawStudent.setName("Wild law student");
+
         lawStudent.setDialogOptions("<1: Fight \n"
                                   + "<2: Flee \n");
-        lawStudent.setHealth(30);
-        lawStudent.setExperience(1000);
+        lawStudent.setHealth(50);
+        lawStudent.setExperience(50);
         lawStudent.setEnemyBaseAttackDamage(5);
         npcs.add(lawStudent);
         // End of the NPC at the student bookstore------------------------------
@@ -127,8 +138,10 @@ public class NPCS extends NPC {
         // Start of NPC for study hall + library quest INDEX: 4-----------------
         NPC student = new NPC();
         student.setName("student");
+
         student.setWelcome(">Hey bruh! \n");
         student.setDescription("*A student in distress*");
+
         student.setGoodbye("You bouncin\' already? see you around.");
         student.setDialogOptions("> 1: Talk \n"
                                + "> 2: Leave \n");
@@ -153,6 +166,7 @@ public class NPCS extends NPC {
         lune.setDescription(">*Your teacher in introduction to Software Engineering*");
         lune.setDialogOptions("> 1: Talk \n"
                             + "> 2: Leave \n");
+
         lune.setQuestString(">I can't our e-moderator. He could be in T8. \n"
                           + ">The room can be quite hard to find, but I'm sure you can find it. \n"
                           + ">Oh yeah, please don't get lost down there \n"
@@ -210,11 +224,14 @@ public class NPCS extends NPC {
         NPC janitor = new NPC();
         janitor.setName("Wild Janitor \n");
         janitor.setLevel(3);
-        janitor.setHealth(10);
+        janitor.setHealth(150);
         janitor.setFriendly(false);
+
         janitor.setDialogOptions("<1: Fight \n"
                                + "<2: Flee \n");
-        janitor.setExperience(6000);
+        janitor.setExperience(400);
+        janitor.setEnemyBaseAttackDamage(10);
+
         npcs.add(janitor);
         // End of janitor ------------------------------------------------------
 
@@ -222,11 +239,14 @@ public class NPCS extends NPC {
         NPC medicineStudent = new NPC();
         medicineStudent.setName("MeD sTuDeNt");
         medicineStudent.setLevel(2);
-        medicineStudent.setHealth(50);
+        medicineStudent.setHealth(60);
         medicineStudent.setFriendly(false);
+
         medicineStudent.setDialogOptions("<1: Fight \n"
                                         + "<2: Flee \n");
-        medicineStudent.setExperience(2000);
+        medicineStudent.setExperience(50);
+        medicineStudent.setEnemyBaseAttackDamage(8);
+
         npcs.add(medicineStudent);
         // End of medicine student ------------------------------------------------------
 
