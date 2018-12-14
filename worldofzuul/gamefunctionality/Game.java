@@ -91,12 +91,6 @@ public class Game extends Player {
         listOfRooms.getRoom(11).addItem(coffee);
 
 
-        // test code
-        Encounter encounter = new Encounter();
-        encounter.addEncounterNPC(npcs.getNPC(3));
-        encounter.setEncounterPossibility(100);
-        encounter.setEncounterMessage("Oh no, you have encountered" + encounter.getEncounterNPC() + "! \n");
-        listOfRooms.getRoom(4).addEncounter(encounter);
 
         // Adding law student encounter to library
         Encounter lawStudentEncounter = new Encounter();
