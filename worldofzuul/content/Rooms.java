@@ -23,15 +23,13 @@ public class Rooms extends Room {
                 g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15,
                 g16, g17, g18, g19, g20, g21, g22, g23, g24, k1, k2, k3, k4, k5, k6, k7, k8;
 
-        // Entrance index 0
-
-        entrance = new Room("");        
+        // Entrance index 0    
+        entrance = new Room("Entrance to the University. \n"
+                + "What exciting adventure lies behind these doors?");
         entrance.setDescription("You are a new student in software engineering and you have just arrived outside \n"
                               + "the main entrance of the university. You look around and see countless of other \n"
                               + "university students, heading to their next class or lecture, you see a man wearing \n" 
                               + "a red shirt saying \'mentor\' \n");
-        entrance = new Room("Entrance to the University. \n"
-                + "What exciting adventure lies behind these doors?");
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
                 + "> through the first steps of this tutorial. Above this message you \n"
                 + "> will see two things, location and exits. Location shows your current \n"
@@ -153,15 +151,14 @@ public class Rooms extends Room {
         // student bookstores storage at index 10
         storage = new Room("You shouldnt be back here... unless");
         storage.setDescription("Is that a \'book\'?");
-        storage.setName("Student bookstore storage");
+        storage.setName("Storage");
         storage.setRequiredProgress(4);
         rooms.add(storage);
 
         // canteen at index 11
         canteen = new Room("In the canteen. A place where Chaos reigns. A place where only the fittest will \n"
                 + "survive but atleast there is food. \n");
-        canteen.setDescription("You see some \'coffee'.\n"
-                + "It might or might not be useful in some situations");
+        canteen.setDescription("You have to be really fast or lucky to get coffee in this chaos!");
         canteen.setName("Canteen");
         rooms.add(canteen);
 
@@ -170,14 +167,14 @@ public class Rooms extends Room {
 
                 // Index 12
         g3 = new Room("you are in hallway g3");
-
         g3.setRequiredProgress(6);
         g3.setDescription("another part of the maze that is SDU\n"
                 + "you should probablt talk to that 'student'");
         g3.setNextQuestProgress(8);
         g3.setName("g3");
         g3.setHasQuest(true);
-        g3.setJournalString("Clear the studyhall and library of students from other faculties");
+        g3.setJournalString("Clear the studyhall and library of students from other faculties.\n"
+                + "Then return to the student in g3.");
         rooms.add(g3);
 
         // Index 13
@@ -210,8 +207,8 @@ public class Rooms extends Room {
         library.setName("library");
         library.setRequiredProgress(6);
         rooms.add(library);
+        
         // study hall at index 17
-
         studyhall = new Room("study hall");
         studyhall.setHasEncounter(true);
 

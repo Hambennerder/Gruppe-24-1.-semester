@@ -250,7 +250,7 @@ public class NPCS extends NPC {
 
         // start of medicine student in room g22, this student is at index 9
         NPC medicineStudent = new NPC();
-        medicineStudent.setName("Arrogant \'sTuDeNt Of MeDiCiNe\' \n");
+        medicineStudent.setName("MeD sTuDeNt");
         medicineStudent.setLevel(2);
         medicineStudent.setHealth(50);
         medicineStudent.setFriendly(false);

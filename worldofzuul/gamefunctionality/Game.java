@@ -30,7 +30,6 @@ public class Game extends Player {
     private boolean questQuestion = false;
     boolean fleeAttempted = false;
 
-
     public Game() {
         parser = new Parser();
         player = new Player();
@@ -50,10 +49,9 @@ public class Game extends Player {
         id_card.setName("ID-card");
         id_card.setDescription("The id-card allows you as a student to enter the entrance of the SDU building.");
 
-
         Item book = new Item();
         book.setName("book");
-        
+
         // Adding heals to different rooms.
         Consumable healz = new Consumable();
         healz.setName("healz");
@@ -81,13 +79,11 @@ public class Game extends Player {
         coffee.setName("coffee");
         listOfRooms.getRoom(11).addItem(coffee);
 
-
-
         // Adding law student encounter to library
         Encounter lawStudentEncounter = new Encounter();
         lawStudentEncounter.addEncounterNPC(npcs.getNPC(3));
         lawStudentEncounter.setEncounterPossibility(100);
-        lawStudentEncounter.setEncounterMessage("> Oh no, you have encountered"+ npcs.getNPC(3).getName()+ "!");
+        lawStudentEncounter.setEncounterMessage("> Oh no, you have encountered" + npcs.getNPC(3).getName() + "!");
         listOfRooms.getRoom(16).addEncounter(lawStudentEncounter);
 
         // Adding student to hallway g3
@@ -124,7 +120,7 @@ public class Game extends Player {
         medicineEncounter.setEncounterMessage("> You think you're smarter than me?"
                 + "> HA! I'm studying to become a doctor.. my grades are better than yours!");
         listOfRooms.getRoom(17).addEncounter(medicineEncounter);
-        
+
         Encounter bossFight = new Encounter();
         bossFight.addEncounterNPC(npcs.getNPC(1));
         bossFight.setEncounterPossibility(0);
@@ -141,6 +137,7 @@ public class Game extends Player {
     }
 
     public String processCommand(Command command) throws Exception {
+        System.out.println(player.getProgress());
         CommandWord commandWord = command.getCommandWord();
         if (commandWord == CommandWord.UNKNOWN) {
             s = "I don't know what you mean...";
@@ -171,17 +168,17 @@ public class Game extends Player {
             } else {
                 conversation = false;
                 questQuestion = false;
-                 s = goRoom(command);
-                if (player.getProgress() == 15 && currentRoom.getName().equals("U180")){
-                    
-                        currentRoom.getNPC(0).setFriendly(false);
-                        currentRoom.getEncounter().setEncounterPossibility(100);
-                        currentRoom.setHasEncounter(true);
+                s = goRoom(command);
+                if (player.getProgress() == 15 && currentRoom.getName().equals("U180")) {
 
-                    } 
+                    currentRoom.getNPC(0).setFriendly(false);
+                    currentRoom.getEncounter().setEncounterPossibility(100);
+                    currentRoom.setHasEncounter(true);
+
+                }
                 s += "\n" + encounterNPC(command);
             }
-            
+
         } else if (commandWord == CommandWord.QUIT) {
             setFinished(true);
 
@@ -198,7 +195,7 @@ public class Game extends Player {
                 if (currentRoom.getItem(0) instanceof Consumable) {
                     s += "\nConsumeable item: healz\n";
                 } else {
-                return "This room contains: " + currentRoom.getItem(0).getName();
+                    s += "\nThis room contains: " + currentRoom.getItem(0).getName();
                 }
             } catch (IndexOutOfBoundsException ex) {
                 s += "\n ***No item to be found***";
@@ -211,35 +208,34 @@ public class Game extends Player {
                         + battle.Combatoptions();
             } else {
                 try {
-                if (!command.hasSecondWord()) {
-                    s = "Take what?";
-                }
-
-                if (currentRoom.getItem(0) == null) {
-                    s = "No item to take" + "\n";
-
-                } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
-                    if (currentRoom.getItem(0) instanceof Consumable) {
-                        if (player.getHeals() == player.getMaxHeals()) {
-                           s = "You can't carry anymore heals!"; 
-                        } else {
-                        player.replenishHeal(1);
-                        currentRoom.removeItem(0);
-                        s = "You found a heal! Now you have " + player.getHeals() + " heals.";
-                        }
-                    } else {
-                    
-                    player.addItem(currentRoom.getItem(0));
-                    s = "You picked up " + currentRoom.getItem(0).getName() + "\n";
-                    currentRoom.removeItem(0);
-                    player.incrementProgress();
+                    if (!command.hasSecondWord()) {
+                        s = "Take what?";
                     }
-                }
-                } catch (IndexOutOfBoundsException ex){
-                    
+
+                    if (currentRoom.getItem(0) == null) {
+                        s = "No item to take" + "\n";
+
+                    } else if (currentRoom.getItem(0).getName().equals(command.getSecondWord())) {
+                        if (currentRoom.getItem(0) instanceof Consumable) {
+                            if (player.getHeals() == player.getMaxHeals()) {
+                                s = "You can't carry anymore heals!";
+                            } else {
+                                player.replenishHeal(1);
+                                currentRoom.removeItem(0);
+                                s = "You found a heal! Now you have " + player.getHeals() + " heals.";
+                            }
+                        } else {
+
+                            player.addItem(currentRoom.getItem(0));
+                            s = "You picked up " + currentRoom.getItem(0).getName() + "\n";
+                            currentRoom.removeItem(0);
+                            player.incrementProgress();
+                        }
+                    }
+                } catch (IndexOutOfBoundsException ex) {
+
                 }
             }
-
 
         } else if (commandWord == CommandWord.APPROACH) {
             try {
@@ -292,8 +288,12 @@ public class Game extends Player {
             } else if (questQuestion) {
                 return processChoice(command);
             } else if (conversation) {
-                s = "Please pick a dialogue option\n\n";
-                s += currentRoom.getNPC(0).getWelcome();
+                try {
+                    s = "Please pick a dialogue option\n\n";
+                    s += currentRoom.getNPC(0).getWelcome();
+                } catch (IndexOutOfBoundsException ex) {
+
+                }
             } else {
                 s = currentRoom.getShortDescription() + "\n";
             }
@@ -303,7 +303,6 @@ public class Game extends Player {
                 | commandWord == CommandWord.FLEE
                 | commandWord == CommandWord.ATTACK
                 | commandWord == CommandWord.HEAL
-                | commandWord == CommandWord.DODGE
                 | commandWord == CommandWord.WITTY
                 | commandWord == CommandWord.BRAG
                 | commandWord == CommandWord.SPECIAL
@@ -311,7 +310,7 @@ public class Game extends Player {
             if (fight) {
                 return combatOptions(command);
             } else {
-                return "What are you trying to fight?";
+                return "You are not battling with anyone, so you can't use combatoptions.";
             }
         }
         return s;
@@ -354,20 +353,23 @@ public class Game extends Player {
             if (player.getProgress() < currentRoom.getNextQuestProgress()) {
                 s = currentRoom.getNPC(0).getName() + ": " + currentRoom.getNPC(0).getOnQuestString();
             } else if (player.getProgress() == currentRoom.getNextQuestProgress()) {
-                s = "Your location: " + currentRoom.getName() + "\n"
-                        + currentRoom.getNPC(0).getCompleteQuestString();
+                s = currentRoom.getNPC(0).getCompleteQuestString();
+
                 currentRoom.setHasFinishedQuest(true);
                 player.incrementProgress();
-                player.setJournal("No active quests...");
+
                 questQuestion = false;
                 conversation = false;
+                
+                player.setJournal("You have no current quest.\n"
+                                + "Explore to find the next quest!");
+                        
             }
             // check 3.6: Checks whether or not a quest has been completed in that room
             // if a quest has been completed, it will return the string that explains
             // to the player that the quest in that room has been finished
         } else if (currentRoom.getHasFinishedQuest()) {
-            s = "Your location: " + currentRoom.getName() + "\n"
-                    + currentRoom.getNPC(0).getQuestCompletedString();
+            s = currentRoom.getNPC(0).getQuestCompletedString();
             questQuestion = false;
             conversation = false;
         }
@@ -382,7 +384,7 @@ public class Game extends Player {
             // to return another string when they player comes back without completing it
             // also the string that explains the quest will be added to the players journal
             if (command.getCommandWord().equals(CommandWord.YES)) {
-                s = currentRoom.getNPC(0).getAcceptString()+"\n";
+                s = currentRoom.getNPC(0).getAcceptString() + "\n";
                 currentRoom.setHasOngoingQuest(true);
                 currentRoom.setHasFinishedQuest(false);
                 player.setJournal(currentRoom.getJournalString());
@@ -390,7 +392,7 @@ public class Game extends Player {
                 // stage 3.4: Checks if the answer is no, if the answer is no a decline string will be returned
                 // and player must choose 1 again to accept the quest.
             } else if (command.getCommandWord().equals(CommandWord.NO)) {
-                s = currentRoom.getNPC(0).getDeclineString()+"\n";
+                s = currentRoom.getNPC(0).getDeclineString() + "\n";
             }
         } catch (IndexOutOfBoundsException ex) {
             s += currentRoom.getShortDescription();
@@ -413,7 +415,7 @@ public class Game extends Player {
                 s = "Approach what?";
 
             } else if (command.getSecondWord().equals(currentRoom.getNPC(0).getName())) {
-                s =  printNPCsName()
+                s = printNPCsName()
                         + printNPCsWelcome()
                         + printDialogOptions();
             }
@@ -424,32 +426,32 @@ public class Game extends Player {
     }
 
     private String goRoom(Command command) {
-        if (currentRoom.getIsLocked()){
+        if (currentRoom.getIsLocked()) {
             s = "You can't escape from this encounter!\n";
             return "Combatoptions: \n"
-                + "a) Attack \n"
-                + "b) Heal \n"
-                + "c) Dodge \n";
+                    + "a) Attack \n"
+                    + "b) Heal \n"
+                    + "c) Dodge \n";
         } else {
 
-        if (!command.hasSecondWord()) {
-            return "Go where?";
-        }
+            if (!command.hasSecondWord()) {
+                return "Go where?";
+            }
 
-        String direction = command.getSecondWord();
+            String direction = command.getSecondWord();
 
-        Room nextRoom = currentRoom.getExit(direction);
+            Room nextRoom = currentRoom.getExit(direction);
 
-        if (nextRoom == null) {
-            s = "There is no door!";
+            if (nextRoom == null) {
+                s = "There is no door!";
 
-        } else if (nextRoom.getRequiredProgress() > player.getProgress()) {
-            s = "You can't go there yet!";
+            } else if (nextRoom.getRequiredProgress() > player.getProgress()) {
+                s = "You can't go there yet!";
 
-        } else {
-            s = nextRoom.getShortDescription() + "\n";
-            currentRoom = nextRoom;
-        }
+            } else {
+                s = nextRoom.getShortDescription() + "\n";
+                currentRoom = nextRoom;
+            }
         }
         return s;
     }
@@ -460,15 +462,15 @@ public class Game extends Player {
             if (currentRoom.getEncounter().encounterMet()) {
 
                 if (!fleeAttempted) {
-                s = currentRoom.getEncounter().getEncounterMessage()
-                + battle.Decision();
+                    s = currentRoom.getEncounter().getEncounterMessage()
+                            + battle.Decision();
 
-                fight = true;
-                currentRoom.setIsLocked(true);
+                    fight = true;
+                    currentRoom.setIsLocked(true);
+                }
+            } else {
+                s = "";
             }
-        } else {
-            s = "";
-        }
         } else if (fleeAttempted) {
             s = "You already tried fleeing once you coward";
         } else {
@@ -488,7 +490,7 @@ public class Game extends Player {
 
         int enemyHealth = currentRoom.getEncounter().getEncounterNPC().getHealth();
 
-        if (fight){
+        if (fight) {
             switch (command.getCommandWord()) {
                 case FIGHT:
                     s = battle.Combatoptions();
@@ -497,13 +499,13 @@ public class Game extends Player {
                 case FLEE:
                     if (fleeAttempted) {
                         s = "You can't escape!.\n"
-                            + battle.Combatoptions();
+                                + battle.Combatoptions();
 
                     } else if (!currentRoom.getEncounter().tryFlee()) {
-                    s = "You escaped! \n"
-                            + currentRoom.getDescription();
-                    fight = false;
-                    currentRoom.setIsLocked(false);
+                        s = "You escaped! \n"
+                                + currentRoom.getDescription();
+                        fight = false;
+                        currentRoom.setIsLocked(false);
 
                     } else {
                         s = "Oh no, you werent quick enough!\n" + battle.Combatoptions();
@@ -535,46 +537,46 @@ public class Game extends Player {
 
                 // Brag about being an engineer
                 case BRAG:
-                    if (player.hasMinorSpecial()){
-                    int damage2 = brag.bragAttack();
-                    s = "You bragged about being an engineer and agitated" + currentRoom.getEncounter().getEncounterNPC() + " \n";
-                    s += "The bragging resulted in " + damage2 + " points of damage.\n";
-                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - damage2);
-                    player.decrementMinorSpecial();
-                    if (enemyHealth > 0) {
+                    if (player.hasMinorSpecial()) {
+                        int damage2 = brag.bragAttack();
+                        s = "You bragged about being an engineer and agitated" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                        s += "The bragging resulted in " + damage2 + " points of damage.\n";
+                        currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - damage2);
+                        player.decrementMinorSpecial();
+                        if (enemyHealth > 0) {
 
-                        s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
-                        player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
-                        s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
-                        s += battle.Combatoptions();
+                            s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
+                            player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
+                            s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
+                            s += battle.Combatoptions();
+                        } else {
+                            s = "something went wrong";
+                        }
+
                     } else {
-                        s = "something went wrong";
-                    }
-                    
-                    } else {
-                    s = "You already exhausted your brag ability!\n";
-                    s += battle.attackoptions();
+                        s = "You already exhausted your brag ability!\n";
+                        s += battle.attackoptions();
                     }
                     break;
 
                 // Optional
                 case SPECIAL:
                     if (player.hasSpecial()) {
-                    int damage3 = specialAbility.specialAttack();
-                    s = "You used your special ability on" + currentRoom.getEncounter().getEncounterNPC() + " \n";
-                    s += "It resulted in " + damage3 + " points of damage.\n";
-                    currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - damage3);
-                    player.decrementSpecial();
+                        int damage3 = specialAbility.specialAttack();
+                        s = "You used your special ability on" + currentRoom.getEncounter().getEncounterNPC() + " \n";
+                        s += "It resulted in " + damage3 + " points of damage.\n";
+                        currentRoom.getEncounter().getEncounterNPC().setHealth(enemyHealth - damage3);
+                        player.decrementSpecial();
 
-                    if (enemyHealth > 0) {
+                        if (enemyHealth > 0) {
 
-                        s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
-                        player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
-                        s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
-                        s += battle.Combatoptions();
-                    } else {
-                        s = "something went wrong";
-                    }
+                            s += currentRoom.getEncounter().getEncounterNPC().getAttackString() + "\n";
+                            player.setHealth(player.getHealth() - currentRoom.getEncounter().getEncounterNPC().enemyAttack());
+                            s += "Ouch! Your health has decreased to " + player.getHealth() + "HP\n\n";
+                            s += battle.Combatoptions();
+                        } else {
+                            s = "something went wrong";
+                        }
                     } else {
                         s = "You already exhausted your special ability!\n";
                         s += battle.attackoptions();
@@ -590,51 +592,46 @@ public class Game extends Player {
                         s += battle.Combatoptions();
                     } else {
 
-                    if (player.getHealth() == player.getMaxHealth()) {
-                        s = "Your health is already full!";
-                        s += battle.attackoptions();
-                    } else {
-                    int tempHealAmount = healAbility.heal();
-                    player.setHealth(player.getHealth() + tempHealAmount);
+                        if (player.getHealth() == player.getMaxHealth()) {
+                            s = "Your health is already full!";
+                            s += battle.attackoptions();
+                        } else {
+                            int tempHealAmount = healAbility.heal();
+                            player.setHealth(player.getHealth() + tempHealAmount);
 
-                    if (player.getHealth() > player.getMaxHealth()) {
-                        player.setHealth(player.getMaxHealth());
-                    }
-                    s = ("Your healed for "+ tempHealAmount + "!" + "\nYour current health is " + player.getHealth() + "HP\n");
-                    s += ((player.getHeals()-1) + " heal(s) remaining!\n\n");
-                    player.decrementHeal();
-                    s += battle.Combatoptions();
-                    }
+                            if (player.getHealth() > player.getMaxHealth()) {
+                                player.setHealth(player.getMaxHealth());
+                            }
+                            s = ("Your healed for " + tempHealAmount + "!" + "\nYour current health is " + player.getHealth() + "HP\n");
+                            s += ((player.getHeals() - 1) + " heal(s) remaining!\n\n");
+                            player.decrementHeal();
+                            s += battle.Combatoptions();
+                        }
                     }
                     break;
-                case DODGE:
-                    //s = battle.dodge()
-                    //        + encounterturn.EncounterTurn();
-                    //s += print3Lines()
-                    //        +battle.Combatoptions();
-                    break;
+        
                 default:
                     break;
             }
         }
-       if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0 && player.getHealth() > 0) {
-           s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
-                                + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
-           player.gainExperience(currentRoom.getEncounter().getEncounterNPC().getExperience());
-           fight = false;
-           currentRoom.setIsLocked(false);
-           player.incrementProgress();
-           currentRoom.setHasEncounter(false);
-           fleeAttempted = false;
+        if (currentRoom.getEncounter().getEncounterNPC().getHealth() <= 0 && player.getHealth() > 0) {
+            s = "You defeated the opponent " + currentRoom.getEncounter().getEncounterNPC() + "!\n"
+                    + "You were rewarded with " + currentRoom.getEncounter().getEncounterNPC().getExperience() + "XP!";
+            player.gainExperience(currentRoom.getEncounter().getEncounterNPC().getExperience());
+            fight = false;
+            currentRoom.setIsLocked(false);
+            player.incrementProgress();
+            currentRoom.setHasEncounter(false);
+            fleeAttempted = false;
 
-       } else if (player.getHealth() < 0) {
-           s = "You got rekt son, game over.";
-           finished = true;
-           // some code to tell the player that game is over and something
-       } else {
-           // Method
-       }
-       return s;
+        } else if (player.getHealth() < 0) {
+            s = "You got rekt son, game over.";
+            finished = true;
+            // some code to tell the player that game is over and something
+        } else {
+            // Method
+        }
+        return s;
     }
 
     private String printDialogOptions() {
