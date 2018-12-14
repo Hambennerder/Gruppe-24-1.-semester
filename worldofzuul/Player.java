@@ -261,65 +261,65 @@ public class Player extends Entity {
 
         getExperience();
         
-        int currentEXP = experience + amount;
+        //int currentEXP = experience + amount;
+        int levelSystem = experience + amount;
 
-        double levelSystem = 0.04 * Math.sqrt(currentEXP);
+        //double levelSystem = 0.5 * Math.sqrt(currentEXP);
 
-        if ((int) levelSystem == 0) {
+        if ( levelSystem < 100) {
 
             setLevel(1);
 
-            levelUp();
 
-        } else if ((int) levelSystem == 1) {
+        } else if (levelSystem >= 100 || levelSystem < 300) {
 
             setLevel(2);
 
             levelUp();
 
-        } else if ((int) levelSystem == 2) {
+        } else if (levelSystem >= 300 || levelSystem < 500) {
 
             setLevel(3);
 
             levelUp();
 
-        } else if ((int) levelSystem == 3) {
+        } else if (levelSystem >= 500 || levelSystem < 800) {
 
             setLevel(4);
 
             levelUp();
 
-        } else if ((int) levelSystem == 4) {
+        } else if (levelSystem >= 800 || levelSystem < 1100) {
 
             setLevel(5);
 
             levelUp();
 
-        } else if ((int) levelSystem == 5) {
+        } else if (levelSystem >= 1100 || levelSystem < 1500) {
 
             setLevel(6);
 
             levelUp();
 
-        } else if ((int) levelSystem == 6) {
+        } else if (levelSystem >= 1500 || levelSystem < 1900) {
 
             setLevel(7);
 
             levelUp();
 
-        } else if ((int) levelSystem == 7) {
+        } else if (levelSystem >= 1900 || levelSystem < 2300) {
 
             setLevel(8);
 
             levelUp();
 
-        } else if ((int) levelSystem == 8) {
+        } else if (levelSystem >= 2300 || levelSystem < 2700) {
 
             setLevel(9);
 
             levelUp();
 
-        } else if ((int) levelSystem >= 9) {
+        } else if (levelSystem >= 2700) {
 
             setLevel(10);
 
@@ -331,7 +331,7 @@ public class Player extends Entity {
 
         }
         
-        setExperience(currentEXP);
+        setExperience(levelSystem);
     }
 
     public void levelUp() {
