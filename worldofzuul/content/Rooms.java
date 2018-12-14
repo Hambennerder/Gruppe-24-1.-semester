@@ -27,9 +27,12 @@ public class Rooms extends Room {
         
         entrance = new Room("Entrance to the University. \n"
                 + "What exciting adventure lies behind these doors?");
-        entrance.setDescription("You are a new student in software engineering and you have just arrived outside \n"
-                              + "the main entrance of the university. You look around and see countless of other \n"
-                              + "university students, heading to their next class or lecture, you see a man wearing \n" 
+        entrance.setDescription("You are a new student in software engineering and\n"
+                              + "you have just arrived outside \n"
+                              + "the main entrance of the university. \n"
+                              +  "You look around and see countless of other \n"
+                              + "university students, heading to their next class or lecture, \n"
+                              + "you see a man wearing \n" 
                               + "a red shirt saying \'mentor\' \n");
 
         entrance.setRoomIntro("> Hello " + this.name + ", my name is Uvuvwevwevwe, and I will guide you \n"
@@ -56,6 +59,7 @@ public class Rooms extends Room {
         // u1 index 1
         u1 = new Room("A small room, rather empty and quiet. There were nothing unique \n"
                 + "about the room that made it stand out.\n"
+                + "\n"
                 + "HINT: inspecting a room reveals interactable objects.");
         u1.setName("u1");
         u1.setDescription("I don't think there is an ID card in here..");
@@ -63,7 +67,7 @@ public class Rooms extends Room {
 
         // u2 index 2
         u2 = new Room("White painted walls, probably painted recently due to the smell of fresh paint \n"
-                    + "inside the room there were a couple of chairs and the infront big screen showing \n"
+                    + "inside the room there is a couple of chairs and the infront big screen showing \n"
                     + "showing a timetable. Roaming in and out of the room where students who like \n"
                     + "seniors wearing red t-shirt with logo and name of the university.");
         u2.setDescription("I look around. No ID card here...");
@@ -71,7 +75,8 @@ public class Rooms extends Room {
         rooms.add(u2);
 
         // u3 at index 3
-        u3 = new Room("Room was full of people standing i a line, they seem like new students just like me. \n"
+        u3 = new Room("Room was full of people standing i a line, \n"
+                + " they seem like new students just like me. \n"
                     + " Maybe the ID-card is in here..try inspecting the room?\n");
         u3.setDescription("The ID-card is here!. Type \'take ID-card\' to pick it up.\n"
                 + "You can type inventory to make sure you picked it up.\n"
@@ -80,15 +85,12 @@ public class Rooms extends Room {
         rooms.add(u3);
 
         // g1 at index 4
-        g1 = new Room("In hallway g1. "
-                + "It feels like you wander alone in this vast labrinth of hallways and \n"
+        g1 = new Room(""
+                + "It feels like you wander alone in this vast labyrinth of hallways and \n"
                 + "dead ends even though people are all around you. Will you be able to find \n"
                 + "the place you need to be? \n");
-        g1.setDescription("In hallway g1. "
-                + "It feels like you wander alone in this vast labrinth"
-                + " of hallways and dead ends even though people"
-                + " are all around you. Will you be able to"
-                + " find the place you need to be?");
+        g1.setDescription("This room seems to be empty");
+
         g1.setName("g1");
         g1.setRequiredProgress(2);
         rooms.add(g1);

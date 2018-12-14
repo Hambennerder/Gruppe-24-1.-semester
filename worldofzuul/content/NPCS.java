@@ -20,31 +20,6 @@ public class NPCS extends NPC {
         mentor.setDescription("*Short and build student, wearing a hoodie \n"
                 + " and a pair of glasses,short clean cut redheaded*");
         mentor.setName("mentor");
-        mentor.setWelcome("You must be a new student, welcome! \n"
-                + "\nUvuvwevwevwe: As you can see below, you have two options, type \"choose 1\" to \n"
-                + "choose the first, and I'll let you figure out the rest.\n");
-        mentor.setDialogOptions("< 1: talk"
-                + "\n< 2: leave");
-        mentor.setAcceptString("Good luck student! \n"
-                + "\nUvuvwevwevwe: \n"
-                + ">Now that you accepted a quest, you can type journal, and the quest's name \n"
-                + ">and a short description will pop up. Complete this quest to advance. To go \n"
-                + ">to a room, you must type \'go\' and then the direction you want to go, there \n"
-                + ">are four directions:\'north\', \'south\', \'west\' and \'east\'. Type \'go north\'");
-        mentor.setDeclineString("Ow, well you won't be able to study properly then.. a shame");
-        mentor.setQuestString("< Hello there! \n"
-                + "> Welcome to SDU. My name is Morten. I'll be your mentor for today. \n"
-                + "> Before you can enter the entrance of the SDU building, you have \n"
-                + "> to find your ID-card. To do that you have to inspect rooms u1-u3. \n"
-                + "> These rooms are outside the SDU building. To find the first room \n"
-                + "> you have to head north. Are you ready for this? \n"
-                + " (now choose whether or not you accept this mission by typing yes/no)");
-        mentor.setOnQuestString("Have you found your ID-card? It should be around here somewhere.");
-        mentor.setQuestCompletedString("I'm sorry, I'm busy. Go find Andars.");
-        mentor.setCompleteQuestString("> Yes! you found the ID-card. \n"
-                + "> Now you can finally access this god awful place. "
-                + "> You must go find Andars, I've heard \n"
-                + "> that he's in u180. Good luck! \n");
         mentor.setWelcome(">You must be a new student, welcome! \n"
                 + "> Uvuvwevwevwe: As you can see below, you have two options,\n"
                 + "> type \"choose 1\" to choose the first, and I'll let you figure out the rest.\n");
@@ -64,12 +39,13 @@ public class NPCS extends NPC {
         mentor.setCompleteQuestString(">Yes! you found the ID-card, \n"
                 + ">now you can finally access this god awful place.\n"
                 + ">now you must go find Andars, I've heard that he's in u180. Good luck! \n"
+                + "\n"
                 + ">Uvuvwevwevwe: Congratulations! You finished your very first quest.\n"
-                + ">Sadly, you're on your own now. But before you go I have to warned you. \n"
-                + ">As you continue journey you'll mostly face some powerful opponents along \n "
-                + ">way whom you have to battle, through the means of wittyness, brag etc. \n"
+                + ">Sadly, you're on your own now. But before you go I have to warn you. \n"
+                + ">As you continue your journey you'll face some powerful opponents along \n"
+                + ">the way whom you have to battle, through the means of wittyness, and brag etc. \n"
                 + ">You also have the ability to heal yourself when your health happens to \n"
-                + ">be low. But the are limits that is way looking around and collect more \n"
+                + ">be low. But there are limitations you have to inspect rooms and collect more \n"
                 + ">healz when you run out.");
         npcs.add(mentor);
         // End of the first mentor NPC--------------------
@@ -80,15 +56,17 @@ public class NPCS extends NPC {
         andars.setDescription("*Tall slim man, wearing a snapback cap, rocking wild fuzzy beard."
                 + "\n He appears professional. His face expression seems serious.*");
         andars.setName("Andars");
+        andars.setWelcome("What do you want, you peasant?!");
+        andars.setGoodbye("Yes, please do leave me alone");
 
         andars.setDialogOptions(
                 "\n < 1: talk "
               + "\n < 2: leave ");
-        andars.setQuestString("< Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap \n"
-                            + "< You know, a thing between you and me. The book, called Best Java Book for \n"
-                            + "< learning Java EVER!. It is the best book to prepare you I used this book \n"
+        andars.setQuestString("< Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap \n"
+                            + "< You know, a thing between you and me. There is a book in the bookstore. \n"
+                            + "< It is the best book to prepare you. I used this book \n"
                             + "< back in my old days. It saved me tons of trouble! Find it at the bookstore. \n"
-                            + "< I want you to solve these assignments, solve these with the book and you \n"
+                            + "< I want you to complete these assignments, solve them with the book and you \n"
                             + "< will be prepared. Sound like a pretty good plan, right? (yes/no) \n");
 
         andars.setAcceptString("< Nice!... by the way watch out for the lady in the bookstore."
@@ -104,14 +82,14 @@ public class NPCS extends NPC {
                 + "\n< handed in the assignments. \n"
                 + "< You should go study to the study hall.");
 
-        andars.setQuestString("> Welcome to SDU. I am Andars. a very skilled programmer, and I rock a mean cap"
+        andars.setQuestString("> Welcome to SDU. I am Andars. I'll be teaching you, and I rock a mean cap"
                 + "\n> You know, a thing between you and me.\n"
-                + "> The book, called Best Java Book for learning Java EVER!.\n"
-                + "> It is the best book to prepare you"
-                + "\n> I used this book back in my ole' days.\n"
+                + ">There is a book in the bookstore.\n"
+                + "> It is the best book to prepare you."
+                + "\n> I used this book back in my old days.\n"
                 + "> It saved me tons of trouble! Find it at the bookstore."
-                + "\n> I want you to solve these assignments,\n"
-                + "> solve these with the book and you will be prepared"
+                + "\n> I want you to complete these assignments,\n"
+                + "> solve them with the book and you will be prepared"
                 + "\n> Sound like a pretty good plan, right? (yes/no)");
 
         andars.setAcceptString(">Nice!... by the way watch out for the lady in the bookstore, she is pretty flirtatious.");
