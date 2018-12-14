@@ -153,9 +153,9 @@ public class NPCS extends NPC {
         lawStudent.setName("Wild law student");
         lawStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
-        lawStudent.setHealth(30);
+        lawStudent.setHealth(50);
 
-        lawStudent.setExperience(1000);
+        lawStudent.setExperience(50);
 
         lawStudent.setEnemyBaseAttackDamage(5);
         npcs.add(lawStudent);
@@ -281,11 +281,12 @@ public class NPCS extends NPC {
         NPC janitor = new NPC();
         janitor.setName("Wild Janitor");
         janitor.setLevel(3);
-        janitor.setHealth(10);
+        janitor.setHealth(150);
         janitor.setFriendly(false);
         janitor.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
-        janitor.setExperience(6000);
+        janitor.setExperience(400);
+        janitor.setEnemyBaseAttackDamage(10);
         npcs.add(janitor);
         // End of janitor ------------------------------------------------------
 
@@ -293,11 +294,12 @@ public class NPCS extends NPC {
         NPC medicineStudent = new NPC();
         medicineStudent.setName("Arrogant \'sTuDeNt Of MeDiCiNe\'");
         medicineStudent.setLevel(2);
-        medicineStudent.setHealth(50);
+        medicineStudent.setHealth(60);
         medicineStudent.setFriendly(false);
         medicineStudent.setDialogOptions("<1: Fight\n"
                 + "<2: Flee");
-        medicineStudent.setExperience(2000);
+        medicineStudent.setExperience(50);
+        medicineStudent.setEnemyBaseAttackDamage(8);
         npcs.add(medicineStudent);
         // End of medicine student ------------------------------------------------------
 
