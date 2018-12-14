@@ -26,7 +26,7 @@ public class WittyRemarkAbility extends Battlesystem {
     
     public int remarkAttack() { 
         rand = new Random();
-        int r = rand.nextInt(10) + 1;
+        int r = rand.nextInt(5) + 1;
         return this.baseDamage + r;
     }
 }

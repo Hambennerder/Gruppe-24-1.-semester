@@ -23,7 +23,7 @@ public class BragAbility extends Battlesystem{
     
     public int bragAttack() {
         rand = new Random();
-        int r = rand.nextInt(10) + 1;
+        int r = rand.nextInt(7) + 1;
         return this.baseDamage + r;
     }
    
