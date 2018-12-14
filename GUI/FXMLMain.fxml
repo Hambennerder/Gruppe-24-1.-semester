@@ -27,7 +27,7 @@
       <TextField fx:id="setPlayerHP" editable="false" focusTraversable="false" layoutX="7.0" layoutY="302.0" mouseTransparent="true" prefHeight="15.0" prefWidth="88.0" />
       <TextField fx:id="setEnemyHP" editable="false" focusTraversable="false" layoutX="7.0" layoutY="355.0" mouseTransparent="true" prefHeight="15.0" prefWidth="88.0" />
       <TextField fx:id="levelText" editable="false" focusTraversable="false" layoutX="7.0" layoutY="412.0" mouseTransparent="true" prefHeight="15.0" prefWidth="88.0" />
-      <Text layoutX="666.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heals left" />
+      <Text layoutX="666.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Healz left" />
       <TextField fx:id="amountHeal" editable="false" focusTraversable="false" layoutX="665.0" layoutY="282.0" mouseTransparent="true" prefHeight="0.0" prefWidth="75.0" />
    </children>
 </AnchorPane>
